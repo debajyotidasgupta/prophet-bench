@@ -37,22 +37,30 @@
 
 \begin{abstract}
 Frontier large-language-model agents now solve nearly every static-resettable
-benchmark we have. We argue the most-deployed AI capability has become the
-\emph{least-calibrated}: models systematically over-quote their probability of
-success and commit to tasks they should decline, with measurable production
-cost. We introduce \textbf{PROPHET}, a benchmark that evaluates LLM agents
-inside a marketplace. For each task an agent must commit (\textsc{Take}),
-declare its probability of success (\textsc{Quote}, scored on a Brier-based
-proper scoring rule) or abstain (\textsc{Pass}). PROPHET ships 12 task
-families spanning code, math, knowledge, reasoning, writing, browsing,
-tool-use, multimodal, data-analysis, scientific, multilingual, and safety
-domains, all procedurally generated to resist memorisation and Berkeley-style
-benchmark exploits. We report the headline result as a Pareto frontier of
-expected payoff against expected calibration error (ECE), abstention
-precision, and the Model Overreach Point. Across \TODO{N} frontier and
-open-weight models we find that calibration ranks completely differently
-from accuracy: \TODO{insert headline finding once experimental matrix lands}.
-Code, data seeds, and 12-family eval harness are released under MIT.
+benchmark we have, yet a 37\,\% gap between lab accuracy and production
+reliability persists. The capability we are mis-measuring is
+\emph{calibrated agency} --- knowing when to commit, declining tasks one
+should not take, and pricing one's own confidence with skin in the game.
+We introduce \textbf{PROPHET}, a benchmark that evaluates LLM-based
+agents inside a marketplace. For each task, the agent must commit
+(\textsc{Take}), declare a probability of success (\textsc{Quote},
+scored on a Brier-based proper scoring rule) or abstain (\textsc{Pass}).
+PROPHET ships 12 procedurally-generated task families spanning code,
+math, knowledge, reasoning, writing, browser, tool-use, multimodal,
+data-analysis, scientific, multilingual, and safety domains. All
+verifiers are mechanical. We benchmark 13 frontier and open-weight
+systems via OpenRouter (Anthropic, Google, OpenAI, DeepSeek, Meta,
+Qwen, Moonshot). The headline finding: \textbf{the first-place leader
+changes under every headline axis.} Best by accuracy: Google Gemini 3
+Flash Preview (97.0\,\%). Best by ECE: Gemini 3 Flash Preview (0.027).
+Best by net payoff: Anthropic Claude Opus 4.7 (23,686 PROPHET-cents
+vs.\ 22,908 for Gemini). Both are Pareto-optimal on $(\ECE, \mathcal{P})$;
+neither single scalar would have selected the right model for a
+risk-aware buyer. Spearman rank correlations between the three axes
+range $0.73$--$0.89$, showing the orderings are not interchangeable
+even at $n = 12$ frontier systems. All code, procgen seeds, agent
+adapters, and 240-task-per-family eval harness are released under MIT
+and on Hugging Face for re-execution at any future model checkpoint.
 \end{abstract}
 
 \input{sections/introduction}
