@@ -1,35 +1,39 @@
 {
   "cross_family_ece_correlation": {
-    "baseline:random": -0.1258741258741259,
+    "baseline:random": -0.18881118881118883,
     "baseline:always-take": NaN,
     "baseline:always-pass": NaN,
     "baseline:oracle": NaN,
-    "openrouter:openai_gpt-5.4-nano": 0.18181818181818185,
+    "openrouter:openai_gpt-5.4-nano": 0.17482517482517487,
     "openrouter:google_gemini-3.1-flash-lite": 0.7197594934766531,
-    "openrouter:google_gemini-3-flash-preview": 0.3843103054203798,
-    "openrouter:anthropic_claude-haiku-4.5": 0.5804195804195805,
-    "openrouter:meta-llama_llama-4-scout": 0.6121212121212121,
-    "openrouter:openai_gpt-5-mini": 0.8251748251748254,
-    "openrouter:deepseek_deepseek-v3.2": 0.4755244755244756,
-    "openrouter:openai_gpt-5-nano": 0.7545454545454545,
-    "openrouter:qwen_qwen3-32b": 0.4125874125874127,
-    "openrouter:meta-llama_llama-4-maverick": 0.8741258741258742
+    "openrouter:google_gemini-3-flash-preview": 0.369808029744139,
+    "openrouter:anthropic_claude-haiku-4.5": 0.5944055944055945,
+    "openrouter:meta-llama_llama-4-scout": 0.6,
+    "openrouter:openai_gpt-5-mini": 0.8391608391608393,
+    "openrouter:deepseek_deepseek-v3.2": 0.4825174825174825,
+    "openrouter:openai_gpt-5-nano": 0.7636363636363637,
+    "openrouter:qwen_qwen3-32b": 0.37762237762237766,
+    "openrouter:meta-llama_llama-4-maverick": 0.8601398601398602,
+    "openrouter:anthropic_claude-opus-4.7": 0.4125874125874127,
+    "openrouter:anthropic_claude-sonnet-4.6": 0.7145369977051133
   },
   "cross_family_brier_correlation": {
-    "baseline:random": -0.20979020979020982,
+    "baseline:random": -0.17482517482517487,
     "baseline:always-take": NaN,
     "baseline:always-pass": NaN,
     "baseline:oracle": NaN,
-    "openrouter:openai_gpt-5.4-nano": 0.6433566433566434,
-    "openrouter:google_gemini-3.1-flash-lite": 0.6739944389781376,
-    "openrouter:google_gemini-3-flash-preview": 0.30454778920105563,
-    "openrouter:anthropic_claude-haiku-4.5": 0.6643356643356644,
-    "openrouter:meta-llama_llama-4-scout": 0.6727272727272726,
-    "openrouter:openai_gpt-5-mini": 0.8251748251748254,
-    "openrouter:deepseek_deepseek-v3.2": 0.4685314685314686,
+    "openrouter:openai_gpt-5.4-nano": 0.5734265734265735,
+    "openrouter:google_gemini-3.1-flash-lite": 0.7197594934766531,
+    "openrouter:google_gemini-3-flash-preview": 0.3625568919060187,
+    "openrouter:anthropic_claude-haiku-4.5": 0.6573426573426573,
+    "openrouter:meta-llama_llama-4-scout": 0.6484848484848483,
+    "openrouter:openai_gpt-5-mini": 0.8601398601398602,
+    "openrouter:deepseek_deepseek-v3.2": 0.4895104895104896,
     "openrouter:openai_gpt-5-nano": 0.5090909090909091,
-    "openrouter:qwen_qwen3-32b": 0.7902097902097903,
-    "openrouter:meta-llama_llama-4-maverick": 0.9160839160839163
+    "openrouter:qwen_qwen3-32b": 0.8111888111888113,
+    "openrouter:meta-llama_llama-4-maverick": 0.8951048951048951,
+    "openrouter:anthropic_claude-opus-4.7": 0.2517482517482518,
+    "openrouter:anthropic_claude-sonnet-4.6": 0.7062937062937064
   },
   "per_agent_difficulty_curves": {
     "baseline:random": {
@@ -633,6 +637,92 @@
         35
       ],
       "ece_overall": 0.12198275862068958
+    },
+    "openrouter:anthropic_claude-opus-4.7": {
+      "centers": [
+        0.0625,
+        0.1875,
+        0.3125,
+        0.4375,
+        0.5625,
+        0.6875,
+        0.8125,
+        0.9375
+      ],
+      "accuracy": [
+        0.9473684210526315,
+        1.0,
+        0.875,
+        0.8823529411764706,
+        0.9361702127659575,
+        0.7142857142857143,
+        0.8387096774193549,
+        0.9696969696969697
+      ],
+      "claimed_confidence": [
+        0.9605263157894735,
+        0.9624999999999998,
+        0.9745833333333334,
+        0.9697058823529412,
+        0.9591489361702129,
+        0.9504761904761901,
+        0.9622580645161288,
+        0.9657575757575757
+      ],
+      "n_per_bin": [
+        19,
+        20,
+        24,
+        34,
+        47,
+        21,
+        31,
+        33
+      ],
+      "ece_overall": 0.0781659388646288
+    },
+    "openrouter:anthropic_claude-sonnet-4.6": {
+      "centers": [
+        0.0625,
+        0.1875,
+        0.3125,
+        0.4375,
+        0.5625,
+        0.6875,
+        0.8125,
+        0.9375
+      ],
+      "accuracy": [
+        0.9473684210526315,
+        1.0,
+        0.875,
+        0.8529411764705882,
+        0.8085106382978723,
+        0.9523809523809523,
+        0.7741935483870968,
+        0.8823529411764706
+      ],
+      "claimed_confidence": [
+        0.963157894736842,
+        0.9684999999999997,
+        0.9758333333333334,
+        0.9699999999999999,
+        0.9448936170212767,
+        0.9661904761904758,
+        0.9677419354838707,
+        0.9576470588235293
+      ],
+      "n_per_bin": [
+        19,
+        20,
+        24,
+        34,
+        47,
+        21,
+        31,
+        34
+      ],
+      "ece_overall": 0.09273913043478262
     }
   }
 }

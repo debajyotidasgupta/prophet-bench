@@ -1,0 +1,14 @@
+{
+  "run_id": "1779032009-898f2de1-openrouter:anthropic_claude-sonnet-4.6",
+  "agent": "openrouter:anthropic/claude-sonnet-4.6",
+  "cycle_seed": 42,
+  "market_seed": 42,
+  "wall_time_s": 0.25345826148986816,
+  "total_cost_usd": 0.7961609999999998,
+  "n_tasks": 240,
+  "n_take": 226,
+  "n_quote": 4,
+  "n_pass": 10,
+  "net_payoff": 17792.831617935713,
+  "notes": ""
+}

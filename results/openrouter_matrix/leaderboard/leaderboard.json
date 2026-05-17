@@ -32,6 +32,38 @@
     "pareto_optimal_among_real": false
   },
   {
+    "name": "openrouter:anthropic_claude-opus-4.7",
+    "n": 229,
+    "accuracy": 0.8996,
+    "accuracy_ci": [
+      0.8603,
+      0.9345
+    ],
+    "ece": 0.0782,
+    "ece_ci": [
+      0.0417,
+      0.1193
+    ],
+    "brier": 0.0962,
+    "brier_ci": [
+      0.0626,
+      0.1345
+    ],
+    "logloss": 0.3828,
+    "logloss_ci": [
+      0.2565,
+      0.526
+    ],
+    "net_payoff": 23686.21,
+    "net_payoff_ci": [
+      21176.32,
+      26055.24
+    ],
+    "cost_usd": 1.3514,
+    "pareto_optimal": true,
+    "pareto_optimal_among_real": true
+  },
+  {
     "name": "openrouter:google_gemini-3-flash-preview",
     "n": 231,
     "accuracy": 0.9697,
@@ -188,6 +220,38 @@
       21521.0
     ],
     "cost_usd": 0.078,
+    "pareto_optimal": false,
+    "pareto_optimal_among_real": false
+  },
+  {
+    "name": "openrouter:anthropic_claude-sonnet-4.6",
+    "n": 230,
+    "accuracy": 0.8696,
+    "accuracy_ci": [
+      0.8261,
+      0.913
+    ],
+    "ece": 0.0927,
+    "ece_ci": [
+      0.0577,
+      0.1386
+    ],
+    "brier": 0.1146,
+    "brier_ci": [
+      0.0773,
+      0.154
+    ],
+    "logloss": 0.4266,
+    "logloss_ci": [
+      0.2928,
+      0.5715
+    ],
+    "net_payoff": 17051.46,
+    "net_payoff_ci": [
+      14819.9,
+      19164.32
+    ],
+    "cost_usd": 0.7962,
     "pareto_optimal": false,
     "pareto_optimal_among_real": false
   },
