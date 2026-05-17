@@ -1,0 +1,47 @@
+\section{Discussion}\label{sec:discussion}
+
+\paragraph{Why economic pricing matters.}
+A scalar leaderboard rewards accuracy at any cost. Production buyers
+care about whether an agent is \emph{worth deploying}: how often does
+it commit and succeed? How costly are its mistakes? What is the
+spread of its expected value? PROPHET makes these questions central
+by paying the agent for being honest about its odds. Calibration
+becomes \emph{the business metric} rather than a side ablation.
+
+\paragraph{Why we don't publish a single scalar.}
+We deliberately publish a Pareto frontier on
+$(\mathrm{net\_payoff}, \ECE)$ rather than a single ranking. This
+matches the production reality that the right answer depends on the
+deployment cost-of-error: a safety-critical system needs both low ECE
+and high net-payoff (Pareto-corner); a research-bot can tolerate
+higher ECE if its net-payoff covers the cost of human review.
+
+\paragraph{Why a Brier-based proper scoring rule.}
+Brier is bounded, $C^\infty$ smooth, and admits closed-form expected
+payoff at known $P[y=1\!\mid\!t]$. Logarithmic score is also proper
+but unbounded at $\Phat \to \{0, 1\}$, which makes it gameable when
+the agent reports near-extreme probabilities on tasks of borderline
+difficulty. CRPS (continuous ranked probability score) is preferable
+for continuous outcomes; we adopt it in a forthcoming v2 for the
+writing family.
+
+\paragraph{What the data tells us about reasoning mode.}
+\TODO{Once the matrix lands: contrast same-base-model reasoning vs
+non-reasoning. We expect reasoning to lift accuracy but \emph{also}
+lift Brier (over-confidence on harder tasks), consistent with
+Anthropic 2025 / 2026 faithfulness findings.}
+
+\paragraph{What the data tells us about open vs closed.}
+\TODO{Once the matrix lands: report the open-frontier vs closed-frontier
+gap on each axis. We expect closed models to dominate on accuracy but
+to be either marginally better or \emph{worse} on ECE depending on
+post-training calibration.}
+
+\paragraph{What this benchmark cannot answer.}
+PROPHET does not measure: (i) long-horizon coherence across many days
+of interaction (see CHRONOWEAVE in our companion design report);
+(ii) drift detection under silent environmental change (see DRIFT-
+WORLD); (iii) safety in catastrophic-risk scenarios (use targeted
+red-team suites). PROPHET is one of three suites in the AGENCY-3
+family; it covers calibrated commitment, period.
+\end{document}

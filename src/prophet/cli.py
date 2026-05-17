@@ -119,6 +119,8 @@ def run(
     per_sec_limit: float = typer.Option(0.0, help="Optional requests-per-second cap (0 = unlimited)."),
     max_tokens: int = typer.Option(2048, help="Max tokens per agent response (reasoning + visible)."),
     temperature: float = typer.Option(0.0, help="Sampling temperature (0 = greedy)."),
+    wandb: bool = typer.Option(False, help="Enable Weights & Biases logging."),
+    wandb_project: str = typer.Option("prophet", help="W&B project name."),
     log_level: str = typer.Option("INFO"),
 ) -> None:
     """Run an agent through one or more families."""
@@ -144,7 +146,14 @@ def run(
             per_sec_limit=per_sec_limit or None,
         )
         ag = _PrecomputedRespondAgent(ag, runner, tasks, market)
-    cfg = RunConfig(cycle_seed=seed, market_seed=seed, out_dir=out_dir, max_cost_usd=max_cost)
+    cfg = RunConfig(
+        cycle_seed=seed,
+        market_seed=seed,
+        out_dir=out_dir,
+        max_cost_usd=max_cost,
+        wandb=wandb,
+        wandb_project=wandb_project,
+    )
     result = orch.run(ag, tasks, cfg)
     console.print(f"[green]Run finished[/green]: {result.run_id}  net=${result.summary['net_payoff']:.1f}  cost=${result.total_cost_usd:.4f}")
 

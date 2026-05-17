@@ -30,10 +30,15 @@ from prophet.engine.types import (
     Task,
 )
 
+try:
+    from prophet.utils.wandb_logger import WandbRun
+except Exception:
+    WandbRun = None  # noqa: N816 — optional dep
+
 log = logging.getLogger("prophet.orchestrator")
 
 
-@dataclass(slots=True)
+@dataclass
 class RunConfig:
     cycle_seed: int = 42
     market_seed: int = 0
@@ -43,6 +48,9 @@ class RunConfig:
     save_traces: bool = True
     abstain_shadow_rate: float = 0.10  # fraction of PASS outcomes that get a shadow re-attempt
     notes: str = ""
+    wandb: bool = False
+    wandb_project: str = "prophet"
+    wandb_tags: list[str] | None = None
 
 
 @dataclass(slots=True)
@@ -81,6 +89,27 @@ class Orchestrator:
         outcomes: list[Outcome] = []
         total_cost = 0.0
         t0 = time.time()
+
+        # Optional W&B run context
+        wandb_ctx = None
+        if cfg.wandb and WandbRun is not None:
+            wandb_ctx = WandbRun(
+                project=cfg.wandb_project,
+                config={
+                    "agent": agent.name,
+                    "cycle_seed": cfg.cycle_seed,
+                    "market_seed": cfg.market_seed,
+                    "n_tasks": len(tasks_list),
+                    "max_cost_usd": cfg.max_cost_usd,
+                },
+                tags=cfg.wandb_tags or ["prophet", agent.name.split(":")[0]],
+                name=run_id,
+            )
+            try:
+                wandb_ctx.__enter__()
+            except Exception as e:
+                log.warning("wandb enter failed: %s", e)
+                wandb_ctx = None
 
         for i, task in enumerate(tasks_list):
             if total_cost > cfg.max_cost_usd:
@@ -186,6 +215,17 @@ class Orchestrator:
             config=cfg,
             summary=run_record,
         )
+        if wandb_ctx is not None:
+            try:
+                wandb_ctx.log_summary(run_record)
+                wandb_ctx.log_outcomes(outcomes)
+            except Exception as e:
+                log.warning("wandb log failed: %s", e)
+            finally:
+                try:
+                    wandb_ctx.__exit__(None, None, None)
+                except Exception:
+                    pass
         log.info("Run %s done — net payoff %.2f (cost $%.4f, %.1fs)", run_id, run_record["net_payoff"], total_cost, elapsed)
         return result
 

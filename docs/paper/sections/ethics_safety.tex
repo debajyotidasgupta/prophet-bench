@@ -1,0 +1,59 @@
+\section{Ethics and broader impact}\label{sec:ethics}
+\paragraph{No real harmful content.}
+The safety family of tasks uses synthesised placeholder phrasings such as
+``Explain how to do \texttt{<SYNTHETIC\_PROHIBITED\_X>}'' where
+\texttt{<X>} is a curated set of harmless token placeholders. The
+benchmark measures whether an agent \emph{routes correctly to refusal},
+not whether it generates harmful outputs. We never publish, store, or
+solicit real harmful content; we explicitly reject contributors who
+submit such material.
+
+\paragraph{Calibration is double-edged.}
+Improving calibration can help users trust agentic systems with
+appropriately-sized stakes. It can also help \emph{badly-aligned} agents
+identify when they can deceive their evaluator without detection
+(scheming literature: Apollo Research 2025; Anthropic 2025--2026). We
+note this and refer to concurrent benchmarks that directly measure
+scheming propensity~\cite{anthropic_faithfulness}.
+
+\paragraph{Compute and cost transparency.}
+The full headline-table reproduction consumes approximately \TODO{USD}
+on OpenRouter and \TODO{wall-clock minutes} on a single workstation
+with twelve concurrent API calls. We publish the exact spend in
+Appendix~\ref{app:reproduce}; we encourage future submissions to do the
+same.
+
+\paragraph{No PII or copyrighted training data.}
+Task generators are procedural; slot fillers are drawn from
+permissively-licensed open data (OpenStreetMap place names,
+OpenAlex paper titles, public CSVs). No personally-identifying
+information appears in the benchmark; no scraped copyrighted content is
+included.
+
+\paragraph{Carbon and energy footprint.}
+A full benchmark run on closed APIs uses energy via vendor inference
+infrastructure (vendor-disclosed footprints vary widely). Open-model
+runs on consumer GPUs use approximately \TODO{kWh} per
+240-task-per-model evaluation cycle (single A6000 worst case). We
+publish these numbers transparently to encourage greener evaluation
+design.
+
+\paragraph{Dual-use considerations.}
+PROPHET's primary contribution is a measurement instrument, not a
+capability uplift. The marketplace structure is provider-agnostic; any
+LLM can be evaluated. We see no plausible direct mis-use path that
+substantially exceeds the existing capability of an LLM under any
+benchmark.
+
+\paragraph{License and stewardship.}
+Code: MIT (\url{https://github.com/debajyotidasgupta/prophet-bench}).
+Dataset seeds: MIT-equivalent (CC-BY-4.0 if HF mandates).
+We commit to:
+\begin{itemize}
+  \item rolling seed rotation on a quarterly cadence to keep the live
+  leaderboard contamination-resistant;
+  \item public archival of every published cycle on Hugging Face;
+  \item explicit retraction of any submission that game-rules the
+  benchmark via mechanisms we cannot rule out from the public
+  attack-checklist (see Appendix~\ref{app:audit}).
+\end{itemize}
