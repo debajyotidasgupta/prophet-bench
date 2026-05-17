@@ -47,21 +47,26 @@ def build_agent(uri: str, **kwargs):  # noqa: ANN201 — Agent protocol
     Lazy-imports backend modules so missing optional deps don't break basic
     usage (e.g. an `openai` import failure shouldn't prevent `baseline:random`
     from working).
+
+    LLM-specific kwargs (`max_tokens`, `temperature`, `timeout_s`) are
+    silently dropped for baseline agents that don't accept them.
     """
     if ":" not in uri:
         raise ValueError(f"Agent URI must include ':' — got {uri!r}")
     scheme, identifier = uri.split(":", 1)
     scheme = scheme.lower()
+    llm_only_keys = {"max_tokens", "temperature", "timeout_s"}
 
     if scheme == "baseline":
+        baseline_kwargs = {k: v for k, v in kwargs.items() if k not in llm_only_keys}
         if identifier == "random":
-            return RandomAgent(**kwargs)
+            return RandomAgent(**baseline_kwargs)
         if identifier == "always-take":
-            return AlwaysTakeAgent(**kwargs)
+            return AlwaysTakeAgent(**baseline_kwargs)
         if identifier == "always-pass":
-            return AlwaysPassAgent(**kwargs)
+            return AlwaysPassAgent(**baseline_kwargs)
         if identifier == "oracle":
-            return OracleAgent(**kwargs)
+            return OracleAgent(**baseline_kwargs)
         raise ValueError(f"Unknown baseline {identifier!r}")
 
     if scheme in {"openai", "deepinfra", "together", "groq", "fireworks", "hf-inference", "openrouter", "vllm"}:

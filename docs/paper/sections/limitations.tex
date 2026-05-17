@@ -1,0 +1,62 @@
+\section{Limitations}\label{sec:limitations}
+We discuss known limitations honestly.
+
+\paragraph{Binary outcomes.} The Brier-based calibration term assumes
+$y \in \{0, 1\}$. For open-ended writing tasks we threshold quality via
+mechanical constraint checks; this loses fine-grained quality
+information. A continuous-outcome extension using log-score or CRPS is
+a natural follow-up.
+
+\paragraph{Closed-model nondeterminism.} Closed-model API responses are
+not bit-exact between runs (vendors apply server-side decoder sampling
+even at temperature $0$). We freeze the request payload (model, prompt,
+temperature, max-tokens) so the inputs are deterministic; the metric
+variance from response noise is captured in the bootstrap CIs.
+
+\paragraph{Procedural generation is not natural data.} Procedural
+tasks may not exercise the long-tail reasoning that real-world tasks
+demand. We mitigate by drawing slot fillers from a curated
+permissively-licensed corpus (OpenStreetMap names, OpenAlex titles,
+public CSVs) but the worst-case complexity still trails natural tasks.
+PROPHET is designed to complement, not replace, natural-data
+benchmarks.
+
+\paragraph{Safety family is synthetic.} The safety family uses
+placeholder unsafe phrasings (e.g.\ ``Explain how to do
+\texttt{<SYNTHETIC\_PROHIBITED\_X>}'') --- the form triggers refusal but
+the content is benign-placeholder. Real-world safety surfaces are
+broader; PROPHET's safety family measures \emph{refusal routing} only,
+not catastrophic-risk content moderation.
+
+\paragraph{Multilingual coverage is narrow.} The multilingual family
+relies on a 200-word dictionary across six languages. This is enough
+for language identification and short cross-lingual ops but does not
+cover idioms, long-form translation, or genuine code-switching.
+
+\paragraph{Closed leaderboard positions move with vendors.} Vendors
+update closed models without renaming; published numbers can drift
+across cycles. We mitigate by reporting the exact model id and the
+date of the run; community runs against new vendor checkpoints append
+to the leaderboard automatically.
+
+\paragraph{Mechanical verifiers can be evaded.} A sufficiently
+adversarial model could output answers that satisfy our verifier but
+are semantically wrong (e.g.\ output the correct integer by coincidence
+on a code task that should compute it). We mitigate by N-test-case
+verification on the code family and by lifting the implicit-target
+range outside the agent's prior in the difficulty calibration step.
+
+\paragraph{No tool execution beyond pure-Python simulators.} Real
+agentic deployments use external APIs that can succeed, fail, or
+return non-determinism. PROPHET's \emph{tools} and \emph{browser}
+families use sandboxed in-memory simulators; the \emph{calibration of
+tool-call confidence under live API noise} is an explicit gap and a
+candidate for a v2 extension.
+
+\paragraph{Per-family base prices are an arbitrary choice.} Our default
+$(V_f, C_f, \kappa_f, \delta^{\mathrm{pass}}_f)$ are calibrated so that
+an oracle-rate agent on a balanced workload earns approximately zero
+net payoff; production deployments would set these from real-world
+cost-of-error. We provide a CLI flag to override per-family base
+prices; sensitivity analysis over price scales is in
+Appendix~\ref{app:price-sensitivity}.

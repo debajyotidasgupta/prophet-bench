@@ -117,6 +117,8 @@ def run(
     out_dir: Path = typer.Option(Path("results/runs"), help="Output directory."),
     concurrency: int = typer.Option(1, help="Concurrent agent calls (>=1). Routes through ConcurrentRunner when >1."),
     per_sec_limit: float = typer.Option(0.0, help="Optional requests-per-second cap (0 = unlimited)."),
+    max_tokens: int = typer.Option(2048, help="Max tokens per agent response (reasoning + visible)."),
+    temperature: float = typer.Option(0.0, help="Sampling temperature (0 = greedy)."),
     log_level: str = typer.Option("INFO"),
 ) -> None:
     """Run an agent through one or more families."""
@@ -134,7 +136,7 @@ def run(
         tasks.extend(fam.generate(n=n, seed=seed))
     market = MarketMaker(market_seed=seed)
     orch = Orchestrator(market=market)
-    ag = build_agent(agent)
+    ag = build_agent(agent, max_tokens=max_tokens, temperature=temperature)
     if concurrency > 1:
         runner = ConcurrentRunner(
             ag,
@@ -213,6 +215,18 @@ def status(
         n_runs += 1
     console.print(table)
     console.print(f"[bold]Total runs:[/bold] {n_runs}   [bold]Total cost:[/bold] ${total_cost:.4f}")
+
+
+@app.command()
+def leaderboard(
+    runs_dir: Path = typer.Argument(..., help="Directory of completed runs."),
+    out_dir: Path = typer.Option(None, help="Where to write the leaderboard (defaults to <runs_dir>/../leaderboard)."),
+) -> None:
+    """Produce a canonical Markdown + JSON + LaTeX leaderboard."""
+    from prophet.analysis.leaderboard import build_leaderboard
+
+    out = build_leaderboard(runs_dir, out_dir=out_dir)
+    console.print(f"[green]Leaderboard written to[/green] {out}")
 
 
 @app.command("analyze-compare")

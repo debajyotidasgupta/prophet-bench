@@ -1,0 +1,86 @@
+\appendix
+\section{Reproducibility appendix}\label{app:reproduce}
+
+\subsection{One-command reproduction}
+The full headline table and all paper figures reproduce from a single
+release seed:
+\begin{lstlisting}[basicstyle=\small\ttfamily, frame=single]
+git clone https://github.com/debajyotidasgupta/prophet-bench.git
+cd prophet-bench
+make install
+cp .env.example .env   # add OPENROUTER_API_KEY etc.
+make run-paper         # ~30 minutes, ~$15 inference spend
+make paper             # compile PDF (requires LaTeX)
+\end{lstlisting}
+Wall-clock on a single workstation (M2 Pro, 32 GB RAM) with 12
+concurrent API calls: \TODO{minutes}. Total OpenRouter spend: \TODO{USD}.
+
+\subsection{Statistical details}
+\paragraph{Bootstrap}
+Every aggregate metric (accuracy, ECE, Brier, log-loss, net payoff) is
+reported with a percentile bootstrap 95\,\% CI, $B = 10^4$. BCa
+correction is available via the \texttt{--bca} flag.
+
+\paragraph{Paired tests}
+Two-system comparisons use paired tests on the same per-task outcomes.
+For each metric:
+\begin{itemize}
+  \item Continuous (payoff, log-loss): paired Student's $t$ ($n \ge 30$)
+  or paired Wilcoxon signed-rank.
+  \item Binary (correct/incorrect): McNemar's exact.
+  \item Group-level (ECE, Brier): permutation test, $B = 10^4$.
+\end{itemize}
+
+\paragraph{Multiple-comparison correction}
+By default we apply Holm--Bonferroni across all pairs $\times$
+metrics; we also report BH-FDR-adjusted $p$-values in parallel.
+
+\paragraph{Effect sizes}
+Every $p$ is accompanied by an effect size: Cohen's $d$ for paired $t$,
+rank-biserial $r$ for Wilcoxon, paired odds-ratio for McNemar,
+$|\Delta\ECE|$ for permutation.
+
+\paragraph{Power analysis}
+For each headline contrast, we report post-hoc power and the minimum-
+detectable Cohen's $d$ at $\alpha = 0.05$, power $= 0.80$.
+
+\subsection{Hardware and environment}
+\begin{itemize}
+  \item Python 3.11.12 on macOS 25.3 (Darwin) for development.
+  \item Reproducibility CI runs on Ubuntu-22.04 GitHub Actions with
+  Python 3.11 / 3.12.
+  \item All seeds derive from \verb|cycle_seed=42| via SHA-256 hashing
+  (see \texttt{prophet.utils.seed}).
+  \item Closed-model APIs accessed via OpenRouter
+  (\url{https://openrouter.ai}); see
+  \texttt{src/prophet/agents/openai\_compat.py}.
+  \item Inference budget enforced by \verb|PROPHET_MAX_RUN_COST_USD| at
+  both the orchestrator and per-API-call levels.
+\end{itemize}
+
+\subsection{Gaming-resistance audit}\label{app:audit}
+We run the Berkeley RDI April 2026 attack family against the released
+benchmark:
+\begin{description}
+  \item[\texttt{conftest.py} hijack] \(N/A\) --- PROPHET runs no test
+  harness in the agent's scope.
+  \item[\texttt{file://} retrieval] \(N/A\) --- no retrieval pipeline.
+  \item[Empty-JSON wrapper] blocked --- verifiers require typed answers
+  and reject empty objects.
+  \item[Curl trojan in shell sandbox] \(N/A\) --- code family runs
+  candidate Python only, not shell.
+  \item[Training-data leakage] blocked by procedural seeds; we also rotate
+  the public seed list quarterly.
+\end{description}
+
+\subsection{Released artifacts}
+\begin{itemize}
+  \item Code: \url{https://github.com/debajyotidasgupta/prophet-bench}
+  (MIT).
+  \item Reference seeds and per-family tasks:
+  \url{https://huggingface.co/datasets/debajyotidasgupta/prophet-bench}.
+  \item This paper's experimental matrix and figures:
+  \url{https://huggingface.co/datasets/debajyotidasgupta/prophet-results}.
+  \item Public live leaderboard: \url{https://prophet-bench.org} \TODO{may
+  not be deployed yet at submission time}.
+\end{itemize}

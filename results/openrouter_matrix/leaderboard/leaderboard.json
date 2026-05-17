@@ -1,0 +1,95 @@
+[
+  {
+    "name": "baseline:oracle",
+    "n": 240,
+    "accuracy": 1.0,
+    "accuracy_ci": [
+      1.0,
+      1.0
+    ],
+    "ece": 0.0,
+    "ece_ci": [
+      0.0,
+      0.0
+    ],
+    "brier": 0.0,
+    "brier_ci": [
+      0.0,
+      0.0
+    ],
+    "logloss": 0.0,
+    "logloss_ci": [
+      0.0,
+      0.0
+    ],
+    "net_payoff": 38684.7,
+    "net_payoff_ci": [
+      38031.88,
+      39342.8
+    ],
+    "cost_usd": 0.0,
+    "pareto_optimal": true
+  },
+  {
+    "name": "baseline:random",
+    "n": 153,
+    "accuracy": 0.0,
+    "accuracy_ci": [
+      0.0,
+      0.0
+    ],
+    "ece": 0.5321,
+    "ece_ci": [
+      0.4852,
+      0.5785
+    ],
+    "brier": 0.3673,
+    "brier_ci": [
+      0.317,
+      0.4173
+    ],
+    "logloss": 1.1398,
+    "logloss_ci": [
+      0.9562,
+      1.3296
+    ],
+    "net_payoff": -11604.21,
+    "net_payoff_ci": [
+      -13117.6,
+      -10189.54
+    ],
+    "cost_usd": 0.0,
+    "pareto_optimal": false
+  },
+  {
+    "name": "baseline:always-take",
+    "n": 240,
+    "accuracy": 0.0,
+    "accuracy_ci": [
+      0.0,
+      0.0
+    ],
+    "ece": 0.99,
+    "ece_ci": [
+      0.99,
+      0.99
+    ],
+    "brier": 0.9801,
+    "brier_ci": [
+      0.9801,
+      0.9801
+    ],
+    "logloss": 4.6052,
+    "logloss_ci": [
+      4.6052,
+      4.6052
+    ],
+    "net_payoff": -24369.77,
+    "net_payoff_ci": [
+      -25428.85,
+      -23394.98
+    ],
+    "cost_usd": 0.0,
+    "pareto_optimal": false
+  }
+]

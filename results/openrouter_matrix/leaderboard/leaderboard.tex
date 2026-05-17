@@ -1,0 +1,13 @@
+\begin{table}[t]
+\centering\small
+\caption{PROPHET headline leaderboard (95\% bootstrap CIs). $\star$ = Pareto-optimal on $(\ECE, \mathcal{P})$.}\label{tab:headline}
+\begin{tabular}{rlrrrrrr}
+\toprule
+\# & Agent & Acc. & ECE & Brier & Log-loss & Net payoff & Cost \$ \\
+\midrule
+1 & baseline:oracle$\star$ & 1.000 & 0.000 & 0.000 & 0.000 & 38685 & 0.000 \\
+2 & baseline:random & 0.000 & 0.532 & 0.367 & 1.140 & -11604 & 0.000 \\
+3 & baseline:always-take & 0.000 & 0.990 & 0.980 & 4.605 & -24370 & 0.000 \\
+\bottomrule
+\end{tabular}
+\end{table}
