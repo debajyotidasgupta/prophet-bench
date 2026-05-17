@@ -1,0 +1,96 @@
+# Secrets
+.env
+.env.*
+*.key
+**/secrets/
+**/credentials.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+poetry.lock
+
+# Testing & coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+.hypothesis/
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project-specific
+results/runs/
+results/cache/
+results/raw/
+data/seeds/*.local.*
+data/cached/
+*.parquet
+wandb/
+mlruns/
+outputs/
+.cache/
+tmp/
+
+# Logs
+*.log
+logs/
+
+# Compiled docs
+docs/_build/
+docs/paper/build/
+
+# Jupyter
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# Model cache
+.huggingface/
+.cache/huggingface/
+
+# RunPod
+.runpod/
+
+# Large files
+*.bin
+*.safetensors
+*.ckpt
+*.pt
+*.gguf

@@ -1,0 +1,17 @@
+services:
+  prophet:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: prophet:dev
+    env_file: .env
+    volumes:
+      - ./results:/app/results
+      - ./data:/app/data
+      - hf_cache:/cache/huggingface
+      - prophet_cache:/cache/prophet
+    working_dir: /app
+
+volumes:
+  hf_cache: {}
+  prophet_cache: {}
