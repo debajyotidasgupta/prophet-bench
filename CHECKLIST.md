@@ -15,40 +15,42 @@ Datasets & Benchmarks Track.
 - [x] CLI: `prophet smoke`, `prophet run`, `prophet analyze`, `prophet list-families`
 - [x] Tests passing (28+ tests; will grow as families land)
 - [x] git repo + GitHub private repo (`debajyotidasgupta/prophet-bench`)
-- [ ] 11 additional task families implemented (in-flight)
-- [ ] Anthropic, Google, HF Transformers, vLLM local adapters (in-flight)
-- [ ] Concurrent runner with rate limiting (in-flight)
-- [ ] HF Inference adapter
-- [ ] Analysis pipeline: Pareto, plots, heatmaps, per-family report
-- [ ] W&B integration end-to-end
-- [ ] RunPod launcher with cost guardrails
-- [ ] Reproducibility script `scripts/run_full_eval.sh`
-- [ ] CI on GitHub Actions
+- [x] 11 additional task families implemented (12 total)
+- [x] Anthropic, Google, HF Transformers, vLLM local adapters
+- [x] Concurrent runner with rate limiting
+- [x] OpenRouter unified adapter (all closed + most open in one provider)
+- [x] Analysis pipeline: Pareto, plots, heatmaps, per-family report
+- [x] W&B integration (orchestrator opt-in)
+- [x] RunPod launcher with cost guardrails
+- [x] Reproducibility script `scripts/run_full_eval.sh`
+- [x] CI on GitHub Actions (test + lint + smoke)
+- [x] Parallel matrix runner with deterministic state markers
+- [x] `prophet status` + `prophet leaderboard` CLI commands
+- [x] Auto narrative generator for paper
 
 ## B. Experimental Matrix
 
 ### Models (≥ 12 for headline)
 
-- [ ] **Closed frontier** (via APIs)
-  - [ ] openai:gpt-5
-  - [ ] openai:gpt-5-mini
-  - [ ] openai:gpt-5-nano
-  - [ ] anthropic:claude-opus-4-7
-  - [ ] anthropic:claude-sonnet-4-6
-  - [ ] anthropic:claude-haiku-4-5
-  - [ ] google:gemini-3.1-pro
-  - [ ] google:gemini-3-flash
-- [ ] **Open frontier** (vLLM / Together / DeepInfra)
-  - [ ] meta-llama/Llama-4-70B-Instruct
-  - [ ] meta-llama/Llama-4-8B-Instruct
-  - [ ] Qwen/Qwen3-32B-Instruct
-  - [ ] Qwen/Qwen3-14B-Instruct
-  - [ ] Qwen/Qwen3-7B-Instruct
-  - [ ] DeepSeek-V3.2 (Together / DeepInfra)
-  - [ ] Mistral-Large-3 (DeepInfra)
-  - [ ] Kimi-K2-Thinking variants if available
-- [ ] **Reasoning-mode** variants on/off comparison (Qwen3 thinking-tokens; o-series)
-- [ ] **Baselines**: random, always-take, always-pass, oracle, oracle-noisy
+- [x] **Closed frontier** (via OpenRouter)
+  - [x] openrouter:openai/gpt-5-nano
+  - [x] openrouter:openai/gpt-5.4-nano
+  - [x] openrouter:openai/gpt-5-mini
+  - [ ] openrouter:openai/gpt-5
+  - [x] openrouter:anthropic/claude-haiku-4.5
+  - [ ] openrouter:anthropic/claude-sonnet-4.6
+  - [ ] openrouter:anthropic/claude-opus-4.7
+  - [x] openrouter:google/gemini-3-flash-preview
+  - [x] openrouter:google/gemini-3.1-flash-lite
+  - [ ] openrouter:google/gemini-3.1-pro-preview
+- [x] **Open frontier** (via OpenRouter)
+  - [x] meta-llama/llama-4-scout
+  - [ ] meta-llama/llama-4-maverick (running)
+  - [ ] qwen/qwen3-32b (running)
+  - [ ] qwen/qwen3-235b-a22b-thinking-2507 (running)
+  - [ ] deepseek/deepseek-v3.2 (running)
+- [ ] **Reasoning variants** (with/without thinking) — to-do
+- [x] **Baselines**: random, always-take, always-pass, oracle
 
 ### Families × Models
 
