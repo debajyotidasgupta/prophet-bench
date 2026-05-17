@@ -8,7 +8,8 @@ URI scheme for the CLI:
   openai:gpt-5-mini
   anthropic:claude-opus-4-7
   google:gemini-3.1-pro
-  vllm:Qwen/Qwen3-7B-Instruct          (local vLLM server)
+  vllm:Qwen/Qwen3-7B-Instruct          (local vLLM OpenAI-compat server)
+  vllm-local:Qwen/Qwen3-7B-Instruct    (in-process vLLM Python API)
   hf:Qwen/Qwen3-7B-Instruct            (transformers via accelerate)
   hf-inference:Qwen/Qwen3-7B           (HF Inference API)
   together:meta-llama/Llama-4-70B
@@ -27,11 +28,13 @@ from prophet.agents.baselines import (
     RandomAgent,
 )
 from prophet.agents.base import AgentBase
+from prophet.agents.concurrent import ConcurrentRunner
 
 __all__ = [
     "AgentBase",
     "AlwaysPassAgent",
     "AlwaysTakeAgent",
+    "ConcurrentRunner",
     "OracleAgent",
     "RandomAgent",
     "build_agent",
@@ -76,5 +79,9 @@ def build_agent(uri: str, **kwargs):  # noqa: ANN201 — Agent protocol
     if scheme == "hf":
         from prophet.agents.transformers_agent import TransformersAgent
         return TransformersAgent(model_id=identifier, **kwargs)
+
+    if scheme == "vllm-local":
+        from prophet.agents.vllm_local import VLLMLocalAgent
+        return VLLMLocalAgent(model_id=identifier, **kwargs)
 
     raise ValueError(f"Unknown agent scheme {scheme!r}")

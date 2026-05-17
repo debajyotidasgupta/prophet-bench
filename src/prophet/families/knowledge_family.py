@@ -1,13 +1,502 @@
-"""Placeholder knowledge family — to be replaced with full implementation."""
+"""Knowledge family — factual QA with mechanical verifiers.
+
+We deliberately avoid LLM-judge here. All ground truth is a closed-form
+answer (an integer, a single word, or a member of a small synonym set) so the
+verifier is exact / synonym match after lowercase normalization.
+
+Difficulty tiers:
+  T0 (0.10) — geometric / shape facts ("how many sides does a hexagon have?").
+  T1 (0.20) — date / day-of-week from a procgen historical date.
+  T2 (0.30) — unit conversion (procgen multipliers).
+  T3 (0.40) — multiple-choice science question (curated small banks per topic).
+  T4 (0.55) — trivia with multiple acceptable synonyms.
+  T5 (0.70) — closed-form numeric scientific Q (Avogadro, c, masses, etc).
+  T6 (0.85) — comparison reasoning (e.g. "Which is greater: 2/7 or 3/11?").
+  T7 (0.95) — adversarial-trick (letter counting; common LLM failure mode).
+
+Each tier draws from a bank of ≥ 20 procgen variants so 200-task runs are
+diverse enough to estimate calibration cleanly.
+"""
+
 from __future__ import annotations
-from prophet.families._stub import make_stub_family
-class _Family:
-    name = "knowledge"
-    description = "Placeholder knowledge family."
-    def __init__(self):
-        self._stub = make_stub_family("knowledge")
-    def generate(self, n, seed, difficulty_range=(0.0, 1.0)):
-        return self._stub.generate(n, seed, difficulty_range)
-    def reference_score(self, task, response):
-        return None
-FAMILY = _Family
+
+import datetime as dt
+import re
+from dataclasses import dataclass
+from fractions import Fraction
+from typing import Callable
+
+import numpy as np
+
+from prophet.engine.types import Task
+from prophet.utils.seed import child_rng, child_seed
+
+
+# -------------------------------------------------------------------------
+# Verifier helpers
+# -------------------------------------------------------------------------
+
+_PUNCT_RE = re.compile(r"[^\w\s/.\-]+")
+_WS_RE = re.compile(r"\s+")
+
+
+def _norm(s: str) -> str:
+    s = s.strip().lower()
+    s = _PUNCT_RE.sub(" ", s)
+    s = _WS_RE.sub(" ", s).strip()
+    return s
+
+
+def _numeric_close(answer: str, expected: float, rel_tol: float = 1e-9) -> bool:
+    """Find a number in `answer` and compare it to expected within rel tol."""
+    s = answer.replace(",", "")
+    matches = re.findall(r"-?\d+(?:\.\d+)?(?:[eE][-+]?\d+)?", s)
+    if not matches:
+        return False
+    # Prefer the last numeric token (usually the answer)
+    for tok in reversed(matches):
+        try:
+            v = float(tok)
+        except Exception:
+            continue
+        if abs(v - expected) <= max(rel_tol * max(1.0, abs(expected)), 1e-9):
+            return True
+    return False
+
+
+def _exact_or_synonym(answers: list[str]) -> Callable[[str], bool]:
+    """Pass iff normalized answer matches *any* synonym (substring or token-equal).
+
+    We accept ``answer`` if any synonym token appears as a whole-word match in
+    the response, OR equals the response after normalization.
+    """
+    norm_answers = [_norm(a) for a in answers if a]
+
+    def _verify(answer: str) -> bool:
+        if not isinstance(answer, str):
+            return False
+        norm = _norm(answer)
+        if not norm:
+            return False
+        # Exact normalized match
+        if norm in norm_answers:
+            return True
+        # Whole-word containment of any synonym
+        words = norm.split()
+        for syn in norm_answers:
+            syn_words = syn.split()
+            # multi-word synonym: contiguous match in answer's word list
+            for i in range(0, len(words) - len(syn_words) + 1):
+                if words[i:i + len(syn_words)] == syn_words:
+                    return True
+        return False
+
+    return _verify
+
+
+def _numeric_match(expected: float, rel_tol: float = 1e-9) -> Callable[[str], bool]:
+    def _verify(answer: str) -> bool:
+        if not isinstance(answer, str):
+            return False
+        return _numeric_close(answer, expected, rel_tol=rel_tol)
+    return _verify
+
+
+# -------------------------------------------------------------------------
+# T0 — geometric / shape facts
+# -------------------------------------------------------------------------
+
+SHAPE_SIDES: list[tuple[str, int]] = [
+    ("triangle", 3),
+    ("quadrilateral", 4),
+    ("square", 4),
+    ("rectangle", 4),
+    ("pentagon", 5),
+    ("hexagon", 6),
+    ("heptagon", 7),
+    ("octagon", 8),
+    ("nonagon", 9),
+    ("decagon", 10),
+    ("dodecagon", 12),
+]
+
+PLANET_MOONS: list[tuple[str, int]] = [
+    ("Mercury", 0),
+    ("Venus", 0),
+    ("Earth", 1),
+    ("Mars", 2),
+]
+
+CONTINENT_COUNT = 7
+OCEAN_COUNT = 5
+SOLAR_PLANETS = 8
+
+
+def _gen_t0_facts(rng: np.random.Generator) -> tuple[str, str, Callable[[str], bool]]:
+    options = []
+    options.append(("polygon", lambda: SHAPE_SIDES[rng.integers(0, len(SHAPE_SIDES))]))
+    options.append(("planet", lambda: PLANET_MOONS[rng.integers(0, len(PLANET_MOONS))]))
+    options.append(("continent", lambda: ("how many continents are there", CONTINENT_COUNT)))
+    options.append(("ocean", lambda: ("how many oceans are recognized today", OCEAN_COUNT)))
+    options.append(("planets", lambda: ("how many planets are in our solar system", SOLAR_PLANETS)))
+    options.append(("zodiac", lambda: ("how many signs are in the western zodiac", 12)))
+    options.append(("week", lambda: ("how many days are in a week", 7)))
+    options.append(("year", lambda: ("how many months are in a year", 12)))
+    options.append(("clock", lambda: ("how many degrees are in a full circle", 360)))
+    options.append(("hour", lambda: ("how many minutes are in an hour", 60)))
+    kind, getter = options[rng.integers(0, len(options))]
+    if kind == "polygon":
+        name, sides = getter()
+        prompt = f"How many sides does a {name} have? Return an integer."
+        return prompt, str(sides), _numeric_match(sides, rel_tol=0)
+    if kind == "planet":
+        name, moons = getter()
+        prompt = f"How many natural moons does {name} have? Return an integer."
+        return prompt, str(moons), _numeric_match(moons, rel_tol=0)
+    # generic "how many" facts
+    qtext, val = getter()
+    prompt = f"{qtext.capitalize()}? Return an integer."
+    return prompt, str(val), _numeric_match(val, rel_tol=0)
+
+
+# -------------------------------------------------------------------------
+# T1 — day-of-week from procgen date
+# -------------------------------------------------------------------------
+
+WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+
+
+def _gen_t1_dow(rng: np.random.Generator) -> tuple[str, str, Callable[[str], bool]]:
+    # 1950 .. 2024 inclusive
+    year = int(rng.integers(1950, 2025))
+    month = int(rng.integers(1, 13))
+    # Days-in-month; safe approximation
+    if month in {1, 3, 5, 7, 8, 10, 12}:
+        max_day = 31
+    elif month == 2:
+        leap = (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)
+        max_day = 29 if leap else 28
+    else:
+        max_day = 30
+    day = int(rng.integers(1, max_day + 1))
+    date = dt.date(year, month, day)
+    dow = WEEKDAYS[date.weekday()]
+    prompt = (
+        f"On what day of the week did {date.strftime('%B %d, %Y')} fall? "
+        f"Reply with one English weekday name (e.g. 'Monday')."
+    )
+    return prompt, dow, _exact_or_synonym([dow])
+
+
+# -------------------------------------------------------------------------
+# T2 — unit conversion
+# -------------------------------------------------------------------------
+
+def _gen_t2_units(rng: np.random.Generator) -> tuple[str, str, Callable[[str], bool]]:
+    kind = int(rng.integers(0, 7))
+    if kind == 0:
+        hours = int(rng.integers(2, 60))
+        ans = hours * 3600
+        return (
+            f"How many seconds are in {hours} hours? Return an integer.",
+            str(ans),
+            _numeric_match(ans, rel_tol=0),
+        )
+    if kind == 1:
+        minutes = int(rng.integers(5, 600))
+        ans = minutes * 60
+        return (
+            f"How many seconds are in {minutes} minutes? Return an integer.",
+            str(ans),
+            _numeric_match(ans, rel_tol=0),
+        )
+    if kind == 2:
+        days = int(rng.integers(2, 100))
+        ans = days * 24
+        return (
+            f"How many hours are in {days} days? Return an integer.",
+            str(ans),
+            _numeric_match(ans, rel_tol=0),
+        )
+    if kind == 3:
+        km = int(rng.integers(2, 50))
+        ans = km * 1000
+        return (
+            f"How many metres are in {km} kilometres? Return an integer.",
+            str(ans),
+            _numeric_match(ans, rel_tol=0),
+        )
+    if kind == 4:
+        kg = int(rng.integers(2, 50))
+        ans = kg * 1000
+        return (
+            f"How many grams are in {kg} kilograms? Return an integer.",
+            str(ans),
+            _numeric_match(ans, rel_tol=0),
+        )
+    if kind == 5:
+        l = int(rng.integers(2, 50))
+        ans = l * 1000
+        return (
+            f"How many millilitres are in {l} litres? Return an integer.",
+            str(ans),
+            _numeric_match(ans, rel_tol=0),
+        )
+    # weeks → days
+    weeks = int(rng.integers(2, 30))
+    ans = weeks * 7
+    return (
+        f"How many days are in {weeks} weeks? Return an integer.",
+        str(ans),
+        _numeric_match(ans, rel_tol=0),
+    )
+
+
+# -------------------------------------------------------------------------
+# T3 — multiple-choice science (curated banks per topic)
+# -------------------------------------------------------------------------
+
+# (question, correct_letter, [A, B, C, D])
+SCIENCE_MCQ: list[tuple[str, str, list[str]]] = [
+    ("Which element has the chemical symbol 'Au'?", "B", ["Silver", "Gold", "Aluminium", "Argon"]),
+    ("Which element has the chemical symbol 'Fe'?", "C", ["Fluorine", "Francium", "Iron", "Florida"]),
+    ("Which gas do plants primarily absorb during photosynthesis?", "A", ["Carbon dioxide", "Oxygen", "Nitrogen", "Argon"]),
+    ("What is the powerhouse of the cell?", "B", ["Nucleus", "Mitochondrion", "Ribosome", "Golgi apparatus"]),
+    ("What is the chemical formula of water?", "C", ["CO2", "NaCl", "H2O", "O2"]),
+    ("Which planet is known as the Red Planet?", "C", ["Venus", "Jupiter", "Mars", "Saturn"]),
+    ("Sound travels fastest through which medium?", "A", ["Solid", "Liquid", "Gas", "Vacuum"]),
+    ("Which scientist proposed the laws of motion published in 1687?", "D", ["Galileo", "Einstein", "Maxwell", "Newton"]),
+    ("Which subatomic particle has a negative charge?", "B", ["Proton", "Electron", "Neutron", "Photon"]),
+    ("What is the boiling point of water at 1 atm in degrees Celsius?", "C", ["50", "75", "100", "120"]),
+    ("Which organelle contains the genetic material in a eukaryotic cell?", "A", ["Nucleus", "Lysosome", "Vacuole", "Cytoplasm"]),
+    ("Which vitamin is produced when human skin is exposed to sunlight?", "D", ["A", "B12", "C", "D"]),
+    ("The speed of light in vacuum is approximately how many m/s?", "B", ["3x10^6", "3x10^8", "3x10^10", "3x10^12"]),
+    ("Which gas makes up most of Earth's atmosphere?", "A", ["Nitrogen", "Oxygen", "Carbon dioxide", "Argon"]),
+    ("What is the SI base unit of mass?", "C", ["Newton", "Pound", "Kilogram", "Gram"]),
+    ("Which planet has the most prominent ring system?", "B", ["Jupiter", "Saturn", "Uranus", "Neptune"]),
+    ("Which scientist is most associated with the theory of general relativity?", "A", ["Einstein", "Bohr", "Hawking", "Feynman"]),
+    ("Which blood type is known as the universal donor?", "D", ["A", "B", "AB", "O-"]),
+    ("Which molecule carries genetic information in cells?", "B", ["RNA", "DNA", "ATP", "Glucose"]),
+    ("What is the pH of pure water at 25 C?", "C", ["5", "6", "7", "8"]),
+    ("Which planet has the shortest orbital period around the sun?", "A", ["Mercury", "Venus", "Mars", "Pluto"]),
+    ("Which acid is found in vinegar?", "B", ["Citric acid", "Acetic acid", "Sulfuric acid", "Nitric acid"]),
+]
+
+
+def _gen_t3_mcq(rng: np.random.Generator) -> tuple[str, str, Callable[[str], bool]]:
+    q, ans, opts = SCIENCE_MCQ[rng.integers(0, len(SCIENCE_MCQ))]
+    options = "\n".join(f"  {chr(ord('A') + i)}) {opt}" for i, opt in enumerate(opts))
+    prompt = (
+        f"{q}\n\n{options}\n\n"
+        f"Reply with the single letter of the correct option (A, B, C, or D)."
+    )
+    correct_text = opts[ord(ans) - ord("A")]
+    # Accept the letter OR the full option text
+    return prompt, ans, _exact_or_synonym([ans, ans + ")", correct_text])
+
+
+# -------------------------------------------------------------------------
+# T4 — trivia with multiple acceptable synonyms
+# -------------------------------------------------------------------------
+
+TRIVIA: list[tuple[str, list[str]]] = [
+    ("What is the largest ocean on Earth?", ["Pacific", "Pacific Ocean"]),
+    ("Who wrote the play 'Romeo and Juliet'?", ["Shakespeare", "William Shakespeare"]),
+    ("What is the tallest mountain in the world (above sea level)?", ["Everest", "Mount Everest"]),
+    ("What is the capital of Japan?", ["Tokyo"]),
+    ("What is the capital of France?", ["Paris"]),
+    ("What is the capital of Australia?", ["Canberra"]),
+    ("What language is primarily spoken in Brazil?", ["Portuguese"]),
+    ("What is the currency of the United Kingdom?", ["Pound", "Pound Sterling", "GBP", "British Pound"]),
+    ("Who painted the Mona Lisa?", ["Leonardo da Vinci", "Da Vinci", "Leonardo"]),
+    ("Which country gifted the Statue of Liberty to the United States?", ["France"]),
+    ("What is the smallest country in the world by area?", ["Vatican", "Vatican City"]),
+    ("Which river flows through London?", ["Thames", "River Thames"]),
+    ("Which planet is closest to the sun?", ["Mercury"]),
+    ("What is the chemical formula of table salt?", ["NaCl", "Sodium Chloride"]),
+    ("What is the largest land mammal?", ["African Elephant", "Elephant"]),
+    ("Who developed the theory of evolution by natural selection?", ["Darwin", "Charles Darwin"]),
+    ("What is the hardest natural substance on Earth?", ["Diamond"]),
+    ("Which mythical creature is the national symbol of Wales?", ["Dragon", "Welsh Dragon"]),
+    ("What is the largest desert in the world by area?", ["Antarctic", "Antarctic Desert", "Antarctica"]),
+    ("Which gas is essential for human respiration?", ["Oxygen", "O2"]),
+    ("Who wrote '1984'?", ["George Orwell", "Orwell"]),
+    ("What is the capital of Canada?", ["Ottawa"]),
+]
+
+
+def _gen_t4_trivia(rng: np.random.Generator) -> tuple[str, str, Callable[[str], bool]]:
+    q, answers = TRIVIA[rng.integers(0, len(TRIVIA))]
+    prompt = f"{q}\nReply with a short answer (one or two words is fine)."
+    return prompt, answers[0], _exact_or_synonym(answers)
+
+
+# -------------------------------------------------------------------------
+# T5 — closed-form scientific numeric Q
+# -------------------------------------------------------------------------
+
+def _gen_t5_phd(rng: np.random.Generator) -> tuple[str, str, Callable[[str], bool]]:
+    kind = int(rng.integers(0, 6))
+    if kind == 0:
+        # Avogadro's number (rounded to 3 sig figs ⇒ 6.02e23)
+        return (
+            "What is Avogadro's number (number of constituent particles in one mole), "
+            "to three significant figures? Express in scientific notation; we accept the "
+            "numeric value 6.02e23.",
+            "6.02e23",
+            _numeric_match(6.02e23, rel_tol=0.01),
+        )
+    if kind == 1:
+        return (
+            "What is the speed of light in vacuum in metres per second, to three "
+            "significant figures? (Report a number.)",
+            "3.00e8",
+            _numeric_match(3.0e8, rel_tol=0.01),
+        )
+    if kind == 2:
+        return (
+            "What is the elementary charge in coulombs, to three significant figures? "
+            "(Report a number.)",
+            "1.60e-19",
+            _numeric_match(1.60e-19, rel_tol=0.01),
+        )
+    if kind == 3:
+        return (
+            "What is the gravitational acceleration at Earth's surface in m/s^2, "
+            "to two decimal places? (Report a number; we accept 9.80 or 9.81.)",
+            "9.81",
+            _numeric_match(9.81, rel_tol=0.005),
+        )
+    if kind == 4:
+        # E = mc^2 with m = 1 g
+        # E = 0.001 kg * (3e8)^2 = 9e13 J
+        return (
+            "Using E = m c^2, compute the rest energy in joules of a 1.0 gram object "
+            "(use c = 3.00e8 m/s; report to two significant figures).",
+            "9.0e13",
+            _numeric_match(9.0e13, rel_tol=0.02),
+        )
+    # Pi-as-constant
+    return (
+        "Give the value of pi to four significant figures (a number).",
+        "3.142",
+        _numeric_match(3.1416, rel_tol=1e-3),
+    )
+
+
+# -------------------------------------------------------------------------
+# T6 — comparison reasoning (fractions / numbers)
+# -------------------------------------------------------------------------
+
+def _gen_t6_compare(rng: np.random.Generator) -> tuple[str, str, Callable[[str], bool]]:
+    # Two fractions; ask which is greater
+    while True:
+        a_num = int(rng.integers(1, 20))
+        a_den = int(rng.integers(2, 25))
+        b_num = int(rng.integers(1, 20))
+        b_den = int(rng.integers(2, 25))
+        fa = Fraction(a_num, a_den)
+        fb = Fraction(b_num, b_den)
+        if fa != fb:
+            break
+    a_str = f"{a_num}/{a_den}"
+    b_str = f"{b_num}/{b_den}"
+    if fa > fb:
+        answer = a_str
+        wrong = b_str
+    else:
+        answer = b_str
+        wrong = a_str
+    prompt = (
+        f"Which is greater: {a_str} or {b_str}? "
+        f"Reply with the fraction (e.g. '{a_str}' or '{b_str}')."
+    )
+    accept = [answer, answer.replace("/", " / ")]
+    return prompt, answer, _exact_or_synonym(accept)
+
+
+# -------------------------------------------------------------------------
+# T7 — adversarial: count letters in a word (procgen)
+# -------------------------------------------------------------------------
+
+ADVERSARIAL_WORDS: list[str] = [
+    "strawberry", "mississippi", "raspberry", "blueberry", "watermelon",
+    "philosopher", "encyclopedia", "rhythm", "sequoia", "necessary",
+    "calendar", "embarrassment", "occurrence", "millennium", "accommodate",
+    "questionnaire", "bookkeeper", "committee", "parallel", "fluorescent",
+    "broccoli", "espresso", "abracadabra", "elementary", "supercilious",
+]
+
+
+def _gen_t7_count(rng: np.random.Generator) -> tuple[str, str, Callable[[str], bool]]:
+    word = ADVERSARIAL_WORDS[rng.integers(0, len(ADVERSARIAL_WORDS))]
+    # pick a letter that occurs at least once
+    letters = sorted({c for c in word.lower() if c.isalpha()})
+    letter = letters[rng.integers(0, len(letters))]
+    count = sum(1 for c in word.lower() if c == letter)
+    prompt = (
+        f"How many times does the letter '{letter}' appear in the word "
+        f"\"{word}\"? Return an integer."
+    )
+    return prompt, str(count), _numeric_match(count, rel_tol=0)
+
+
+# -------------------------------------------------------------------------
+# Tier table
+# -------------------------------------------------------------------------
+
+GENERATORS: list[tuple[float, Callable[[np.random.Generator], tuple[str, str, Callable[[str], bool]]]]] = [
+    (0.10, _gen_t0_facts),
+    (0.20, _gen_t1_dow),
+    (0.30, _gen_t2_units),
+    (0.40, _gen_t3_mcq),
+    (0.55, _gen_t4_trivia),
+    (0.70, _gen_t5_phd),
+    (0.85, _gen_t6_compare),
+    (0.95, _gen_t7_count),
+]
+
+
+@dataclass(slots=True)
+class KnowledgeFamily:
+    name: str = "knowledge"
+    description: str = (
+        "Factual QA with mechanical verifiers: facts, dates, conversions, MCQ, "
+        "trivia with synonyms, scientific constants, comparison, letter-count."
+    )
+
+    def generate(
+        self,
+        n: int,
+        seed: int,
+        difficulty_range: tuple[float, float] = (0.0, 1.0),
+    ) -> list[Task]:
+        rng = child_rng(seed, "knowledge.generate")
+        lo, hi = difficulty_range
+        valid = [(d, g) for d, g in GENERATORS if lo <= d <= hi]
+        if not valid:
+            valid = GENERATORS
+        tasks: list[Task] = []
+        for i in range(n):
+            d, gen = valid[rng.integers(0, len(valid))]
+            sub_rng = np.random.default_rng(child_seed(seed, f"knowledge.{i}"))
+            prompt, expected, verifier = gen(sub_rng)
+            tasks.append(
+                Task(
+                    task_id=f"knowledge-{seed}-{i:04d}",
+                    family="knowledge",
+                    difficulty=float(d),
+                    prompt=prompt,
+                    verifier=verifier,
+                    reference_answer=expected,
+                    metadata={"generator": gen.__name__, "tier": d},
+                    estimated_seconds=10.0 + 40.0 * d,
+                )
+            )
+        return tasks
+
+    def reference_score(self, task, response):  # noqa: ANN001
+        return None  # mechanical only
+
+
+FAMILY = KnowledgeFamily

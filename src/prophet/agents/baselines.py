@@ -33,7 +33,10 @@ class RandomAgent:
         self._rng = np.random.default_rng(self.seed)
 
     def respond(self, task: Task, offer: MarketOffer) -> AgentResponse:
-        mode = self._rng.choice([DecisionMode.TAKE, DecisionMode.QUOTE, DecisionMode.PASS])
+        # np.random.Generator.choice over a heterogeneous Python list will
+        # coerce to numpy strings and lose Enum identity; index instead.
+        modes = (DecisionMode.TAKE, DecisionMode.QUOTE, DecisionMode.PASS)
+        mode = modes[int(self._rng.integers(0, len(modes)))]
         confidence = float(self._rng.random())
         answer = None
         if mode != DecisionMode.PASS:

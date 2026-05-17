@@ -1,0 +1,300 @@
+% PROPHET — main paper
+% Target: NeurIPS 2026 Datasets & Benchmarks Track
+\documentclass{article}
+
+\PassOptionsToPackage{numbers, compress}{natbib}
+\usepackage[final]{neurips_2025}            % swap for neurips_2026.sty when released
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue!60!black, citecolor=blue!60!black, urlcolor=blue!60!black}
+\usepackage{url}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{soul}
+
+\newcommand{\Phat}{\hat{P}}
+\newcommand{\ECE}{\mathrm{ECE}}
+\newcommand{\Brier}{\mathrm{Brier}}
+\newcommand{\MOP}{\mathrm{MOP}}
+\newcommand{\TODO}[1]{\textcolor{red}{TODO: #1}}
+
+\title{PROPHET: Probabilistic Reliability via Outcome-Pricing for Honest Evaluation of Agent Calibration}
+
+\author{%
+  Anonymous \\
+  Anonymous Affiliation \\
+  \texttt{anon@example.com}
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Frontier large-language-model agents now solve nearly every static-resettable
+benchmark we have. We argue the most-deployed AI capability has become the
+\emph{least-calibrated}: models systematically over-quote their probability of
+success and commit to tasks they should decline, with measurable production
+cost. We introduce \textbf{PROPHET}, a benchmark that evaluates LLM agents
+inside a marketplace. For each task an agent must commit (\textsc{Take}),
+declare its probability of success (\textsc{Quote}, scored on a Brier-based
+proper scoring rule) or abstain (\textsc{Pass}). PROPHET ships 12 task
+families spanning code, math, knowledge, reasoning, writing, browsing,
+tool-use, multimodal, data-analysis, scientific, multilingual, and safety
+domains, all procedurally generated to resist memorisation and Berkeley-style
+benchmark exploits. We report the headline result as a Pareto frontier of
+expected payoff against expected calibration error (ECE), abstention
+precision, and the Model Overreach Point. Across 12 frontier and open-weight
+models we find that calibration ranks completely differently from accuracy:
+\TODO{insert headline finding once experimental matrix is filled}. Code,
+data seeds, and 12-family eval harness are released under MIT.
+\end{abstract}
+
+\section{Introduction}\label{sec:intro}
+
+\TODO{Open with the saturation-of-static-benchmarks story from
+\texttt{paper\_notes.md}. The argument:
+
+\begin{enumerate}
+  \item Every static-resettable benchmark we have is at or past saturation:
+  MMLU/MMLU-Pro $>$88\%, AIME 2025/26 91--94\%, MATH-500 91--99\%,
+  GPQA-Diamond 91--94\%, SWE-bench Verified 93.9\% (Claude Mythos);
+  OSWorld-V crossed human baseline (Simular Agent S2; GPT-5.4 75\%); HLE
+  went from 8\% (Jan 2025) to 65\% (Claude Mythos, May 2026); ARC-AGI-2 went
+  from 53\% (Dec 2025) to 85\% (GPT-5.5, May 2026).
+  \item The capabilities that did \emph{not} saturate are all about
+  \emph{calibrated, persistent} agency: ARC-AGI-3 $<$1\%, SWE-EVO 25\%,
+  MemoryAgentBench selective-forgetting $<$30\%.
+  \item Beyond pass@1 (\cite{beyond_pass1}) formalised the Reliability Decay
+  Curve and Model Overreach Point; Anthropic's faithfulness work showed
+  unfaithful chains-of-thought are \emph{longer} than faithful ones, and
+  models verbalise hints in only 25-39\% of cases.
+  \item The Berkeley RDI audit broke eight major benchmarks with simple
+  exploits (April 2026). Gaming-resistance is now a primary design axis.
+  \item Production deployments report a 37\% lab-vs-prod gap and a 50$\times$
+  cost variation for similar accuracy.
+\end{enumerate}
+
+We propose that the missing measurement is \emph{trustworthy autonomy} ---
+``how likely am I to succeed and what price am I willing to pay to find
+out?'' --- and that the right answer measures it economically.}
+
+\subsection*{Contributions}
+\begin{itemize}
+  \item A benchmark designed around a proper scoring rule that pays an agent
+  exactly when its calibration matches its skill, on \textit{12 task
+  families} spanning the typical deployment surface of an LLM agent.
+  \item Pareto-frontier scoring on (expected payoff, ECE, abstention
+  precision, MOP) that resists every standard exploit we identified in the
+  Berkeley RDI audit family.
+  \item Open-source procedurally-generated tasks, deterministic market
+  pricing, and a per-task ledger that lets reviewers spot-audit any claim.
+  \item Headline empirical finding: across 12 frontier models the rank-order
+  by accuracy is materially different from the rank-order by calibration
+  and from the rank-order by expected net payoff. The best-marketed model
+  is rarely the best-calibrated.
+\end{itemize}
+
+\section{Related Work}\label{sec:related}
+
+\paragraph{Calibration in deep learning.} Guo et al. (2017) established
+expected calibration error (ECE) and temperature scaling as standard
+references; Minderer et al. (2021) showed modern vision models are often
+under- rather than over-confident.
+
+\paragraph{Calibration in LLMs.} \cite{kadavath2022} and follow-ups showed
+LLMs have non-trivial verbal calibration on factual QA; Tian et al. (2023)
+benchmarked verbalised probabilities. Anthropic's reasoning-faithfulness
+report (Apr 2025; updates Mar/Apr 2026) showed unfaithful chains-of-thought
+are systematically longer than faithful ones. We extend this single-turn-QA
+literature to multi-step agentic settings.
+
+\paragraph{Reliability beyond pass@1.} \cite{beyond_pass1} formalised the
+Reliability Decay Curve, Variance Amplification Factor, and Model Overreach
+Point; \cite{long_horizon_mirage} showed recovery is the dominant production
+failure mode. PROPHET operationalises these as a benchmark.
+
+\paragraph{Proper scoring rules.} Brier (1950); Gneiting and Raftery (2007).
+We use Brier-based payoff because it is bounded, smooth, and well-understood.
+
+\paragraph{Static LLM benchmarks that PROPHET responds to.} MMLU
+\cite{mmlu}, GPQA \cite{gpqa}, AIME, MATH \cite{math500}, ARC-AGI-2/3
+\cite{arcagi2,arcagi3}, SWE-bench Verified/Pro \cite{swebench,swebenchpro},
+OSWorld \cite{osworld}, HLE \cite{hle}, MemoryAgentBench
+\cite{memoryagentbench}.
+
+\paragraph{Berkeley benchmark audit.} \cite{berkeley_rdi_audit} showed that
+trivial exploits gave 100\% on eight major agent benchmarks. We adopt their
+attack taxonomy as a pre-publication red-team checklist.
+
+\section{The PROPHET Marketplace}\label{sec:market}
+
+\subsection{Setup}
+For every task $t$ from family $f$ with reference-panel difficulty
+$\delta(t) \in [0, 1]$ the agent observes the prompt and a market offer
+$(V, C, \kappa, \delta_{\text{pass}})_f$. The agent commits to one of three
+actions:
+\begin{itemize}
+  \item \textsc{Take}: submit answer $a$. Outcome $y \in \{0, 1\}$ via
+  mechanical verifier. Payoff $= V \cdot y - C \cdot (1 - y)$.
+  \item \textsc{Quote}: declare $\Phat \in [0, 1]$ AND submit answer.
+  Payoff $= V y - C (1 - y) + \kappa \big(1 - 4(\Phat - y)^2\big)$.
+  \item \textsc{Pass}: decline. Payoff $= -\delta_{\text{pass}}$.
+\end{itemize}
+
+\paragraph{Properness of \textsc{Quote}.} The Brier-based calibration term
+$\kappa(1 - 4(\Phat - y)^2)$ is a proper scoring rule; expected payoff is
+maximised when the agent reports its true belief about $y$.
+
+\subsection{Headline metrics}
+\begin{description}
+  \item[Net payoff] $\sum_t \mathrm{payoff}(t)$. Headline economic number.
+  \item[ECE] $\sum_b \frac{n_b}{n} \big| \bar{\Phat}_b - \bar{y}_b \big|$
+  on equal-width or adaptive bins.
+  \item[Brier] $\frac{1}{n} \sum_t (\Phat_t - y_t)^2$.
+  \item[Abstention precision] of \textsc{Pass} outcomes, fraction that
+  would have failed had they been attempted (estimated via a small shadow
+  re-attempt subsample).
+  \item[Model Overreach Point (MOP)] difficulty bin where stated $\Phat$
+  exceeds empirical accuracy by $\geq 2\sigma$.
+\end{description}
+
+\subsection{Pareto-frontier leaderboard}
+We publish frontiers of (net payoff, ECE), (cost-USD, accuracy), (Brier,
+abstention precision). A single scalar ranking is intentionally avoided ---
+calibrated frontiers are how production buyers select systems.
+
+\section{Task families}\label{sec:families}
+
+PROPHET ships 12 procedurally generated families. \autoref{tab:families}
+summarises the design.
+
+\begin{table}[t]
+\centering\small
+\caption{The 12 PROPHET task families.}\label{tab:families}
+\begin{tabular}{lll}
+\toprule
+Family & Capability & Verifier \\
+\midrule
+math & arithmetic $\to$ olympiad-lite & exact / Fraction \\
+code & predict / write / fix small programs & sandboxed exec \\
+knowledge & closed-form factual QA & exact / synonym set \\
+reasoning & ARC-like grids + deduction & JSON-equal \\
+writing & constrained text (regex / acrostic / lipogram) & regex \\
+tools & multi-step tool-use chains & sandboxed pure-fn replay \\
+browser & text-only simulated browser & action-replay equality \\
+multimodal & ASCII-encoded multimodal style & exact match \\
+data & data-analysis on small CSVs & numeric tolerance \\
+scientific & physics / chem / bio closed-form & numeric tolerance \\
+multilingual & language-id + cross-lingual ops & exact / lookup \\
+safety & should-refuse-or-comply routing & refusal-token / answer match \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\TODO{Add per-family difficulty ladder figure (gen.py outputs).}
+
+\section{Experimental setup}\label{sec:setup}
+
+\subsection{Models evaluated}
+\TODO{Final table of agents.} We evaluate four classes:
+\begin{enumerate}
+  \item Closed frontier (GPT-5.x, Claude 4.6/4.7, Gemini 3.1 Pro).
+  \item Open frontier (Llama-4-70B, Qwen3-32B/14B/7B, DeepSeek-V3.2, Mistral-Large-3, Kimi K2.6-Thinking-mini).
+  \item Reasoning-mode variants of the above where applicable.
+  \item Deterministic baselines (random, always-take, always-pass, oracle, noisy-oracle).
+\end{enumerate}
+
+\subsection{Inference protocol}
+Temperature 0 for closed-model APIs; temperature 0.1 for vLLM-hosted open
+models (necessary for some long-CoT models). Max tokens 1024 by default;
+2048 when family explicitly requires longer answers (writing). Per-task
+wall-clock cap 90s. Hard PROPHET budget cap $\$20$ per run.
+
+\subsection{Statistical protocol}\label{sec:stats}
+All headline numbers are reported with bootstrap CIs ($B = 10^4$,
+percentile method). Two-system comparisons use paired tests at $\alpha = 0.05$
+with Holm--Bonferroni correction across pairs $\times$ metrics:
+\begin{itemize}
+  \item Continuous metrics (payoff, log-loss): paired Student's $t$ when
+  $n \geq 30$ and approximate symmetry holds, else paired Wilcoxon.
+  \item Binary accuracy: McNemar's exact test.
+  \item ECE differences: permutation test with $B = 10^4$.
+\end{itemize}
+Effect sizes accompany every reported $p$ (Cohen's $d$, rank-biserial,
+or paired odds-ratio respectively). Post-hoc power analysis is reported in
+the appendix.
+
+\section{Results}\label{sec:results}
+
+\TODO{Headline table: 12 models $\times$ \{accuracy, ECE, Brier, log-loss,
+net payoff\} with CIs.}
+
+\TODO{Figure 1: reliability diagram, top 4 systems overlaid.}
+
+\TODO{Figure 2: Pareto (ECE, net payoff). Annotate Pareto-optimal points.}
+
+\TODO{Figure 3: per-family ECE heatmap (12 families $\times$ N agents).}
+
+\TODO{Figure 4: MOP per family.}
+
+\TODO{Figure 5: cost-aware Pareto (cost\_usd, accuracy).}
+
+\subsection{Findings}
+\TODO{Confirm or refute hypotheses once experimental matrix is run.}
+
+\subsubsection*{H1: Best by accuracy $\ne$ best by calibration.}
+\TODO{}
+
+\subsubsection*{H2: Reasoning mode degrades calibration.}
+\TODO{}
+
+\subsubsection*{H3: Open models trail closed on accuracy but match on calibration.}
+\TODO{}
+
+\subsubsection*{H4: MOP localises to difficulty $\sim 0.7$ for every frontier system.}
+\TODO{}
+
+\subsubsection*{H5: Always-take and always-pass strategies under-perform median real models, but no real model fully Pareto-dominates the always-pass baseline on (cost, payoff).}
+\TODO{}
+
+\section{Gaming-resistance audit}\label{sec:audit}
+
+We adopt the Berkeley RDI April 2026 attack taxonomy as a checklist.
+\TODO{Run each attack against PROPHET; report.}
+
+\begin{itemize}
+  \item \texttt{conftest.py} hijack: N/A — PROPHET runs no test harness.
+  \item \texttt{file://} retrieval: N/A — no retrieval.
+  \item Empty-JSON wrapper: blocked — verifiers require typed answers.
+  \item Curl trojan: N/A — no execution on agent side.
+  \item Training-data leakage: blocked — procedural seeds rotate.
+\end{itemize}
+
+\section{Limitations}\label{sec:limits}
+\TODO{Honest discussion. The Brier-based proper scoring rule depends on
+binary outcomes; for open-ended writing we threshold mechanically, which
+loses fine-grain quality information. Multilingual coverage is small.
+Safety family uses synthetic placeholder unsafe prompts, not actual harmful
+content. Procedural generation may not exercise long-tail reasoning to the
+same depth as natural data. Closed-model leaderboard positions can change
+with vendor model updates.}
+
+\section{Conclusion}\label{sec:conclusion}
+\TODO{Re-state the missing-capability argument and the Pareto-frontier claim.}
+
+\bibliographystyle{plainnat}
+\bibliography{refs}
+
+\end{document}

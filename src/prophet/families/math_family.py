@@ -14,6 +14,8 @@ Difficulty tiers:
   T5 — multi-step word problem (AMC/AIME class small)
   T6 — Diophantine / olympiad-lite (HMMT class small)
   T7 — adversarial / red-herring numeric phrasing
+  T8 — system of 3 linear equations with integer solutions (return x)
+  T9 — small Diophantine: ax + by = c with gcd(a,b)=1 (return any valid x)
 
 Generators below produce reproducible, integer-answer problems whose ground
 truth is the exact integer or rational the verifier checks for.
@@ -168,6 +170,71 @@ def _gen_t7_adversarial(rng: np.random.Generator) -> tuple[str, str]:
     )
 
 
+def _gen_t8_linear_system3(rng: np.random.Generator) -> tuple[str, str]:
+    """System of 3 linear equations in (x, y, z) with integer solutions.
+
+    Construct ground truth (x, y, z) first, then pick three integer coefficient
+    rows; compute the RHS so the system is consistent by construction. The agent
+    is asked to return ``x`` only — a single integer.
+    """
+    x = int(rng.integers(-9, 10))
+    y = int(rng.integers(-9, 10))
+    z = int(rng.integers(-9, 10))
+    coeffs = []
+    rhs = []
+    while len(coeffs) < 3:
+        a = int(rng.integers(-5, 6))
+        b = int(rng.integers(-5, 6))
+        c = int(rng.integers(-5, 6))
+        if a == 0 and b == 0 and c == 0:
+            continue
+        # Avoid duplicate rows for readability.
+        if (a, b, c) in coeffs:
+            continue
+        coeffs.append((a, b, c))
+        rhs.append(a * x + b * y + c * z)
+    lines = []
+    for (a, b, c), r in zip(coeffs, rhs):
+        lines.append(f"  {a}x + ({b})y + ({c})z = {r}")
+    eq_block = "\n".join(lines)
+    prompt = (
+        "Solve the following system of three linear equations for integer x, y, z:\n"
+        f"{eq_block}\n"
+        "Return only the integer value of x."
+    )
+    return prompt, str(x)
+
+
+def _gen_t9_diophantine(rng: np.random.Generator) -> tuple[str, str]:
+    """Solve ax + by = c with small a, b, c and gcd(a, b) = 1.
+
+    To keep a unique ground truth, we additionally require x in [0, b - 1].
+    Existence is guaranteed by gcd(a, b) = 1.
+    """
+    # Sample a, b with gcd = 1, both in [2, 19].
+    while True:
+        a = int(rng.integers(2, 20))
+        b = int(rng.integers(2, 20))
+        if a != b and math.gcd(a, b) == 1:
+            break
+    # Pick a target c not too small / not too large.
+    c = int(rng.integers(20, 200))
+    # Find the smallest non-negative x with (c - a*x) % b == 0; existence by gcd=1.
+    x = 0
+    while x < b:
+        if (c - a * x) % b == 0:
+            break
+        x += 1
+    # By Bezout / gcd(a, b) = 1 we must find such x in [0, b - 1]; assert defensively.
+    assert (c - a * x) % b == 0, "Unexpected: no solution found within [0, b)"
+    prompt = (
+        f"Find a non-negative integer x with 0 ≤ x < {b} such that "
+        f"{a}*x + {b}*y = {c} has an integer solution y. "
+        f"Return the integer x only."
+    )
+    return prompt, str(x)
+
+
 GENERATORS: list[tuple[float, Callable[[np.random.Generator], tuple[str, str]]]] = [
     (0.05, _gen_t0_arithmetic),
     (0.15, _gen_t1_algebra),
@@ -177,6 +244,8 @@ GENERATORS: list[tuple[float, Callable[[np.random.Generator], tuple[str, str]]]]
     (0.60, _gen_t5_word),
     (0.80, _gen_t6_olympiad),
     (0.92, _gen_t7_adversarial),
+    (0.94, _gen_t8_linear_system3),
+    (0.97, _gen_t9_diophantine),
 ]
 
 

@@ -115,12 +115,14 @@ def run(
     seed: int = typer.Option(42),
     max_cost: float = typer.Option(20.0, help="Hard cost cap in USD."),
     out_dir: Path = typer.Option(Path("results/runs"), help="Output directory."),
+    concurrency: int = typer.Option(1, help="Concurrent agent calls (>=1). Routes through ConcurrentRunner when >1."),
+    per_sec_limit: float = typer.Option(0.0, help="Optional requests-per-second cap (0 = unlimited)."),
     log_level: str = typer.Option("INFO"),
 ) -> None:
     """Run an agent through one or more families."""
     _setup_logging(log_level)
     _load_env()
-    from prophet.agents import build_agent
+    from prophet.agents import ConcurrentRunner, build_agent
     from prophet.engine.market import MarketMaker
     from prophet.engine.orchestrator import Orchestrator, RunConfig
     from prophet.families import get_family, list_families as _ls
@@ -133,9 +135,38 @@ def run(
     market = MarketMaker(market_seed=seed)
     orch = Orchestrator(market=market)
     ag = build_agent(agent)
+    if concurrency > 1:
+        runner = ConcurrentRunner(
+            ag,
+            max_concurrency=concurrency,
+            per_sec_limit=per_sec_limit or None,
+        )
+        ag = _PrecomputedRespondAgent(ag, runner, tasks, market)
     cfg = RunConfig(cycle_seed=seed, market_seed=seed, out_dir=out_dir, max_cost_usd=max_cost)
     result = orch.run(ag, tasks, cfg)
     console.print(f"[green]Run finished[/green]: {result.run_id}  net=${result.summary['net_payoff']:.1f}  cost=${result.total_cost_usd:.4f}")
+
+
+class _PrecomputedRespondAgent:
+    """Adapter that pre-runs the batch concurrently, then serves cached AgentResponses one-by-one.
+
+    The orchestrator iterates tasks sequentially and calls `agent.respond(task, offer)` for each.
+    To preserve its scoring/persistence path while still using ConcurrentRunner for the heavy
+    network work, we pre-compute every response in parallel and replay them in order.
+    """
+
+    def __init__(self, inner, runner, tasks, market) -> None:
+        self.name = inner.name
+        self.family_support = getattr(inner, "family_support", None)
+        self._inner = inner
+        triples = runner.run_batch(tasks, market)
+        self._by_task_id = {t.task_id: resp for (t, _o, resp) in triples}
+
+    def respond(self, task, offer):  # noqa: ANN001 - matches Agent protocol
+        resp = self._by_task_id.get(task.task_id)
+        if resp is None:
+            return self._inner.respond(task, offer)
+        return resp
 
 
 @app.command()
@@ -144,6 +175,53 @@ def analyze(run_dir: Path) -> None:
     from prophet.analysis.report import build_report
     build_report(run_dir)
     console.print(f"[green]Report written to[/green] {run_dir}/report.html")
+
+
+@app.command("analyze-compare")
+def analyze_compare(
+    runs_dir: Path = typer.Argument(..., help="Directory of completed runs (each subdir contains outcomes.jsonl)."),
+    out_dir: Path = typer.Option(None, help="Where to write the comparison report (defaults to <runs_dir>/../report)."),
+    seed: int = typer.Option(0, help="Seed for permutation/bootstrap."),
+) -> None:
+    """Cross-run comparison: paired tests, Pareto frontier, per-family heatmaps."""
+    from prophet.analysis.comparison_report import write_full_report
+
+    out = write_full_report(runs_dir, out_dir=out_dir, seed=seed)
+    console.print(f"[green]Comparison report written to[/green] {out}")
+
+
+@app.command("calibrate")
+def calibrate(
+    families: str = typer.Option("all", help="Comma-separated families or 'all'."),
+    n: int = typer.Option(200, help="Tasks per family."),
+    seed: int = typer.Option(42),
+    agents: str = typer.Option(
+        "baseline:oracle-noisy",
+        help="Comma-separated reference agent URIs.",
+    ),
+    out: Path = typer.Option(Path("data/reference"), help="Output directory."),
+    max_cost_per_agent: float = typer.Option(3.0),
+) -> None:
+    """Calibrate per-task empirical difficulty using a reference panel."""
+    import subprocess
+
+    cmd = [
+        sys.executable,
+        str(Path(__file__).resolve().parents[2] / "scripts" / "calibrate_difficulty.py"),
+        "--families",
+        families,
+        "--n",
+        str(n),
+        "--seed",
+        str(seed),
+        "--agents",
+        agents,
+        "--out",
+        str(out),
+        "--max-cost-per-agent",
+        str(max_cost_per_agent),
+    ]
+    subprocess.run(cmd, check=False)
 
 
 def main() -> None:
