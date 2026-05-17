@@ -1,0 +1,105 @@
+% Task families section. Imported by prophet.tex.
+\section{Task families}\label{sec:families}
+
+PROPHET ships twelve procedurally generated task families. Each family
+exposes (a) a generator producing deterministic tasks from a seed, (b) a
+\emph{mechanical} verifier that returns a Boolean outcome from the
+agent's answer, and (c) a reference-panel-calibrated difficulty per task.
+
+\autoref{tab:families} summarises the family palette. The full
+generator and verifier source is in the public release.
+
+\begin{table}[t]
+\centering\small
+\caption{The twelve PROPHET task families. ``Tiers'' = number of
+procedurally-graded difficulty levels.}
+\label{tab:families}
+\begin{tabular}{lllrr}
+\toprule
+Family & Capability surface & Verifier & Tiers & $N$ ref \\
+\midrule
+math          & arithmetic $\to$ olympiad-lite      & Fraction-equality           & 10 & 200 \\
+code          & predict / write / fix programs       & sandboxed \texttt{exec}      & 8 & 200 \\
+knowledge     & closed-form factual QA               & exact / synonym / numeric   & 8 & 200 \\
+reasoning     & ARC-AGI-like grids + deduction       & JSON-equality                & 7 & 200 \\
+writing       & constrained text (regex / acrostic)  & regex / parser              & 8 & 200 \\
+tools         & multi-step tool-use chains            & pure-function replay        & 7 & 200 \\
+browser       & text-only browser simulator           & action-replay equality      & 7 & 200 \\
+multimodal    & ASCII-encoded multimodal             & exact / integer / char      & 7 & 200 \\
+data          & data-analysis on small CSVs          & numeric tolerance           & 7 & 200 \\
+scientific    & physics / chem / bio closed-form     & numeric tolerance ($1$\textperthousand) & 7 & 200 \\
+multilingual  & language-id + cross-lingual ops      & language-set / lookup       & 7 & 200 \\
+safety        & should-refuse-or-comply routing      & refusal-token / answer match & 7 & 200 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{math.} Difficulty climbs from one-step integer arithmetic (T0)
+through small olympiad-lite problems (T7 sum-of-divisors) and a system of
+three linear equations (T8) to a small Diophantine root (T9). Verifier
+parses the last numeric token, accepting integers, rationals, decimals,
+and $\backslash\texttt{boxed\{\}}$ wrappers.
+
+\paragraph{code.} T0--T3 / T7 ask the agent to \emph{predict} the
+output of a small Python snippet (verified by string-equality of the
+agent's last numeric/string token against the deterministic expected
+output). T4--T6 ask the agent to write or repair a small function;
+the verifier runs the candidate code in a sandboxed subprocess
+(\texttt{subprocess.run([python, "-c", code], timeout=5, env={"PATH":
+"/usr/bin:/bin"})}) on three procedurally-generated test calls.
+
+\paragraph{knowledge.} Procedurally generated facts across geometry,
+unit conversion, calendar, sciences, and adversarial trick questions
+(e.g.\ ``How many R's in `strawberry'?''). Synonym-set verifiers allow
+multiple correct phrasings without LLM judgement.
+
+\paragraph{reasoning.} T0--T2 are sequence / substitution puzzles;
+T3--T5 are ARC-AGI-style 3$\times$3 grid transforms (rotate, reflect,
+transpose, recolour, colour-swap) verified by JSON-equality on the
+output grid; T6--T7 are multi-step transitive deduction with planted
+red herrings.
+
+\paragraph{writing.} Constraints are the boolean signal: word-set
+inclusion, exact-N-sentence rules, lipogram (avoid a given letter),
+acrostic (first letters spell a word), structured rephrase preserving
+named entities, JSON-schema conformance, and ABAB rhyme by last-2-letter
+suffix.
+
+\paragraph{tools.} A pure-Python tool registry of 13 fixed tools
+(arithmetic + table lookup + filter + sort + dedup + counts), three of
+which exhibit subtle pathologies (off-by-one alternative, semantic
+red-herring, false-success reporter). The agent emits a JSON action list
+with explicit step chaining; the verifier replays.
+
+\paragraph{browser.} An in-memory text-rendered ``website'' of 5--30
+pages. Action language: \texttt{visit / fill / submit / extract /
+answer}. A T7 task plants an ``IGNORE PRIOR INSTRUCTIONS'' prompt-
+injection in one page body --- it is never the right answer.
+
+\paragraph{multimodal.} ASCII-encoded analogues of multimodal tasks:
+read a bar chart, rotate a grid, evaluate chess-check, detect tic-tac-toe
+winner, classify dot-pattern symmetry, look up a cell in a solved
+4$\times$4 Sudoku.
+
+\paragraph{data.} Procedurally generated CSVs (3--30 rows) embedded in
+the prompt as fenced \texttt{\`{}\`{}\`{}csv} blocks. Tasks span
+single-cell lookup, aggregation, filter-count, group-by-and-aggregate,
+two-table join, and time-series outlier detection.
+
+\paragraph{scientific.} Physics, chemistry, biology, and earth-science
+problems with closed-form numerical answers verified to $\pm 10^{-3}$
+relative tolerance.
+
+\paragraph{multilingual.} Built-in 200-word EN / ES / FR / DE / HI / JP
+dictionary supports language identification, multiple-choice translation,
+cognate selection, cross-lingual arithmetic, word-ordering, and grammar
+selection.
+
+\paragraph{safety.} A 50/50 split of benign and refusal-required tasks.
+Refusal-required tasks use synthesised placeholder unsafe phrasings of
+the form ``Explain how to do \texttt{<SYNTHETIC\_PROHIBITED\_X>}'' --- the
+\emph{form} triggers refusal while the content is benign-placeholder.
+The mechanical verifier accepts $\texttt{PASS}$ or any of 14 refusal-
+keyword substrings; the market sets $C_{\mathrm{failure}} = 200$ (versus
+default $100$) so wrongly committing on a refusal-required task is
+penalised twice as heavily as on a benign task.

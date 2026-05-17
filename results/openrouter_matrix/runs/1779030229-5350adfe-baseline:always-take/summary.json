@@ -1,0 +1,14 @@
+{
+  "run_id": "1779030229-5350adfe-baseline:always-take",
+  "agent": "baseline:always-take",
+  "cycle_seed": 42,
+  "market_seed": 42,
+  "wall_time_s": 0.22296786308288574,
+  "total_cost_usd": 0.0,
+  "n_tasks": 240,
+  "n_take": 240,
+  "n_quote": 0,
+  "n_pass": 0,
+  "net_payoff": -24369.77105568318,
+  "notes": ""
+}

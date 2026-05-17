@@ -177,6 +177,44 @@ def analyze(run_dir: Path) -> None:
     console.print(f"[green]Report written to[/green] {run_dir}/report.html")
 
 
+@app.command()
+def status(
+    runs_dir: Path = typer.Argument(Path("results"), help="Top-level results directory."),
+) -> None:
+    """Quick summary of all runs found under `runs_dir`."""
+    _load_env()
+    if not runs_dir.exists():
+        console.print(f"[yellow]No runs dir at[/yellow] {runs_dir}")
+        return
+    total_cost = 0.0
+    n_runs = 0
+    table = Table(title=f"PROPHET runs under {runs_dir}")
+    table.add_column("run")
+    table.add_column("agent")
+    table.add_column("n", justify="right")
+    table.add_column("net payoff", justify="right")
+    table.add_column("cost USD", justify="right")
+    table.add_column("wall s", justify="right")
+    import json as _json
+    for child in sorted(runs_dir.rglob("summary.json")):
+        try:
+            s = _json.loads(child.read_text())
+        except Exception:
+            continue
+        table.add_row(
+            child.parent.name[:60],
+            s.get("agent", "—"),
+            str(s.get("n_tasks", 0)),
+            f"{s.get('net_payoff', 0):.1f}",
+            f"${s.get('total_cost_usd', 0):.4f}",
+            f"{s.get('wall_time_s', 0):.1f}",
+        )
+        total_cost += float(s.get("total_cost_usd", 0))
+        n_runs += 1
+    console.print(table)
+    console.print(f"[bold]Total runs:[/bold] {n_runs}   [bold]Total cost:[/bold] ${total_cost:.4f}")
+
+
 @app.command("analyze-compare")
 def analyze_compare(
     runs_dir: Path = typer.Argument(..., help="Directory of completed runs (each subdir contains outcomes.jsonl)."),

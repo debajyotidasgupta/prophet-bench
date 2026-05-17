@@ -1,0 +1,14 @@
+{
+  "run_id": "1779030229-42df8dae-baseline:random",
+  "agent": "baseline:random",
+  "cycle_seed": 42,
+  "market_seed": 42,
+  "wall_time_s": 0.1946718692779541,
+  "total_cost_usd": 0.0,
+  "n_tasks": 240,
+  "n_take": 70,
+  "n_quote": 83,
+  "n_pass": 87,
+  "net_payoff": -18202.683457913008,
+  "notes": ""
+}

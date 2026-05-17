@@ -1,0 +1,111 @@
+% Methodology section. Imported by prophet.tex.
+\section{The PROPHET marketplace}\label{sec:method}
+
+\subsection{Setup}
+A benchmark cycle consists of a procedurally generated task suite $\mathcal{T}$
+and an agent $\mathcal{A}$ under evaluation. Each task $t \in \mathcal{T}$ is
+drawn from one of twelve families (Section~\ref{sec:families}) and has a
+known reference-panel difficulty $\delta(t) \in [0, 1]$.
+
+For each $t$ the engine forms a deterministic market offer
+$\mathbf{o}_t = (V_t, C_t, \kappa_t, \delta^{\mathrm{pass}}_t)$ from a
+family-specific base $(V_f, C_f, \kappa_f, \delta^{\mathrm{pass}}_f)$ plus
+hash-derived per-instance noise of $\le 2\%$ that prevents agents from
+pre-computing prices.
+
+\subsection{Actions and payoffs}
+The agent selects an action $a \in \{\mathrm{Take},\, \mathrm{Quote},\,
+\mathrm{Pass}\}$. We denote the agent's stated probability of success by
+$\Phat \in [0, 1]$ and the mechanical verifier's binary outcome by $y \in
+\{0, 1\}$.
+
+\paragraph{Take.}
+\(
+\mathrm{payoff} = V_t \cdot y - C_t \cdot (1 - y).
+\)
+
+\paragraph{Quote.}
+\(
+\mathrm{payoff} = V_t \cdot y - C_t \cdot (1 - y) + \kappa_t \cdot \big(1 - 4(\Phat - y)^2\big).
+\)
+
+\paragraph{Pass.} \(\mathrm{payoff} = -\delta^{\mathrm{pass}}_t.\)
+
+\paragraph{Why this calibration term?}
+The quantity $\kappa\big(1 - 4(\Phat - y)^2\big)$ is a Brier-based proper
+scoring rule scaled to lie in $[-3\kappa, +\kappa]$. Properness implies
+that an agent's expected payoff is maximised \emph{iff} it reports its
+true belief $\Phat = \mathbb{E}[y \mid t]$.\footnote{Proof: expected
+payoff over $y$ is maximised at $\Phat = \Pr[y = 1 \mid t]$ by the
+standard Brier-rule argument.} The factor $4$ rescales the maximum loss to
+$1$, so a uniform $\Phat = 0.5$ on a binary outcome yields exactly zero
+calibration payoff --- eliminating the trivial "always-hedge" strategy.
+The asymmetric $[-3\kappa, +\kappa]$ band reflects production reality:
+over-confidence drives real bad decisions, while caution merely costs
+research effort.
+
+\subsection{Headline metrics}
+For each agent over a cycle we report:
+\begin{description}
+  \item[Net payoff $\mathcal{P}$] $= \sum_t \mathrm{payoff}(t)$, total
+  PROPHET-cents earned. Bootstrap 95\,\% CIs ($B = 10^4$, percentile).
+  \item[Expected calibration error $\ECE$] over $10$ equal-width bins on
+  $\Phat$; we also report adaptive-bin $\ECE$ over $15$ equal-mass bins.
+  \item[Brier score] $\frac{1}{n}\sum_t (\Phat_t - y_t)^2$.
+  \item[Log-loss] $-\frac{1}{n} \sum_t y_t \log \Phat_t + (1 - y_t)\log(1 - \Phat_t)$
+  with $\Phat$ clipped to $[\epsilon, 1-\epsilon]$.
+  \item[Abstention precision] of \textsc{Pass}ed tasks, the fraction that
+  would have failed had they been attempted (estimated via a held-out
+  shadow re-attempt sub-sample with rate $\rho_{\mathrm{shadow}} = 0.10$).
+  \item[Model Overreach Point ($\MOP$)] the difficulty bin where stated
+  $\bar{\Phat}$ exceeds empirical accuracy by $\ge 2\sigma$ (binomial).
+\end{description}
+
+\subsection{Pareto-frontier leaderboard}
+A scalar leaderboard incentivises accuracy at any cost. We instead publish
+the Pareto frontier of $(\mathcal{P}, \ECE)$, with secondary frontiers on
+$(\text{cost USD}, \text{accuracy})$ and $(\Brier, \text{abstention
+precision})$. As a summary scalar we report 2-D hypervolume against a
+fixed reference point. None of these scalars is the headline; the table is.
+
+\subsection{Statistical protocol}\label{sec:stats}
+Two-system comparisons use paired tests across the same per-task outcomes:
+\begin{itemize}
+  \item Continuous metrics per task (payoff, log-loss): paired Student's
+  $t$ when $n \ge 30$ and approximate symmetry, else paired Wilcoxon
+  signed-rank.
+  \item Binary correctness: McNemar's exact test.
+  \item Group-level differences in $\ECE$ / $\Brier$: permutation test
+  with $B = 10^4$.
+\end{itemize}
+We always report effect sizes alongside $p$: Cohen's $d$ for paired $t$,
+rank-biserial $r$ for Wilcoxon, paired odds-ratio for McNemar, and
+$|\Delta\ECE|$ in absolute units for permutation. When comparing more than
+two systems we apply Holm--Bonferroni correction (controls family-wise
+error rate) across all pairs $\times$ all reported metrics; raw and
+adjusted $p$-values are reported in parallel.
+
+For sample-size adequacy we report post-hoc power and minimum-detectable
+effect for each headline pairwise contrast.
+
+\subsection{Gaming resistance}\label{sec:gaming}
+We adopt the Berkeley RDI April 2026 attack taxonomy as a pre-publication
+red-team checklist:
+\begin{enumerate}
+  \item \textbf{Procedural seeds.} The benchmark has no fixed evaluation
+  set; cycle seeds rotate. Reviewers receive a frozen public seed list for
+  reproducibility; the live leaderboard uses rolling seeds.
+  \item \textbf{Mechanical primary metrics.} ECE, Brier, log-loss, payoff,
+  MOP are computed from formulas alone; no LLM judge is required.
+  \item \textbf{Sandboxed verifiers.} Code-family verifiers run candidate
+  programs inside a subprocess with a 5\,s timeout, restricted PATH, and a
+  bounded namespace; tool-family verifiers replay pure-function tool calls
+  through a fixed in-memory registry.
+  \item \textbf{Witness-style probes.} For long-form writing, mechanical
+  constraint checks (regex / parser / acrostic / lipogram / JSON schema)
+  produce the boolean $y$; any LLM judgement is a side-channel quality
+  score, never used in primary metrics.
+  \item \textbf{Pareto frontier.} Single-axis gaming (e.g., $\Phat = 1$
+  always) is captured in the orthogonal axis (ECE collapses, MOP
+  triggers).
+\end{enumerate}

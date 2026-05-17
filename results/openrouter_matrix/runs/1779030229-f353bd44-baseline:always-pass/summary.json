@@ -1,0 +1,14 @@
+{
+  "run_id": "1779030229-f353bd44-baseline:always-pass",
+  "agent": "baseline:always-pass",
+  "cycle_seed": 42,
+  "market_seed": 42,
+  "wall_time_s": 0.001355886459350586,
+  "total_cost_usd": 0.0,
+  "n_tasks": 240,
+  "n_take": 0,
+  "n_quote": 0,
+  "n_pass": 240,
+  "net_payoff": -640.0,
+  "notes": ""
+}

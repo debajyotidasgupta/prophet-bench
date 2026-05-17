@@ -1,0 +1,59 @@
+\section{Related work}\label{sec:related}
+
+\paragraph{Saturation of static LLM benchmarks.}
+By May 2026, the headline static-resettable benchmarks are at or past
+saturation. MMLU and MMLU-Pro sit above 88\,\%; GPQA-Diamond above
+94\,\%; AIME 2025/26 and MATH-500 above 91\,\%; SWE-bench Verified at
+93.9\,\% (Claude Mythos)~\cite{swebench}; OSWorld-Verified has been
+crossed by Simular Agent S2 and GPT-5.4~\cite{osworld}. HLE rose from
+8\,\% (Jan 2025, o1) to 65\,\% (Claude Mythos, May 2026)~\cite{hle};
+ARC-AGI-2 from 53\,\% (Dec 2025) to 85\,\% (GPT-5.5, May 2026)
+~\cite{arcagi2}. The capabilities that did \emph{not} saturate are all
+about calibrated, persistent agency: ARC-AGI-3 $<$1\,\%~\cite{arcagi3},
+SWE-EVO 25\,\%, MemoryAgentBench selective-forgetting
+$<$30\,\%~\cite{memoryagentbench}.
+
+\paragraph{Verbal calibration of LLMs.} Kadavath
+et~al.~\cite{kadavath2022} showed LLMs have non-trivial verbal
+calibration on factual QA; Tian et~al.\ (2023) benchmarked verbalised
+probabilities. Recent reasoning-faithfulness work
+\cite{anthropic_faithfulness} found that models verbalise hints in only
+25--39\,\% of cases and that \emph{unfaithful} chains-of-thought are
+systematically \emph{longer} than faithful ones --- a finding directly
+relevant to PROPHET's calibration emphasis.
+
+\paragraph{Reliability beyond pass@1.} \cite{beyond_pass1} formalised
+the Reliability Decay Curve, Variance Amplification Factor, and Model
+Overreach Point. \cite{long_horizon_mirage} found recovery is the
+dominant production failure mode. PROPHET operationalises these as
+publishable scores.
+
+\paragraph{Proper scoring rules in machine-learning evaluation.}
+Brier (1950) introduced the canonical quadratic scoring rule for
+probability forecasts; Gneiting and Raftery~\cite{gneiting2007} survey
+the theory and practical alternatives. Guo et~al.~\cite{guo2017}
+established ECE and temperature scaling as the modern calibration
+benchmarks for deep classifiers. We adopt Brier as the calibration term
+because it is bounded, smooth, easy to communicate, and admits closed-
+form expected payoff at known $P[y=1\!\mid\!t]$.
+
+\paragraph{Agent benchmarks and gaming.} GAIA~\cite{gaia} established
+multi-step tool-use as a measurable surface; AgentBench, MMAU, OSWorld
+~\cite{osworld} followed. The Berkeley RDI April~2026
+audit~\cite{berkeley_rdi_audit} showed trivial exploits gave 100\,\% on
+eight major agent benchmarks. We adopt their attack taxonomy as a pre-
+publication red-team checklist (Section~\ref{sec:gaming}).
+
+\paragraph{Multiple-comparison correction in benchmark papers.}
+Demsar (2006) argued for non-parametric paired tests when comparing
+multiple classifiers; Dem\v{s}ar's argument applies a fortiori at our
+scale (twelve task families, $\sim$15 agents, three primary metrics).
+We default to Holm--Bonferroni for family-wise error rate; results are
+also reported under Benjamini--Hochberg FDR.
+
+\paragraph{Concurrent benchmarks.} \cite{memoryagentbench} measures
+selective forgetting; \cite{beyond_pass1} measures reliability decay;
+PROPHET is complementary: it measures calibrated commitment under a
+proper scoring rule across a heterogeneous task suite. None of the
+existing benchmarks publishes a Pareto frontier on
+$(\text{net payoff}, \mathrm{ECE})$.

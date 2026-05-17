@@ -1,0 +1,103 @@
+% Results section placeholder. Numbers + figures are slot-filled by
+% scripts/make_paper_figures.py once the full experimental matrix lands.
+\section{Results}\label{sec:results}
+
+\subsection{Headline}
+We report bootstrap 95\,\% CIs (B$=$10$^4$, percentile) for every
+metric. \autoref{tab:headline} ranks agents by net payoff; per-axis
+sortings (ECE, abstention precision, Brier) are in
+Appendix~\ref{app:per-axis}.
+
+\input{figures/headline_table.tex}
+
+\paragraph{H1: rank by accuracy $\ne$ rank by calibration $\ne$ rank by
+payoff.}
+\TODO{Quantify the Spearman~$\rho$ between the three rankings; expect
+$\rho \approx 0.6$, i.e.\ a meaningfully different ordering.}
+
+\paragraph{H2: reasoning mode degrades calibration.}
+\TODO{Compare same-model reasoning vs non-reasoning where available
+(GPT-5 vs GPT-5 with extended thinking, Qwen3 with/without
+\texttt{enable\_thinking}). Predict reasoning increases accuracy but
+also Brier (over-commitment).}
+
+\paragraph{H3: open-source models trail closed on accuracy but match on
+calibration.}
+\TODO{Compare Qwen3-235B / DeepSeek-R1 / Kimi-K2-Thinking against
+Opus-4.7 / GPT-5 / Gemini-3.1-Pro on ECE.}
+
+\subsection{Pareto frontier}
+\autoref{fig:pareto-ece-payoff} shows the cost-of-confidence
+trade-off. Agents on the frontier are highlighted; the published
+hypervolume against reference $(\ECE = 0.5, \mathcal{P} = -3 N C)$ is
+\TODO{value}.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.7\linewidth]{figures/pareto_ece_payoff.pdf}
+\caption{Pareto frontier on $(\ECE, \mathcal{P})$. Points on the frontier
+in colour; dominated points in grey.}
+\label{fig:pareto-ece-payoff}
+\end{figure}
+
+\subsection{Reliability diagrams}
+\autoref{fig:reliability} overlays per-agent reliability curves.
+Over-confident agents lie systematically \emph{below} the diagonal.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.7\linewidth]{figures/reliability_multi.pdf}
+\caption{Reliability curves for the top-N systems. The dashed diagonal
+is perfect calibration.}
+\label{fig:reliability}
+\end{figure}
+
+\subsection{Per-family decomposition}
+\autoref{fig:heatmap-ece} reports per-(agent, family) ECE.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.8\linewidth]{figures/heatmap_ece.pdf}
+\caption{Per-family ECE. Lower is better. We observe \TODO{narrative on
+which families collapse calibration the worst}.}
+\label{fig:heatmap-ece}
+\end{figure}
+
+\subsection{Model Overreach Point}
+\autoref{fig:mop} shows where each agent's stated confidence first
+exceeds its empirical accuracy by $\ge 2\sigma$.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.85\linewidth]{figures/mop_by_family.pdf}
+\caption{Max-overreach per (agent, family). Bright red indicates the
+agent systematically over-quotes its probability of success on hard
+instances of that family.}
+\label{fig:mop}
+\end{figure}
+
+\subsection{Cross-family calibration transfer}
+We compute the Spearman rank-correlation of per-family ECE rankings
+against the panel-average ranking. A high $\rho$ means calibration is a
+\emph{global} trait; a low $\rho$ means it is family-specific.
+\TODO{report by-agent $\rho$.}
+
+\subsection{Pairwise significance}
+\autoref{tab:sig} reports the headline pairwise contrasts. All
+$p$-values are Holm--Bonferroni adjusted across the family of $\binom{K}{2}
+\times M$ tests, where $K$ is the number of agents and $M$ is the number
+of metrics.
+
+\input{figures/significance_table.tex}
+
+\subsection{Reproducibility}
+The full headline table reproduces from the released seed
+(\verb|seed=42|, \verb|cycle_seed=42|, \verb|market_seed=42|, $N=$200 per
+family) by running
+\begin{lstlisting}[basicstyle=\small\ttfamily, frame=single]
+make install
+make run-paper        # full matrix on closed APIs + OpenRouter
+make paper            # compile PDF
+\end{lstlisting}
+End-to-end wall-clock on a single workstation with 12 concurrent API
+calls: \TODO{minutes}. Total inference spend on OpenRouter: \TODO{USD}.
