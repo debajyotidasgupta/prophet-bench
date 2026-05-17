@@ -28,7 +28,8 @@
       39342.8
     ],
     "cost_usd": 0.0,
-    "pareto_optimal": true
+    "pareto_optimal": false,
+    "pareto_optimal_among_real": false
   },
   {
     "name": "openrouter:google_gemini-3-flash-preview",
@@ -59,7 +60,8 @@
       24106.9
     ],
     "cost_usd": 0.2125,
-    "pareto_optimal": false
+    "pareto_optimal": true,
+    "pareto_optimal_among_real": true
   },
   {
     "name": "openrouter:deepseek_deepseek-v3.2",
@@ -90,7 +92,8 @@
       25709.71
     ],
     "cost_usd": 0.0606,
-    "pareto_optimal": false
+    "pareto_optimal": false,
+    "pareto_optimal_among_real": false
   },
   {
     "name": "openrouter:anthropic_claude-haiku-4.5",
@@ -121,7 +124,8 @@
       23421.82
     ],
     "cost_usd": 0.5373,
-    "pareto_optimal": false
+    "pareto_optimal": false,
+    "pareto_optimal_among_real": false
   },
   {
     "name": "openrouter:openai_gpt-5-mini",
@@ -152,7 +156,8 @@
       23613.13
     ],
     "cost_usd": 0.4998,
-    "pareto_optimal": false
+    "pareto_optimal": false,
+    "pareto_optimal_among_real": false
   },
   {
     "name": "openrouter:google_gemini-3.1-flash-lite",
@@ -183,7 +188,8 @@
       17588.54
     ],
     "cost_usd": 0.0881,
-    "pareto_optimal": false
+    "pareto_optimal": false,
+    "pareto_optimal_among_real": false
   },
   {
     "name": "openrouter:openai_gpt-5-nano",
@@ -214,7 +220,8 @@
       15363.04
     ],
     "cost_usd": 0.1505,
-    "pareto_optimal": false
+    "pareto_optimal": false,
+    "pareto_optimal_among_real": false
   },
   {
     "name": "openrouter:meta-llama_llama-4-scout",
@@ -245,7 +252,8 @@
       14494.47
     ],
     "cost_usd": 0.0268,
-    "pareto_optimal": false
+    "pareto_optimal": false,
+    "pareto_optimal_among_real": false
   },
   {
     "name": "openrouter:openai_gpt-5.4-nano",
@@ -276,7 +284,8 @@
       13888.59
     ],
     "cost_usd": 0.0415,
-    "pareto_optimal": false
+    "pareto_optimal": false,
+    "pareto_optimal_among_real": false
   },
   {
     "name": "baseline:random",
@@ -307,7 +316,8 @@
       -10189.54
     ],
     "cost_usd": 0.0,
-    "pareto_optimal": false
+    "pareto_optimal": false,
+    "pareto_optimal_among_real": false
   },
   {
     "name": "baseline:always-take",
@@ -338,6 +348,7 @@
       -23394.98
     ],
     "cost_usd": 0.0,
-    "pareto_optimal": false
+    "pareto_optimal": false,
+    "pareto_optimal_among_real": false
   }
 ]

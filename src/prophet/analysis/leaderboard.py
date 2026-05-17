@@ -78,7 +78,11 @@ def build_leaderboard(runs_dir: Path, out_dir: Path | None = None, ci: float = 0
         for s in table
     ]
     records.sort(key=lambda r: -r["net_payoff"])
-    # Pareto on (ECE, net_payoff)
+    # Pareto on (ECE, net_payoff) — computed *excluding* baselines so the
+    # leaderboard "Pareto" star is among real systems. The oracle is on the
+    # frontier by construction (perfect calibration + max payoff); listing
+    # it crowds out the interesting comparison.
+    real_records = [r for r in records if not r["name"].startswith("baseline:")]
     pts = [
         PointRecord(
             name=r["name"],
@@ -88,11 +92,16 @@ def build_leaderboard(runs_dir: Path, out_dir: Path | None = None, ci: float = 0
             accuracy=r["accuracy"],
             cost_usd=r["cost_usd"],
         )
-        for r in records
+        for r in real_records
     ]
     front = {p.name for p in pareto_front(pts, axes=("ece", "payoff"), maximise={"payoff", "accuracy"})}
     for r in records:
         r["pareto_optimal"] = r["name"] in front
+        # Mark baselines explicitly so the table is honest
+        if r["name"].startswith("baseline:"):
+            r["pareto_optimal_among_real"] = False
+        else:
+            r["pareto_optimal_among_real"] = r["name"] in front
 
     (out_dir / "leaderboard.json").write_text(json.dumps(records, indent=2))
 
