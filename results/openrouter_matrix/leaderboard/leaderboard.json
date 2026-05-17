@@ -124,6 +124,37 @@
     "pareto_optimal": false
   },
   {
+    "name": "openrouter:meta-llama_llama-4-scout",
+    "n": 207,
+    "accuracy": 0.8309,
+    "accuracy_ci": [
+      0.7778,
+      0.8792
+    ],
+    "ece": 0.1471,
+    "ece_ci": [
+      0.1045,
+      0.203
+    ],
+    "brier": 0.1582,
+    "brier_ci": [
+      0.1123,
+      0.2079
+    ],
+    "logloss": 2.7172,
+    "logloss_ci": [
+      1.8227,
+      3.6686
+    ],
+    "net_payoff": 12242.5,
+    "net_payoff_ci": [
+      9783.57,
+      14494.47
+    ],
+    "cost_usd": 0.0268,
+    "pareto_optimal": false
+  },
+  {
     "name": "openrouter:openai_gpt-5.4-nano",
     "n": 229,
     "accuracy": 0.7336,

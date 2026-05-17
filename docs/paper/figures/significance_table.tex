@@ -1,0 +1,46 @@
+\begin{table}[t]\centering\small
+\caption{Pairwise paired-test results, Holm--Bonferroni adjusted across all (pair $\times$ metric) tests. \emph{T} = paired Student's $t$; \emph{W} = Wilcoxon; \emph{M} = McNemar exact; \emph{P} = permutation on ECE. Bold = reject H$_0$ at $\alpha = 0.05$ after adjustment.}
+\label{tab:sig}
+\begin{tabular}{llrrrr}
+\toprule
+Agent A & Agent B & T($p$) & W($p$) & M($p$) & P-ECE($p$) \\
+\midrule
+baseline:random & baseline:always-take & \textbf{0.0000} & \textbf{0.0000} & 1.0000 & \textbf{0.0005} \\
+baseline:random & baseline:always-pass & \textbf{0.0000} & \textbf{0.0000} & 1.0000 & -- \\
+baseline:random & baseline:oracle & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0005} \\
+baseline:random & openrouter:openai-gpt-5.4-nano & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0005} \\
+baseline:random & openrouter:google-gemini-3.1-flash-lite & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0005} \\
+baseline:random & openrouter:google-gemini-3-flash-preview & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0005} \\
+baseline:random & openrouter:anthropic-claude-haiku-4.5 & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0005} \\
+baseline:random & openrouter:meta-llama-llama-4-scout & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0005} \\
+baseline:always-take & baseline:always-pass & \textbf{0.0000} & \textbf{0.0000} & 1.0000 & -- \\
+baseline:always-take & baseline:oracle & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0005} \\
+baseline:always-take & openrouter:openai-gpt-5.4-nano & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0005} \\
+baseline:always-take & openrouter:google-gemini-3.1-flash-lite & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0005} \\
+baseline:always-take & openrouter:google-gemini-3-flash-preview & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0005} \\
+baseline:always-take & openrouter:anthropic-claude-haiku-4.5 & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0005} \\
+baseline:always-take & openrouter:meta-llama-llama-4-scout & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0005} \\
+baseline:always-pass & baseline:oracle & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & -- \\
+baseline:always-pass & openrouter:openai-gpt-5.4-nano & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & -- \\
+baseline:always-pass & openrouter:google-gemini-3.1-flash-lite & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & -- \\
+baseline:always-pass & openrouter:google-gemini-3-flash-preview & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & -- \\
+baseline:always-pass & openrouter:anthropic-claude-haiku-4.5 & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & -- \\
+baseline:always-pass & openrouter:meta-llama-llama-4-scout & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & -- \\
+baseline:oracle & openrouter:openai-gpt-5.4-nano & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0005} \\
+baseline:oracle & openrouter:google-gemini-3.1-flash-lite & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0005} \\
+baseline:oracle & openrouter:google-gemini-3-flash-preview & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & 0.0090 \\
+baseline:oracle & openrouter:anthropic-claude-haiku-4.5 & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0005} \\
+baseline:oracle & openrouter:meta-llama-llama-4-scout & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0005} \\
+openrouter:openai-gpt-5.4-nano & openrouter:google-gemini-3.1-flash-lite & 0.0051 & 0.4486 & \textbf{0.0009} & 0.3193 \\
+openrouter:openai-gpt-5.4-nano & openrouter:google-gemini-3-flash-preview & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0010} \\
+openrouter:openai-gpt-5.4-nano & openrouter:anthropic-claude-haiku-4.5 & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0025} \\
+openrouter:openai-gpt-5.4-nano & openrouter:meta-llama-llama-4-scout & 0.1361 & 0.2029 & 0.6655 & 0.5857 \\
+openrouter:google-gemini-3.1-flash-lite & openrouter:google-gemini-3-flash-preview & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0005} \\
+openrouter:google-gemini-3.1-flash-lite & openrouter:anthropic-claude-haiku-4.5 & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0002} & \textbf{0.0005} \\
+openrouter:google-gemini-3.1-flash-lite & openrouter:meta-llama-llama-4-scout & 0.2461 & 0.2876 & \textbf{0.0012} & 0.0240 \\
+openrouter:google-gemini-3-flash-preview & openrouter:anthropic-claude-haiku-4.5 & 0.1955 & 0.8741 & 0.0352 & 0.3723 \\
+openrouter:google-gemini-3-flash-preview & openrouter:meta-llama-llama-4-scout & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0005} \\
+openrouter:anthropic-claude-haiku-4.5 & openrouter:meta-llama-llama-4-scout & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0000} & \textbf{0.0005} \\
+\bottomrule
+\end{tabular}
+\end{table}

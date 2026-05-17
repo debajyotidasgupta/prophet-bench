@@ -1,0 +1,998 @@
+{
+  "headline": [
+    {
+      "name": "baseline:random",
+      "n": 153,
+      "accuracy": 0.0,
+      "accuracy_ci": [
+        0.0,
+        0.0
+      ],
+      "ece": 0.5321206944381561,
+      "ece_ci": [
+        0.4852079437144103,
+        0.5785317618852815
+      ],
+      "brier": 0.3673142202194055,
+      "brier_ci": [
+        0.3170194224773813,
+        0.4172548063931309
+      ],
+      "logloss": 1.139847891306841,
+      "logloss_ci": [
+        0.9562353610809878,
+        1.3295989812927598
+      ],
+      "net_payoff": -11604.210704419544,
+      "net_payoff_ci": [
+        -13117.601034967982,
+        -10189.538252476377
+      ]
+    },
+    {
+      "name": "baseline:always-take",
+      "n": 240,
+      "accuracy": 0.0,
+      "accuracy_ci": [
+        0.0,
+        0.0
+      ],
+      "ece": 0.9900000000000001,
+      "ece_ci": [
+        0.9900000000000001,
+        0.9900000000000001
+      ],
+      "brier": 0.9801000000000001,
+      "brier_ci": [
+        0.9801000000000001,
+        0.9801000000000001
+      ],
+      "logloss": 4.605170185988091,
+      "logloss_ci": [
+        4.605170185988091,
+        4.605170185988091
+      ],
+      "net_payoff": -24369.771055683163,
+      "net_payoff_ci": [
+        -25428.850778611148,
+        -23394.983286920804
+      ]
+    },
+    {
+      "name": "baseline:oracle",
+      "n": 240,
+      "accuracy": 1.0,
+      "accuracy_ci": [
+        1.0,
+        1.0
+      ],
+      "ece": 0.0,
+      "ece_ci": [
+        0.0,
+        0.0
+      ],
+      "brier": 0.0,
+      "brier_ci": [
+        0.0,
+        0.0
+      ],
+      "logloss": 9.99999972218069e-10,
+      "logloss_ci": [
+        9.99999972218069e-10,
+        9.99999972218069e-10
+      ],
+      "net_payoff": 38684.70099800115,
+      "net_payoff_ci": [
+        38031.88183898022,
+        39342.799465830445
+      ]
+    },
+    {
+      "name": "openrouter:openai_gpt-5.4-nano",
+      "n": 229,
+      "accuracy": 0.7336244541484717,
+      "accuracy_ci": [
+        0.6768558951965066,
+        0.7860262008733624
+      ],
+      "ece": 0.13248908296943235,
+      "ece_ci": [
+        0.09724781659388662,
+        0.1933242358078601
+      ],
+      "brier": 0.19116244541484714,
+      "brier_ci": [
+        0.15311444323144108,
+        0.23301898471615715
+      ],
+      "logloss": 0.6558564915418118,
+      "logloss_ci": [
+        0.5159781716295109,
+        0.8115775983945164
+      ],
+      "net_payoff": 11366.163017899791,
+      "net_payoff_ci": [
+        8737.960041321985,
+        13888.587305651665
+      ]
+    },
+    {
+      "name": "openrouter:google_gemini-3.1-flash-lite",
+      "n": 230,
+      "accuracy": 0.8347826086956521,
+      "accuracy_ci": [
+        0.7869565217391304,
+        0.8826086956521739
+      ],
+      "ece": 0.16521739130434784,
+      "ece_ci": [
+        0.11739130434782608,
+        0.21304347826086956
+      ],
+      "brier": 0.16521739130434782,
+      "brier_ci": [
+        0.11739130434782609,
+        0.21304347826086956
+      ],
+      "logloss": 3.4238439263942473,
+      "logloss_ci": [
+        2.4327312111485435,
+        4.41495664163995
+      ],
+      "net_payoff": 15310.650323883545,
+      "net_payoff_ci": [
+        12909.990908583546,
+        17588.540744566988
+      ]
+    },
+    {
+      "name": "openrouter:google_gemini-3-flash-preview",
+      "n": 231,
+      "accuracy": 0.9696969696969697,
+      "accuracy_ci": [
+        0.9437229437229437,
+        0.9913419913419913
+      ],
+      "ece": 0.027099567099567037,
+      "ece_ci": [
+        0.007965367965368064,
+        0.051041125541125575
+      ],
+      "brier": 0.0271012987012987,
+      "brier_ci": [
+        0.00871728354978355,
+        0.050942727272727265
+      ],
+      "logloss": 0.5423295112939142,
+      "logloss_ci": [
+        0.18074891273718866,
+        0.9974742688617322
+      ],
+      "net_payoff": 22907.65934281043,
+      "net_payoff_ci": [
+        21527.682763185287,
+        24106.895652438376
+      ]
+    },
+    {
+      "name": "openrouter:anthropic_claude-haiku-4.5",
+      "n": 230,
+      "accuracy": 0.9347826086956522,
+      "accuracy_ci": [
+        0.9,
+        0.9652173913043478
+      ],
+      "ece": 0.04351565217391291,
+      "ece_ci": [
+        0.01798358695652162,
+        0.0796066413043478
+      ],
+      "brier": 0.06051522191304348,
+      "brier_ci": [
+        0.034165287127173906,
+        0.09242410643695649
+      ],
+      "logloss": 0.2670883512882715,
+      "logloss_ci": [
+        0.15430829911586838,
+        0.40086508108240393
+      ],
+      "net_payoff": 21739.156996839843,
+      "net_payoff_ci": [
+        19913.898352878066,
+        23421.82167202002
+      ]
+    },
+    {
+      "name": "openrouter:meta-llama_llama-4-scout",
+      "n": 207,
+      "accuracy": 0.8309178743961353,
+      "accuracy_ci": [
+        0.7777777777777778,
+        0.8792270531400966
+      ],
+      "ece": 0.14714975845410622,
+      "ece_ci": [
+        0.1045410628019324,
+        0.2030446859903382
+      ],
+      "brier": 0.15822028985507247,
+      "brier_ci": [
+        0.11230108695652173,
+        0.20789435990338168
+      ],
+      "logloss": 2.717209176798261,
+      "logloss_ci": [
+        1.8227095343833075,
+        3.668643834412243
+      ],
+      "net_payoff": 12242.502093296083,
+      "net_payoff_ci": [
+        9783.572322861128,
+        14494.473246676554
+      ]
+    }
+  ],
+  "pairwise_significance": [
+    {
+      "a": "baseline:random",
+      "b": "baseline:always-take",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 5.553676546273669e-08,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 7.078761831400844e-08,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.0,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:random",
+      "b": "baseline:always-pass",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 2.901347116133746e-36,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 7.393547603776531e-27,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.0,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:random",
+      "b": "baseline:oracle",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.0712343720992143e-119,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 4.015256434384508e-41,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.131959884853339e-72,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:random",
+      "b": "openrouter:openai_gpt-5.4-nano",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 8.895374179556821e-42,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.5488770980372672e-31,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 5.345529420184391e-51,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:random",
+      "b": "openrouter:google_gemini-3.1-flash-lite",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 9.294016219183602e-58,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.3044264964328976e-35,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 3.1861838222649046e-58,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:random",
+      "b": "openrouter:google_gemini-3-flash-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 2.9156804815533107e-87,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 6.65269960981337e-40,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 7.418412301374843e-68,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:random",
+      "b": "openrouter:anthropic_claude-haiku-4.5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 6.191901439095748e-74,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 5.457862227601165e-39,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 3.7982270983039195e-65,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:random",
+      "b": "openrouter:meta-llama_llama-4-scout",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 6.496970455230562e-48,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 8.484505786073202e-32,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 3.3409558876152446e-52,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:always-take",
+      "b": "baseline:always-pass",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 7.801518648718414e-120,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 4.015256434384508e-41,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.0,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:always-take",
+      "b": "baseline:oracle",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.765042996286779e-185,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 4.015256434384508e-41,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.131959884853339e-72,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:always-take",
+      "b": "openrouter:openai_gpt-5.4-nano",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 7.689990846378001e-67,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.0046323436084786e-31,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 5.345529420184391e-51,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:always-take",
+      "b": "openrouter:google_gemini-3.1-flash-lite",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 8.235688112103312e-90,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 6.750689351025768e-35,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 3.1861838222649046e-58,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:always-take",
+      "b": "openrouter:google_gemini-3-flash-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 2.7350630062536827e-150,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 5.624517872675472e-40,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 7.418412301374843e-68,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:always-take",
+      "b": "openrouter:anthropic_claude-haiku-4.5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.2528498828230895e-123,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 5.550870484885667e-39,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 3.7982270983039195e-65,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:always-take",
+      "b": "openrouter:meta-llama_llama-4-scout",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 2.5424037772439172e-76,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 7.923673208443469e-35,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 3.3409558876152446e-52,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:always-pass",
+      "b": "baseline:oracle",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.6978929240895175e-209,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 4.015256434384508e-41,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.131959884853339e-72,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:always-pass",
+      "b": "openrouter:openai_gpt-5.4-nano",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 2.6508554581724026e-17,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.1414937719773557e-18,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 5.345529420184391e-51,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:always-pass",
+      "b": "openrouter:google_gemini-3.1-flash-lite",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.3933614823034453e-32,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 7.757762928898254e-24,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 3.1861838222649046e-58,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:always-pass",
+      "b": "openrouter:google_gemini-3-flash-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 5.913450845638669e-98,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 9.873807102329297e-38,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 7.418412301374843e-68,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:always-pass",
+      "b": "openrouter:anthropic_claude-haiku-4.5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 3.982779405745401e-67,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 3.002367102942886e-34,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 3.7982270983039195e-65,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:always-pass",
+      "b": "openrouter:meta-llama_llama-4-scout",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 3.68464150498796e-22,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 2.3626008125432064e-18,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 3.3409558876152446e-52,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:oracle",
+      "b": "openrouter:openai_gpt-5.4-nano",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 6.10652903557026e-48,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 4.015256434384508e-41,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 4.235164736271502e-22,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:oracle",
+      "b": "openrouter:google_gemini-3.1-flash-lite",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.5903187703175085e-41,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 4.015256434384508e-41,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 7.105427357601002e-15,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:oracle",
+      "b": "openrouter:google_gemini-3-flash-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.0844075754636157e-63,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 8.535506186169917e-41,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 3.0517578125e-05,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.008995502248875561,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:oracle",
+      "b": "openrouter:anthropic_claude-haiku-4.5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 4.661314045256581e-41,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 4.015256434384508e-41,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 5.960464477539063e-08,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:oracle",
+      "b": "openrouter:meta-llama_llama-4-scout",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 8.108071443421961e-41,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.7435944564960662e-39,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 6.776263578034403e-21,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5.4-nano",
+      "b": "openrouter:google_gemini-3.1-flash-lite",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.005082213670391312,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.44858127474384846,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.000936222910851825,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.3193403298350825,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5.4-nano",
+      "b": "openrouter:google_gemini-3-flash-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 2.1431308551213422e-14,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.127630063677965e-10,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 3.1762786845135338e-15,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0009995002498750624,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5.4-nano",
+      "b": "openrouter:anthropic_claude-haiku-4.5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.6796558535960065e-12,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 7.491372870302484e-11,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 5.519584789226428e-12,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0024987506246876563,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5.4-nano",
+      "b": "openrouter:meta-llama_llama-4-scout",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.13614065644112294,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.2029393377596832,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.6654658120766188,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.5857071464267866,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3.1-flash-lite",
+      "b": "openrouter:google_gemini-3-flash-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.0911218260141539e-08,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 4.019330690624559e-08,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.8570244719740003e-07,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3.1-flash-lite",
+      "b": "openrouter:anthropic_claude-haiku-4.5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.8646853443285475e-06,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 2.9963618614770247e-07,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.00019107642583549023,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3.1-flash-lite",
+      "b": "openrouter:meta-llama_llama-4-scout",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.2461234149493133,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.2876048426757929,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.0011932429624721408,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0239880059970015,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3-flash-preview",
+      "b": "openrouter:anthropic_claude-haiku-4.5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.19547226210461033,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.8741274947577417,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.03515625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.37231384307846077,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3-flash-preview",
+      "b": "openrouter:meta-llama_llama-4-scout",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 8.227038447607879e-10,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.5047728774594272e-09,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 9.084503982403902e-13,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "openrouter:anthropic_claude-haiku-4.5",
+      "b": "openrouter:meta-llama_llama-4-scout",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 2.095293475878987e-08,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 3.123269463004112e-08,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 7.077378683106872e-10,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": true
+        }
+      }
+    }
+  ]
+}
