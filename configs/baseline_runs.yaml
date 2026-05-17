@@ -1,0 +1,66 @@
+# PROPHET baseline-run configurations
+# Each block defines a `prophet run` invocation. The `agents` array is the
+# headline set we report in the paper.
+common:
+  seed: 42
+  n_per_family: 100
+  families: all
+  market_seed: 42
+  out_dir: results/full_eval/runs
+
+baselines:
+  - uri: baseline:random
+    description: stochastic confidence floor
+    expected_payoff_per_task: <0
+  - uri: baseline:always-take
+    description: confidence inflation upper bound
+    expected_payoff_per_task: <0
+  - uri: baseline:always-pass
+    description: extreme risk aversion lower bound; pays only δ_pass
+    expected_payoff_per_task: ~-δ_pass
+  - uri: baseline:oracle
+    description: perfect-calibration ceiling (sees task.reference_answer)
+    expected_payoff_per_task: V + κ
+  - uri: baseline:oracle-noisy
+    description: realistic upper bound (70% correctness rate)
+    expected_payoff_per_task: V*0.7 - C*0.3 + κ*(1-4*0.09)
+
+closed_apis:
+  - uri: openai:gpt-5-mini
+    concurrency: 8
+    cost_cap: 3
+  - uri: openai:gpt-5
+    concurrency: 4
+    cost_cap: 8
+  - uri: anthropic:claude-haiku-4-5
+    concurrency: 4
+    cost_cap: 3
+  - uri: anthropic:claude-sonnet-4-6
+    concurrency: 4
+    cost_cap: 8
+  - uri: google:gemini-3-flash
+    concurrency: 4
+    cost_cap: 3
+  - uri: google:gemini-3.1-pro
+    concurrency: 4
+    cost_cap: 8
+
+open_apis:
+  - uri: together:Qwen/Qwen3-7B-Instruct
+    concurrency: 8
+    cost_cap: 2
+  - uri: together:Qwen/Qwen3-32B-Instruct
+    concurrency: 4
+    cost_cap: 4
+  - uri: together:meta-llama/Llama-4-70B-Instruct
+    concurrency: 4
+    cost_cap: 6
+
+# Heavy / local — run via scripts/runpod_launch.py one-by-one
+gpu_pool:
+  - uri: vllm-local:Qwen/Qwen3-32B-Instruct
+    runpod_gpu: A6000
+    max_minutes: 60
+  - uri: vllm-local:meta-llama/Llama-4-70B-Instruct
+    runpod_gpu: A100-80
+    max_minutes: 90

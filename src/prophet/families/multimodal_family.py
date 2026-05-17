@@ -22,8 +22,8 @@ The reference answer is always a single token (letter / int / yes-no /
 from __future__ import annotations
 
 import re
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Any, Callable
 
 import numpy as np
 
@@ -391,7 +391,7 @@ class MultimodalFamily:
             )
         return tasks
 
-    def reference_score(self, task, response):  # noqa: ANN001
+    def reference_score(self, task, response):
         return None
 
 

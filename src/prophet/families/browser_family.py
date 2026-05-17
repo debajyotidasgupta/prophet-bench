@@ -32,14 +32,14 @@ from __future__ import annotations
 import ast
 import json
 import re
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Any, Callable
+from typing import Any
 
 import numpy as np
 
 from prophet.engine.types import Task
 from prophet.utils.seed import child_rng, child_seed
-
 
 # ---------------------------------------------------------------------------
 # Website model: a `Site` is a dict from URL → page-dict.
@@ -236,7 +236,7 @@ def _gen_t1(rng: np.random.Generator) -> dict[str, Any]:
         },
         "/product": {"title": name, "body": f"Name: {name}. Price: {price}."},
     }
-    desc = f"Visit the product page and return its price as an integer."
+    desc = "Visit the product page and return its price as an integer."
     gold = [
         {"action": "visit", "url": "/product"},
         {"action": "answer", "value": price},
@@ -530,7 +530,7 @@ class BrowserFamily:
             )
         return tasks
 
-    def reference_score(self, task, response):  # noqa: ANN001
+    def reference_score(self, task, response):
         return None
 
 

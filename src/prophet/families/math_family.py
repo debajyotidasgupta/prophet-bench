@@ -174,25 +174,39 @@ def _gen_t8_linear_system3(rng: np.random.Generator) -> tuple[str, str]:
     """System of 3 linear equations in (x, y, z) with integer solutions.
 
     Construct ground truth (x, y, z) first, then pick three integer coefficient
-    rows; compute the RHS so the system is consistent by construction. The agent
-    is asked to return ``x`` only — a single integer.
+    rows; compute the RHS so the system is consistent by construction. We
+    additionally require the coefficient matrix to be full-rank (det != 0) so
+    the solution is unique. The agent is asked to return ``x`` only — a single
+    integer.
     """
     x = int(rng.integers(-9, 10))
     y = int(rng.integers(-9, 10))
     z = int(rng.integers(-9, 10))
-    coeffs = []
-    rhs = []
-    while len(coeffs) < 3:
-        a = int(rng.integers(-5, 6))
-        b = int(rng.integers(-5, 6))
-        c = int(rng.integers(-5, 6))
-        if a == 0 and b == 0 and c == 0:
-            continue
-        # Avoid duplicate rows for readability.
-        if (a, b, c) in coeffs:
-            continue
-        coeffs.append((a, b, c))
-        rhs.append(a * x + b * y + c * z)
+    # Re-sample until we get a non-singular coefficient matrix.
+    for _ in range(200):
+        coeffs: list[tuple[int, int, int]] = []
+        while len(coeffs) < 3:
+            a = int(rng.integers(-5, 6))
+            b = int(rng.integers(-5, 6))
+            c = int(rng.integers(-5, 6))
+            if a == 0 and b == 0 and c == 0:
+                continue
+            if (a, b, c) in coeffs:
+                continue
+            coeffs.append((a, b, c))
+        # Check determinant != 0 (integer 3x3 cofactor expansion).
+        m = coeffs
+        det = (
+            m[0][0] * (m[1][1] * m[2][2] - m[1][2] * m[2][1])
+            - m[0][1] * (m[1][0] * m[2][2] - m[1][2] * m[2][0])
+            + m[0][2] * (m[1][0] * m[2][1] - m[1][1] * m[2][0])
+        )
+        if det != 0:
+            break
+    else:
+        # Fallback: identity matrix (always invertible).
+        coeffs = [(1, 0, 0), (0, 1, 0), (0, 0, 1)]
+    rhs = [a * x + b * y + c * z for a, b, c in coeffs]
     lines = []
     for (a, b, c), r in zip(coeffs, rhs):
         lines.append(f"  {a}x + ({b})y + ({c})z = {r}")

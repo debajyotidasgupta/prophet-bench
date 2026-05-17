@@ -22,14 +22,14 @@ from __future__ import annotations
 import io
 import re
 import statistics
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Any, Callable
+from typing import Any
 
 import numpy as np
 
 from prophet.engine.types import Task
 from prophet.utils.seed import child_rng, child_seed
-
 
 # ---------------------------------------------------------------------------
 # Verifier factories
@@ -385,7 +385,7 @@ class DataFamily:
             )
         return tasks
 
-    def reference_score(self, task, response):  # noqa: ANN001
+    def reference_score(self, task, response):
         return None
 
 

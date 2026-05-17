@@ -97,10 +97,16 @@ def pareto_scatter(
         return None
     from prophet.analysis.pareto import PointRecord, pareto_front
 
+    # Map external axis names → PointRecord field names.
+    # external "net_payoff" is identical to PointRecord.payoff (we keep
+    # external `net_payoff` for the headline-table interface).
+    field_alias = {"net_payoff": "payoff"}
+    fx = field_alias.get(x, x)
+    fy = field_alias.get(y, y)
     pts = [
         PointRecord(
             name=r["name"],
-            payoff=r["net_payoff"],
+            payoff=r.get("net_payoff", r.get("payoff", 0.0)),
             ece=r["ece"],
             brier=r["brier"],
             accuracy=r["accuracy"],
@@ -108,14 +114,14 @@ def pareto_scatter(
         )
         for r in records
     ]
-    front = pareto_front(pts, axes=(x, y), maximise={"net_payoff", "accuracy", "payoff"})
+    front = pareto_front(pts, axes=(fx, fy), maximise={"payoff", "accuracy"})
     front_names = {r.name for r in front}
     fig, ax = plt.subplots(figsize=(6, 5))
     for p in pts:
         on_front = p.name in front_names
         ax.scatter(
-            getattr(p, x),
-            getattr(p, y),
+            getattr(p, fx),
+            getattr(p, fy),
             s=70 if on_front else 40,
             c=("#d65a31" if on_front else "#6c757d"),
             edgecolor="black" if on_front else "none",
@@ -123,10 +129,10 @@ def pareto_scatter(
             label=None,
         )
         if annotate:
-            ax.annotate(p.name, (getattr(p, x), getattr(p, y)), fontsize=7, xytext=(4, 4), textcoords="offset points")
+            ax.annotate(p.name, (getattr(p, fx), getattr(p, fy)), fontsize=7, xytext=(4, 4), textcoords="offset points")
     if front:
-        front_sorted = sorted(front, key=lambda r: getattr(r, x))
-        ax.plot([getattr(r, x) for r in front_sorted], [getattr(r, y) for r in front_sorted], "--", color="#d65a31", alpha=0.7)
+        front_sorted = sorted(front, key=lambda r: getattr(r, fx))
+        ax.plot([getattr(r, fx) for r in front_sorted], [getattr(r, fy) for r in front_sorted], "--", color="#d65a31", alpha=0.7)
     ax.set_xlabel(x)
     ax.set_ylabel(y)
     ax.set_title(title)

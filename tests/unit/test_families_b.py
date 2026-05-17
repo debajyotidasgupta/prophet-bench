@@ -11,12 +11,9 @@ These are *mechanical* tests — no LLM calls, no network access.
 
 from __future__ import annotations
 
-import json
-
 import pytest
 
 from prophet.families import get_family
-
 
 FAMILY_NAMES = ["tools", "browser", "multimodal", "data"]
 

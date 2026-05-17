@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import json
 import logging
+from dataclasses import asdict
 from pathlib import Path
 from typing import Any
 
@@ -78,7 +79,7 @@ def write_full_report(runs_dir: Path, out_dir: Path | None = None, seed: int = 0
     table = headline_table(runs, ci=0.95, seed=seed)
     sig = pairwise_significance(runs, seed=seed)
     summary = {
-        "headline": [vars(s) for s in table],
+        "headline": [asdict(s) for s in table],
         "pairwise_significance": [
             {"a": a, "b": b, "tests": tests}
             for (a, b), tests in sig.items()
