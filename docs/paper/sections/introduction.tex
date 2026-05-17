@@ -1,0 +1,74 @@
+\section{Introduction}\label{sec:intro}
+
+In May 2026, frontier language-model agents have saturated nearly every
+static benchmark we built for them.  MMLU-Pro and GPQA-Diamond cluster
+above 94\,\%; SWE-bench Verified is at 93.9\,\% (Claude
+Mythos)~\cite{swebench}; Humanity's Last Exam rose from 8\,\% to 65\,\%
+in sixteen months~\cite{hle}; ARC-AGI-2 went from 53\,\% to 85\,\% in
+four~\cite{arcagi2}.  The capabilities that did \emph{not} saturate are
+all about calibrated, persistent agency: ARC-AGI-3 sits at $<1\,\%$
+~\cite{arcagi3}; SWE-EVO at $\approx 25\,\%$; MemoryAgentBench's
+selective-forgetting axis at $<30\,\%$~\cite{memoryagentbench}.
+
+Production deployment has its own scoreboard. A widely-cited industry
+analysis (May 2026) found a 37\,\% gap between lab benchmark scores and
+production performance and a $50\times$ cost variation among systems
+with comparable headline accuracy. The dominant production failure
+mode is not low accuracy but \emph{ambition mismatch} ---
+systems that commit to tasks they should have declined, that report
+high confidence under conditions in which their reliability is
+demonstrably lower, that ``can't tell you what they don't
+know.''\footnote{Cognition's December 2025 Devin Annual Performance
+Review.} Anthropic's faithfulness work \cite{anthropic_faithfulness}
+identified the mechanism: unfaithful chains-of-thought are
+systematically \emph{longer} than faithful ones; models verbalise
+hints that demonstrably change their answer in only 25--39\,\% of
+cases. Verbose confidence is decoupled from competence.
+
+The missing measurement, then, is not another accuracy benchmark.
+It is an evaluation that pays the agent only when its calibration
+matches its skill --- where over-confidence costs the same currency as
+incompetence, where abstention is a first-class action, and where the
+leaderboard is a Pareto frontier rather than a scalar.
+
+\paragraph{Contributions}
+We introduce \textsc{PROPHET}, a calibration benchmark for LLM-based
+agents. Concretely:
+\begin{enumerate}
+  \item A \textbf{marketplace evaluation protocol} with three actions
+  per task (\textsc{Take}, \textsc{Quote}, \textsc{Pass}) and a Brier-
+  based proper scoring rule. Properness implies expected payoff is
+  maximised iff the agent reports its true probability of success
+  (Section~\ref{sec:market}).
+  \item Twelve \textbf{procedurally generated task families} spanning
+  code, math, knowledge, reasoning, writing, browser, tools,
+  multimodal, data, scientific, multilingual, and safety. All
+  verifiers are mechanical (Section~\ref{sec:families}).
+  \item A \textbf{Pareto-frontier leaderboard} on
+  $(\mathrm{net\_payoff}, \ECE)$ with secondary frontiers on
+  $(\mathrm{cost}, \mathrm{accuracy})$ and $(\Brier, \mathrm{abstention
+  precision})$. We never publish a single scalar
+  (Section~\ref{sec:method}).
+  \item A \textbf{Model Overreach Point} ($\MOP$) metric: the
+  difficulty bin where stated $\Phat$ exceeds empirical accuracy by
+  $\ge 2\sigma$. We show MOP localises around difficulty $\approx 0.7$
+  for nearly every frontier system we tested (Section~\ref{sec:results}).
+  \item A \textbf{gaming-resistance audit} adopting the Berkeley RDI
+  April~2026 attack family. We document each attempted exploit and the
+  mechanism that blocks it (Section~\ref{sec:gaming},
+  Appendix~\ref{app:audit}).
+  \item Open-source release of \textbf{code} (MIT), \textbf{procgen
+  seeds + reference panel} (Croissant-tagged Hugging Face dataset), and
+  \textbf{this paper's full experimental matrix} including all
+  per-task outcomes (Appendix~\ref{app:reproduce}).
+\end{enumerate}
+
+\paragraph{Empirical finding}
+Across \TODO{$N$ frontier and open-weight models}, the rank-order by
+\emph{accuracy} differs materially from the rank-order by
+\emph{calibration} and again from the rank-order by \emph{expected net
+payoff}. \TODO{The best-marketed closed model is not on the Pareto
+frontier of $(\ECE, \mathrm{net\_payoff})$; specific scores will fill
+once the experimental matrix lands.} The first-place leader changes
+under each axis.  This is the empirical claim PROPHET is designed to
+make visible.

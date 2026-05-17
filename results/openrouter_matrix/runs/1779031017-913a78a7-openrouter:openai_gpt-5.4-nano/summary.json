@@ -1,0 +1,14 @@
+{
+  "run_id": "1779031017-913a78a7-openrouter:openai_gpt-5.4-nano",
+  "agent": "openrouter:openai/gpt-5.4-nano",
+  "cycle_seed": 42,
+  "market_seed": 42,
+  "wall_time_s": 0.300246000289917,
+  "total_cost_usd": 0.04147775000000006,
+  "n_tasks": 240,
+  "n_take": 188,
+  "n_quote": 41,
+  "n_pass": 11,
+  "net_payoff": 11912.13591395611,
+  "notes": ""
+}
