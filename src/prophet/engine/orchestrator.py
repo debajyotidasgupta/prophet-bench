@@ -137,8 +137,12 @@ class Orchestrator:
             # Grade
             success: bool | None
             judge_score: float | None = None
-            if resp.mode == DecisionMode.PASS or resp.answer is None:
+            if resp.mode == DecisionMode.PASS:
                 success = None
+            elif resp.answer is None:
+                # The agent committed (TAKE/QUOTE) but produced no answer.
+                # That is a failed attempt under the protocol — pay the fine.
+                success = False
             else:
                 try:
                     success = bool(task.verifier(resp.answer))

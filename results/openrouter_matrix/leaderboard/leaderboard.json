@@ -31,6 +31,37 @@
     "pareto_optimal": true
   },
   {
+    "name": "openrouter:openai_gpt-5.4-nano",
+    "n": 229,
+    "accuracy": 0.7336,
+    "accuracy_ci": [
+      0.6769,
+      0.786
+    ],
+    "ece": 0.1325,
+    "ece_ci": [
+      0.0972,
+      0.1933
+    ],
+    "brier": 0.1912,
+    "brier_ci": [
+      0.1531,
+      0.233
+    ],
+    "logloss": 0.6559,
+    "logloss_ci": [
+      0.516,
+      0.8116
+    ],
+    "net_payoff": 11366.16,
+    "net_payoff_ci": [
+      8737.96,
+      13888.59
+    ],
+    "cost_usd": 0.0415,
+    "pareto_optimal": false
+  },
+  {
     "name": "baseline:random",
     "n": 153,
     "accuracy": 0.0,
