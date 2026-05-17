@@ -6,9 +6,12 @@
 \# & Agent & Acc. & ECE & Brier & Log-loss & Net payoff & Cost \$ \\
 \midrule
 1 & baseline:oracle$\star$ & 1.000 & 0.000 & 0.000 & 0.000 & 38685 & 0.000 \\
-2 & openrouter:openai-gpt-5.4-nano & 0.734 & 0.133 & 0.191 & 0.656 & 11366 & 0.042 \\
-3 & baseline:random & 0.000 & 0.532 & 0.367 & 1.140 & -11604 & 0.000 \\
-4 & baseline:always-take & 0.000 & 0.990 & 0.980 & 4.605 & -24370 & 0.000 \\
+2 & openrouter:google-gemini-3-flash-preview & 0.970 & 0.027 & 0.027 & 0.542 & 22908 & 0.212 \\
+3 & openrouter:anthropic-claude-haiku-4.5 & 0.935 & 0.043 & 0.060 & 0.267 & 21739 & 0.537 \\
+4 & openrouter:google-gemini-3.1-flash-lite & 0.835 & 0.165 & 0.165 & 3.424 & 15311 & 0.088 \\
+5 & openrouter:openai-gpt-5.4-nano & 0.734 & 0.133 & 0.191 & 0.656 & 11366 & 0.042 \\
+6 & baseline:random & 0.000 & 0.532 & 0.367 & 1.140 & -11604 & 0.000 \\
+7 & baseline:always-take & 0.000 & 0.990 & 0.980 & 4.605 & -24370 & 0.000 \\
 \bottomrule
 \end{tabular}
 \end{table}

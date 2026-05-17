@@ -1,0 +1,14 @@
+{
+  "run_id": "1779031182-5359e04e-openrouter:google_gemini-3.1-flash-lite",
+  "agent": "openrouter:google/gemini-3.1-flash-lite",
+  "cycle_seed": 42,
+  "market_seed": 42,
+  "wall_time_s": 0.3663187026977539,
+  "total_cost_usd": 0.08811175000000002,
+  "n_tasks": 240,
+  "n_take": 230,
+  "n_quote": 0,
+  "n_pass": 10,
+  "net_payoff": 15976.330772748059,
+  "notes": ""
+}
