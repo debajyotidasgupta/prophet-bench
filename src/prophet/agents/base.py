@@ -78,18 +78,101 @@ _DECISION_RE = re.compile(
     r"<decision>\s*(.*?)\s*</decision>", re.DOTALL | re.IGNORECASE
 )
 _MODE_RE = re.compile(r"mode\s*:\s*(TAKE|QUOTE|PASS)", re.IGNORECASE)
-_CONF_RE = re.compile(r"confidence\s*:\s*([0-9]*\.?[0-9]+)")
+_CONF_RE = re.compile(r"confidence\s*[:=]\s*([0-9]*\.?[0-9]+)", re.IGNORECASE)
 _ANS_RE = re.compile(r"answer\s*:\s*(.*?)(?=\Z|\n[a-zA-Z]+\s*:)", re.DOTALL | re.IGNORECASE)
+# Fallbacks for models that don't emit <decision> tags.
+_ANS_LINE_RE = re.compile(r"(?:^|\n)\s*answer\s*[:=]\s*([^\n]+)", re.IGNORECASE)
+_FINAL_ANSWER_RE = re.compile(r"(?:^|\n)\s*(?:final\s+answer|answer)\s*[:=]\s*([^\n]+)", re.IGNORECASE)
+_BOXED_RE = re.compile(r"\\boxed\{([^}]+)\}")
+_THINK_RE = re.compile(r"<think>.*?</think>", re.DOTALL | re.IGNORECASE)
 
 
 def parse_response(task: Task, raw: str) -> AgentResponse:
     """Parse the raw model output into an AgentResponse.
 
-    On parse failure → PASS with confidence 0.5 (logged).
+    Robust to several common deviations from the structured-output protocol:
+      * decision block missing entirely (use trailing "Answer: ..." line)
+      * <think>…</think> blocks present (stripped before extraction)
+      * confidence/mode reported on separate lines outside <decision>
+      * answer wrapped in \\boxed{…}
+
+    On total parse failure → PASS with confidence 0.5 (logged).
     """
-    m = _DECISION_RE.search(raw)
-    if not m:
-        log.warning("No <decision> block on task %s — defaulting to PASS", task.task_id)
+    cleaned = _THINK_RE.sub("", raw)
+    m = _DECISION_RE.search(cleaned)
+    if m:
+        body = m.group(1)
+        mode_m = _MODE_RE.search(body)
+        conf_m = _CONF_RE.search(body)
+        ans_m = _ANS_RE.search(body)
+        mode_str = mode_m.group(1).upper() if mode_m else "PASS"
+        try:
+            mode = DecisionMode[mode_str]
+        except KeyError:
+            mode = DecisionMode.PASS
+        try:
+            confidence = float(conf_m.group(1)) if conf_m else 0.5
+        except (TypeError, ValueError):
+            confidence = 0.5
+        confidence = max(0.0, min(1.0, confidence))
+        answer = None
+        if mode != DecisionMode.PASS and ans_m:
+            answer = ans_m.group(1).strip() or None
+        reasoning = cleaned[: m.start()].strip()[-4000:]
+        return AgentResponse(
+            task_id=task.task_id,
+            mode=mode,
+            confidence=confidence,
+            answer=answer,
+            reasoning=reasoning,
+        )
+
+    # ---- Fallback: no <decision> block. Try to salvage. ----
+    mode_m = _MODE_RE.search(cleaned)
+    conf_m = _CONF_RE.search(cleaned)
+    ans_m = _FINAL_ANSWER_RE.search(cleaned) or _ANS_LINE_RE.search(cleaned)
+    boxed_m = _BOXED_RE.search(cleaned)
+    have_signal = bool(mode_m or conf_m or ans_m or boxed_m)
+    REFUSAL_PHRASES = (
+        "i don't know",
+        "i do not know",
+        "i cannot",
+        "i can't",
+        "i won't",
+        "i refuse",
+        "i'm unable",
+        "i am unable",
+        "no answer",
+        "i'm not sure",
+        "not sure",
+        "unsure",
+        "n/a",
+        "unable to answer",
+    )
+    if not have_signal:
+        # last-ditch: take the last non-empty line as the answer (heuristic)
+        last_lines = [ln.strip() for ln in cleaned.splitlines() if ln.strip()]
+        if last_lines:
+            answer = last_lines[-1][:500]
+            answer_lower = answer.lower()
+            if any(p in answer_lower for p in REFUSAL_PHRASES):
+                return AgentResponse(
+                    task_id=task.task_id,
+                    mode=DecisionMode.PASS,
+                    confidence=0.5,
+                    answer=None,
+                    reasoning=cleaned[-4000:],
+                    metadata={"parse_error": "no_decision_block"},
+                )
+            return AgentResponse(
+                task_id=task.task_id,
+                mode=DecisionMode.QUOTE,
+                confidence=0.5,
+                answer=answer,
+                reasoning=cleaned[-4000:],
+                metadata={"parse_error": "no_decision_block_used_last_line"},
+            )
+        log.warning("No usable signal on task %s — defaulting to PASS", task.task_id)
         return AgentResponse(
             task_id=task.task_id,
             mode=DecisionMode.PASS,
@@ -98,47 +181,45 @@ def parse_response(task: Task, raw: str) -> AgentResponse:
             reasoning=raw[:4000],
             metadata={"parse_error": "no_decision_block"},
         )
-    body = m.group(1)
-    mode_m = _MODE_RE.search(body)
-    conf_m = _CONF_RE.search(body)
-    ans_m = _ANS_RE.search(body)
-
-    mode_str = mode_m.group(1).upper() if mode_m else "PASS"
+    # Reconstruct
+    if mode_m:
+        try:
+            mode = DecisionMode[mode_m.group(1).upper()]
+        except KeyError:
+            mode = DecisionMode.QUOTE
+    else:
+        mode = DecisionMode.QUOTE  # default when an answer is detected
     try:
-        mode = DecisionMode[mode_str]
-    except KeyError:
-        mode = DecisionMode.PASS
-
-    try:
-        confidence = float(conf_m.group(1)) if conf_m else 0.5
+        confidence = float(conf_m.group(1)) if conf_m else 0.7
     except (TypeError, ValueError):
-        confidence = 0.5
+        confidence = 0.7
     confidence = max(0.0, min(1.0, confidence))
-
-    answer = None
-    if mode != DecisionMode.PASS and ans_m:
+    if ans_m:
         answer = ans_m.group(1).strip()
-        if not answer:
-            answer = None
-    # Pre-decision reasoning (everything before the decision block)
-    reasoning = raw[: m.start()].strip()[-4000:]
+    elif boxed_m:
+        answer = boxed_m.group(1).strip()
+    else:
+        answer = None
+    if mode == DecisionMode.PASS:
+        answer = None
     return AgentResponse(
         task_id=task.task_id,
         mode=mode,
         confidence=confidence,
         answer=answer,
-        reasoning=reasoning,
+        reasoning=cleaned[-4000:],
+        metadata={"parse_error": "soft_recovery"},
     )
 
 
-@dataclass(slots=True)
+@dataclass
 class AgentBase:
     """Convenience base — implement `_complete(prompt) -> (text, tokens_in, tokens_out, cost)` in subclasses."""
 
     name: str = "agent"
     temperature: float = 0.0
-    max_tokens: int = 1024
-    timeout_s: float = 60.0
+    max_tokens: int = 2048
+    timeout_s: float = 120.0
     family_support: set[str] | None = None
     metadata: dict[str, Any] = field(default_factory=dict)
 

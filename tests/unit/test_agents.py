@@ -63,7 +63,16 @@ def test_parse_response_well_formed():
     assert r.answer == "42"
 
 
-def test_parse_response_missing_block_defaults_to_pass():
+def test_parse_response_no_signal_at_all_defaults_to_pass():
+    # Only when the raw text has no usable signal AND no meaningful last line.
+    task = _task()
+    r = parse_response(task, "   \n\n   \n\n")
+    assert r.mode == DecisionMode.PASS
+    assert r.confidence == 0.5
+    assert r.answer is None
+
+
+def test_parse_response_missing_block_uses_last_line():
     r = parse_response(_task(), "I don't know.")
     assert r.mode == DecisionMode.PASS
     assert r.confidence == 0.5

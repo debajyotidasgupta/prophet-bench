@@ -45,7 +45,7 @@ PROVIDER_ENVKEY: dict[str, str] = {
 }
 
 
-@dataclass(slots=True)
+@dataclass
 class OpenAICompatAgent(AgentBase):
     """Agent over any OpenAI-compatible chat completions endpoint."""
 
@@ -56,10 +56,17 @@ class OpenAICompatAgent(AgentBase):
     extra_body: dict[str, Any] = field(default_factory=dict)
     name: str = ""
     temperature: float = 0.0
-    max_tokens: int = 1024
-    timeout_s: float = 90.0
+    # Reasoning-mode models (GPT-5*, o-series, Claude with thinking, Gemini-Pro,
+    # Qwen-thinking, Kimi-k2-thinking, DeepSeek-R1) need enough budget for the
+    # reasoning trace + the visible answer. 2048 is the empirical floor; we
+    # bump to 4096 for math/code where reasoning chains are long.
+    max_tokens: int = 2048
+    timeout_s: float = 120.0
     family_support: set[str] | None = None
     metadata: dict[str, Any] = field(default_factory=dict)
+    _base_url: str = field(default="", init=False, repr=False)
+    _api_key: str = field(default="", init=False, repr=False)
+    _client: Any = field(default=None, init=False, repr=False)
 
     def __post_init__(self) -> None:
         if not self.name:
@@ -79,22 +86,47 @@ class OpenAICompatAgent(AgentBase):
             raise RuntimeError(
                 "openai package missing; install with `pip install prophet-bench[api]`"
             ) from e
+        # OpenRouter best-practice: send HTTP-Referer + X-Title so the request
+        # appears under our project in OpenRouter's leaderboard and is eligible
+        # for the public-good rate-limit pool.
+        extra_headers: dict[str, str] = {}
+        if self.provider == "openrouter":
+            extra_headers["HTTP-Referer"] = os.environ.get(
+                "PROPHET_OPENROUTER_REFERER",
+                "https://github.com/debajyotidasgupta/prophet-bench",
+            )
+            extra_headers["X-Title"] = os.environ.get(
+                "PROPHET_OPENROUTER_TITLE", "PROPHET-Bench"
+            )
         self._client = OpenAI(
             api_key=self._api_key,
             base_url=self._base_url,
             timeout=self.timeout_s,
             max_retries=2,
+            default_headers=extra_headers or None,
         )
 
     def _complete(self, prompt: str) -> tuple[str, int, int, float]:
+        body = dict(self.extra_body) if self.extra_body else {}
+        # If max_tokens hint not present, send it; some routers respect it strictly.
         resp = self._client.chat.completions.create(
             model=self.model,
             messages=[{"role": "user", "content": prompt}],
             temperature=self.temperature,
             max_tokens=self.max_tokens,
-            extra_body=self.extra_body or None,
+            extra_body=body or None,
         )
-        text = resp.choices[0].message.content or ""
+        msg = resp.choices[0].message
+        text = msg.content or ""
+        # OpenRouter / reasoning models may also expose a `reasoning` field
+        # (or `reasoning_content`) on the message. Append it to the parsed
+        # text so our decision-block extractor can find blocks placed inside
+        # the model's hidden thinking.
+        for attr in ("reasoning_content", "reasoning"):
+            val = getattr(msg, attr, None)
+            if val:
+                text = f"<think>{val}</think>\n{text}"
+                break
         usage = getattr(resp, "usage", None)
         tok_in = int(getattr(usage, "prompt_tokens", 0) or 0) if usage else 0
         tok_out = int(getattr(usage, "completion_tokens", 0) or 0) if usage else 0
