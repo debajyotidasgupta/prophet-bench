@@ -160,6 +160,70 @@
     "pareto_optimal_among_real": false
   },
   {
+    "name": "openrouter:meta-llama_llama-4-maverick",
+    "n": 232,
+    "accuracy": 0.8534,
+    "accuracy_ci": [
+      0.806,
+      0.8966
+    ],
+    "ece": 0.122,
+    "ece_ci": [
+      0.0822,
+      0.1688
+    ],
+    "brier": 0.1292,
+    "brier_ci": [
+      0.0893,
+      0.172
+    ],
+    "logloss": 1.7834,
+    "logloss_ci": [
+      1.1001,
+      2.5392
+    ],
+    "net_payoff": 18611.12,
+    "net_payoff_ci": [
+      15499.78,
+      21521.0
+    ],
+    "cost_usd": 0.078,
+    "pareto_optimal": false,
+    "pareto_optimal_among_real": false
+  },
+  {
+    "name": "openrouter:qwen_qwen3-32b",
+    "n": 217,
+    "accuracy": 0.8433,
+    "accuracy_ci": [
+      0.7926,
+      0.8894
+    ],
+    "ece": 0.1098,
+    "ece_ci": [
+      0.0683,
+      0.159
+    ],
+    "brier": 0.1378,
+    "brier_ci": [
+      0.0983,
+      0.181
+    ],
+    "logloss": 1.0521,
+    "logloss_ci": [
+      0.6083,
+      1.5771
+    ],
+    "net_payoff": 15371.73,
+    "net_payoff_ci": [
+      12853.12,
+      17822.03
+    ],
+    "cost_usd": 0.0911,
+    "pareto_optimal": false,
+    "pareto_optimal_among_real": false
+  },
+  {
     "name": "openrouter:google_gemini-3.1-flash-lite",
     "n": 230,
     "accuracy": 0.8348,

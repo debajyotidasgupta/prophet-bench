@@ -1,0 +1,14 @@
+{
+  "run_id": "1779031844-1a8d443a-openrouter:meta-llama_llama-4-maverick",
+  "agent": "openrouter:meta-llama/llama-4-maverick",
+  "cycle_seed": 42,
+  "market_seed": 42,
+  "wall_time_s": 0.32470703125,
+  "total_cost_usd": 0.07799415000000004,
+  "n_tasks": 240,
+  "n_take": 154,
+  "n_quote": 78,
+  "n_pass": 8,
+  "net_payoff": 19252.88614929685,
+  "notes": ""
+}
