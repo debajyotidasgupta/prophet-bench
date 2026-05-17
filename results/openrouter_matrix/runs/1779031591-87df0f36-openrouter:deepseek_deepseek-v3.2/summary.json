@@ -1,0 +1,14 @@
+{
+  "run_id": "1779031591-87df0f36-openrouter:deepseek_deepseek-v3.2",
+  "agent": "openrouter:deepseek/deepseek-v3.2",
+  "cycle_seed": 42,
+  "market_seed": 42,
+  "wall_time_s": 0.26867008209228516,
+  "total_cost_usd": 0.06058584000000005,
+  "n_tasks": 240,
+  "n_take": 28,
+  "n_quote": 205,
+  "n_pass": 7,
+  "net_payoff": 22565.838724016594,
+  "notes": ""
+}
