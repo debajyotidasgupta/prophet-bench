@@ -1,39 +1,41 @@
 {
   "cross_family_ece_correlation": {
-    "baseline:random": -0.18881118881118883,
+    "baseline:random": -0.2447552447552448,
     "baseline:always-take": NaN,
     "baseline:always-pass": NaN,
     "baseline:oracle": NaN,
-    "openrouter:openai_gpt-5.4-nano": 0.17482517482517487,
+    "openrouter:openai_gpt-5.4-nano": 0.16783216783216784,
     "openrouter:google_gemini-3.1-flash-lite": 0.7197594934766531,
-    "openrouter:google_gemini-3-flash-preview": 0.369808029744139,
-    "openrouter:anthropic_claude-haiku-4.5": 0.5944055944055945,
-    "openrouter:meta-llama_llama-4-scout": 0.6,
-    "openrouter:openai_gpt-5-mini": 0.8391608391608393,
-    "openrouter:deepseek_deepseek-v3.2": 0.4825174825174825,
-    "openrouter:openai_gpt-5-nano": 0.7636363636363637,
-    "openrouter:qwen_qwen3-32b": 0.37762237762237766,
-    "openrouter:meta-llama_llama-4-maverick": 0.8601398601398602,
-    "openrouter:anthropic_claude-opus-4.7": 0.4125874125874127,
-    "openrouter:anthropic_claude-sonnet-4.6": 0.7145369977051133
+    "openrouter:google_gemini-3-flash-preview": 0.3915614432585002,
+    "openrouter:anthropic_claude-haiku-4.5": 0.6503496503496504,
+    "openrouter:meta-llama_llama-4-scout": 0.5515151515151515,
+    "openrouter:openai_gpt-5-mini": 0.8951048951048951,
+    "openrouter:deepseek_deepseek-v3.2": 0.5734265734265735,
+    "openrouter:openai_gpt-5-nano": 0.8454545454545455,
+    "openrouter:qwen_qwen3-32b": 0.34965034965034975,
+    "openrouter:meta-llama_llama-4-maverick": 0.8741258741258742,
+    "openrouter:anthropic_claude-opus-4.7": 0.3916083916083916,
+    "openrouter:anthropic_claude-sonnet-4.6": 0.795097541564023,
+    "openrouter:google_gemini-3.1-pro-preview": 0.6982532518267538
   },
   "cross_family_brier_correlation": {
-    "baseline:random": -0.17482517482517487,
+    "baseline:random": -0.14685314685314685,
     "baseline:always-take": NaN,
     "baseline:always-pass": NaN,
     "baseline:oracle": NaN,
-    "openrouter:openai_gpt-5.4-nano": 0.5734265734265735,
+    "openrouter:openai_gpt-5.4-nano": 0.5454545454545455,
     "openrouter:google_gemini-3.1-flash-lite": 0.7197594934766531,
-    "openrouter:google_gemini-3-flash-preview": 0.3625568919060187,
-    "openrouter:anthropic_claude-haiku-4.5": 0.6573426573426573,
-    "openrouter:meta-llama_llama-4-scout": 0.6484848484848483,
-    "openrouter:openai_gpt-5-mini": 0.8601398601398602,
-    "openrouter:deepseek_deepseek-v3.2": 0.4895104895104896,
-    "openrouter:openai_gpt-5-nano": 0.5090909090909091,
-    "openrouter:qwen_qwen3-32b": 0.8111888111888113,
-    "openrouter:meta-llama_llama-4-maverick": 0.8951048951048951,
-    "openrouter:anthropic_claude-opus-4.7": 0.2517482517482518,
-    "openrouter:anthropic_claude-sonnet-4.6": 0.7062937062937064
+    "openrouter:google_gemini-3-flash-preview": 0.3915614432585002,
+    "openrouter:anthropic_claude-haiku-4.5": 0.6713286713286714,
+    "openrouter:meta-llama_llama-4-scout": 0.6727272727272726,
+    "openrouter:openai_gpt-5-mini": 0.8811188811188813,
+    "openrouter:deepseek_deepseek-v3.2": 0.5244755244755246,
+    "openrouter:openai_gpt-5-nano": 0.5545454545454546,
+    "openrouter:qwen_qwen3-32b": 0.8251748251748254,
+    "openrouter:meta-llama_llama-4-maverick": 0.9090909090909092,
+    "openrouter:anthropic_claude-opus-4.7": 0.2797202797202798,
+    "openrouter:anthropic_claude-sonnet-4.6": 0.7342657342657343,
+    "openrouter:google_gemini-3.1-pro-preview": 0.6375355777548621
   },
   "per_agent_difficulty_curves": {
     "baseline:random": {
@@ -723,6 +725,49 @@
         34
       ],
       "ece_overall": 0.09273913043478262
+    },
+    "openrouter:google_gemini-3.1-pro-preview": {
+      "centers": [
+        0.0625,
+        0.1875,
+        0.3125,
+        0.4375,
+        0.5625,
+        0.6875,
+        0.8125,
+        0.9375
+      ],
+      "accuracy": [
+        1.0,
+        0.7272727272727273,
+        1.0,
+        1.0,
+        0.8518518518518519,
+        1.0,
+        0.8,
+        0.8947368421052632
+      ],
+      "claimed_confidence": [
+        1.0,
+        0.8636363636363636,
+        1.0,
+        1.0,
+        0.9225925925925926,
+        1.0,
+        1.0,
+        0.9736842105263158
+      ],
+      "n_per_bin": [
+        9,
+        11,
+        10,
+        18,
+        27,
+        9,
+        15,
+        19
+      ],
+      "ece_overall": 0.06703389830508474
     }
   }
 }

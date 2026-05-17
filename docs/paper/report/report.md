@@ -19,6 +19,7 @@
 | openrouter:meta-llama_llama-4-maverick | 232 | 0.853 [0.806,0.897] | 0.122 [0.082,0.169] | 0.129 [0.089,0.172] | 1.783 [1.100,2.539] | 18611.1 [15499.8,21521.0] |
 | openrouter:anthropic_claude-opus-4.7 | 229 | 0.900 [0.860,0.934] | 0.078 [0.042,0.119] | 0.096 [0.063,0.134] | 0.383 [0.257,0.526] | 23686.2 [21176.3,26055.2] |
 | openrouter:anthropic_claude-sonnet-4.6 | 230 | 0.870 [0.826,0.913] | 0.093 [0.058,0.139] | 0.115 [0.077,0.154] | 0.427 [0.293,0.571] | 17051.5 [14819.9,19164.3] |
+| openrouter:google_gemini-3.1-pro-preview | 118 | 0.898 [0.839,0.949] | 0.067 [0.032,0.109] | 0.051 [0.021,0.089] | 0.750 [0.205,1.470] | 14584.8 [12675.5,16312.1] |
 
 ## Pairwise significance (Holm-Bonferroni adjusted)
 
@@ -83,6 +84,10 @@
 | baseline:random | openrouter:anthropic_claude-sonnet-4.6 | payoff_wilcoxon | 0.0000 | **yes** |
 | baseline:random | openrouter:anthropic_claude-sonnet-4.6 | accuracy_mcnemar | 0.0000 | **yes** |
 | baseline:random | openrouter:anthropic_claude-sonnet-4.6 | ece_permutation | 0.0005 | no |
+| baseline:random | openrouter:google_gemini-3.1-pro-preview | payoff_t | 0.0000 | **yes** |
+| baseline:random | openrouter:google_gemini-3.1-pro-preview | payoff_wilcoxon | 0.0000 | **yes** |
+| baseline:random | openrouter:google_gemini-3.1-pro-preview | accuracy_mcnemar | 0.0000 | **yes** |
+| baseline:random | openrouter:google_gemini-3.1-pro-preview | ece_permutation | 0.0005 | no |
 | baseline:always-take | baseline:always-pass | payoff_t | 0.0000 | **yes** |
 | baseline:always-take | baseline:always-pass | payoff_wilcoxon | 0.0000 | **yes** |
 | baseline:always-take | baseline:always-pass | accuracy_mcnemar | 1.0000 | no |
@@ -138,6 +143,10 @@
 | baseline:always-take | openrouter:anthropic_claude-sonnet-4.6 | payoff_wilcoxon | 0.0000 | **yes** |
 | baseline:always-take | openrouter:anthropic_claude-sonnet-4.6 | accuracy_mcnemar | 0.0000 | **yes** |
 | baseline:always-take | openrouter:anthropic_claude-sonnet-4.6 | ece_permutation | 0.0005 | no |
+| baseline:always-take | openrouter:google_gemini-3.1-pro-preview | payoff_t | 0.0000 | **yes** |
+| baseline:always-take | openrouter:google_gemini-3.1-pro-preview | payoff_wilcoxon | 0.0000 | **yes** |
+| baseline:always-take | openrouter:google_gemini-3.1-pro-preview | accuracy_mcnemar | 0.0000 | **yes** |
+| baseline:always-take | openrouter:google_gemini-3.1-pro-preview | ece_permutation | 0.0005 | no |
 | baseline:always-pass | baseline:oracle | payoff_t | 0.0000 | **yes** |
 | baseline:always-pass | baseline:oracle | payoff_wilcoxon | 0.0000 | **yes** |
 | baseline:always-pass | baseline:oracle | accuracy_mcnemar | 0.0000 | **yes** |
@@ -177,6 +186,9 @@
 | baseline:always-pass | openrouter:anthropic_claude-sonnet-4.6 | payoff_t | 0.0000 | **yes** |
 | baseline:always-pass | openrouter:anthropic_claude-sonnet-4.6 | payoff_wilcoxon | 0.0000 | **yes** |
 | baseline:always-pass | openrouter:anthropic_claude-sonnet-4.6 | accuracy_mcnemar | 0.0000 | **yes** |
+| baseline:always-pass | openrouter:google_gemini-3.1-pro-preview | payoff_t | 0.0000 | **yes** |
+| baseline:always-pass | openrouter:google_gemini-3.1-pro-preview | payoff_wilcoxon | 0.0000 | **yes** |
+| baseline:always-pass | openrouter:google_gemini-3.1-pro-preview | accuracy_mcnemar | 0.0000 | **yes** |
 | baseline:oracle | openrouter:openai_gpt-5.4-nano | payoff_t | 0.0000 | **yes** |
 | baseline:oracle | openrouter:openai_gpt-5.4-nano | payoff_wilcoxon | 0.0000 | **yes** |
 | baseline:oracle | openrouter:openai_gpt-5.4-nano | accuracy_mcnemar | 0.0000 | **yes** |
@@ -225,6 +237,10 @@
 | baseline:oracle | openrouter:anthropic_claude-sonnet-4.6 | payoff_wilcoxon | 0.0000 | **yes** |
 | baseline:oracle | openrouter:anthropic_claude-sonnet-4.6 | accuracy_mcnemar | 0.0000 | **yes** |
 | baseline:oracle | openrouter:anthropic_claude-sonnet-4.6 | ece_permutation | 0.0005 | no |
+| baseline:oracle | openrouter:google_gemini-3.1-pro-preview | payoff_t | 0.0001 | **yes** |
+| baseline:oracle | openrouter:google_gemini-3.1-pro-preview | payoff_wilcoxon | 0.0000 | **yes** |
+| baseline:oracle | openrouter:google_gemini-3.1-pro-preview | accuracy_mcnemar | 0.0005 | no |
+| baseline:oracle | openrouter:google_gemini-3.1-pro-preview | ece_permutation | 0.0005 | no |
 | openrouter:openai_gpt-5.4-nano | openrouter:google_gemini-3.1-flash-lite | payoff_t | 0.0051 | no |
 | openrouter:openai_gpt-5.4-nano | openrouter:google_gemini-3.1-flash-lite | payoff_wilcoxon | 0.4486 | no |
 | openrouter:openai_gpt-5.4-nano | openrouter:google_gemini-3.1-flash-lite | accuracy_mcnemar | 0.0009 | no |
@@ -269,6 +285,10 @@
 | openrouter:openai_gpt-5.4-nano | openrouter:anthropic_claude-sonnet-4.6 | payoff_wilcoxon | 0.0344 | no |
 | openrouter:openai_gpt-5.4-nano | openrouter:anthropic_claude-sonnet-4.6 | accuracy_mcnemar | 0.0000 | **yes** |
 | openrouter:openai_gpt-5.4-nano | openrouter:anthropic_claude-sonnet-4.6 | ece_permutation | 0.2194 | no |
+| openrouter:openai_gpt-5.4-nano | openrouter:google_gemini-3.1-pro-preview | payoff_t | 0.0000 | **yes** |
+| openrouter:openai_gpt-5.4-nano | openrouter:google_gemini-3.1-pro-preview | payoff_wilcoxon | 0.0000 | **yes** |
+| openrouter:openai_gpt-5.4-nano | openrouter:google_gemini-3.1-pro-preview | accuracy_mcnemar | 0.0004 | no |
+| openrouter:openai_gpt-5.4-nano | openrouter:google_gemini-3.1-pro-preview | ece_permutation | 0.3293 | no |
 | openrouter:google_gemini-3.1-flash-lite | openrouter:google_gemini-3-flash-preview | payoff_t | 0.0000 | **yes** |
 | openrouter:google_gemini-3.1-flash-lite | openrouter:google_gemini-3-flash-preview | payoff_wilcoxon | 0.0000 | **yes** |
 | openrouter:google_gemini-3.1-flash-lite | openrouter:google_gemini-3-flash-preview | accuracy_mcnemar | 0.0000 | **yes** |
@@ -309,6 +329,10 @@
 | openrouter:google_gemini-3.1-flash-lite | openrouter:anthropic_claude-sonnet-4.6 | payoff_wilcoxon | 0.0225 | no |
 | openrouter:google_gemini-3.1-flash-lite | openrouter:anthropic_claude-sonnet-4.6 | accuracy_mcnemar | 0.1153 | no |
 | openrouter:google_gemini-3.1-flash-lite | openrouter:anthropic_claude-sonnet-4.6 | ece_permutation | 0.0185 | no |
+| openrouter:google_gemini-3.1-flash-lite | openrouter:google_gemini-3.1-pro-preview | payoff_t | 0.0000 | **yes** |
+| openrouter:google_gemini-3.1-flash-lite | openrouter:google_gemini-3.1-pro-preview | payoff_wilcoxon | 0.0000 | **yes** |
+| openrouter:google_gemini-3.1-flash-lite | openrouter:google_gemini-3.1-pro-preview | accuracy_mcnemar | 0.7905 | no |
+| openrouter:google_gemini-3.1-flash-lite | openrouter:google_gemini-3.1-pro-preview | ece_permutation | 0.1254 | no |
 | openrouter:google_gemini-3-flash-preview | openrouter:anthropic_claude-haiku-4.5 | payoff_t | 0.1955 | no |
 | openrouter:google_gemini-3-flash-preview | openrouter:anthropic_claude-haiku-4.5 | payoff_wilcoxon | 0.8741 | no |
 | openrouter:google_gemini-3-flash-preview | openrouter:anthropic_claude-haiku-4.5 | accuracy_mcnemar | 0.0352 | no |
@@ -345,6 +369,10 @@
 | openrouter:google_gemini-3-flash-preview | openrouter:anthropic_claude-sonnet-4.6 | payoff_wilcoxon | 0.0000 | **yes** |
 | openrouter:google_gemini-3-flash-preview | openrouter:anthropic_claude-sonnet-4.6 | accuracy_mcnemar | 0.0000 | **yes** |
 | openrouter:google_gemini-3-flash-preview | openrouter:anthropic_claude-sonnet-4.6 | ece_permutation | 0.0050 | no |
+| openrouter:google_gemini-3-flash-preview | openrouter:google_gemini-3.1-pro-preview | payoff_t | 0.0019 | no |
+| openrouter:google_gemini-3-flash-preview | openrouter:google_gemini-3.1-pro-preview | payoff_wilcoxon | 0.0000 | **yes** |
+| openrouter:google_gemini-3-flash-preview | openrouter:google_gemini-3.1-pro-preview | accuracy_mcnemar | 0.0215 | no |
+| openrouter:google_gemini-3-flash-preview | openrouter:google_gemini-3.1-pro-preview | ece_permutation | 0.1754 | no |
 | openrouter:anthropic_claude-haiku-4.5 | openrouter:meta-llama_llama-4-scout | payoff_t | 0.0000 | **yes** |
 | openrouter:anthropic_claude-haiku-4.5 | openrouter:meta-llama_llama-4-scout | payoff_wilcoxon | 0.0000 | **yes** |
 | openrouter:anthropic_claude-haiku-4.5 | openrouter:meta-llama_llama-4-scout | accuracy_mcnemar | 0.0000 | **yes** |
@@ -377,6 +405,10 @@
 | openrouter:anthropic_claude-haiku-4.5 | openrouter:anthropic_claude-sonnet-4.6 | payoff_wilcoxon | 0.0001 | **yes** |
 | openrouter:anthropic_claude-haiku-4.5 | openrouter:anthropic_claude-sonnet-4.6 | accuracy_mcnemar | 0.0167 | no |
 | openrouter:anthropic_claude-haiku-4.5 | openrouter:anthropic_claude-sonnet-4.6 | ece_permutation | 0.0665 | no |
+| openrouter:anthropic_claude-haiku-4.5 | openrouter:google_gemini-3.1-pro-preview | payoff_t | 0.0375 | no |
+| openrouter:anthropic_claude-haiku-4.5 | openrouter:google_gemini-3.1-pro-preview | payoff_wilcoxon | 0.0000 | **yes** |
+| openrouter:anthropic_claude-haiku-4.5 | openrouter:google_gemini-3.1-pro-preview | accuracy_mcnemar | 0.0225 | no |
+| openrouter:anthropic_claude-haiku-4.5 | openrouter:google_gemini-3.1-pro-preview | ece_permutation | 0.0060 | no |
 | openrouter:meta-llama_llama-4-scout | openrouter:openai_gpt-5-mini | payoff_t | 0.0000 | **yes** |
 | openrouter:meta-llama_llama-4-scout | openrouter:openai_gpt-5-mini | payoff_wilcoxon | 0.0000 | **yes** |
 | openrouter:meta-llama_llama-4-scout | openrouter:openai_gpt-5-mini | accuracy_mcnemar | 0.0000 | **yes** |
@@ -395,7 +427,7 @@
 | openrouter:meta-llama_llama-4-scout | openrouter:qwen_qwen3-32b | ece_permutation | 0.0240 | no |
 | openrouter:meta-llama_llama-4-scout | openrouter:meta-llama_llama-4-maverick | payoff_t | 0.0024 | no |
 | openrouter:meta-llama_llama-4-scout | openrouter:meta-llama_llama-4-maverick | payoff_wilcoxon | 0.0002 | no |
-| openrouter:meta-llama_llama-4-scout | openrouter:meta-llama_llama-4-maverick | accuracy_mcnemar | 0.0002 | **yes** |
+| openrouter:meta-llama_llama-4-scout | openrouter:meta-llama_llama-4-maverick | accuracy_mcnemar | 0.0002 | no |
 | openrouter:meta-llama_llama-4-scout | openrouter:meta-llama_llama-4-maverick | ece_permutation | 0.1114 | no |
 | openrouter:meta-llama_llama-4-scout | openrouter:anthropic_claude-opus-4.7 | payoff_t | 0.0000 | **yes** |
 | openrouter:meta-llama_llama-4-scout | openrouter:anthropic_claude-opus-4.7 | payoff_wilcoxon | 0.0000 | **yes** |
@@ -405,6 +437,10 @@
 | openrouter:meta-llama_llama-4-scout | openrouter:anthropic_claude-sonnet-4.6 | payoff_wilcoxon | 0.0116 | no |
 | openrouter:meta-llama_llama-4-scout | openrouter:anthropic_claude-sonnet-4.6 | accuracy_mcnemar | 0.0000 | **yes** |
 | openrouter:meta-llama_llama-4-scout | openrouter:anthropic_claude-sonnet-4.6 | ece_permutation | 0.0010 | no |
+| openrouter:meta-llama_llama-4-scout | openrouter:google_gemini-3.1-pro-preview | payoff_t | 0.0000 | **yes** |
+| openrouter:meta-llama_llama-4-scout | openrouter:google_gemini-3.1-pro-preview | payoff_wilcoxon | 0.0000 | **yes** |
+| openrouter:meta-llama_llama-4-scout | openrouter:google_gemini-3.1-pro-preview | accuracy_mcnemar | 0.0072 | no |
+| openrouter:meta-llama_llama-4-scout | openrouter:google_gemini-3.1-pro-preview | ece_permutation | 0.1124 | no |
 | openrouter:openai_gpt-5-mini | openrouter:deepseek_deepseek-v3.2 | payoff_t | 0.6654 | no |
 | openrouter:openai_gpt-5-mini | openrouter:deepseek_deepseek-v3.2 | payoff_wilcoxon | 0.0004 | no |
 | openrouter:openai_gpt-5-mini | openrouter:deepseek_deepseek-v3.2 | accuracy_mcnemar | 0.3833 | no |
@@ -429,6 +465,10 @@
 | openrouter:openai_gpt-5-mini | openrouter:anthropic_claude-sonnet-4.6 | payoff_wilcoxon | 0.0000 | **yes** |
 | openrouter:openai_gpt-5-mini | openrouter:anthropic_claude-sonnet-4.6 | accuracy_mcnemar | 0.8601 | no |
 | openrouter:openai_gpt-5-mini | openrouter:anthropic_claude-sonnet-4.6 | ece_permutation | 0.3548 | no |
+| openrouter:openai_gpt-5-mini | openrouter:google_gemini-3.1-pro-preview | payoff_t | 0.0210 | no |
+| openrouter:openai_gpt-5-mini | openrouter:google_gemini-3.1-pro-preview | payoff_wilcoxon | 0.0000 | **yes** |
+| openrouter:openai_gpt-5-mini | openrouter:google_gemini-3.1-pro-preview | accuracy_mcnemar | 0.3877 | no |
+| openrouter:openai_gpt-5-mini | openrouter:google_gemini-3.1-pro-preview | ece_permutation | 0.8526 | no |
 | openrouter:deepseek_deepseek-v3.2 | openrouter:openai_gpt-5-nano | payoff_t | 0.0000 | **yes** |
 | openrouter:deepseek_deepseek-v3.2 | openrouter:openai_gpt-5-nano | payoff_wilcoxon | 0.0000 | **yes** |
 | openrouter:deepseek_deepseek-v3.2 | openrouter:openai_gpt-5-nano | accuracy_mcnemar | 0.0000 | **yes** |
@@ -449,6 +489,10 @@
 | openrouter:deepseek_deepseek-v3.2 | openrouter:anthropic_claude-sonnet-4.6 | payoff_wilcoxon | 0.0000 | **yes** |
 | openrouter:deepseek_deepseek-v3.2 | openrouter:anthropic_claude-sonnet-4.6 | accuracy_mcnemar | 0.7011 | no |
 | openrouter:deepseek_deepseek-v3.2 | openrouter:anthropic_claude-sonnet-4.6 | ece_permutation | 0.2094 | no |
+| openrouter:deepseek_deepseek-v3.2 | openrouter:google_gemini-3.1-pro-preview | payoff_t | 0.0199 | no |
+| openrouter:deepseek_deepseek-v3.2 | openrouter:google_gemini-3.1-pro-preview | payoff_wilcoxon | 0.0000 | **yes** |
+| openrouter:deepseek_deepseek-v3.2 | openrouter:google_gemini-3.1-pro-preview | accuracy_mcnemar | 1.0000 | no |
+| openrouter:deepseek_deepseek-v3.2 | openrouter:google_gemini-3.1-pro-preview | ece_permutation | 0.4388 | no |
 | openrouter:openai_gpt-5-nano | openrouter:qwen_qwen3-32b | payoff_t | 0.0700 | no |
 | openrouter:openai_gpt-5-nano | openrouter:qwen_qwen3-32b | payoff_wilcoxon | 0.0268 | no |
 | openrouter:openai_gpt-5-nano | openrouter:qwen_qwen3-32b | accuracy_mcnemar | 0.2962 | no |
@@ -465,6 +509,10 @@
 | openrouter:openai_gpt-5-nano | openrouter:anthropic_claude-sonnet-4.6 | payoff_wilcoxon | 0.0023 | no |
 | openrouter:openai_gpt-5-nano | openrouter:anthropic_claude-sonnet-4.6 | accuracy_mcnemar | 0.0000 | **yes** |
 | openrouter:openai_gpt-5-nano | openrouter:anthropic_claude-sonnet-4.6 | ece_permutation | 0.0955 | no |
+| openrouter:openai_gpt-5-nano | openrouter:google_gemini-3.1-pro-preview | payoff_t | 0.0000 | **yes** |
+| openrouter:openai_gpt-5-nano | openrouter:google_gemini-3.1-pro-preview | payoff_wilcoxon | 0.0000 | **yes** |
+| openrouter:openai_gpt-5-nano | openrouter:google_gemini-3.1-pro-preview | accuracy_mcnemar | 0.0044 | no |
+| openrouter:openai_gpt-5-nano | openrouter:google_gemini-3.1-pro-preview | ece_permutation | 0.0200 | no |
 | openrouter:qwen_qwen3-32b | openrouter:meta-llama_llama-4-maverick | payoff_t | 0.1982 | no |
 | openrouter:qwen_qwen3-32b | openrouter:meta-llama_llama-4-maverick | payoff_wilcoxon | 0.1136 | no |
 | openrouter:qwen_qwen3-32b | openrouter:meta-llama_llama-4-maverick | accuracy_mcnemar | 0.0275 | no |
@@ -477,6 +525,10 @@
 | openrouter:qwen_qwen3-32b | openrouter:anthropic_claude-sonnet-4.6 | payoff_wilcoxon | 0.8145 | no |
 | openrouter:qwen_qwen3-32b | openrouter:anthropic_claude-sonnet-4.6 | accuracy_mcnemar | 0.0023 | no |
 | openrouter:qwen_qwen3-32b | openrouter:anthropic_claude-sonnet-4.6 | ece_permutation | 0.3308 | no |
+| openrouter:qwen_qwen3-32b | openrouter:google_gemini-3.1-pro-preview | payoff_t | 0.0000 | **yes** |
+| openrouter:qwen_qwen3-32b | openrouter:google_gemini-3.1-pro-preview | payoff_wilcoxon | 0.0000 | **yes** |
+| openrouter:qwen_qwen3-32b | openrouter:google_gemini-3.1-pro-preview | accuracy_mcnemar | 0.0574 | no |
+| openrouter:qwen_qwen3-32b | openrouter:google_gemini-3.1-pro-preview | ece_permutation | 0.4438 | no |
 | openrouter:meta-llama_llama-4-maverick | openrouter:anthropic_claude-opus-4.7 | payoff_t | 0.0038 | no |
 | openrouter:meta-llama_llama-4-maverick | openrouter:anthropic_claude-opus-4.7 | payoff_wilcoxon | 0.0001 | **yes** |
 | openrouter:meta-llama_llama-4-maverick | openrouter:anthropic_claude-opus-4.7 | accuracy_mcnemar | 0.2912 | no |
@@ -485,7 +537,19 @@
 | openrouter:meta-llama_llama-4-maverick | openrouter:anthropic_claude-sonnet-4.6 | payoff_wilcoxon | 0.0223 | no |
 | openrouter:meta-llama_llama-4-maverick | openrouter:anthropic_claude-sonnet-4.6 | accuracy_mcnemar | 0.8776 | no |
 | openrouter:meta-llama_llama-4-maverick | openrouter:anthropic_claude-sonnet-4.6 | ece_permutation | 0.3768 | no |
+| openrouter:meta-llama_llama-4-maverick | openrouter:google_gemini-3.1-pro-preview | payoff_t | 0.0053 | no |
+| openrouter:meta-llama_llama-4-maverick | openrouter:google_gemini-3.1-pro-preview | payoff_wilcoxon | 0.0000 | **yes** |
+| openrouter:meta-llama_llama-4-maverick | openrouter:google_gemini-3.1-pro-preview | accuracy_mcnemar | 1.0000 | no |
+| openrouter:meta-llama_llama-4-maverick | openrouter:google_gemini-3.1-pro-preview | ece_permutation | 0.8566 | no |
 | openrouter:anthropic_claude-opus-4.7 | openrouter:anthropic_claude-sonnet-4.6 | payoff_t | 0.0000 | **yes** |
 | openrouter:anthropic_claude-opus-4.7 | openrouter:anthropic_claude-sonnet-4.6 | payoff_wilcoxon | 0.0000 | **yes** |
 | openrouter:anthropic_claude-opus-4.7 | openrouter:anthropic_claude-sonnet-4.6 | accuracy_mcnemar | 0.3771 | no |
 | openrouter:anthropic_claude-opus-4.7 | openrouter:anthropic_claude-sonnet-4.6 | ece_permutation | 0.6552 | no |
+| openrouter:anthropic_claude-opus-4.7 | openrouter:google_gemini-3.1-pro-preview | payoff_t | 0.5279 | no |
+| openrouter:anthropic_claude-opus-4.7 | openrouter:google_gemini-3.1-pro-preview | payoff_wilcoxon | 0.0000 | **yes** |
+| openrouter:anthropic_claude-opus-4.7 | openrouter:google_gemini-3.1-pro-preview | accuracy_mcnemar | 0.2668 | no |
+| openrouter:anthropic_claude-opus-4.7 | openrouter:google_gemini-3.1-pro-preview | ece_permutation | 0.2394 | no |
+| openrouter:anthropic_claude-sonnet-4.6 | openrouter:google_gemini-3.1-pro-preview | payoff_t | 0.0000 | **yes** |
+| openrouter:anthropic_claude-sonnet-4.6 | openrouter:google_gemini-3.1-pro-preview | payoff_wilcoxon | 0.0000 | **yes** |
+| openrouter:anthropic_claude-sonnet-4.6 | openrouter:google_gemini-3.1-pro-preview | accuracy_mcnemar | 0.7744 | no |
+| openrouter:anthropic_claude-sonnet-4.6 | openrouter:google_gemini-3.1-pro-preview | ece_permutation | 0.7631 | no |

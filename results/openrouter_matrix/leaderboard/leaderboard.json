@@ -320,6 +320,38 @@
     "pareto_optimal_among_real": false
   },
   {
+    "name": "openrouter:google_gemini-3.1-pro-preview",
+    "n": 118,
+    "accuracy": 0.8983,
+    "accuracy_ci": [
+      0.839,
+      0.9492
+    ],
+    "ece": 0.067,
+    "ece_ci": [
+      0.0325,
+      0.1092
+    ],
+    "brier": 0.0509,
+    "brier_ci": [
+      0.0212,
+      0.089
+    ],
+    "logloss": 0.7503,
+    "logloss_ci": [
+      0.2052,
+      1.47
+    ],
+    "net_payoff": 14584.78,
+    "net_payoff_ci": [
+      12675.5,
+      16312.13
+    ],
+    "cost_usd": 2.0099,
+    "pareto_optimal": false,
+    "pareto_optimal_among_real": false
+  },
+  {
     "name": "openrouter:openai_gpt-5-nano",
     "n": 215,
     "accuracy": 0.8186,

@@ -434,6 +434,35 @@
         14819.896841515367,
         19164.324019043597
       ]
+    },
+    {
+      "name": "openrouter:google_gemini-3.1-pro-preview",
+      "n": 118,
+      "accuracy": 0.8983050847457628,
+      "accuracy_ci": [
+        0.8389830508474576,
+        0.9491525423728814
+      ],
+      "ece": 0.06703389830508474,
+      "ece_ci": [
+        0.032457627118644125,
+        0.10915254237288131
+      ],
+      "brier": 0.050873728813559324,
+      "brier_ci": [
+        0.021192372881355934,
+        0.08898902542372882
+      ],
+      "logloss": 0.7502528617017376,
+      "logloss_ci": [
+        0.20515975670647232,
+        1.4700093412608422
+      ],
+      "net_payoff": 14584.776975873632,
+      "net_payoff_ci": [
+        12675.498021085283,
+        16312.127034110184
+      ]
     }
   ],
   "pairwise_significance": [
@@ -764,6 +793,28 @@
       }
     },
     {
+      "a": "baseline:random",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 2.4997952544728156e-37,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.294213770133995e-19,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 2.465190328815662e-32,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
       "a": "baseline:always-take",
       "b": "baseline:always-pass",
       "tests": {
@@ -1068,6 +1119,28 @@
       }
     },
     {
+      "a": "baseline:always-take",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 6.786734798041815e-48,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.5097146803514947e-19,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 2.465190328815662e-32,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
       "a": "baseline:always-pass",
       "b": "baseline:oracle",
       "tests": {
@@ -1297,6 +1370,24 @@
         },
         "accuracy_mcnemar": {
           "p_raw": 1.2446030555722283e-60,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:always-pass",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.0811419019372217e-30,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 6.649984905283559e-17,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 2.465190328815662e-32,
           "reject_at_alpha": true
         }
       }
@@ -1566,6 +1657,28 @@
       }
     },
     {
+      "a": "baseline:oracle",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 6.658837413290481e-05,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.8215297148968006e-05,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.00048828125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
       "a": "openrouter:openai_gpt-5.4-nano",
       "b": "openrouter:google_gemini-3.1-flash-lite",
       "tests": {
@@ -1808,6 +1921,28 @@
       }
     },
     {
+      "a": "openrouter:openai_gpt-5.4-nano",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.0844618942181002e-13,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 3.753479053411216e-14,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.0004024505615234375,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.3293353323338331,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
       "a": "openrouter:google_gemini-3.1-flash-lite",
       "b": "openrouter:google_gemini-3-flash-preview",
       "tests": {
@@ -2028,6 +2163,28 @@
       }
     },
     {
+      "a": "openrouter:google_gemini-3.1-flash-lite",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 6.199993394540182e-08,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.7414534640144706e-12,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.79052734375,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.12543728135932034,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
       "a": "openrouter:google_gemini-3-flash-preview",
       "b": "openrouter:anthropic_claude-haiku-4.5",
       "tests": {
@@ -2226,6 +2383,28 @@
       }
     },
     {
+      "a": "openrouter:google_gemini-3-flash-preview",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.0019385136262133793,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 5.2763416720180176e-08,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.021484375,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.17541229385307347,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
       "a": "openrouter:anthropic_claude-haiku-4.5",
       "b": "openrouter:meta-llama_llama-4-scout",
       "tests": {
@@ -2402,6 +2581,28 @@
       }
     },
     {
+      "a": "openrouter:anthropic_claude-haiku-4.5",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.037523970975926454,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 5.2331372928308624e-08,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.0224609375,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.005997001499250375,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
       "a": "openrouter:meta-llama_llama-4-scout",
       "b": "openrouter:openai_gpt-5-mini",
       "tests": {
@@ -2503,7 +2704,7 @@
         },
         "accuracy_mcnemar": {
           "p_raw": 0.0002222449626216872,
-          "reject_at_alpha": true
+          "reject_at_alpha": false
         },
         "ece_permutation": {
           "p_raw": 0.11144427786106946,
@@ -2551,6 +2752,28 @@
         },
         "ece_permutation": {
           "p_raw": 0.0009995002498750624,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:meta-llama_llama-4-scout",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.265647747507997e-07,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.917116138879405e-09,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.007197380065917969,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.11244377811094453,
           "reject_at_alpha": false
         }
       }
@@ -2688,6 +2911,28 @@
       }
     },
     {
+      "a": "openrouter:openai_gpt-5-mini",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.02101725561870024,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.2165385672992889e-06,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.3876953125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.8525737131434283,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
       "a": "openrouter:deepseek_deepseek-v3.2",
       "b": "openrouter:openai_gpt-5-nano",
       "tests": {
@@ -2798,6 +3043,28 @@
       }
     },
     {
+      "a": "openrouter:deepseek_deepseek-v3.2",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.019944765348483405,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 2.5480742469998524e-07,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.0,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.4387806096951524,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
       "a": "openrouter:openai_gpt-5-nano",
       "b": "openrouter:qwen_qwen3-32b",
       "tests": {
@@ -2886,6 +3153,28 @@
       }
     },
     {
+      "a": "openrouter:openai_gpt-5-nano",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 4.767495005050493e-10,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 3.4880065143606574e-12,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.004425048828125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.01999000499750125,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
       "a": "openrouter:qwen_qwen3-32b",
       "b": "openrouter:meta-llama_llama-4-maverick",
       "tests": {
@@ -2952,6 +3241,28 @@
       }
     },
     {
+      "a": "openrouter:qwen_qwen3-32b",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 4.0315056133145424e-07,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 2.9947273606136494e-10,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.057373046875,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.44377811094452774,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
       "a": "openrouter:meta-llama_llama-4-maverick",
       "b": "openrouter:anthropic_claude-opus-4.7",
       "tests": {
@@ -2996,6 +3307,28 @@
       }
     },
     {
+      "a": "openrouter:meta-llama_llama-4-maverick",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.005337528613915749,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 2.0040478792547923e-07,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.0,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.8565717141429285,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
       "a": "openrouter:anthropic_claude-opus-4.7",
       "b": "openrouter:anthropic_claude-sonnet-4.6",
       "tests": {
@@ -3013,6 +3346,50 @@
         },
         "ece_permutation": {
           "p_raw": 0.6551724137931034,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:anthropic_claude-opus-4.7",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.52792692174235,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 2.3273854336453188e-06,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.266845703125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.23938030984507747,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:anthropic_claude-sonnet-4.6",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 2.2355402334951883e-06,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 2.6652924269705907e-11,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.7744140625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.7631184407796102,
           "reject_at_alpha": false
         }
       }
