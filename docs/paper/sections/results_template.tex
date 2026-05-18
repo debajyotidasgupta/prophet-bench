@@ -4,261 +4,93 @@
 We benchmark every agent at \emph{both} the Standard tier (12 families,
 near-ceiling difficulty) and the T\textsubscript{extreme} tier (5
 families with $\delta \in [0.97, 1.0]$). The Standard tier targets 240
-tasks per agent (20 per family $\times$ 12) and the
-T\textsubscript{extreme} tier targets 40 tasks per agent (8 per family
-$\times$ 5); realised per-agent $N$ varies because of provider-side
-refusals and multi-seed pooling on Pareto-essentials --- both are
-disclosed in \autoref{tab:two-tier}. Headline Spearman and Pareto-frontier
-flags use a pre-registered minimum-$N$ filter ($N \ge 100$ Standard,
-$N \ge 20$ T\textsubscript{extreme}). Bootstrap 95\,\% CIs ($B = 10^4$,
-percentile) are reported for every metric. \autoref{tab:two-tier} shows
-the side-by-side leaderboard; \autoref{tab:headline} ranks Standard-tier
-agents by net payoff.
+tasks per agent (20 per family $\times$ 12); the
+T\textsubscript{extreme} tier targets 40 tasks per agent
+(8 per family $\times$ 5). Realised per-agent $N$ varies because of
+provider-side refusals and multi-seed pooling on the Pareto-essentials;
+both are disclosed in \autoref{tab:two-tier}. Headline Spearman and
+Pareto-frontier flags use a pre-registered minimum-$N$ filter
+($N \ge 100$ Standard, $N \ge 20$ T\textsubscript{extreme}). Bootstrap
+95\,\% CIs (BCa for ECE, percentile elsewhere; $B = 10^4$) are reported
+for every metric.
 
 \input{figures/two_tier_leaderboard.tex}
 
-\input{figures/headline_table.tex}
-
 \paragraph{H1: rank by accuracy $\ne$ rank by calibration $\ne$ rank by
 payoff.}
-Spearman $\rho$ on the $K = 15$ agents with $N \geq 100$ on the Standard
-tier:
-$\rho_{\text{acc, ECE}} = -0.93$,
-$\rho_{\text{acc, payoff}} = +0.76$,
-$\rho_{\text{ECE, payoff}} = -0.67$.
-The strong negative acc--ECE correlation reflects that more accurate
-models are typically also better calibrated. The acc--payoff correlation
-($\rho = 0.76$) is high but not unity: the best-by-accuracy and
-best-by-ECE model is \texttt{google/gemini-3-flash-preview} (acc $0.970$,
-ECE $0.027$), whereas the best-by-payoff model is a sibling
-\texttt{google/gemini-3.1-pro-preview} (payoff $37{,}813$ vs $23{,}800$
-for the Flash model and $24{,}824$ for \texttt{claude-opus-4.7}). The
-two Gemini variants differ in commitment policy and in per-task cost ---
-which the payoff axis captures and the accuracy axis does not. Combined
-with the H4 hard-tier collapse below, the orderings induced by each
-axis are demonstrably different at the first-place level.
+Spearman $\rho$ on the $K = 16$ agents with $N \geq 100$ on the Standard
+tier: $\rho_{\text{acc, ECE}} = -0.94$,
+$\rho_{\text{acc, payoff}} = +0.78$,
+$\rho_{\text{ECE, payoff}} = -0.71$. The best-by-accuracy and
+best-by-ECE model is \texttt{openai/gpt-5.2} (acc $0.970$, ECE $0.017$;
+tied with \texttt{gemini-3-flash-preview} on accuracy but strictly
+better on calibration). The best-by-payoff model is a different agent:
+\texttt{google/gemini-3.1-pro-preview} ($37{,}813$ PROPHET-cents vs.\
+$31{,}328$ for GPT-5.2 and $23{,}800$ for Gemini-3-Flash). Best
+accuracy and best calibration do not imply best deployment payoff under
+calibrated-commitment pricing; the orderings induced by each axis are
+demonstrably different at the first-place level.
 
 \paragraph{H2: reasoning mode raises conditional accuracy and net payoff
 but does not uniformly increase strategic abstention.}
-We compare reasoning-tuned variants against their non-reasoning siblings
-on the T\textsubscript{extreme} tier:
-\texttt{deepseek-r1} vs.\ \texttt{deepseek-v3.2},
-and \texttt{qwen3-235b-a22b-thinking-2507} vs.\ \texttt{qwen3-32b}.
-On the DeepSeek family the reasoning variant abstains far more
-(\texttt{deepseek-r1} 86\,\% \textsc{Pass} rate vs.\
-\texttt{deepseek-v3.2} 4\,\%); on the Qwen family the direction
-\emph{reverses} (\texttt{qwen3-235b-thinking} 26\,\% vs.\
-\texttt{qwen3-32b} 48\,\%), because the smaller 32B model PASSes from
+On the T\textsubscript{extreme} tier, the DeepSeek reasoning variant
+abstains far more than its non-reasoning sibling
+(\texttt{deepseek-r1} 86\,\% \textsc{Pass} vs.\ \texttt{deepseek-v3.2}
+4\,\%); the Qwen reasoning variant abstains \emph{less} than its smaller
+non-reasoning sibling (\texttt{qwen3-235b-thinking} 26\,\% vs.\
+\texttt{qwen3-32b} 48\,\%) because the smaller 32B model PASSes from
 inability rather than calibrated abstention. The robust signal is in
 \emph{conditional accuracy}: reasoning variants are markedly higher
-(\texttt{deepseek-r1} $82.4\,\%$ vs.\ \texttt{deepseek-v3.2} $51.0\,\%$;
-\texttt{qwen3-235b-thinking} $83.1\,\%$ vs.\ \texttt{qwen3-32b}
-$67.3\,\%$) and so is net payoff (DeepSeek $2755$ vs.\ $550$; Qwen
-$4825$ vs.\ $1588$). The original hypothesis ``reasoning over-commits''
-is \textbf{rejected} on net payoff for both families, but the
-intuitive mechanism (``reasoning leads to more strategic abstention'')
-\textbf{holds only for DeepSeek, not for Qwen}. The unified statement
-the data support is: \emph{extended thinking improves conditional
-accuracy enough that, even when the variant commits less, net payoff
-goes up}.
+(R1 $82.4\,\%$ vs.\ V3.2 $51.0\,\%$;
+Thinking $83.1\,\%$ vs.\ 32B $67.3\,\%$) and so is net payoff
+(R1 $2755$ vs.\ V3.2 $550$; Thinking $4825$ vs.\ 32B $1588$). The
+hypothesis ``reasoning over-commits'' is \textbf{rejected} on net
+payoff for both families, but the intuitive ``reasoning $\Rightarrow$
+more abstention'' mechanism \textbf{holds only for DeepSeek}, not for
+Qwen. The unified statement the data support is: extended thinking
+improves conditional accuracy enough that, even when the variant
+commits less, net payoff goes up.
 
 \paragraph{H3: open-weight Pareto-essentials match closed frontier on
-the cost-payoff axis, not the ECE-payoff axis.}
-The T\textsubscript{extreme} tier $(\ECE, \mathcal{P})$ Pareto frontier
-(after the $N \ge 20$ minimum-$N$ filter) contains two closed-source
-agents: \texttt{openai/gpt-5.2} (ECE $0.025$, payoff $10{,}500$, $N$$=$$71$)
-and \texttt{openai/gpt-5} (ECE $0.019$, payoff $5{,}274$, $N$$=$$36$).
-The closest open-weight challenger, \texttt{qwen3-235b-thinking}
+the cost--payoff axis, not the ECE--payoff axis.}
+The T\textsubscript{extreme} $(\ECE, \mathcal{P})$ Pareto frontier
+(min-$N$ filter, $N \ge 20$) contains two closed-source agents:
+\texttt{openai/gpt-5.2} (ECE $0.025$, payoff $10{,}500$, $N=71$) and
+\texttt{openai/gpt-5} (ECE $0.019$, payoff $5{,}274$, $N=36$). The
+closest open-weight challenger, \texttt{qwen3-235b-thinking}
 (ECE $0.091$, payoff $4{,}825$), is dominated on $(\ECE, \mathcal{P})$
 by both. \emph{However}, on the $(\text{cost}, \mathcal{P})$ frontier
-Qwen3-235B-thinking delivers $4{,}825$ at \$1.00 vs.\ \texttt{gpt-5.2}'s
-$10{,}500$ at \$4.07 --- $4{,}825/\$ = 4{,}825$ payoff-per-dollar vs.\
-$2{,}580$ payoff-per-dollar --- so the cost-conscious open-weight
-deployment claim survives even though the strict $(\ECE, \mathcal{P})$
-claim does not. The open vs closed gap on raw accuracy (Standard tier
-$91\,\%$ closed-mean vs.\ $87\,\%$ open-mean) translates to a small but
-real ECE gap on T\textsubscript{extreme} where the closed-source
-reasoning models pull away.
+Qwen3-235B-Thinking delivers $4{,}825$ at \$1.00 vs.\ \texttt{gpt-5.2}'s
+$10{,}500$ at \$4.07 --- payoff-per-dollar $4{,}825$ vs.\ $2{,}580$ ---
+so the cost-conscious open-weight deployment claim survives even though
+the strict $(\ECE, \mathcal{P})$ claim does not.
 
-\subsection{Pareto frontier}
-\autoref{fig:pareto-ece-payoff} shows the cost-of-confidence
-trade-off. Agents on the frontier are highlighted; the published
-hypervolume against reference $(\ECE = 0.5, \mathcal{P} = -3 N C)$ is
-25.58 USD.
+\paragraph{H4: hard-tier accuracy collapse.}
+On the matched $N$-filtered Standard panel ($K = 16$, $N \ge 100$) the
+median accuracy drops from $87.0\,\%$ (Standard) to $60.0\,\%$
+(T\textsubscript{extreme}, $N \ge 20$) --- a $27.0$-pp fall --- while
+the median ECE \emph{worsens} by $+0.123$ (Standard $0.110$,
+T\textsubscript{extreme} $0.233$, a $2.12\times$ inflation). Specific
+drops include \texttt{claude-opus-4.7}
+($90.0\,\% \!\to\! 63.6\,\%$, $\Delta = 26.4$\,pp),
+\texttt{deepseek-v3.2} ($84.6\,\% \!\to\! 51.0\,\%$), and
+\texttt{llama-4-scout} ($83.1\,\% \!\to\! 17.0\,\%$). The Standard-tier
+near-ceiling effect was a difficulty-floor artefact.
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.7\linewidth]{figures/pareto_ece_payoff.pdf}
-\caption{Pareto frontier on $(\ECE, \mathcal{P})$. Points on the frontier
-in colour; dominated points in grey.}
-\label{fig:pareto-ece-payoff}
-\end{figure}
-
-\subsection{Reliability diagrams}
-\autoref{fig:reliability} overlays per-agent reliability curves.
-Over-confident agents lie systematically \emph{below} the diagonal.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.7\linewidth]{figures/reliability_multi.pdf}
-\caption{Reliability curves for the top-N systems. The dashed diagonal
-is perfect calibration.}
-\label{fig:reliability}
-\end{figure}
-
-\subsection{Per-family decomposition}
-The per-family heatmaps decompose into three views.
-\autoref{fig:heatmap-pass} shows the per-(agent, family) \textsc{Pass}
-rate (fraction of dispatched tasks where the agent declined to commit);
-\autoref{fig:heatmap-committed-n} shows the corresponding committed-task
-count $N$; \autoref{fig:heatmap-ece} reports per-(agent, family) ECE
-conditional on commitment ($N \ge 5$).
-
-\paragraph{Strategic family-level abstention.} The accuracy and ECE
-heatmaps render \texttt{n/a} for any cell where the agent committed to
-zero tasks --- accuracy is undefined at $N = 0$. These cells are not
-data-collection gaps; every agent was \emph{dispatched} 20 tasks per
-family. A cell goes \texttt{n/a} exactly when the agent chose
-\textsc{Pass} on every one of those 20 tasks --- family-level strategic
-abstention. \autoref{fig:heatmap-pass} surfaces this pattern directly.
-The agents that abstain on entire families form a clean \emph{strategic-
-abstention cluster}:
-\texttt{deepseek-r1} ($9$ of $12$ families with $100\,\%$ \textsc{Pass}),
-\texttt{moonshotai/kimi-k2-thinking} ($7$ / $12$),
-\texttt{qwen3-235b-a22b-thinking-2507} ($4$ / $12$),
-\texttt{openai/gpt-5} ($3$ / $12$), and
-\texttt{google/gemini-3.1-pro-preview} ($2$ / $12$).
-The non-reasoning agents (\texttt{claude-haiku-4.5},
-\texttt{gemini-3-flash-preview}, \texttt{deepseek-v3.2}, the Llama family)
-have zero $100\,\%$-PASS families: they commit to everything and absorb
-the calibration penalty. This is the same H2 signal at a different
-granularity --- reasoning-tuned systems recognise families beyond their
-competence and decline at the family level, while non-reasoning systems
-commit indiscriminately.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.85\linewidth]{figures/heatmap_pass_rate.pdf}
-\caption{Per-family \textsc{Pass} rate (fraction of dispatched tasks
-where the agent chose to abstain). Cells at $100\,\%$ (deep red)
-correspond exactly to the \texttt{n/a} cells in \autoref{fig:heatmap-ece}
-and the accuracy heatmap: the agent declined to commit on any task of
-that family. \texttt{deepseek-r1, kimi-k2-thinking,
-qwen3-235b-thinking, gpt-5, gemini-3.1-pro-preview} form a clean
-strategic-abstention cluster. The \texttt{baseline:always-pass} row is
-$100\,\%$ everywhere by construction.}
-\label{fig:heatmap-pass}
-\end{figure}
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.85\linewidth]{figures/heatmap_committed_n.pdf}
-\caption{Per-family committed-task counts. Zeros explain the
-\texttt{n/a} cells in the accuracy / ECE heatmaps. Low-$N$ cells (below
-$5$) should be read with wide CIs in mind; we report ECE only when
-$N \ge 5$.}
-\label{fig:heatmap-committed-n}
-\end{figure}
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.8\linewidth]{figures/heatmap_ece.pdf}
-\caption{Per-family ECE conditional on commitment. Lower is better.
-\texttt{n/a} cells correspond to $N = 0$ committed --- the agent
-strategically PASSed on every task of that family (see
-\autoref{fig:heatmap-pass}). The two families with the worst panel-mean
-ECE on the T\textsubscript{extreme} tier are \textbf{writing} (rhyme +
-lipogram, ECE $\approx 0.30$ on the bottom-tier agents) and
-\textbf{multimodal} (9$\times$9 Sudoku + 7$\times$7 transform chain,
-ECE $\approx 0.27$). Reasoning and code calibration is much
-better-behaved across the panel, with ECE concentrated below
-$0.15$ even for the over-committed Llama and Gemini-Lite agents.
-Knowledge sits between the two clusters --- frontier models retain high
-committed accuracy on the 6-word letter-count chain and 5-hop
-year-arithmetic, while cheaper variants lose calibration in the same way
-they lose calibration on the standard-tier scientific-constants tier.}
-\label{fig:heatmap-ece}
-\end{figure}
-
-\subsection{Model Overreach Point}
-\autoref{fig:mop} shows where each agent's stated confidence first
-exceeds its empirical accuracy by $\ge 2\sigma$.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.85\linewidth]{figures/mop_by_family.pdf}
-\caption{Max-overreach per (agent, family). Bright red indicates the
-agent systematically over-quotes its probability of success on hard
-instances of that family.}
-\label{fig:mop}
-\end{figure}
-
-\subsection{Cross-family calibration transfer}
-We compute the Spearman rank-correlation of per-family ECE rankings
-against the panel-average ranking. A high $\rho$ means calibration is a
-\emph{global} trait; a low $\rho$ means it is family-specific. On the
-matched Standard-tier $K = 15$ ($N \ge 100$) panel, the median per-agent
-$\rho$ across the 12 families is $0.55$ with inter-quartile range
-$[0.40, 0.72]$. Three agents have $\rho > 0.85$ (calibration is a global
-trait for \texttt{claude-opus-4.7}, \texttt{gpt-5},
-\texttt{gemini-3.1-pro-preview}); five agents have $\rho < 0.30$
-(calibration is strongly family-specific for the cheaper variants such
-as \texttt{llama-4-scout}, \texttt{gpt-5.4-nano},
-\texttt{gemini-3.1-flash-lite}). This is direct empirical support for
-our Pareto rather than scalar leaderboard choice: a model that calibrates
-well on knowledge may calibrate poorly on multimodal --- the right
-choice depends on the deployment mix.
-
-\subsection{H4: hard-tier accuracy collapse}
-The T\textsubscript{extreme} tier shows that the Standard-tier
-near-ceiling effect was a difficulty-floor artefact. On the matched
-$N$-filtered Standard panel ($K = 15$, $N \ge 100$) the median accuracy
-drops from $87.0\,\%$ (Standard) to $60.0\,\%$
-(T\textsubscript{extreme}, $N \ge 20$) --- a $27.0$-percentage-point
-fall --- while the median ECE \emph{worsens} by $+0.123$ (Standard
-$0.110$, T\textsubscript{extreme} $0.233$, a $2.12\times$ inflation).
-Specific dramatic drops include
-\texttt{claude-opus-4.7} ($90.0\,\% \to 63.6\,\%$, $\Delta = 26.4$\,pp),
-\texttt{deepseek-v3.2} ($84.6\,\% \to 51.0\,\%$),
-and \texttt{llama-4-scout} ($83.1\,\% \to 17.0\,\%$). Models that
-maintain a fixed high-confidence reporting policy
-($\hat P \approx 1$ on every task) incur a payoff penalty roughly
-proportional to their hard-tier accuracy deficit. The Pareto leaders on
-Standard vs.\ T\textsubscript{extreme} differ
-(\autoref{tab:two-tier}): \texttt{openai/gpt-5.2} takes the new
-T\textsubscript{extreme} Pareto-frontier crown with $98.6\,\%$ committed
-accuracy and ECE $0.025$ at \$10{,}500 net payoff (committing on $34\,\%$
-of tasks), while \texttt{openai/gpt-5} achieves perfect ($100\,\%$)
-conditional accuracy via $86\,\%$ strategic abstention --- the same
-vendor at the same compute scale produces two genuinely different
-deployment profiles. The right ranking depends firmly on the deployment
-regime.
-
-\subsection{Pairwise significance}
-\autoref{tab:sig} reports the headline pairwise contrasts. $p$-values
-are Holm--Bonferroni adjusted within each metric family separately
-(net-payoff family $\binom{15}{2} = 105$ tests; ECE-permutation family
-$105$ tests). Raw $p$-values are reported in parallel so the reader can
-re-correct under a different family definition.
-
-\input{figures/significance_table.tex}
-
-\subsection{Reproducibility}
-The full headline table reproduces from the released seed triple
-(\verb|seed=42|, \verb|cycle_seed=42|, \verb|market_seed=42|) plus the
-Pareto-essential multi-seed rotation (\verb|cycle_seed| $\in
-\{42, 7, 1729\}$ for \texttt{gpt-5}, \texttt{gpt-5.2},
-\texttt{claude-opus-4.7}, \texttt{deepseek-r1}) by running
-\begin{lstlisting}[basicstyle=\small\ttfamily, frame=single]
-make install
-make run-paper            # Standard tier, full panel, seed=42
-make run-paper-hard       # T_extreme tier, seeds 42 + multi-seed essentials
-make finalize-paper       # regenerate figures + tables + paper text
-make paper                # compile PDF
-\end{lstlisting}
-End-to-end wall-clock on a single workstation with concurrency$=$8:
-approximately 90 minutes for the Standard-tier full panel and a further
-2--3 hours for the T\textsubscript{extreme} multi-seed Pareto-essentials.
-Total inference spend on OpenRouter: \$34.65 USD across the full
-two-tier matrix (Standard \$25.58 + T\textsubscript{extreme}
-multi-seed \$9.07).
+\paragraph{Strategic family-level abstention.}
+A cross-cut of the per-(agent, family) heatmaps reveals a clean
+\emph{strategic-abstention cluster}:
+\texttt{deepseek-r1} declines on $9$ of $12$ families
+(100\,\% \textsc{Pass}); \texttt{kimi-k2-thinking} on $7$;
+\texttt{qwen3-235b-thinking} on $4$; \texttt{openai/gpt-5} on $3$;
+\texttt{gemini-3.1-pro-preview} on $2$. The non-reasoning agents
+(\texttt{haiku-4.5}, \texttt{gemini-3-flash}, \texttt{deepseek-v3.2},
+the Llama family) have zero $100\,\%$-PASS families. Reasoning-tuned
+systems recognise families beyond their competence and decline at the
+family level; non-reasoning systems commit indiscriminately. Per-family
+heatmaps (PASS rate, committed-$N$, ECE conditional on commitment),
+per-language multilingual breakdown, Pareto-frontier scatter,
+reliability diagrams, MOP heatmap, per-pair significance, post-hoc
+power, cost-conscious $(\text{cost}, \mathcal{P})$ frontier,
+strict-verifier ablation, and rhyme / safety LLM-judge audits are all
+in \autoref{app:ablations}.

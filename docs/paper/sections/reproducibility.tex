@@ -5,7 +5,7 @@
 The full headline table and all paper figures reproduce from a single
 release seed plus the Pareto-essential multi-seed rotation:
 \begin{lstlisting}[basicstyle=\small\ttfamily, frame=single]
-git clone https://github.com/debajyotidasgupta/prophet-bench.git
+git clone <ANONYMIZED-CODE-URL>.git    # de-anon at camera-ready
 cd prophet-bench
 make install
 cp .env.example .env       # add OPENROUTER_API_KEY etc.
@@ -128,15 +128,17 @@ benchmark:
 \end{description}
 
 \subsection{Released artifacts}
+For double-blind review, all artifact URLs are anonymised; the
+non-anonymous links will be added at camera-ready. The reviewer-visible
+anonymous mirror serves identical code, seeds, and results to the
+public repository.
 \begin{itemize}
-  \item Code: \url{https://github.com/debajyotidasgupta/prophet-bench}
-  (MIT).
-  \item Reference seeds and per-family tasks:
-  \url{https://huggingface.co/datasets/debajyotidasgupta/prophet-bench}.
-  \item This paper's experimental matrix and figures:
-  \url{https://huggingface.co/datasets/debajyotidasgupta/prophet-results}.
-  \item Public live leaderboard: planned at
-  \url{https://prophet-bench.org}; the canonical leaderboard for the
-  submission is the static one shipped with this paper at
-  \url{https://huggingface.co/datasets/debajyotidasgupta/prophet-results}.
+  \item Code: $\langle$anonymous GitHub mirror$\rangle$ (MIT).
+  \item Reference seeds and per-family tasks: $\langle$anonymous
+  Hugging Face mirror, dataset \texttt{prophet-bench}$\rangle$.
+  \item This paper's experimental matrix and figures: $\langle$anonymous
+  Hugging Face mirror, dataset \texttt{prophet-results}$\rangle$.
+  \item Public live leaderboard: planned post-acceptance; the canonical
+  leaderboard for the submission is the static one shipped with this
+  paper and mirrored on the anonymous Hugging Face repository.
 \end{itemize}

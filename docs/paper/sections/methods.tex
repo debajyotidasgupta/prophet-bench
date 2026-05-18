@@ -1,173 +1,70 @@
 % Methodology section. Imported by prophet.tex.
 \section{The PROPHET marketplace}\label{sec:method}
 
-\subsection{Setup}
-A benchmark cycle consists of a procedurally generated task suite $\mathcal{T}$
-and an agent $\mathcal{A}$ under evaluation. Each task $t \in \mathcal{T}$ is
-drawn from one of twelve families (Section~\ref{sec:families}) and has a
-known reference-panel difficulty $\delta(t) \in [0, 1]$.
+\paragraph{Setup.}
+A benchmark cycle consists of a procedurally generated task suite
+$\mathcal{T}$ and an agent $\mathcal{A}$. Each task
+$t \in \mathcal{T}$ is drawn from one of twelve families
+(Section~\ref{sec:families}) with a known reference-panel difficulty
+$\delta(t) \in [0, 1]$. Difficulty climbs from T0 (trivial) to T7
+(``standard hardest''); we publish an additional
+T\textsubscript{extreme} tier at $\delta \in [0.97, 1.0]$ calibrated
+against 2025--2026 hard-task ceilings. For each $t$ the engine forms a
+deterministic market offer
+$(V_t, C_t, \kappa_t, \delta^{\mathrm{pass}}_t)$ from a family-specific
+base plus hash-derived per-instance noise $\le 2\%$.
 
-\paragraph{Standard tier vs.\ T\textsubscript{extreme} tier.}
-Within each family the difficulty grid spans T0 (trivial) through T7
-(``standard hardest''); we additionally publish a separate
-\emph{T\textsubscript{extreme}} tier of generators at $\delta \in [0.97, 1.0]$,
-calibrated against published 2025--2026 hard-task ceilings (multi-modulus
-CRT, Pell, discrete log, $5\times 5$ zebra with red herrings, depth-9
-temporal chains, $9\times 9$ Sudoku cell, four-hop year arithmetic,
-modular knapsack, DAG path counting). The standard-tier suite measures
-calibration at near-ceiling accuracy; T\textsubscript{extreme} measures
-calibration at the saturation frontier where accuracy spread is
-preserved. Both tiers feed into the same proper-scoring-rule payoff.
-
-For each $t$ the engine forms a deterministic market offer
-$\mathbf{o}_t = (V_t, C_t, \kappa_t, \delta^{\mathrm{pass}}_t)$ from a
-family-specific base $(V_f, C_f, \kappa_f, \delta^{\mathrm{pass}}_f)$ plus
-hash-derived per-instance noise of $\le 2\%$ that prevents agents from
-pre-computing prices.
-
-\subsection{Actions and payoffs}
-The agent selects an action $a \in \{\mathrm{Take},\, \mathrm{Quote},\,
-\mathrm{Pass}\}$. We denote the agent's stated probability of success by
-$\Phat \in [0, 1]$ and the mechanical verifier's binary outcome by $y \in
-\{0, 1\}$.
-
-\paragraph{Take.}
-\(
-\mathrm{payoff} = V_t \cdot y - C_t \cdot (1 - y).
-\)
-
-\paragraph{Quote.}
-\(
-\mathrm{payoff} = V_t \cdot y - C_t \cdot (1 - y) + \kappa_t \cdot \big(1 - 4(\Phat - y)^2\big).
-\)
-
-\paragraph{Pass.} \(\mathrm{payoff} = -\delta^{\mathrm{pass}}_t.\)
-
-\paragraph{Why this calibration term?}
-The quantity $\kappa\big(1 - 4(\Phat - y)^2\big)$ is a Brier-based proper
-scoring rule scaled to lie in $[-3\kappa, +\kappa]$.
-\emph{Conditional on selecting \textsc{Quote}}, properness implies that
-the agent's expected payoff is maximised iff it reports its true belief
-$\Phat = \mathbb{E}[y \mid t]$.\footnote{Proof: holding the action fixed
-at \textsc{Quote}, expected payoff over $y$ is maximised at $\Phat = \Pr[y =
-1 \mid t]$ by the standard Brier-rule argument (\citet{brier1950,gneiting2007}).}
-The factor $4$ rescales the maximum loss to $1$, so a uniform $\Phat =
-0.5$ on a binary outcome yields exactly zero calibration payoff ---
-eliminating the trivial "always-hedge" strategy. The asymmetric
+\paragraph{Actions and payoffs.}
+The agent selects $a \in \{\textsc{Take}, \textsc{Quote},
+\textsc{Pass}\}$, declares $\Phat \in [0, 1]$, and receives:
+\textsc{Take}: $V_t y - C_t (1-y)$;
+\textsc{Quote}: $V_t y - C_t (1-y) + \kappa_t (1 - 4(\Phat - y)^2)$;
+\textsc{Pass}: $-\delta^{\mathrm{pass}}_t$.
+Here $y \in \{0, 1\}$ is the mechanical verifier's outcome.
+$\kappa(1 - 4(\Phat - y)^2)$ is a Brier-based proper scoring rule
+scaled to $[-3\kappa, +\kappa]$: conditional on \textsc{Quote},
+expected payoff is maximised iff
+$\Phat = \mathbb{E}[y \mid t]$~\citep{brier1950,gneiting2007}. The
+factor $4$ makes uniform $\Phat = 0.5$ yield zero calibration payoff,
+eliminating the always-hedge strategy. The asymmetric
 $[-3\kappa, +\kappa]$ band reflects production reality: over-confidence
-drives real bad decisions, while caution merely costs research effort.
+drives bad decisions; caution costs research effort. The full
+action-selection equilibrium is in Appendix~\ref{app:reproduce}.
 
-\paragraph{Action-selection equilibrium.}
-The action menu $\{\textsc{Take}, \textsc{Quote}, \textsc{Pass}\}$
-introduces a strategic layer \emph{above} the proper scoring rule.
-\textsc{Take} pays $V y - C(1-y)$, independent of $\Phat$;
-\textsc{Pass} pays $-\delta^{\mathrm{pass}}$, also independent of $\Phat$.
-For an agent with true belief $p = \Pr[y=1\mid t]$ and a truthful
-$\Phat = p$ at \textsc{Quote}, expected payoffs are
-$\mathbb{E}[\textsc{Take}] = (V+C)p - C$,
-$\mathbb{E}[\textsc{Quote}] = (V+C)p - C + \kappa(1 - 4 p(1-p))$, and
-$\mathbb{E}[\textsc{Pass}] = -\delta^{\mathrm{pass}}$.
-\textsc{Quote} strictly dominates \textsc{Take} when $\kappa(1 - 4p(1-p))
-> 0$, i.e.\ when $p \notin [0.5 - \frac{\sqrt{3}}{4}\sqrt{(\kappa - 0)/\kappa}, \ldots]$
---- in practice, whenever the agent is confidently right or confidently
-wrong about its own probability ($p$ far from $0.5$), \textsc{Quote} is
-preferred over \textsc{Take}. Near $p = 0.5$ both pay roughly the same
-in expectation; \textsc{Pass} dominates either when
-$(V+C)p - C < -\delta^{\mathrm{pass}}$, i.e.\ on tasks the agent
-genuinely cannot do better than chance on. The properness guarantee
-\emph{within} \textsc{Quote} is what disciplines the reported $\Phat$;
-the action menu controls \emph{when} that guarantee binds.
-Section~\ref{sec:gaming} and Appendix~\ref{app:audit} confirm that the
-trivial gaming strategies (always-quote-0.5, always-take, always-pass)
-are all strictly dominated under our default $(V, C, \kappa, \delta^{\mathrm{pass}})$
-calibration.
+\paragraph{Headline metrics and Pareto leaderboard.}
+We report net payoff $\mathcal{P} = \sum_t \mathrm{payoff}(t)$, ECE
+($10$ equal-width bins; BCa bootstrap $95\,\%$ CI as ECE is
+non-differentiable, $B = 10^4$), Brier, log-loss, abstention precision
+(on a $\rho = 0.10$ shadow sub-sample), and Model Overreach Point
+$\MOP$ (the difficulty bin where stated $\Phat$ exceeds empirical
+accuracy by $\ge 2\sigma$). We publish the Pareto frontier of
+$(\mathcal{P}, \ECE)$ with a secondary $(\text{cost}, \mathcal{P})$
+frontier; the frontier table, not any scalar, is the headline.
 
-\subsection{Headline metrics}
-For each agent over a cycle we report:
-\begin{description}
-  \item[Net payoff $\mathcal{P}$] $= \sum_t \mathrm{payoff}(t)$, total
-  PROPHET-cents earned. Bootstrap 95\,\% CIs ($B = 10^4$, percentile).
-  \item[Expected calibration error $\ECE$] over $10$ equal-width bins on
-  $\Phat$; we also report adaptive-bin $\ECE$ over $15$ equal-mass bins.
-  \item[Brier score] $\frac{1}{n}\sum_t (\Phat_t - y_t)^2$.
-  \item[Log-loss] $-\frac{1}{n} \sum_t y_t \log \Phat_t + (1 - y_t)\log(1 - \Phat_t)$
-  with $\Phat$ clipped to $[\epsilon, 1-\epsilon]$.
-  \item[Abstention precision] of \textsc{Pass}ed tasks, the fraction that
-  would have failed had they been attempted (estimated via a held-out
-  shadow re-attempt sub-sample with rate $\rho_{\mathrm{shadow}} = 0.10$).
-  \item[Model Overreach Point ($\MOP$)] the difficulty bin where stated
-  $\bar{\Phat}$ exceeds empirical accuracy by $\ge 2\sigma$ (binomial).
-\end{description}
+\paragraph{Statistical protocol.}\label{sec:stats}
+Pairwise contrasts: paired Student's $t$ when $n \ge 30$ (else
+Wilcoxon); McNemar's exact for binary correctness; permutation test for
+$\Delta\ECE$ ($B = 10^4$). Effect sizes accompany every $p$ (Cohen's
+$d$, rank-biserial $r$, paired odds-ratio, $|\Delta\ECE|$).
+Holm--Bonferroni is applied \emph{within} each metric family
+($\binom{16}{2} = 120$ tests for net-payoff; $120$ for ECE), not
+across metrics. Raw and adjusted $p$-values are reported in parallel;
+post-hoc power and MDE per headline contrast are in
+Appendix~\ref{app:ablations}.
 
-\subsection{Pareto-frontier leaderboard}
-A scalar leaderboard incentivises accuracy at any cost. We instead publish
-the Pareto frontier of $(\mathcal{P}, \ECE)$, with secondary frontiers on
-$(\text{cost USD}, \text{accuracy})$ and $(\Brier, \text{abstention
-precision})$. As a summary scalar we report 2-D hypervolume against a
-fixed reference point. None of these scalars is the headline; the table is.
+\paragraph{Per-agent $N$ and min-$N$ filter.}
+The Standard tier targets $240$ tasks per agent; realised $N$ ranges
+$55$--$292$ (multi-seed pooling on Pareto-essentials, provider-side
+refusals). T\textsubscript{extreme} targets $40$ and realises
+$28$--$100$. The pre-registered min-$N$ filter (Standard $N \ge 100$,
+Ext $N \ge 20$) governs Pareto-flag and Spearman; rows below threshold
+are displayed for transparency without the $\star$ marker.
 
-\subsection{Statistical protocol}\label{sec:stats}
-Two-system comparisons use paired tests across the same per-task outcomes:
-\begin{itemize}
-  \item Continuous metrics per task (payoff, log-loss): paired Student's
-  $t$ when $n \ge 30$ and approximate symmetry, else paired Wilcoxon
-  signed-rank.
-  \item Binary correctness: McNemar's exact test.
-  \item Group-level differences in $\ECE$ / $\Brier$: permutation test
-  with $B = 10^4$.
-\end{itemize}
-We always report effect sizes alongside $p$: Cohen's $d$ for paired $t$,
-rank-biserial $r$ for Wilcoxon, paired odds-ratio for McNemar, and
-$|\Delta\ECE|$ in absolute units for permutation. When comparing more than
-two systems we apply Holm--Bonferroni correction (controls family-wise
-error rate). The family of tests is defined as ``all pairs from the
-$N\ge 100$ Standard-tier panel ($K = 15$) on the single primary metric
-(net payoff)'' --- $\binom{15}{2} = 105$ tests --- and a parallel,
-separately-corrected family for ECE permutation tests. We do NOT apply a
-single global correction across $K(K{-}1)/2 \times M$ tests with $M = 4$
-metrics, because the metrics are decision-relevant in different
-regimes (payoff for deployment ranking, ECE for calibration claims) and
-collapsing both into one family inflates $m$ to $\approx 540$ and crushes
-effect sizes that are scientifically meaningful within their own
-sub-family. Raw and adjusted $p$-values are reported in parallel so the
-reader can re-correct under a different family definition.
-
-For sample-size adequacy we report post-hoc power and minimum-detectable
-effect for each headline pairwise contrast.
-
-\paragraph{Per-agent $N$ and minimum-$N$ filter.}
-The Standard tier targets 240 tasks per agent (20 per family $\times$ 12).
-The realised $N$ per agent varies between $55$ and $292$ owing to:
-(a) multi-seed pooling on Pareto-essential agents (\textsc{Opus 4.7},
-\textsc{GPT-5}, \textsc{GPT-5.2}, \textsc{DeepSeek-R1} were re-run on
-seeds $\{42, 7, 1729\}$); (b) provider-side rate-limit or refusal at
-inference time (returns a structurally-malformed response, which we
-exclude rather than imputing). The T\textsubscript{extreme} tier targets
-40 tasks per agent and realised $N$ ranges $6$--$100$ before pooling and
-$28$--$100$ after. For the headline Spearman computations and Pareto
-frontier we apply a pre-registered minimum-$N$ filter (Standard $N \ge
-100$, T\textsubscript{extreme} $N \ge 20$); rows below the threshold are
-displayed in the leaderboard for transparency but do not receive the
-Pareto-optimal $\star$ flag.
-
-\subsection{Gaming resistance}\label{sec:gaming}
-We adopt the Berkeley RDI April 2026 attack taxonomy as a pre-publication
-red-team checklist:
-\begin{enumerate}
-  \item \textbf{Procedural seeds.} The benchmark has no fixed evaluation
-  set; cycle seeds rotate. Reviewers receive a frozen public seed list for
-  reproducibility; the live leaderboard uses rolling seeds.
-  \item \textbf{Mechanical primary metrics.} ECE, Brier, log-loss, payoff,
-  MOP are computed from formulas alone; no LLM judge is required.
-  \item \textbf{Sandboxed verifiers.} Code-family verifiers run candidate
-  programs inside a subprocess with a 5\,s timeout, restricted PATH, and a
-  bounded namespace; tool-family verifiers replay pure-function tool calls
-  through a fixed in-memory registry.
-  \item \textbf{Witness-style probes.} For long-form writing, mechanical
-  constraint checks (regex / parser / acrostic / lipogram / JSON schema)
-  produce the boolean $y$; any LLM judgement is a side-channel quality
-  score, never used in primary metrics.
-  \item \textbf{Pareto frontier.} Single-axis gaming (e.g., $\Phat = 1$
-  always) is captured in the orthogonal axis (ECE collapses, MOP
-  triggers).
-\end{enumerate}
+\paragraph{Gaming resistance.}\label{sec:gaming}
+We adopt the Berkeley RDI April~2026 attack taxonomy as a
+pre-publication red-team checklist (Appendix~\ref{app:audit}). Key
+mechanisms: procedural seeds with rotation (no fixed eval set),
+mechanical primary metrics (no LLM-judge), sandboxed code-family
+verifiers (\texttt{subprocess.run} with $5$\,s timeout, restricted
+PATH), and the Pareto frontier itself --- single-axis gaming collapses
+an orthogonal axis.

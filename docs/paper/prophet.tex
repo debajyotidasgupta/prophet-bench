@@ -1,18 +1,21 @@
 % PROPHET — main paper
-% Target: NeurIPS 2026 Datasets & Benchmarks Track
-\documentclass{article}
+% Target: EMNLP 2026 (via ARR May cycle, commit deadline 2026-08-02)
+\documentclass[11pt]{article}
 
-\PassOptionsToPackage{numbers, compress}{natbib}
-\usepackage[final]{neurips_2025}            % swap for neurips_2026.sty when released
-\usepackage[utf8]{inputenc}
+% ARR / ACL submission style. "review" sets double-blind; switch to
+% "final" for camera-ready post-acceptance.
+\usepackage[review]{acl}
+
+\usepackage{times}
+\usepackage{latexsym}
 \usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 \usepackage{microtype}
+\usepackage{inconsolata}
 \usepackage{amsmath, amssymb, amsthm, mathtools}
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{xcolor}
-\usepackage{hyperref}
-\hypersetup{colorlinks=true, linkcolor=blue!60!black, citecolor=blue!60!black, urlcolor=blue!60!black}
 \usepackage{url}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
@@ -67,19 +70,20 @@ $\sim$10--40\,\% by design. All verifiers are mechanical. We benchmark
 OpenAI \texttt{gpt-5}/\texttt{5-mini}/\texttt{5-nano}/\texttt{5.2}/\texttt{5.4-nano};
 DeepSeek \texttt{v3.2}/\texttt{r1}; Meta \texttt{llama-4-scout}/\texttt{maverick};
 Qwen \texttt{qwen3-32b}/\texttt{235b-thinking}; Moonshot
-\texttt{kimi-k2-thinking}). \texttt{gpt-5.2} was added on
-T\textsubscript{extreme} only owing to its mid-experiment release.
-Headline metrics use a pre-registered minimum-$N$ filter ($N \ge 100$
-Standard, $N \ge 20$ T\textsubscript{extreme}) so small-$N$ outliers do
-not dominate the leaderboard. The headline finding from the
-Standard tier: \textbf{the first-place leader differs between accuracy
-and net payoff.} Best by accuracy and best by ECE: Google Gemini 3
-Flash Preview ($0.970$, ECE $0.027$). Best by net payoff: Google Gemini
-3.1 Pro Preview ($37{,}813$ PROPHET-cents, vs.\ $23{,}800$ for the Flash
-sibling and $24{,}824$ for Claude Opus 4.7) --- the same vendor at two
-different price-points, separated by commitment policy not by accuracy.
-On the matched $K = 15$ panel Spearman $\rho_{\text{acc, ECE}} = -0.93$,
-$\rho_{\text{acc, payoff}} = +0.76$, $\rho_{\text{ECE, payoff}} = -0.67$.
+\texttt{kimi-k2-thinking}). Headline metrics use a pre-registered
+minimum-$N$ filter ($N \ge 100$ Standard, $N \ge 20$
+T\textsubscript{extreme}) so small-$N$ outliers do not dominate the
+leaderboard. The headline finding from the Standard tier:
+\textbf{the first-place leader differs between accuracy and net
+payoff.} Best by accuracy: \texttt{openai/gpt-5.2} ($0.970$, tied with
+\texttt{google/gemini-3-flash-preview}). Best by calibration:
+\texttt{openai/gpt-5.2} ($\ECE = 0.017$, the lowest on the panel).
+Best by net payoff: \texttt{google/gemini-3.1-pro-preview}
+($37{,}813$ PROPHET-cents) --- not the agent that wins on accuracy or
+calibration. On the matched $K = 16$ panel Spearman
+$\rho_{\text{acc, ECE}} = -0.94$,
+$\rho_{\text{acc, payoff}} = +0.78$,
+$\rho_{\text{ECE, payoff}} = -0.71$.
 On T\textsubscript{extreme} the picture shifts further: the new
 $(\ECE, \mathcal{P})$ Pareto frontier is \texttt{gpt-5} (ECE $0.019$,
 payoff $5{,}274$) and \texttt{gpt-5.2} (ECE $0.025$, payoff $10{,}500$);
@@ -98,7 +102,7 @@ Hugging Face for re-execution at any future model checkpoint.
 \input{sections/limitations}
 \input{sections/ethics_safety}
 
-\bibliographystyle{plainnat}
+\bibliographystyle{acl_natbib}
 \bibliography{refs}
 
 \input{sections/reproducibility}

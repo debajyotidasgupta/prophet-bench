@@ -1,121 +1,73 @@
 \section{Related work}\label{sec:related}
 
-\paragraph{Saturation of static LLM benchmarks.}
-By May 2026, the headline static-resettable benchmarks are at or past
-saturation. MMLU and MMLU-Pro sit above $88\,\%$; GPQA-Diamond above
-$94\,\%$; AIME 2025/26 and MATH-500 above $91\,\%$; SWE-bench Verified
-at $\approx 94\,\%$ for state-of-the-art 2026 systems~\cite{swebench};
-OSWorld-Verified has been crossed by recent multimodal-agent
-systems~\cite{osworld}. HLE rose from $8\,\%$ (Jan 2025, o1) to
-$\approx 65\,\%$ (May 2026)~\cite{hle}; ARC-AGI-2 from $53\,\%$ (Dec
-2025) to $85\,\%$ (May 2026)~\cite{arcagi2}. The capabilities that did
-\emph{not} saturate are all about calibrated, persistent agency:
-ARC-AGI-3 $<$$1\,\%$~\cite{arcagi3}, SWE-EVO $\approx 25\,\%$,
-MemoryAgentBench selective-forgetting $<$$30\,\%$~\cite{memoryagentbench}.
+\paragraph{Saturation of static benchmarks.}
+By May 2026, MMLU-Pro and GPQA-Diamond cluster above $94\,\%$;
+SWE-bench Verified at $\approx 94\,\%$~\cite{swebench};
+HLE rose from $8\,\%$ to $\approx 65\,\%$ in 16 months~\cite{hle};
+ARC-AGI-2 from $53\,\%$ to $85\,\%$ in four months~\cite{arcagi2}.
+The unsaturated axes are all calibrated, persistent agency:
+ARC-AGI-3 $<1\,\%$~\cite{arcagi3}, SWE-EVO $\approx 25\,\%$,
+MemoryAgentBench selective-forgetting $<30\,\%$~\cite{memoryagentbench}.
 
-\paragraph{Verbal calibration of LLMs.} Kadavath
-et~al.~\cite{kadavath2022} showed LLMs have non-trivial verbal
-calibration on factual QA; Tian et~al.\ (2023) benchmarked verbalised
-probabilities. Recent reasoning-faithfulness work
-\cite{anthropic_faithfulness} found that models verbalise hints in only
-25--39\,\% of cases and that \emph{unfaithful} chains-of-thought are
-systematically \emph{longer} than faithful ones --- a finding directly
-relevant to PROPHET's calibration emphasis.
+\paragraph{Verbal calibration and faithfulness.}
+Kadavath et~al.~\cite{kadavath2022} showed LLMs have non-trivial verbal
+calibration. Recent faithfulness work~\cite{anthropic_faithfulness}
+found unfaithful chains-of-thought are systematically \emph{longer}
+than faithful ones and that models verbalise decision-relevant hints
+in only $25$--$39\,\%$ of cases --- verbose confidence decouples from
+competence. PROPHET pays only when stated $\Phat$ matches outcome rates.
 
-\paragraph{Reliability beyond pass@1.} \cite{beyond_pass1} formalised
-the Reliability Decay Curve, Variance Amplification Factor, and Model
-Overreach Point. \cite{long_horizon_mirage} found recovery is the
-dominant production failure mode. PROPHET operationalises these as
-publishable scores.
+\paragraph{Proper scoring rules.} Brier (1950) and Gneiting--Raftery
+\cite{gneiting2007} provide the theory; Guo et~al.~\cite{guo2017}
+established ECE and temperature scaling for deep classifiers. We adopt
+Brier because it is bounded, smooth, and admits closed-form expected
+payoff at known $P[y=1\!\mid\!t]$ --- log-score blows up at extremes
+and is gameable under borderline tasks.
 
-\paragraph{Proper scoring rules in machine-learning evaluation.}
-Brier (1950) introduced the canonical quadratic scoring rule for
-probability forecasts; Gneiting and Raftery~\cite{gneiting2007} survey
-the theory and practical alternatives. Guo et~al.~\cite{guo2017}
-established ECE and temperature scaling as the modern calibration
-benchmarks for deep classifiers. We adopt Brier as the calibration term
-because it is bounded, smooth, easy to communicate, and admits closed-
-form expected payoff at known $P[y=1\!\mid\!t]$.
+\paragraph{Agent benchmarks and gaming.}
+GAIA~\cite{gaia}, AgentBench, MMAU, and OSWorld~\cite{osworld}
+established multi-step tool-use surfaces. The Berkeley RDI April~2026
+audit~\cite{berkeley_rdi_audit} demonstrated trivial exploits giving
+$100\,\%$ on eight major agent benchmarks; we adopt their attack
+taxonomy as a pre-publication red-team checklist
+(Section~\ref{sec:gaming}).
 
-\paragraph{Agent benchmarks and gaming.} GAIA~\cite{gaia} established
-multi-step tool-use as a measurable surface; AgentBench, MMAU, OSWorld
-~\cite{osworld} followed. The Berkeley RDI April~2026
-audit~\cite{berkeley_rdi_audit} showed trivial exploits gave 100\,\% on
-eight major agent benchmarks. We adopt their attack taxonomy as a pre-
-publication red-team checklist (Section~\ref{sec:gaming}).
-
-\paragraph{Multiple-comparison correction in benchmark papers.}
-Demsar (2006) argued for non-parametric paired tests when comparing
-multiple classifiers; Dem\v{s}ar's argument applies a fortiori at our
-scale (twelve task families, $\sim$15 agents, three primary metrics).
-We default to Holm--Bonferroni for family-wise error rate; results are
-also reported under Benjamini--Hochberg FDR.
-
-\paragraph{Concurrent benchmarks.} \cite{memoryagentbench} measures
-selective forgetting; \cite{beyond_pass1} measures reliability decay;
-PROPHET is complementary: it measures calibrated commitment under a
-proper scoring rule across a heterogeneous task suite. None of the
-existing benchmarks publishes a Pareto frontier on
-$(\text{net payoff}, \mathrm{ECE})$.
-
-\paragraph{Calibration markets and concurrent work.} A burst of
-calibration-with-skin-in-the-game benchmarks appeared in 2025--2026.
-\textbf{Prophet Arena}~\cite{prophet_arena} (UChicago, October 2025)
+\paragraph{Concurrent calibration-with-skin-in-the-game work.}
+\textbf{Prophet Arena}~\cite{prophet_arena} (UChicago, Oct.~2025)
 evaluates frontier LLMs on live Kalshi prediction-market events with
-Brier, ECE, and a market-return metric; it shares our overall framing
-but operates on \emph{live external events} rather than procedural
-tasks with mechanical verifiers, has no abstention action, and admits
-no Pareto comparison. \textbf{KalshiBench}, \textbf{PolyBench}, and
-\textbf{ForecastBench}~\cite{forecastbench} cover similar territory and
-inherit the same external-event dependency. The theoretically closest
-sibling is \textbf{BAS}~\cite{bas_oxford} (Oxford, April 2026), which
-defines an asymmetric-overconfidence proper-scoring rule with an
-abstention option; PROPHET differs in (i) using a bounded
-\emph{Brier-based} payoff $[-3\kappa, +\kappa]$ rather than an
-unbounded log-style penalty, (ii) exposing an explicit
-TAKE/QUOTE/PASS action menu rather than a single probability emission,
-(iii) sourcing tasks from a \emph{procedurally generated} 12-family
-capability surface with mechanical verifiers, and (iv) reporting a
-two-dimensional Pareto frontier rather than a scalar leaderboard.
-\textbf{AbstentionBench}~\cite{abstentionbench} and
+Brier and a market-return metric; it operates on \emph{live external
+events} rather than procedural tasks with mechanical verifiers, has no
+abstention action, and admits no Pareto comparison. \textbf{KalshiBench},
+\textbf{PolyBench}, and \textbf{ForecastBench}~\cite{forecastbench}
+cover similar territory and inherit the same external-event dependency.
+\textbf{BAS}~\cite{bas_oxford} (Oxford, Apr.~2026) is the closest
+sibling: an asymmetric-overconfidence proper-scoring rule with
+abstention. PROPHET differs in (i) a bounded Brier-based payoff
+$[-3\kappa, +\kappa]$ rather than an unbounded log-style penalty,
+(ii) an explicit \textsc{Take}/\textsc{Quote}/\textsc{Pass} action menu,
+(iii) a procedurally generated 12-family suite with mechanical
+verifiers, and (iv) a two-dimensional Pareto frontier rather than a
+scalar. \textbf{AbstentionBench}~\cite{abstentionbench} and
 \textbf{Going-All-In}~\cite{going_all_in} jointly motivate the bundle:
-the former shows that current systems do not abstain even when ECE
-indicates they should, the latter that prompted-confidence elicitation
-diverges sharply from behavioural commitment.
-\textbf{CRS}~\cite{crs_composite} explicitly proposes a single
-composite reliability score; we deliberately avoid this in favour of
-the Pareto view, on the grounds that distinct downstream users have
-different cost-of-error vs cost-of-pass trade-offs that cannot be
-captured by a single scalar.
+the former shows current systems do not abstain when ECE indicates they
+should; the latter that prompted-confidence elicitation diverges from
+behavioural commitment. \textbf{CRS}~\cite{crs_composite} proposes a
+single composite score; we deliberately avoid this in favour of Pareto.
 
-\paragraph{Hard procedural task families.} Several recent
-proc-generated benchmarks supply the kind of difficulty floor PROPHET's
-T\textsubscript{extreme} tier targets. \textbf{Enigmata}~\cite{enigmata}
-provides 36 puzzle generators with Python verifiers; the Sequential
-Hard tier holds o4-mini at 34\,\% and o3-mini-high at 29.6\,\%.
-\textbf{ZebraLogic}~\cite{zebralogic} documents a ``curse of
-complexity'' where Claude~3.5 drops to 12.4\,\% on the hard
-($\geq$6$\times$6 with red herrings) tier.
-\textbf{MultiZebraLogic}~\cite{multizebralogic} shows that 5
-inconsistent-source red herrings drop o3-mini by 15$\pm$7\,pp on
-4$\times$5 puzzles. \textbf{NPPC}~\cite{nppc} ships a \texttt{npgym}
-generator for 25 NP-complete problems; all frontier models score under
-20\,\% past instance-complexity 4--5.
-\textbf{OJBench}~\cite{ojbench}, \textbf{LiveCodeBench-Pro}~\cite{lcbpro},
-and \textbf{AetherCode}~\cite{aethercode} sit at 0--10\,\% pass@1 on
-their hard tiers as of May 2026. \textbf{NoLiMa}~\cite{nolima} shows
-GPT-4o dropping from 99.3\,\% to 69.7\,\% on minimally-lexical-overlap
-needle-in-haystack passages. PROPHET's T\textsubscript{extreme} tier
-draws on the same recipe (multi-modulus CRT, discrete log,
-6$\times$6 zebra, cryptarithmetic, Latin-square completion, temporal
-chains, lattice-path counting) so accuracy spread is preserved at
-$\sim$10--20\,\% even after the standard-difficulty tier saturates.
-
-\paragraph{Name disambiguation.} A 2025 benchmark named
-\emph{Prophet Arena}~\cite{prophet_arena} evaluates LLM forecasting on
-Kalshi prediction-market events. \emph{PROPHET} (this paper) is a
-distinct, procedurally-generated benchmark spanning 12 capability
-families with mechanical verifiers and an explicit
-TAKE/QUOTE/PASS action menu. The shared word reflects the shared
-proper-scoring-rule lineage; the design choices are
-non-overlapping (Section~\ref{sec:design}).
+\paragraph{Hard procedural task families.}
+\textbf{Enigmata}~\cite{enigmata} ships 36 puzzle generators with
+Python verifiers; Sequential-Hard holds o4-mini at $34\,\%$.
+\textbf{ZebraLogic}~\cite{zebralogic} documents a ``curse of complexity''
+dropping Claude~3.5 to $12.4\,\%$ on the hard tier.
+\textbf{MultiZebraLogic}~\cite{multizebralogic} shows red-herring
+clauses drop o3-mini by $15\pm 7$\,pp. \textbf{NPPC}~\cite{nppc} ships
+25 NP-complete generators where all frontier models fall below $20\,\%$
+past complexity 5. \textbf{OJBench}~\cite{ojbench},
+\textbf{LiveCodeBench-Pro}~\cite{lcbpro}, and
+\textbf{AetherCode}~\cite{aethercode} sit at $0$--$10\,\%$ pass@1 on
+their hard tiers; \textbf{NoLiMa}~\cite{nolima} shows GPT-4o falling
+from $99.3\,\%$ to $69.7\,\%$ under minimally lexical needle-in-haystack.
+PROPHET's T\textsubscript{extreme} tier draws on the same recipe so
+accuracy spread is preserved at $\sim$10--40\,\% after the standard
+tier saturates. The shared word with Prophet Arena reflects only the
+proper-scoring-rule lineage; the design choices are non-overlapping.

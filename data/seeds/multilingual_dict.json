@@ -1,8 +1,19 @@
 {
   "_meta": {
-    "description": "Small built-in multilingual word list for the multilingual_family. EN/ES/FR/DE/HI/JP, ~30 common nouns/concepts + numbers + simple words. No network access required.",
-    "languages": ["en", "es", "fr", "de", "hi", "jp"],
-    "version": 1
+    "description": "Small built-in multilingual word list for the multilingual_family. EN/ES/FR/DE/HI/JP, ~30 common nouns/concepts + numbers + simple words. No network access required. | v2: expanded to 10 languages (ar, zh, ru, ko added) for EMNLP coverage",
+    "languages": [
+      "ar",
+      "de",
+      "en",
+      "es",
+      "fr",
+      "hi",
+      "jp",
+      "ko",
+      "ru",
+      "zh"
+    ],
+    "version": "2.0"
   },
   "language_names": {
     "en": "english",
@@ -10,55 +21,518 @@
     "fr": "french",
     "de": "german",
     "hi": "hindi",
-    "jp": "japanese"
+    "jp": "japanese",
+    "ar": "arabic",
+    "zh": "chinese",
+    "ru": "russian",
+    "ko": "korean"
   },
   "translations": [
-    {"en": "thank you", "es": "gracias", "fr": "merci", "de": "danke", "hi": "dhanyavaad", "jp": "arigatou"},
-    {"en": "hello", "es": "hola", "fr": "bonjour", "de": "hallo", "hi": "namaste", "jp": "konnichiwa"},
-    {"en": "goodbye", "es": "adios", "fr": "aurevoir", "de": "tschuess", "hi": "alvida", "jp": "sayonara"},
-    {"en": "yes", "es": "si", "fr": "oui", "de": "ja", "hi": "haan", "jp": "hai"},
-    {"en": "no", "es": "no", "fr": "non", "de": "nein", "hi": "nahin", "jp": "iie"},
-    {"en": "water", "es": "agua", "fr": "eau", "de": "wasser", "hi": "paani", "jp": "mizu"},
-    {"en": "house", "es": "casa", "fr": "maison", "de": "haus", "hi": "ghar", "jp": "ie"},
-    {"en": "cat", "es": "gato", "fr": "chat", "de": "katze", "hi": "billi", "jp": "neko"},
-    {"en": "dog", "es": "perro", "fr": "chien", "de": "hund", "hi": "kutta", "jp": "inu"},
-    {"en": "book", "es": "libro", "fr": "livre", "de": "buch", "hi": "kitaab", "jp": "hon"},
-    {"en": "tree", "es": "arbol", "fr": "arbre", "de": "baum", "hi": "ped", "jp": "ki"},
-    {"en": "sun", "es": "sol", "fr": "soleil", "de": "sonne", "hi": "suraj", "jp": "taiyou"},
-    {"en": "moon", "es": "luna", "fr": "lune", "de": "mond", "hi": "chand", "jp": "tsuki"},
-    {"en": "star", "es": "estrella", "fr": "etoile", "de": "stern", "hi": "taara", "jp": "hoshi"},
-    {"en": "fire", "es": "fuego", "fr": "feu", "de": "feuer", "hi": "aag", "jp": "hi"},
-    {"en": "earth", "es": "tierra", "fr": "terre", "de": "erde", "hi": "prithvi", "jp": "chikyuu"},
-    {"en": "wind", "es": "viento", "fr": "vent", "de": "wind", "hi": "hawa", "jp": "kaze"},
-    {"en": "friend", "es": "amigo", "fr": "ami", "de": "freund", "hi": "dost", "jp": "tomodachi"},
-    {"en": "love", "es": "amor", "fr": "amour", "de": "liebe", "hi": "pyaar", "jp": "ai"},
-    {"en": "food", "es": "comida", "fr": "nourriture", "de": "essen", "hi": "khana", "jp": "tabemono"},
-    {"en": "bread", "es": "pan", "fr": "pain", "de": "brot", "hi": "roti", "jp": "pan"},
-    {"en": "milk", "es": "leche", "fr": "lait", "de": "milch", "hi": "doodh", "jp": "miruku"},
-    {"en": "tea", "es": "te", "fr": "the", "de": "tee", "hi": "chai", "jp": "ocha"},
-    {"en": "rice", "es": "arroz", "fr": "riz", "de": "reis", "hi": "chawal", "jp": "kome"},
-    {"en": "river", "es": "rio", "fr": "fleuve", "de": "fluss", "hi": "nadi", "jp": "kawa"},
-    {"en": "mountain", "es": "montana", "fr": "montagne", "de": "berg", "hi": "pahad", "jp": "yama"},
-    {"en": "school", "es": "escuela", "fr": "ecole", "de": "schule", "hi": "vidyalaya", "jp": "gakkou"},
-    {"en": "teacher", "es": "maestro", "fr": "professeur", "de": "lehrer", "hi": "shikshak", "jp": "sensei"},
-    {"en": "music", "es": "musica", "fr": "musique", "de": "musik", "hi": "sangeet", "jp": "ongaku"},
-    {"en": "city", "es": "ciudad", "fr": "ville", "de": "stadt", "hi": "shahar", "jp": "machi"},
-    {"en": "country", "es": "pais", "fr": "pays", "de": "land", "hi": "desh", "jp": "kuni"},
-    {"en": "morning", "es": "manana", "fr": "matin", "de": "morgen", "hi": "subah", "jp": "asa"},
-    {"en": "night", "es": "noche", "fr": "nuit", "de": "nacht", "hi": "raat", "jp": "yoru"}
+    {
+      "en": "thank you",
+      "es": "gracias",
+      "fr": "merci",
+      "de": "danke",
+      "hi": "dhanyavaad",
+      "jp": "arigatou",
+      "ar": "shukran",
+      "zh": "xiexie",
+      "ru": "spasibo",
+      "ko": "gomawo"
+    },
+    {
+      "en": "hello",
+      "es": "hola",
+      "fr": "bonjour",
+      "de": "hallo",
+      "hi": "namaste",
+      "jp": "konnichiwa",
+      "ar": "marhaba",
+      "zh": "nihao",
+      "ru": "privet",
+      "ko": "annyeong"
+    },
+    {
+      "en": "goodbye",
+      "es": "adios",
+      "fr": "aurevoir",
+      "de": "tschuess",
+      "hi": "alvida",
+      "jp": "sayonara",
+      "ar": "maasalama",
+      "zh": "zaijian",
+      "ru": "dosvidaniya",
+      "ko": "annyeonghi"
+    },
+    {
+      "en": "yes",
+      "es": "si",
+      "fr": "oui",
+      "de": "ja",
+      "hi": "haan",
+      "jp": "hai",
+      "ar": "naam",
+      "zh": "shide",
+      "ru": "da",
+      "ko": "ne"
+    },
+    {
+      "en": "no",
+      "es": "no",
+      "fr": "non",
+      "de": "nein",
+      "hi": "nahin",
+      "jp": "iie",
+      "ar": "la",
+      "zh": "bushi",
+      "ru": "net",
+      "ko": "aniyo"
+    },
+    {
+      "en": "water",
+      "es": "agua",
+      "fr": "eau",
+      "de": "wasser",
+      "hi": "paani",
+      "jp": "mizu",
+      "ar": "ma",
+      "zh": "shui",
+      "ru": "voda",
+      "ko": "mul"
+    },
+    {
+      "en": "house",
+      "es": "casa",
+      "fr": "maison",
+      "de": "haus",
+      "hi": "ghar",
+      "jp": "ie",
+      "ar": "bayt",
+      "zh": "fangzi",
+      "ru": "dom",
+      "ko": "jib"
+    },
+    {
+      "en": "cat",
+      "es": "gato",
+      "fr": "chat",
+      "de": "katze",
+      "hi": "billi",
+      "jp": "neko",
+      "ar": "qit",
+      "zh": "mao",
+      "ru": "koshka",
+      "ko": "goyangi"
+    },
+    {
+      "en": "dog",
+      "es": "perro",
+      "fr": "chien",
+      "de": "hund",
+      "hi": "kutta",
+      "jp": "inu",
+      "ar": "kalb",
+      "zh": "gou",
+      "ru": "sobaka",
+      "ko": "gae"
+    },
+    {
+      "en": "book",
+      "es": "libro",
+      "fr": "livre",
+      "de": "buch",
+      "hi": "kitaab",
+      "jp": "hon",
+      "ar": "kitab",
+      "zh": "shu",
+      "ru": "kniga",
+      "ko": "chaek"
+    },
+    {
+      "en": "tree",
+      "es": "arbol",
+      "fr": "arbre",
+      "de": "baum",
+      "hi": "ped",
+      "jp": "ki",
+      "ar": "shajara",
+      "zh": "shu",
+      "ru": "derevo",
+      "ko": "namu"
+    },
+    {
+      "en": "sun",
+      "es": "sol",
+      "fr": "soleil",
+      "de": "sonne",
+      "hi": "suraj",
+      "jp": "taiyou",
+      "ar": "shams",
+      "zh": "taiyang",
+      "ru": "solntse",
+      "ko": "haetbit"
+    },
+    {
+      "en": "moon",
+      "es": "luna",
+      "fr": "lune",
+      "de": "mond",
+      "hi": "chand",
+      "jp": "tsuki",
+      "ar": "qamar",
+      "zh": "yueliang",
+      "ru": "luna",
+      "ko": "dal"
+    },
+    {
+      "en": "star",
+      "es": "estrella",
+      "fr": "etoile",
+      "de": "stern",
+      "hi": "taara",
+      "jp": "hoshi"
+    },
+    {
+      "en": "fire",
+      "es": "fuego",
+      "fr": "feu",
+      "de": "feuer",
+      "hi": "aag",
+      "jp": "hi",
+      "ar": "nar",
+      "zh": "huo",
+      "ru": "ogon",
+      "ko": "bul"
+    },
+    {
+      "en": "earth",
+      "es": "tierra",
+      "fr": "terre",
+      "de": "erde",
+      "hi": "prithvi",
+      "jp": "chikyuu"
+    },
+    {
+      "en": "wind",
+      "es": "viento",
+      "fr": "vent",
+      "de": "wind",
+      "hi": "hawa",
+      "jp": "kaze"
+    },
+    {
+      "en": "friend",
+      "es": "amigo",
+      "fr": "ami",
+      "de": "freund",
+      "hi": "dost",
+      "jp": "tomodachi",
+      "ar": "sadiq",
+      "zh": "pengyou",
+      "ru": "drug",
+      "ko": "chingu"
+    },
+    {
+      "en": "love",
+      "es": "amor",
+      "fr": "amour",
+      "de": "liebe",
+      "hi": "pyaar",
+      "jp": "ai",
+      "ar": "hubb",
+      "zh": "ai",
+      "ru": "lyubov",
+      "ko": "sarang"
+    },
+    {
+      "en": "food",
+      "es": "comida",
+      "fr": "nourriture",
+      "de": "essen",
+      "hi": "khana",
+      "jp": "tabemono"
+    },
+    {
+      "en": "bread",
+      "es": "pan",
+      "fr": "pain",
+      "de": "brot",
+      "hi": "roti",
+      "jp": "pan",
+      "ar": "khubz",
+      "zh": "mianbao",
+      "ru": "khleb",
+      "ko": "bbang"
+    },
+    {
+      "en": "milk",
+      "es": "leche",
+      "fr": "lait",
+      "de": "milch",
+      "hi": "doodh",
+      "jp": "miruku"
+    },
+    {
+      "en": "tea",
+      "es": "te",
+      "fr": "the",
+      "de": "tee",
+      "hi": "chai",
+      "jp": "ocha",
+      "ar": "shay",
+      "zh": "cha",
+      "ru": "chay",
+      "ko": "cha"
+    },
+    {
+      "en": "rice",
+      "es": "arroz",
+      "fr": "riz",
+      "de": "reis",
+      "hi": "chawal",
+      "jp": "kome",
+      "ar": "aruz",
+      "zh": "mifan",
+      "ru": "ris",
+      "ko": "bap"
+    },
+    {
+      "en": "river",
+      "es": "rio",
+      "fr": "fleuve",
+      "de": "fluss",
+      "hi": "nadi",
+      "jp": "kawa",
+      "ar": "nahr",
+      "zh": "he",
+      "ru": "reka",
+      "ko": "gang"
+    },
+    {
+      "en": "mountain",
+      "es": "montana",
+      "fr": "montagne",
+      "de": "berg",
+      "hi": "pahad",
+      "jp": "yama",
+      "ar": "jabal",
+      "zh": "shan",
+      "ru": "gora",
+      "ko": "san"
+    },
+    {
+      "en": "school",
+      "es": "escuela",
+      "fr": "ecole",
+      "de": "schule",
+      "hi": "vidyalaya",
+      "jp": "gakkou",
+      "ar": "madrasa",
+      "zh": "xuexiao",
+      "ru": "shkola",
+      "ko": "hakgyo"
+    },
+    {
+      "en": "teacher",
+      "es": "maestro",
+      "fr": "professeur",
+      "de": "lehrer",
+      "hi": "shikshak",
+      "jp": "sensei"
+    },
+    {
+      "en": "music",
+      "es": "musica",
+      "fr": "musique",
+      "de": "musik",
+      "hi": "sangeet",
+      "jp": "ongaku"
+    },
+    {
+      "en": "city",
+      "es": "ciudad",
+      "fr": "ville",
+      "de": "stadt",
+      "hi": "shahar",
+      "jp": "machi",
+      "ar": "madina",
+      "zh": "chengshi",
+      "ru": "gorod",
+      "ko": "dosi"
+    },
+    {
+      "en": "country",
+      "es": "pais",
+      "fr": "pays",
+      "de": "land",
+      "hi": "desh",
+      "jp": "kuni",
+      "ar": "balad",
+      "zh": "guojia",
+      "ru": "strana",
+      "ko": "nara"
+    },
+    {
+      "en": "morning",
+      "es": "manana",
+      "fr": "matin",
+      "de": "morgen",
+      "hi": "subah",
+      "jp": "asa"
+    },
+    {
+      "en": "night",
+      "es": "noche",
+      "fr": "nuit",
+      "de": "nacht",
+      "hi": "raat",
+      "jp": "yoru"
+    }
   ],
   "numbers": [
-    {"value": 0, "en": "zero", "es": "cero", "fr": "zero", "de": "null", "hi": "shunya", "jp": "zero"},
-    {"value": 1, "en": "one", "es": "uno", "fr": "un", "de": "eins", "hi": "ek", "jp": "ichi"},
-    {"value": 2, "en": "two", "es": "dos", "fr": "deux", "de": "zwei", "hi": "do", "jp": "ni"},
-    {"value": 3, "en": "three", "es": "tres", "fr": "trois", "de": "drei", "hi": "teen", "jp": "san"},
-    {"value": 4, "en": "four", "es": "cuatro", "fr": "quatre", "de": "vier", "hi": "char", "jp": "yon"},
-    {"value": 5, "en": "five", "es": "cinco", "fr": "cinq", "de": "fuenf", "hi": "paanch", "jp": "go"},
-    {"value": 6, "en": "six", "es": "seis", "fr": "six", "de": "sechs", "hi": "chhah", "jp": "roku"},
-    {"value": 7, "en": "seven", "es": "siete", "fr": "sept", "de": "sieben", "hi": "saat", "jp": "nana"},
-    {"value": 8, "en": "eight", "es": "ocho", "fr": "huit", "de": "acht", "hi": "aath", "jp": "hachi"},
-    {"value": 9, "en": "nine", "es": "nueve", "fr": "neuf", "de": "neun", "hi": "nau", "jp": "kyuu"},
-    {"value": 10, "en": "ten", "es": "diez", "fr": "dix", "de": "zehn", "hi": "das", "jp": "juu"}
+    {
+      "value": 0,
+      "en": "zero",
+      "es": "cero",
+      "fr": "zero",
+      "de": "null",
+      "hi": "shunya",
+      "jp": "zero",
+      "ar": "sifr",
+      "zh": "ling",
+      "ru": "nol",
+      "ko": "yeong"
+    },
+    {
+      "value": 1,
+      "en": "one",
+      "es": "uno",
+      "fr": "un",
+      "de": "eins",
+      "hi": "ek",
+      "jp": "ichi",
+      "ar": "wahid",
+      "zh": "yi",
+      "ru": "odin",
+      "ko": "il"
+    },
+    {
+      "value": 2,
+      "en": "two",
+      "es": "dos",
+      "fr": "deux",
+      "de": "zwei",
+      "hi": "do",
+      "jp": "ni",
+      "ar": "ithnan",
+      "zh": "er",
+      "ru": "dva",
+      "ko": "i"
+    },
+    {
+      "value": 3,
+      "en": "three",
+      "es": "tres",
+      "fr": "trois",
+      "de": "drei",
+      "hi": "teen",
+      "jp": "san",
+      "ar": "thalatha",
+      "zh": "san",
+      "ru": "tri",
+      "ko": "sam"
+    },
+    {
+      "value": 4,
+      "en": "four",
+      "es": "cuatro",
+      "fr": "quatre",
+      "de": "vier",
+      "hi": "char",
+      "jp": "yon",
+      "ar": "arbaa",
+      "zh": "si",
+      "ru": "chetyre",
+      "ko": "sa"
+    },
+    {
+      "value": 5,
+      "en": "five",
+      "es": "cinco",
+      "fr": "cinq",
+      "de": "fuenf",
+      "hi": "paanch",
+      "jp": "go",
+      "ar": "khamsa",
+      "zh": "wu",
+      "ru": "pyat",
+      "ko": "o"
+    },
+    {
+      "value": 6,
+      "en": "six",
+      "es": "seis",
+      "fr": "six",
+      "de": "sechs",
+      "hi": "chhah",
+      "jp": "roku",
+      "ar": "sitta",
+      "zh": "liu",
+      "ru": "shest",
+      "ko": "yuk"
+    },
+    {
+      "value": 7,
+      "en": "seven",
+      "es": "siete",
+      "fr": "sept",
+      "de": "sieben",
+      "hi": "saat",
+      "jp": "nana",
+      "ar": "sabaa",
+      "zh": "qi",
+      "ru": "sem",
+      "ko": "chil"
+    },
+    {
+      "value": 8,
+      "en": "eight",
+      "es": "ocho",
+      "fr": "huit",
+      "de": "acht",
+      "hi": "aath",
+      "jp": "hachi",
+      "ar": "thamaniya",
+      "zh": "ba",
+      "ru": "vosem",
+      "ko": "pal"
+    },
+    {
+      "value": 9,
+      "en": "nine",
+      "es": "nueve",
+      "fr": "neuf",
+      "de": "neun",
+      "hi": "nau",
+      "jp": "kyuu",
+      "ar": "tisaa",
+      "zh": "jiu",
+      "ru": "devyat",
+      "ko": "gu"
+    },
+    {
+      "value": 10,
+      "en": "ten",
+      "es": "diez",
+      "fr": "dix",
+      "de": "zehn",
+      "hi": "das",
+      "jp": "juu",
+      "ar": "ashara",
+      "zh": "shi",
+      "ru": "desyat",
+      "ko": "sip"
+    }
   ],
   "plus_words": {
     "en": "plus",
@@ -66,44 +540,578 @@
     "fr": "plus",
     "de": "plus",
     "hi": "aur",
-    "jp": "tasu"
+    "jp": "tasu",
+    "ar": "zaid",
+    "zh": "jia",
+    "ru": "plyus",
+    "ko": "deohagi"
   },
   "language_aliases": {
-    "english": ["english", "en", "anglais", "ingles", "englisch"],
-    "spanish": ["spanish", "es", "espanol", "espagnol", "spanisch", "castellano"],
-    "french": ["french", "fr", "francais", "frances", "franzoesisch"],
-    "german": ["german", "de", "deutsch", "aleman", "allemand"],
-    "hindi": ["hindi", "hi", "hindustani"],
-    "japanese": ["japanese", "jp", "ja", "nihongo", "japonais", "japones"]
+    "english": [
+      "english",
+      "en",
+      "anglais",
+      "ingles",
+      "englisch"
+    ],
+    "spanish": [
+      "spanish",
+      "es",
+      "espanol",
+      "espagnol",
+      "spanisch",
+      "castellano"
+    ],
+    "french": [
+      "french",
+      "fr",
+      "francais",
+      "frances",
+      "franzoesisch"
+    ],
+    "german": [
+      "german",
+      "de",
+      "deutsch",
+      "aleman",
+      "allemand"
+    ],
+    "hindi": [
+      "hindi",
+      "hi",
+      "hindustani"
+    ],
+    "japanese": [
+      "japanese",
+      "jp",
+      "ja",
+      "nihongo",
+      "japonais",
+      "japones"
+    ],
+    "arabic": [
+      "arabic",
+      "ar",
+      "العربية",
+      "arabe"
+    ],
+    "chinese": [
+      "chinese",
+      "zh",
+      "mandarin",
+      "中文",
+      "汉语"
+    ],
+    "russian": [
+      "russian",
+      "ru",
+      "русский",
+      "russe"
+    ],
+    "korean": [
+      "korean",
+      "ko",
+      "한국어",
+      "coreen"
+    ]
   },
   "cognate_groups": [
-    {"root": "music", "members": [{"word": "musica", "lang": "es"}, {"word": "musique", "lang": "fr"}, {"word": "musik", "lang": "de"}], "distractors": ["pan", "ek", "neko", "amigo", "haus", "kawa"]},
-    {"root": "telephone", "members": [{"word": "telefono", "lang": "es"}, {"word": "telephone", "lang": "fr"}, {"word": "telefon", "lang": "de"}], "distractors": ["roti", "tsuki", "agua", "ghar", "fuego", "kuni"]},
-    {"root": "university", "members": [{"word": "universidad", "lang": "es"}, {"word": "universite", "lang": "fr"}, {"word": "universitaet", "lang": "de"}], "distractors": ["chai", "yama", "kome", "freund", "nadi", "iie"]},
-    {"root": "automobile", "members": [{"word": "automovil", "lang": "es"}, {"word": "automobile", "lang": "fr"}, {"word": "automobil", "lang": "de"}], "distractors": ["asa", "raat", "doodh", "ki", "ped", "wasser"]},
-    {"root": "actor", "members": [{"word": "actor", "lang": "es"}, {"word": "acteur", "lang": "fr"}, {"word": "akteur", "lang": "de"}], "distractors": ["mizu", "neko", "khana", "hai", "shahar", "ame"]},
-    {"root": "nation", "members": [{"word": "nacion", "lang": "es"}, {"word": "nation", "lang": "fr"}, {"word": "nation", "lang": "de"}], "distractors": ["luna", "tomodachi", "chawal", "berg", "stadt", "moon"]}
+    {
+      "root": "music",
+      "members": [
+        {
+          "word": "musica",
+          "lang": "es"
+        },
+        {
+          "word": "musique",
+          "lang": "fr"
+        },
+        {
+          "word": "musik",
+          "lang": "de"
+        }
+      ],
+      "distractors": [
+        "pan",
+        "ek",
+        "neko",
+        "amigo",
+        "haus",
+        "kawa"
+      ]
+    },
+    {
+      "root": "telephone",
+      "members": [
+        {
+          "word": "telefono",
+          "lang": "es"
+        },
+        {
+          "word": "telephone",
+          "lang": "fr"
+        },
+        {
+          "word": "telefon",
+          "lang": "de"
+        }
+      ],
+      "distractors": [
+        "roti",
+        "tsuki",
+        "agua",
+        "ghar",
+        "fuego",
+        "kuni"
+      ]
+    },
+    {
+      "root": "university",
+      "members": [
+        {
+          "word": "universidad",
+          "lang": "es"
+        },
+        {
+          "word": "universite",
+          "lang": "fr"
+        },
+        {
+          "word": "universitaet",
+          "lang": "de"
+        }
+      ],
+      "distractors": [
+        "chai",
+        "yama",
+        "kome",
+        "freund",
+        "nadi",
+        "iie"
+      ]
+    },
+    {
+      "root": "automobile",
+      "members": [
+        {
+          "word": "automovil",
+          "lang": "es"
+        },
+        {
+          "word": "automobile",
+          "lang": "fr"
+        },
+        {
+          "word": "automobil",
+          "lang": "de"
+        }
+      ],
+      "distractors": [
+        "asa",
+        "raat",
+        "doodh",
+        "ki",
+        "ped",
+        "wasser"
+      ]
+    },
+    {
+      "root": "actor",
+      "members": [
+        {
+          "word": "actor",
+          "lang": "es"
+        },
+        {
+          "word": "acteur",
+          "lang": "fr"
+        },
+        {
+          "word": "akteur",
+          "lang": "de"
+        }
+      ],
+      "distractors": [
+        "mizu",
+        "neko",
+        "khana",
+        "hai",
+        "shahar",
+        "ame"
+      ]
+    },
+    {
+      "root": "nation",
+      "members": [
+        {
+          "word": "nacion",
+          "lang": "es"
+        },
+        {
+          "word": "nation",
+          "lang": "fr"
+        },
+        {
+          "word": "nation",
+          "lang": "de"
+        }
+      ],
+      "distractors": [
+        "luna",
+        "tomodachi",
+        "chawal",
+        "berg",
+        "stadt",
+        "moon"
+      ]
+    },
+    {
+      "root": "computer",
+      "members": [
+        {
+          "word": "kombyuter",
+          "lang": "ar"
+        },
+        {
+          "word": "diannao",
+          "lang": "zh"
+        },
+        {
+          "word": "kompyuter",
+          "lang": "ru"
+        },
+        {
+          "word": "keompyuteo",
+          "lang": "ko"
+        }
+      ],
+      "distractors": [
+        "bayt",
+        "shu",
+        "dosi",
+        "nehri",
+        "gae",
+        "namu"
+      ]
+    },
+    {
+      "root": "internet",
+      "members": [
+        {
+          "word": "intirnit",
+          "lang": "ar"
+        },
+        {
+          "word": "wangluo",
+          "lang": "zh"
+        },
+        {
+          "word": "internet",
+          "lang": "ru"
+        },
+        {
+          "word": "inteoneat",
+          "lang": "ko"
+        }
+      ],
+      "distractors": [
+        "shukran",
+        "ai",
+        "kniga",
+        "sae",
+        "saeed",
+        "haetbit"
+      ]
+    },
+    {
+      "root": "coffee",
+      "members": [
+        {
+          "word": "qahwa",
+          "lang": "ar"
+        },
+        {
+          "word": "kafei",
+          "lang": "zh"
+        },
+        {
+          "word": "kofe",
+          "lang": "ru"
+        },
+        {
+          "word": "keopi",
+          "lang": "ko"
+        }
+      ],
+      "distractors": [
+        "mifan",
+        "shams",
+        "kalb",
+        "gora",
+        "joha",
+        "yangchi"
+      ]
+    }
   ],
   "ordering_sentences": [
-    {"lang": "en", "ordered": ["the", "cat", "sees", "the", "dog"], "key": "tcsdt"},
-    {"lang": "en", "ordered": ["I", "like", "to", "eat", "rice"], "key": "ilters"},
-    {"lang": "en", "ordered": ["the", "sun", "is", "very", "bright"], "key": "tsivvb"},
-    {"lang": "es", "ordered": ["el", "perro", "come", "pan"], "key": "epccp"},
-    {"lang": "es", "ordered": ["la", "casa", "es", "grande"], "key": "lceesg"},
-    {"lang": "fr", "ordered": ["le", "chat", "boit", "du", "lait"], "key": "lcbdl"},
-    {"lang": "fr", "ordered": ["la", "lune", "est", "belle"], "key": "lleebb"},
-    {"lang": "de", "ordered": ["der", "hund", "ist", "klein"], "key": "dhik"},
-    {"lang": "de", "ordered": ["das", "buch", "ist", "rot"], "key": "dbisr"},
-    {"lang": "hi", "ordered": ["bacha", "ghar", "mein", "hai"], "key": "bghmh"}
+    {
+      "lang": "en",
+      "ordered": [
+        "the",
+        "cat",
+        "sees",
+        "the",
+        "dog"
+      ],
+      "key": "tcsdt"
+    },
+    {
+      "lang": "en",
+      "ordered": [
+        "I",
+        "like",
+        "to",
+        "eat",
+        "rice"
+      ],
+      "key": "ilters"
+    },
+    {
+      "lang": "en",
+      "ordered": [
+        "the",
+        "sun",
+        "is",
+        "very",
+        "bright"
+      ],
+      "key": "tsivvb"
+    },
+    {
+      "lang": "es",
+      "ordered": [
+        "el",
+        "perro",
+        "come",
+        "pan"
+      ],
+      "key": "epccp"
+    },
+    {
+      "lang": "es",
+      "ordered": [
+        "la",
+        "casa",
+        "es",
+        "grande"
+      ],
+      "key": "lceesg"
+    },
+    {
+      "lang": "fr",
+      "ordered": [
+        "le",
+        "chat",
+        "boit",
+        "du",
+        "lait"
+      ],
+      "key": "lcbdl"
+    },
+    {
+      "lang": "fr",
+      "ordered": [
+        "la",
+        "lune",
+        "est",
+        "belle"
+      ],
+      "key": "lleebb"
+    },
+    {
+      "lang": "de",
+      "ordered": [
+        "der",
+        "hund",
+        "ist",
+        "klein"
+      ],
+      "key": "dhik"
+    },
+    {
+      "lang": "de",
+      "ordered": [
+        "das",
+        "buch",
+        "ist",
+        "rot"
+      ],
+      "key": "dbisr"
+    },
+    {
+      "lang": "hi",
+      "ordered": [
+        "bacha",
+        "ghar",
+        "mein",
+        "hai"
+      ],
+      "key": "bghmh"
+    },
+    {
+      "lang": "ar",
+      "ordered": [
+        "al",
+        "qit",
+        "yara",
+        "al",
+        "kalb"
+      ],
+      "key": "aqyak"
+    },
+    {
+      "lang": "zh",
+      "ordered": [
+        "wo",
+        "xihuan",
+        "chi",
+        "mi",
+        "fan"
+      ],
+      "key": "wxcmf"
+    },
+    {
+      "lang": "ru",
+      "ordered": [
+        "ya",
+        "lyublyu",
+        "khleb",
+        "i",
+        "syr"
+      ],
+      "key": "ylkis"
+    },
+    {
+      "lang": "ko",
+      "ordered": [
+        "nae",
+        "chingu",
+        "neun",
+        "chaek",
+        "ida"
+      ],
+      "key": "ncnci"
+    }
   ],
   "grammar_choices": [
-    {"correct": "The cat is on the table.", "wrong": ["Cat the table on the is.", "The is cat on the table.", "Table the on cat is."], "lang": "en"},
-    {"correct": "El perro come pan.", "wrong": ["Pan come el perro.", "Come perro el pan.", "El come perro pan."], "lang": "es"},
-    {"correct": "Le chat est noir.", "wrong": ["Chat le noir est.", "Est le chat noir.", "Noir est chat le."], "lang": "fr"},
-    {"correct": "Der Hund ist klein.", "wrong": ["Hund der klein ist.", "Klein der hund ist.", "Ist hund der klein."], "lang": "de"},
-    {"correct": "I like to read books.", "wrong": ["Books to read I like.", "Like I books read to.", "To I read like books."], "lang": "en"},
-    {"correct": "La luna es brillante.", "wrong": ["Brillante es la luna.", "Luna la es brillante.", "Es la luna brillante."], "lang": "es"},
-    {"correct": "Das Buch ist rot.", "wrong": ["Rot das ist buch.", "Buch das rot ist.", "Ist das rot buch."], "lang": "de"},
-    {"correct": "Le soleil est jaune.", "wrong": ["Jaune le est soleil.", "Soleil le jaune est.", "Est jaune le soleil."], "lang": "fr"}
+    {
+      "correct": "The cat is on the table.",
+      "wrong": [
+        "Cat the table on the is.",
+        "The is cat on the table.",
+        "Table the on cat is."
+      ],
+      "lang": "en"
+    },
+    {
+      "correct": "El perro come pan.",
+      "wrong": [
+        "Pan come el perro.",
+        "Come perro el pan.",
+        "El come perro pan."
+      ],
+      "lang": "es"
+    },
+    {
+      "correct": "Le chat est noir.",
+      "wrong": [
+        "Chat le noir est.",
+        "Est le chat noir.",
+        "Noir est chat le."
+      ],
+      "lang": "fr"
+    },
+    {
+      "correct": "Der Hund ist klein.",
+      "wrong": [
+        "Hund der klein ist.",
+        "Klein der hund ist.",
+        "Ist hund der klein."
+      ],
+      "lang": "de"
+    },
+    {
+      "correct": "I like to read books.",
+      "wrong": [
+        "Books to read I like.",
+        "Like I books read to.",
+        "To I read like books."
+      ],
+      "lang": "en"
+    },
+    {
+      "correct": "La luna es brillante.",
+      "wrong": [
+        "Brillante es la luna.",
+        "Luna la es brillante.",
+        "Es la luna brillante."
+      ],
+      "lang": "es"
+    },
+    {
+      "correct": "Das Buch ist rot.",
+      "wrong": [
+        "Rot das ist buch.",
+        "Buch das rot ist.",
+        "Ist das rot buch."
+      ],
+      "lang": "de"
+    },
+    {
+      "correct": "Le soleil est jaune.",
+      "wrong": [
+        "Jaune le est soleil.",
+        "Soleil le jaune est.",
+        "Est jaune le soleil."
+      ],
+      "lang": "fr"
+    },
+    {
+      "correct": "anaa ureed al kitab.",
+      "wrong": [
+        "kitab ureed anaa al.",
+        "al kitab anaa ureed.",
+        "ureed al anaa kitab."
+      ],
+      "lang": "ar"
+    },
+    {
+      "correct": "wo xihuan chi mifan.",
+      "wrong": [
+        "mifan chi xihuan wo.",
+        "chi xihuan wo mifan.",
+        "wo mifan chi xihuan."
+      ],
+      "lang": "zh"
+    },
+    {
+      "correct": "ya chitayu knigu.",
+      "wrong": [
+        "knigu chitayu ya.",
+        "chitayu ya knigu.",
+        "ya knigu chitayu."
+      ],
+      "lang": "ru"
+    },
+    {
+      "correct": "naneun chaegeul ilkneunda.",
+      "wrong": [
+        "chaegeul naneun ilkneunda.",
+        "ilkneunda naneun chaegeul.",
+        "naneun ilkneunda chaegeul."
+      ],
+      "lang": "ko"
+    }
   ]
 }

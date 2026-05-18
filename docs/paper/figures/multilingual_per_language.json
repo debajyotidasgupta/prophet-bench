@@ -1,0 +1,240 @@
+{
+  "languages": [
+    "de",
+    "en",
+    "es",
+    "fr",
+    "hi",
+    "jp"
+  ],
+  "agents": [
+    "openrouter:anthropic_claude-haiku-4.5",
+    "openrouter:anthropic_claude-opus-4.7",
+    "openrouter:anthropic_claude-sonnet-4.6",
+    "openrouter:deepseek_deepseek-r1",
+    "openrouter:deepseek_deepseek-v3.2",
+    "openrouter:google_gemini-3-flash-preview",
+    "openrouter:google_gemini-3.1-flash-lite",
+    "openrouter:google_gemini-3.1-pro-preview",
+    "openrouter:meta-llama_llama-4-maverick",
+    "openrouter:meta-llama_llama-4-scout",
+    "openrouter:moonshotai_kimi-k2-thinking",
+    "openrouter:openai_gpt-5",
+    "openrouter:openai_gpt-5-mini",
+    "openrouter:openai_gpt-5-nano",
+    "openrouter:openai_gpt-5.2",
+    "openrouter:openai_gpt-5.4-nano",
+    "openrouter:qwen_qwen3-235b-a22b-thinking-2507",
+    "openrouter:qwen_qwen3-32b"
+  ],
+  "cells": [
+    {
+      "agent": "openrouter:anthropic_claude-haiku-4.5",
+      "language": "en",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.01
+    },
+    {
+      "agent": "openrouter:anthropic_claude-opus-4.7",
+      "language": "en",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.028
+    },
+    {
+      "agent": "openrouter:anthropic_claude-sonnet-4.6",
+      "language": "en",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.064
+    },
+    {
+      "agent": "openrouter:deepseek_deepseek-v3.2",
+      "language": "en",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.01
+    },
+    {
+      "agent": "openrouter:google_gemini-3-flash-preview",
+      "language": "en",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.0
+    },
+    {
+      "agent": "openrouter:google_gemini-3.1-flash-lite",
+      "language": "en",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.0
+    },
+    {
+      "agent": "openrouter:meta-llama_llama-4-maverick",
+      "language": "en",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.002
+    },
+    {
+      "agent": "openrouter:meta-llama_llama-4-scout",
+      "language": "en",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.012
+    },
+    {
+      "agent": "openrouter:openai_gpt-5-mini",
+      "language": "en",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.004
+    },
+    {
+      "agent": "openrouter:openai_gpt-5-nano",
+      "language": "en",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.002
+    },
+    {
+      "agent": "openrouter:openai_gpt-5.2",
+      "language": "en",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.0082
+    },
+    {
+      "agent": "openrouter:openai_gpt-5.4-nano",
+      "language": "en",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.042
+    },
+    {
+      "agent": "openrouter:qwen_qwen3-32b",
+      "language": "en",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.04
+    },
+    {
+      "agent": "openrouter:anthropic_claude-haiku-4.5",
+      "language": "es",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.0222
+    },
+    {
+      "agent": "openrouter:anthropic_claude-opus-4.7",
+      "language": "es",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.012
+    },
+    {
+      "agent": "openrouter:anthropic_claude-sonnet-4.6",
+      "language": "es",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.018
+    },
+    {
+      "agent": "openrouter:deepseek_deepseek-v3.2",
+      "language": "es",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.008
+    },
+    {
+      "agent": "openrouter:google_gemini-3-flash-preview",
+      "language": "es",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.0
+    },
+    {
+      "agent": "openrouter:google_gemini-3.1-flash-lite",
+      "language": "es",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.0
+    },
+    {
+      "agent": "openrouter:meta-llama_llama-4-maverick",
+      "language": "es",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.022
+    },
+    {
+      "agent": "openrouter:meta-llama_llama-4-scout",
+      "language": "es",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.04
+    },
+    {
+      "agent": "openrouter:openai_gpt-5-mini",
+      "language": "es",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.004
+    },
+    {
+      "agent": "openrouter:openai_gpt-5-nano",
+      "language": "es",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.008
+    },
+    {
+      "agent": "openrouter:openai_gpt-5.2",
+      "language": "es",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.0064
+    },
+    {
+      "agent": "openrouter:openai_gpt-5.4-nano",
+      "language": "es",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.022
+    },
+    {
+      "agent": "openrouter:qwen_qwen3-32b",
+      "language": "es",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.052
+    }
+  ]
+}

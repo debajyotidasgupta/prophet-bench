@@ -1,0 +1,22 @@
+\begin{table}[t]\centering\small
+\caption{Post-hoc power analysis on paired net-payoff contrasts. Cohen's $d$ on the per-task payoff differences; minimum-detectable effect (MDE) computed at $\alpha = 0.05$, power $= 0.80$, paired $t$-test. \emph{Detectable} = observed $|d| \ge $ MDE. Top 12 contrasts shown, sorted by $|d|$.}
+\label{tab:power-analysis}
+\begin{tabular}{llrrrrr}
+\toprule
+Agent A & Agent B & $N_{\text{pair}}$ & $\bar{\Delta}\mathcal{P}$ & $d$ & MDE & $1-\beta$ \\
+\midrule
+google-gemini-3.1-pro-preview & openai-gpt-5.4-nano & 174 & +88 & +0.871 & 0.212 & 1.000 \\
+google-gemini-3.1-pro-preview & openai-gpt-5-nano & 163 & +80 & +0.803 & 0.219 & 1.000 \\
+openai-gpt-5.2 & openai-gpt-5.4-nano & 225 & +87 & +0.786 & 0.187 & 1.000 \\
+openai-gpt-5 & openai-gpt-5-nano & 137 & +92 & +0.751 & 0.239 & 1.000 \\
+google-gemini-3.1-flash-lite & openai-gpt-5.2 & 225 & -70 & -0.688 & 0.187 & 1.000 \\
+openai-gpt-5-nano & openai-gpt-5.2 & 211 & -73 & -0.686 & 0.193 & 1.000 \\
+openai-gpt-5 & openai-gpt-5.4-nano & 147 & +84 & +0.672 & 0.231 & 1.000 \\
+google-gemini-3.1-pro-preview & qwen-qwen3-32b & 164 & +69 & +0.668 & 0.219 & 1.000 \\
+google-gemini-3.1-flash-lite & google-gemini-3.1-pro-preview & 175 & -71 & -0.664 & 0.212 & 1.000 \\
+meta-llama-llama-4-scout & openai-gpt-5 & 123 & -73 & -0.649 & 0.253 & 1.000 \\
+anthropic-claude-sonnet-4.6 & openai-gpt-5.2 & 225 & -62 & -0.647 & 0.187 & 1.000 \\
+google-gemini-3.1-pro-preview & meta-llama-llama-4-scout & 150 & +70 & +0.634 & 0.229 & 1.000 \\
+\bottomrule
+\end{tabular}
+\end{table}

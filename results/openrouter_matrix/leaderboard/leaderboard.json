@@ -96,6 +96,38 @@
     "pareto_optimal_among_real": true
   },
   {
+    "name": "openrouter:openai_gpt-5.2",
+    "n": 233,
+    "accuracy": 0.97,
+    "accuracy_ci": [
+      0.9442,
+      0.9914
+    ],
+    "ece": 0.0174,
+    "ece_ci": [
+      0.0041,
+      0.0381
+    ],
+    "brier": 0.0298,
+    "brier_ci": [
+      0.0111,
+      0.0515
+    ],
+    "logloss": 0.1364,
+    "logloss_ci": [
+      0.0561,
+      0.2333
+    ],
+    "net_payoff": 31327.89,
+    "net_payoff_ci": [
+      28807.06,
+      33580.45
+    ],
+    "cost_usd": 2.2037,
+    "pareto_optimal": true,
+    "pareto_optimal_among_real": true
+  },
+  {
     "name": "openrouter:anthropic_claude-opus-4.7",
     "n": 229,
     "accuracy": 0.8996,
@@ -156,8 +188,8 @@
       25046.13
     ],
     "cost_usd": 0.2125,
-    "pareto_optimal": true,
-    "pareto_optimal_among_real": true
+    "pareto_optimal": false,
+    "pareto_optimal_among_real": false
   },
   {
     "name": "openrouter:anthropic_claude-haiku-4.5",

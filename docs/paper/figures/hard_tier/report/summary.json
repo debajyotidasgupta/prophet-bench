@@ -1,0 +1,4218 @@
+{
+  "headline": [
+    {
+      "name": "baseline:oracle",
+      "n": 40,
+      "accuracy": 1.0,
+      "accuracy_ci": [
+        1.0,
+        1.0
+      ],
+      "ece": 0.0,
+      "ece_ci": [
+        0.0,
+        0.0
+      ],
+      "brier": 0.0,
+      "brier_ci": [
+        0.0,
+        0.0
+      ],
+      "logloss": 9.999999722180686e-10,
+      "logloss_ci": [
+        9.999999722180686e-10,
+        9.999999722180686e-10
+      ],
+      "net_payoff": 6250.522623432799,
+      "net_payoff_ci": [
+        5995.831690465371,
+        6491.196743856585
+      ]
+    },
+    {
+      "name": "baseline:random",
+      "n": 26,
+      "accuracy": 0.0,
+      "accuracy_ci": [
+        0.0,
+        0.0
+      ],
+      "ece": 0.5556509664329724,
+      "ece_ci": [
+        0.4372802196149224,
+        0.6668771396341026
+      ],
+      "brier": 0.3975245532066435,
+      "brier_ci": [
+        0.28204351310924025,
+        0.5173892293456905
+      ],
+      "logloss": 1.2151863985267597,
+      "logloss_ci": [
+        0.798992272628378,
+        1.7318969026801907
+      ],
+      "net_payoff": -1924.4891650150266,
+      "net_payoff_ci": [
+        -2487.5220463836786,
+        -1432.125826189092
+      ]
+    },
+    {
+      "name": "openrouter:openai_gpt-5.4-nano",
+      "n": 38,
+      "accuracy": 0.3157894736842105,
+      "accuracy_ci": [
+        0.18421052631578946,
+        0.47368421052631576
+      ],
+      "ece": 0.4213157894736843,
+      "ece_ci": [
+        0.30025657894736835,
+        0.5473749999999997
+      ],
+      "brier": 0.33105,
+      "brier_ci": [
+        0.23022348684210525,
+        0.44088644736842075
+      ],
+      "logloss": 1.0398082156349482,
+      "logloss_ci": [
+        0.7024939403053659,
+        1.4315112195644637
+      ],
+      "net_payoff": -1447.6762112899705,
+      "net_payoff_ci": [
+        -2588.7367504731887,
+        -262.5894756094486
+      ]
+    },
+    {
+      "name": "openrouter:google_gemini-3.1-flash-lite",
+      "n": 40,
+      "accuracy": 0.475,
+      "accuracy_ci": [
+        0.325,
+        0.625
+      ],
+      "ece": 0.4650000000000001,
+      "ece_ci": [
+        0.32246875,
+        0.6087499999999999
+      ],
+      "brier": 0.42650000000000005,
+      "brier_ci": [
+        0.2921859375,
+        0.5635062499999999
+      ],
+      "logloss": 3.9186421387020522,
+      "logloss_ci": [
+        1.871585668054625,
+        6.324654499751232
+      ],
+      "net_payoff": -296.28896549425247,
+      "net_payoff_ci": [
+        -1567.8492596491205,
+        981.7470744006705
+      ]
+    },
+    {
+      "name": "openrouter:meta-llama_llama-4-scout",
+      "n": 39,
+      "accuracy": 0.2564102564102564,
+      "accuracy_ci": [
+        0.1282051282051282,
+        0.41025641025641024
+      ],
+      "ece": 0.6823076923076924,
+      "ece_ci": [
+        0.5387179487179489,
+        0.8156666666666667
+      ],
+      "brier": 0.6594897435897434,
+      "brier_ci": [
+        0.5182628846153846,
+        0.7907799999999999
+      ],
+      "logloss": 8.841890886664217,
+      "logloss_ci": [
+        6.0519969901301955,
+        11.87351197147174
+      ],
+      "net_payoff": -2182.0217364114064,
+      "net_payoff_ci": [
+        -3302.3263178625784,
+        -1019.4800128276061
+      ]
+    },
+    {
+      "name": "openrouter:openai_gpt-5-nano",
+      "n": 21,
+      "accuracy": 0.8571428571428571,
+      "accuracy_ci": [
+        0.7142857142857143,
+        1.0
+      ],
+      "ece": 0.08238095238095239,
+      "ece_ci": [
+        0.006666666666666932,
+        0.2214523809523806
+      ],
+      "brier": 0.09796666666666667,
+      "brier_ci": [
+        0.0024377380952380952,
+        0.22118285714285715
+      ],
+      "logloss": 0.3342407476748094,
+      "logloss_ci": [
+        0.04022434467886242,
+        0.7187674901825741
+      ],
+      "net_payoff": 774.7639892200717,
+      "net_payoff_ci": [
+        333.1152768933681,
+        1207.5296977041612
+      ]
+    },
+    {
+      "name": "openrouter:meta-llama_llama-4-maverick",
+      "n": 38,
+      "accuracy": 0.34210526315789475,
+      "accuracy_ci": [
+        0.21052631578947367,
+        0.5
+      ],
+      "ece": 0.6071052631578946,
+      "ece_ci": [
+        0.46314473684210544,
+        0.7468618421052627
+      ],
+      "brier": 0.5734289473684211,
+      "brier_ci": [
+        0.4355284210526316,
+        0.7114549999999998
+      ],
+      "logloss": 6.900313765099902,
+      "logloss_ci": [
+        4.17371939813658,
+        9.787401514922292
+      ],
+      "net_payoff": -1871.0003761276141,
+      "net_payoff_ci": [
+        -3315.820012906723,
+        -445.20861004518383
+      ]
+    },
+    {
+      "name": "openrouter:google_gemini-3-flash-preview",
+      "n": 37,
+      "accuracy": 0.6486486486486487,
+      "accuracy_ci": [
+        0.4864864864864865,
+        0.7837837837837838
+      ],
+      "ece": 0.25972972972972963,
+      "ece_ci": [
+        0.13756756756756752,
+        0.3994594594594593
+      ],
+      "brier": 0.24171081081081072,
+      "brier_ci": [
+        0.1344015540540541,
+        0.36509398648648644
+      ],
+      "logloss": 1.2380959638046083,
+      "logloss_ci": [
+        0.44535844683038706,
+        2.48737923903739
+      ],
+      "net_payoff": 397.59326185213155,
+      "net_payoff_ci": [
+        -1203.0027797172163,
+        1967.2057252590232
+      ]
+    },
+    {
+      "name": "openrouter:anthropic_claude-haiku-4.5",
+      "n": 38,
+      "accuracy": 0.5263157894736842,
+      "accuracy_ci": [
+        0.3684210526315789,
+        0.6842105263157895
+      ],
+      "ece": 0.17447368421052634,
+      "ece_ci": [
+        0.09973026315789475,
+        0.3315855263157894
+      ],
+      "brier": 0.23513421052631583,
+      "brier_ci": [
+        0.15192861842105262,
+        0.3242843421052629
+      ],
+      "logloss": 0.7400636271963009,
+      "logloss_ci": [
+        0.47061689751126695,
+        1.0570615649772979
+      ],
+      "net_payoff": 250.45851759417312,
+      "net_payoff_ci": [
+        -908.4253724752488,
+        1371.799032344321
+      ]
+    },
+    {
+      "name": "openrouter:openai_gpt-5-mini",
+      "n": 27,
+      "accuracy": 0.9629629629629629,
+      "accuracy_ci": [
+        0.8888888888888888,
+        1.0
+      ],
+      "ece": 0.024074074074073915,
+      "ece_ci": [
+        0.009629629629629655,
+        0.10185185185185164
+      ],
+      "brier": 0.03741111111111111,
+      "brier_ci": [
+        0.00019259259259259295,
+        0.11157416666666667
+      ],
+      "logloss": 0.7806836510478733,
+      "logloss_ci": [
+        0.009728017116393721,
+        2.317267898714196
+      ],
+      "net_payoff": 1722.3161644938589,
+      "net_payoff_ci": [
+        1017.3591848685403,
+        2316.2043186028404
+      ]
+    },
+    {
+      "name": "openrouter:deepseek_deepseek-v3.2",
+      "n": 37,
+      "accuracy": 0.8108108108108109,
+      "accuracy_ci": [
+        0.6756756756756757,
+        0.918918918918919
+      ],
+      "ece": 0.1245945945945944,
+      "ece_ci": [
+        0.05378378378378379,
+        0.23081081081081056
+      ],
+      "brier": 0.10758108108108108,
+      "brier_ci": [
+        0.03619662162162162,
+        0.19391256756756747
+      ],
+      "logloss": 0.37145473179536986,
+      "logloss_ci": [
+        0.12027689788112195,
+        0.7006045498931059
+      ],
+      "net_payoff": 3196.2975291483635,
+      "net_payoff_ci": [
+        1668.1284969771104,
+        4586.17004404128
+      ]
+    },
+    {
+      "name": "openrouter:anthropic_claude-opus-4.7",
+      "n": 36,
+      "accuracy": 0.8888888888888888,
+      "accuracy_ci": [
+        0.7777777777777778,
+        0.9722222222222222
+      ],
+      "ece": 0.11583333333333343,
+      "ece_ci": [
+        0.07416666666666666,
+        0.16583333333333344
+      ],
+      "brier": 0.033325,
+      "brier_ci": [
+        0.011954930555555559,
+        0.06071430555555554
+      ],
+      "logloss": 0.14029138244609687,
+      "logloss_ci": [
+        0.08203383326512023,
+        0.21188140346730144
+      ],
+      "net_payoff": 3225.901368203913,
+      "net_payoff_ci": [
+        2366.8025790653896,
+        4025.684161642686
+      ]
+    },
+    {
+      "name": "openrouter:google_gemini-3.1-pro-preview",
+      "n": 33,
+      "accuracy": 0.696969696969697,
+      "accuracy_ci": [
+        0.5454545454545454,
+        0.8484848484848485
+      ],
+      "ece": 0.1333333333333334,
+      "ece_ci": [
+        0.04848484848484856,
+        0.21818181818181817
+      ],
+      "brier": 0.0787878787878788,
+      "brier_ci": [
+        0.04090909090909091,
+        0.11727272727272726
+      ],
+      "logloss": 0.2240456753392731,
+      "logloss_ci": [
+        0.11902337540594801,
+        0.33545346100943607
+      ],
+      "net_payoff": 1702.7659601937776,
+      "net_payoff_ci": [
+        600.0354769898836,
+        2729.2891673677113
+      ]
+    },
+    {
+      "name": "openrouter:openai_gpt-5",
+      "n": 22,
+      "accuracy": 1.0,
+      "accuracy_ci": [
+        1.0,
+        1.0
+      ],
+      "ece": 0.011636363636363778,
+      "ece_ci": [
+        0.008500000000000174,
+        0.015000000000000235
+      ],
+      "brier": 0.0001959090909090913,
+      "brier_ci": [
+        0.00011440795454545474,
+        0.0002912727272727278
+      ],
+      "logloss": 0.01173562804242514,
+      "logloss_ci": [
+        0.00856002954547817,
+        0.01513612939227619
+      ],
+      "net_payoff": 1821.2286236857506,
+      "net_payoff_ci": [
+        1279.463672762478,
+        2352.926149409588
+      ]
+    },
+    {
+      "name": "openrouter:openai_gpt-5.2",
+      "n": 30,
+      "accuracy": 0.9,
+      "accuracy_ci": [
+        0.7666666666666667,
+        1.0
+      ],
+      "ece": 0.08033333333333337,
+      "ece_ci": [
+        0.020829166666666524,
+        0.18616666666666656
+      ],
+      "brier": 0.07655166666666666,
+      "brier_ci": [
+        0.003529979166666667,
+        0.1728436041666666
+      ],
+      "logloss": 0.3383927505781121,
+      "logloss_ci": [
+        0.033319756878740836,
+        0.771513533265282
+      ],
+      "net_payoff": 2538.058063305814,
+      "net_payoff_ci": [
+        1437.2268512850753,
+        3500.5880751630907
+      ]
+    },
+    {
+      "name": "openrouter:qwen_qwen3-32b",
+      "n": 24,
+      "accuracy": 0.7083333333333334,
+      "accuracy_ci": [
+        0.5416666666666666,
+        0.875
+      ],
+      "ece": 0.27041666666666647,
+      "ece_ci": [
+        0.09123958333333343,
+        0.4541666666666666
+      ],
+      "brier": 0.2752125,
+      "brier_ci": [
+        0.11510833333333335,
+        0.43573333333333336
+      ],
+      "logloss": 0.9309545911755107,
+      "logloss_ci": [
+        0.415282863107092,
+        1.452712774076063
+      ],
+      "net_payoff": 671.8806040873665,
+      "net_payoff_ci": [
+        84.15406919306642,
+        1253.262419635438
+      ]
+    },
+    {
+      "name": "openrouter:qwen_qwen3-235b-a22b-thinking-2507",
+      "n": 23,
+      "accuracy": 0.8695652173913043,
+      "accuracy_ci": [
+        0.6956521739130435,
+        1.0
+      ],
+      "ece": 0.06782608695652156,
+      "ece_ci": [
+        0.0013043478260866825,
+        0.20435869565217357
+      ],
+      "brier": 0.09111304347826088,
+      "brier_ci": [
+        0.0020869565217391333,
+        0.2087173913043478
+      ],
+      "logloss": 0.3280699051257937,
+      "logloss_ci": [
+        0.04411991738958772,
+        0.7157244317753049
+      ],
+      "net_payoff": 1124.1627204773135,
+      "net_payoff_ci": [
+        476.5027538003005,
+        1734.5971623482844
+      ]
+    },
+    {
+      "name": "openrouter:deepseek_deepseek-r1",
+      "n": 26,
+      "accuracy": 0.8846153846153846,
+      "accuracy_ci": [
+        0.7692307692307693,
+        1.0
+      ],
+      "ece": 0.07230769230769235,
+      "ece_ci": [
+        0.011538461538461718,
+        0.21194230769230726
+      ],
+      "brier": 0.09679230769230768,
+      "brier_ci": [
+        0.009803846153846153,
+        0.2062116346153846
+      ],
+      "logloss": 0.9807899022333474,
+      "logloss_ci": [
+        0.03483265004673305,
+        2.65289307637428
+      ],
+      "net_payoff": 2008.7867793446621,
+      "net_payoff_ci": [
+        1173.3913966427822,
+        2805.8000619355175
+      ]
+    }
+  ],
+  "pairwise_significance": [
+    {
+      "a": "baseline:oracle",
+      "b": "baseline:random",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 5.578829854454665e-23,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.8189894035458565e-12,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.8189894035458565e-12,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:oracle",
+      "b": "baseline:always-pass",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 2.503065541691124e-36,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.8189894035458565e-12,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.8189894035458565e-12,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:oracle",
+      "b": "openrouter:openai_gpt-5.4-nano",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.880608497061743e-14,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.8189894035458565e-12,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 7.450580596923828e-09,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:oracle",
+      "b": "openrouter:google_gemini-3.1-flash-lite",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.919979239304175e-11,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.8189894035458565e-12,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 9.5367431640625e-07,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:oracle",
+      "b": "openrouter:meta-llama_llama-4-scout",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.6980093183029238e-15,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.8189894035458565e-12,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.862645149230957e-09,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:oracle",
+      "b": "openrouter:openai_gpt-5-nano",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 6.284548032286346e-13,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 5.255295360476944e-08,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 4.76837158203125e-07,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.21989005497251374,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:oracle",
+      "b": "openrouter:meta-llama_llama-4-maverick",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 5.578034223634756e-12,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 7.73973246329796e-08,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.4901161193847656e-08,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:oracle",
+      "b": "openrouter:google_gemini-3-flash-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 2.6036053374533877e-07,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.8189894035458565e-12,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 3.0517578125e-05,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:oracle",
+      "b": "openrouter:anthropic_claude-haiku-4.5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 3.8138490864853265e-11,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.8189894035458565e-12,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.9073486328125e-06,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0009995002498750624,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:oracle",
+      "b": "openrouter:openai_gpt-5-mini",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.5310484499035213e-08,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 7.73973246329796e-08,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.0001220703125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.8280859570214892,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:oracle",
+      "b": "openrouter:deepseek_deepseek-v3.2",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.0015412799717851523,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.1402144795106595e-07,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.001953125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.006496751624187906,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:oracle",
+      "b": "openrouter:anthropic_claude-opus-4.7",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 3.030040729508504e-06,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.8189894035458565e-12,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.0078125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:oracle",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 4.638156011226455e-07,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 8.29809930635731e-06,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 3.0517578125e-05,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0024987506246876563,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:oracle",
+      "b": "openrouter:openai_gpt-5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.6659043498275298e-06,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 5.255295360476944e-08,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 7.62939453125e-06,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:oracle",
+      "b": "openrouter:openai_gpt-5.2",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.0002302216425843821,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.8189894035458565e-12,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.000244140625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0384807596201899,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:oracle",
+      "b": "openrouter:qwen_qwen3-32b",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 2.1319016929646455e-12,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 5.255295360476944e-08,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 2.384185791015625e-07,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0014992503748125937,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:oracle",
+      "b": "openrouter:qwen_qwen3-235b-a22b-thinking-2507",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 3.1829808640437425e-09,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.8189894035458565e-12,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.9073486328125e-06,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.12443778110944528,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:oracle",
+      "b": "openrouter:deepseek_deepseek-r1",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.796381007603415e-05,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 2.5630832507250074e-06,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.52587890625e-05,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.14742628685657172,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:random",
+      "b": "baseline:always-pass",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 5.117059841168568e-08,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 8.29809930635731e-06,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.0,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:random",
+      "b": "openrouter:openai_gpt-5.4-nano",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.04475442303121331,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.03809827097688244,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.00048828125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.4767616191904048,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:random",
+      "b": "openrouter:google_gemini-3.1-flash-lite",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.0004767156189252417,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.0007500311345902855,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 3.814697265625e-06,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.8855572213893054,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:random",
+      "b": "openrouter:meta-llama_llama-4-scout",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.27927060829028133,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.3285710735610371,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.001953125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.17091454272863568,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:random",
+      "b": "openrouter:openai_gpt-5-nano",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 2.9591084219151164e-09,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 2.451375010872857e-06,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 7.62939453125e-06,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0009995002498750624,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:random",
+      "b": "openrouter:meta-llama_llama-4-maverick",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.19294625309301192,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.19055949096539482,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.000244140625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.15942028985507245,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:random",
+      "b": "openrouter:google_gemini-3-flash-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.0007240391190418298,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.0018374669900583288,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.1920928955078125e-07,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.025987006496751622,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:random",
+      "b": "openrouter:anthropic_claude-haiku-4.5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 3.8366827991378855e-05,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.00010244848929081433,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.9073486328125e-06,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:random",
+      "b": "openrouter:openai_gpt-5-mini",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 6.228179600881386e-11,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 8.407079595415299e-07,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 2.9802322387695312e-08,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:random",
+      "b": "openrouter:deepseek_deepseek-v3.2",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 6.443519950194856e-08,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 3.765068763007386e-06,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.862645149230957e-09,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:random",
+      "b": "openrouter:anthropic_claude-opus-4.7",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 6.821407906366032e-12,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.865018179209686e-07,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 4.656612873077393e-10,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:random",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 7.748648415058387e-08,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 5.2120384571953956e-06,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 2.384185791015625e-07,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:random",
+      "b": "openrouter:openai_gpt-5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 4.487023334735891e-13,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.680295787277147e-07,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 4.76837158203125e-07,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:random",
+      "b": "openrouter:openai_gpt-5.2",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 9.278758500160786e-09,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 3.85745657193697e-06,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.4901161193847656e-08,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:random",
+      "b": "openrouter:qwen_qwen3-32b",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.8691884487075103e-07,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.7735563792689098e-05,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.52587890625e-05,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.049475262368815595,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:random",
+      "b": "openrouter:qwen_qwen3-235b-a22b-thinking-2507",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 3.027546752786478e-08,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 4.989461724299479e-06,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.9073486328125e-06,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.001999000499750125,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:random",
+      "b": "openrouter:deepseek_deepseek-r1",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 5.275080804557761e-09,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.7560560082939792e-06,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 2.384185791015625e-07,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0009995002498750624,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:always-pass",
+      "b": "openrouter:openai_gpt-5.4-nano",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.03167745246657912,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.1296489155163356,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.00048828125,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:always-pass",
+      "b": "openrouter:google_gemini-3.1-flash-lite",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.760569898830493,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.7245544941888511,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 3.814697265625e-06,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:always-pass",
+      "b": "openrouter:meta-llama_llama-4-scout",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.0009414786553146558,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.002139874381893373,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.001953125,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:always-pass",
+      "b": "openrouter:openai_gpt-5-nano",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.0006261316966604277,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.002642421351674326,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 7.62939453125e-06,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:always-pass",
+      "b": "openrouter:meta-llama_llama-4-maverick",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.022298921495390995,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.054662212865948565,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.000244140625,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "baseline:always-pass",
+      "b": "openrouter:google_gemini-3-flash-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.5652153771754452,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.6027312536905055,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.1920928955078125e-07,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:always-pass",
+      "b": "openrouter:anthropic_claude-haiku-4.5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.566121629470773,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.3276276092306746,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.9073486328125e-06,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:always-pass",
+      "b": "openrouter:openai_gpt-5-mini",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 5.350075294728066e-06,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 9.940081857188178e-05,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 2.9802322387695312e-08,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:always-pass",
+      "b": "openrouter:deepseek_deepseek-v3.2",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 8.850609784860015e-05,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.0008329331798722849,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.862645149230957e-09,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:always-pass",
+      "b": "openrouter:anthropic_claude-opus-4.7",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 2.897678788322185e-09,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 5.395872875404009e-07,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 4.656612873077393e-10,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:always-pass",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.0025878515603200807,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.00018161179181607048,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 2.384185791015625e-07,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:always-pass",
+      "b": "openrouter:openai_gpt-5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 5.548363190736198e-08,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 4.0099648164691383e-05,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 4.76837158203125e-07,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:always-pass",
+      "b": "openrouter:openai_gpt-5.2",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.4110518931948921e-05,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.00038811142877477156,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.4901161193847656e-08,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:always-pass",
+      "b": "openrouter:qwen_qwen3-32b",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.019074423252587083,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.009322376047437495,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.52587890625e-05,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:always-pass",
+      "b": "openrouter:qwen_qwen3-235b-a22b-thinking-2507",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.000733761956833058,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.0012642000256056652,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.9073486328125e-06,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "baseline:always-pass",
+      "b": "openrouter:deepseek_deepseek-r1",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 2.1399948777853177e-05,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.00021953596001063263,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 2.384185791015625e-07,
+          "reject_at_alpha": true
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5.4-nano",
+      "b": "openrouter:google_gemini-3.1-flash-lite",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.06691945513317679,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.1589900610113243,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.0390625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.7681159420289855,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5.4-nano",
+      "b": "openrouter:meta-llama_llama-4-scout",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.3678223503308047,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.24777597418760056,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.7744140625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.018490754622688656,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5.4-nano",
+      "b": "openrouter:openai_gpt-5-nano",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 3.7547668994976385e-05,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.000494672328615212,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.14599609375,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.004997501249375313,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5.4-nano",
+      "b": "openrouter:meta-llama_llama-4-maverick",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.5746939763726393,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.5642097153338763,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.0,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.12243878060969515,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5.4-nano",
+      "b": "openrouter:google_gemini-3-flash-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.02965258923400818,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.023019011877612214,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.00048828125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.05697151424287856,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5.4-nano",
+      "b": "openrouter:anthropic_claude-haiku-4.5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.005448950211373526,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.005733990950307122,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.021484375,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.022488755622188907,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5.4-nano",
+      "b": "openrouter:openai_gpt-5-mini",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.2115375231011435e-07,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.0246327832617615e-05,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.0001220703125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0009995002498750624,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5.4-nano",
+      "b": "openrouter:deepseek_deepseek-v3.2",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 3.5882725836693324e-06,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 2.1685558823621397e-05,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 4.00543212890625e-05,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5.4-nano",
+      "b": "openrouter:anthropic_claude-opus-4.7",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.0208923562666405e-08,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 2.112387390304717e-06,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.9073486328125e-06,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0009995002498750624,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5.4-nano",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.554899093521432e-05,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 2.8631139622301823e-05,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.0018310546875,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0014992503748125937,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5.4-nano",
+      "b": "openrouter:openai_gpt-5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 6.32336741324866e-09,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 5.033314945397503e-07,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.00634765625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5.4-nano",
+      "b": "openrouter:openai_gpt-5.2",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 2.7847172439852443e-07,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 7.174180256251363e-06,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.000274658203125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5.4-nano",
+      "b": "openrouter:qwen_qwen3-32b",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.0018063987762815057,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.005390706673537989,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.332305908203125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.3828085957021489,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5.4-nano",
+      "b": "openrouter:qwen_qwen3-235b-a22b-thinking-2507",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.6865400289314972e-05,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.0002924627860688601,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.03857421875,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.01899050474762619,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5.4-nano",
+      "b": "openrouter:deepseek_deepseek-r1",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 2.313596738987275e-06,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 2.353963517364535e-05,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.012725830078125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0024987506246876563,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3.1-flash-lite",
+      "b": "openrouter:meta-llama_llama-4-scout",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.012081388321166737,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.012946026127481573,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.0224609375,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.03248375812093953,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3.1-flash-lite",
+      "b": "openrouter:openai_gpt-5-nano",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.0017077496339456381,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.012630323368642551,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.0,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.4272863568215892,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3.1-flash-lite",
+      "b": "openrouter:meta-llama_llama-4-maverick",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.038097680645458945,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.042501961142818866,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.109375,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.11544227886056972,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3.1-flash-lite",
+      "b": "openrouter:google_gemini-3-flash-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.2767371063928461,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.3317228918094638,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.0625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.10144927536231885,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3.1-flash-lite",
+      "b": "openrouter:anthropic_claude-haiku-4.5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.42016079111786286,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.17787574967715336,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.0,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0079960019990005,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3.1-flash-lite",
+      "b": "openrouter:openai_gpt-5-mini",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.5125354865788574e-05,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.00014469608785023998,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.015625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.014992503748125937,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3.1-flash-lite",
+      "b": "openrouter:deepseek_deepseek-v3.2",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.00012055365844005524,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.00014811973504404356,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.00341796875,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0014992503748125937,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3.1-flash-lite",
+      "b": "openrouter:anthropic_claude-opus-4.7",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 3.094577981921459e-07,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 3.78961944158087e-06,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.000244140625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0009995002498750624,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3.1-flash-lite",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.002074059890675309,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.0007712173652095516,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.2265625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.004997501249375313,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3.1-flash-lite",
+      "b": "openrouter:openai_gpt-5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.0853034020904674e-08,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 7.839844329282641e-09,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.375,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.08595702148925537,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3.1-flash-lite",
+      "b": "openrouter:openai_gpt-5.2",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 6.482059217312411e-05,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 5.048159411584348e-05,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.03857421875,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.00849575212393803,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3.1-flash-lite",
+      "b": "openrouter:qwen_qwen3-32b",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.06731625120935648,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.21041384431760835,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.79052734375,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.5387306346826587,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3.1-flash-lite",
+      "b": "openrouter:qwen_qwen3-235b-a22b-thinking-2507",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.005042746265264323,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.01970127721220154,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.0,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0079960019990005,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3.1-flash-lite",
+      "b": "openrouter:deepseek_deepseek-r1",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.0001508875617730812,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.0008104541647283775,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.454498291015625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0014992503748125937,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:meta-llama_llama-4-scout",
+      "b": "openrouter:openai_gpt-5-nano",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.5757671062775307e-06,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 8.918727424459682e-05,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.057373046875,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:meta-llama_llama-4-scout",
+      "b": "openrouter:meta-llama_llama-4-maverick",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.6939158371536183,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.8328664161727948,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.453125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.3098450774612694,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:meta-llama_llama-4-scout",
+      "b": "openrouter:google_gemini-3-flash-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.007935115706846659,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.007715869575744014,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.000518798828125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:meta-llama_llama-4-scout",
+      "b": "openrouter:anthropic_claude-haiku-4.5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.0012940045636936695,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.001020493721834038,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.012939453125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:meta-llama_llama-4-scout",
+      "b": "openrouter:openai_gpt-5-mini",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 4.1639892476379125e-08,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.1354572659168624e-05,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.00014495849609375,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:meta-llama_llama-4-scout",
+      "b": "openrouter:deepseek_deepseek-v3.2",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 9.213856316160592e-07,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.926214543640519e-05,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.0967254638671875e-05,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:meta-llama_llama-4-scout",
+      "b": "openrouter:anthropic_claude-opus-4.7",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.2357316003218702e-09,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.2276895300659915e-06,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 2.9802322387695312e-06,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:meta-llama_llama-4-scout",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 2.224486509964255e-06,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 3.724264727945642e-05,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.000518798828125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:meta-llama_llama-4-scout",
+      "b": "openrouter:openai_gpt-5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 2.7583072656460255e-09,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.2829035257429277e-06,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.004180908203125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:meta-llama_llama-4-scout",
+      "b": "openrouter:openai_gpt-5.2",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.2229104970344542e-07,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 7.678696986782766e-06,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.00022125244140625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:meta-llama_llama-4-scout",
+      "b": "openrouter:qwen_qwen3-32b",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 5.4812380531480746e-05,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.0005376605535566217,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.09228515625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.013993003498250875,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:meta-llama_llama-4-scout",
+      "b": "openrouter:qwen_qwen3-235b-a22b-thinking-2507",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.740693680729429e-05,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.00010046868883269846,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.0308837890625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0009995002498750624,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:meta-llama_llama-4-scout",
+      "b": "openrouter:deepseek_deepseek-r1",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 8.828078454338623e-07,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 2.8654196129167246e-05,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.007197380065917969,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5-nano",
+      "b": "openrouter:meta-llama_llama-4-maverick",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 9.628378301093727e-05,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.0002092538274180653,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.266845703125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.001999000499750125,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5-nano",
+      "b": "openrouter:google_gemini-3-flash-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.2533624113548516,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.326049462728915,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.109375,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.6806596701649176,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5-nano",
+      "b": "openrouter:anthropic_claude-haiku-4.5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.09835351061686791,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.1373368801747642,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.79052734375,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.33983008495752126,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5-nano",
+      "b": "openrouter:openai_gpt-5-mini",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.019533250044659053,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.038607051842430073,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.021484375,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 1.0,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5-nano",
+      "b": "openrouter:deepseek_deepseek-v3.2",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.026496173998624747,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.010442432848504721,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.004180908203125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.9975012493753124,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5-nano",
+      "b": "openrouter:anthropic_claude-opus-4.7",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.000369862956948993,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.0005376605535566217,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.0001220703125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.8670664667666167,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5-nano",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.3770047488056558,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.30437241089978706,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.1796875,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.8785607196401799,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5-nano",
+      "b": "openrouter:openai_gpt-5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 8.439485576976476e-05,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 3.088394735450034e-05,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.47876061969015493,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5-nano",
+      "b": "openrouter:openai_gpt-5.2",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.0014054118667852897,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.0010414427346697602,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.00390625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.9590204897551224,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5-nano",
+      "b": "openrouter:qwen_qwen3-32b",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.5719082704207196,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.42637595733692935,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.0,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.2513743128435782,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5-nano",
+      "b": "openrouter:qwen_qwen3-235b-a22b-thinking-2507",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.49484456356461703,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.6964254688139464,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.8238029479980469,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.47126436781609193,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5-nano",
+      "b": "openrouter:deepseek_deepseek-r1",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.03384047746546915,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.06687754220502674,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.332305908203125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.17391304347826086,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:meta-llama_llama-4-maverick",
+      "b": "openrouter:google_gemini-3-flash-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.022473222924149383,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.02666561691221791,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.00341796875,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.005997001499250375,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:meta-llama_llama-4-maverick",
+      "b": "openrouter:anthropic_claude-haiku-4.5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.0031245875912065697,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.005834181815816048,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.0654296875,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:meta-llama_llama-4-maverick",
+      "b": "openrouter:openai_gpt-5-mini",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 1.816689347477703e-06,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 3.0175463689848167e-05,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.0009765625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:meta-llama_llama-4-maverick",
+      "b": "openrouter:deepseek_deepseek-v3.2",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 5.578183866221733e-06,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.7760177736648163e-05,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.52587890625e-05,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:meta-llama_llama-4-maverick",
+      "b": "openrouter:anthropic_claude-opus-4.7",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 4.0486745023661814e-07,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 1.582572506073372e-05,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 2.09808349609375e-05,
+          "reject_at_alpha": true
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:meta-llama_llama-4-maverick",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 5.693497311583336e-05,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.00010955858098535901,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.00738525390625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:meta-llama_llama-4-maverick",
+      "b": "openrouter:openai_gpt-5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 9.220827147049276e-07,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 9.40387345778381e-06,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.03515625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:meta-llama_llama-4-maverick",
+      "b": "openrouter:openai_gpt-5.2",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 3.2953460029901686e-06,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 2.66379847936785e-05,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.0025768280029296875,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:meta-llama_llama-4-maverick",
+      "b": "openrouter:qwen_qwen3-32b",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.0016686402899129915,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.003757190862479575,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.4239501953125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.21339330334832585,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:meta-llama_llama-4-maverick",
+      "b": "openrouter:qwen_qwen3-235b-a22b-thinking-2507",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.00025103998524528,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.00043909096077753636,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.11846923828124999,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0014992503748125937,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:meta-llama_llama-4-maverick",
+      "b": "openrouter:deepseek_deepseek-r1",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 8.234855475157638e-06,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 5.807594588253319e-05,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.0308837890625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3-flash-preview",
+      "b": "openrouter:anthropic_claude-haiku-4.5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.8664836639367349,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.7508834218468307,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.4239501953125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.4917541229385307,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3-flash-preview",
+      "b": "openrouter:openai_gpt-5-mini",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.024424089991831082,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.010623171407326245,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.6875,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.3343328335832084,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3-flash-preview",
+      "b": "openrouter:deepseek_deepseek-v3.2",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.002278145927127651,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 7.490269853445273e-05,
+          "reject_at_alpha": true
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.0703125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.14742628685657172,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3-flash-preview",
+      "b": "openrouter:anthropic_claude-opus-4.7",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.0005372357003885527,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.0003500760269743798,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.021484375,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.17891054472763618,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3-flash-preview",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.061116347530556316,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.027029156618314544,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.0,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.223888055972014,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3-flash-preview",
+      "b": "openrouter:openai_gpt-5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.0008590928589152664,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.00025377068290144487,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.6875,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.4802598700649675,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3-flash-preview",
+      "b": "openrouter:openai_gpt-5.2",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.0042950565117421445,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.0005825314188358219,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.548828125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.14442778610694654,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3-flash-preview",
+      "b": "openrouter:qwen_qwen3-32b",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.4839542850468391,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.6113514993496755,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.11846923828124999,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.6101949025487257,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3-flash-preview",
+      "b": "openrouter:qwen_qwen3-235b-a22b-thinking-2507",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.1600739338970289,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.20223856381221494,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.454498291015625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.2843578210894553,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3-flash-preview",
+      "b": "openrouter:deepseek_deepseek-r1",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.022299781224503233,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.11560380304776928,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.0,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0074962518740629685,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:anthropic_claude-haiku-4.5",
+      "b": "openrouter:openai_gpt-5-mini",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.008626574907301258,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.007209091768796369,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.237884521484375,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0024987506246876563,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:anthropic_claude-haiku-4.5",
+      "b": "openrouter:deepseek_deepseek-v3.2",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.001557398900107284,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.0007084670289128831,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.012939453125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.5372313843078461,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:anthropic_claude-haiku-4.5",
+      "b": "openrouter:anthropic_claude-opus-4.7",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 9.341464153144966e-05,
+          "reject_at_alpha": true
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.0001914780974922042,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.004180908203125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.15442278860569716,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:anthropic_claude-haiku-4.5",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.03031769548119459,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.012257626924598843,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.4239501953125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.4587706146926537,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:anthropic_claude-haiku-4.5",
+      "b": "openrouter:openai_gpt-5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.00019707012668712716,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.0014563205975494135,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.79052734375,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.006496751624187906,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:anthropic_claude-haiku-4.5",
+      "b": "openrouter:openai_gpt-5.2",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.0017941238014566178,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.0016580853774236751,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.143463134765625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.05697151424287856,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:anthropic_claude-haiku-4.5",
+      "b": "openrouter:qwen_qwen3-32b",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.2759648395785901,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.2844624901630102,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.629058837890625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.55872063968016,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:anthropic_claude-haiku-4.5",
+      "b": "openrouter:qwen_qwen3-235b-a22b-thinking-2507",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.03441920168115273,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.05993542764678842,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.0,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.4572713643178411,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:anthropic_claude-haiku-4.5",
+      "b": "openrouter:deepseek_deepseek-r1",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.0010898507249383878,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.004613292555908938,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.5810546875,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.9770114942528736,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5-mini",
+      "b": "openrouter:deepseek_deepseek-v3.2",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.32303824655327296,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.10227989328958592,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.3876953125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.5247376311844077,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5-mini",
+      "b": "openrouter:anthropic_claude-opus-4.7",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.07586697759636774,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.08366602726012001,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.0703125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.01649175412293853,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5-mini",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.5562770008184804,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.3163713020501673,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.75390625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.6516741629185407,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5-mini",
+      "b": "openrouter:openai_gpt-5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.21168193771086202,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.22047164360629312,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.2890625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.9535232383808095,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5-mini",
+      "b": "openrouter:openai_gpt-5.2",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.2696043832816669,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.059835601391349254,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.0,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.7041479260369815,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5-mini",
+      "b": "openrouter:qwen_qwen3-32b",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.03317515046778736,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.028420589569276063,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.03515625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.030484757621189407,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5-mini",
+      "b": "openrouter:qwen_qwen3-235b-a22b-thinking-2507",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.32261049701997346,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.3896017975794498,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.1795654296875,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.6056971514242878,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5-mini",
+      "b": "openrouter:deepseek_deepseek-r1",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.4772619791231577,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.8652111727549715,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.6072387695312499,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.2698650674662669,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:deepseek_deepseek-v3.2",
+      "b": "openrouter:anthropic_claude-opus-4.7",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.86207756171014,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.1919052034080042,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.7265625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.9645177411294353,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:deepseek_deepseek-v3.2",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.13622585497707482,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.154161410258753,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.109375,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.8145927036481759,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:deepseek_deepseek-v3.2",
+      "b": "openrouter:openai_gpt-5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.8623838948584078,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.9224846577154711,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.03857421875,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.4522738630684658,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:deepseek_deepseek-v3.2",
+      "b": "openrouter:openai_gpt-5.2",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.9365209571857647,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.7275227809310241,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.548828125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.672663668165917,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:deepseek_deepseek-v3.2",
+      "b": "openrouter:qwen_qwen3-32b",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.013927607435842931,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.0056343778780999585,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.002349853515625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.10694652673663169,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:deepseek_deepseek-v3.2",
+      "b": "openrouter:qwen_qwen3-235b-a22b-thinking-2507",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.10038902708716661,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.06864047892735296,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.012939453125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.5197401299350325,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:deepseek_deepseek-v3.2",
+      "b": "openrouter:deepseek_deepseek-r1",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.6572561375064341,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.4405215911492053,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.09228515625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.7181409295352323,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:anthropic_claude-opus-4.7",
+      "b": "openrouter:google_gemini-3.1-pro-preview",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.026245767710050587,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.1038405194545758,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.021484375,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.7236381809095452,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:anthropic_claude-opus-4.7",
+      "b": "openrouter:openai_gpt-5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.5845354753710946,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.7773375530768246,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.001953125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.0004997501249375312,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:anthropic_claude-opus-4.7",
+      "b": "openrouter:openai_gpt-5.2",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.7836662975786677,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.1638536228381079,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.4827586206896552,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:anthropic_claude-opus-4.7",
+      "b": "openrouter:qwen_qwen3-32b",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.0003441612344589622,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.000608378637746229,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.000728607177734375,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.36881559220389803,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:anthropic_claude-opus-4.7",
+      "b": "openrouter:qwen_qwen3-235b-a22b-thinking-2507",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.024651039228699226,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.019783704819367986,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.004180908203125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.5807096451774113,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:anthropic_claude-opus-4.7",
+      "b": "openrouter:deepseek_deepseek-r1",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.46686133277335085,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.6056205089595192,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.03515625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.018490754622688656,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3.1-pro-preview",
+      "b": "openrouter:openai_gpt-5",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.060988418642521414,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.22420171740248407,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.7265625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.20889555222388806,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3.1-pro-preview",
+      "b": "openrouter:openai_gpt-5.2",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.08628827377000887,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.25557245970558995,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.5078125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.5632183908045977,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3.1-pro-preview",
+      "b": "openrouter:qwen_qwen3-32b",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.1804526342224931,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.1631073882292975,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.1670684814453125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.14192903548225888,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3.1-pro-preview",
+      "b": "openrouter:qwen_qwen3-235b-a22b-thinking-2507",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.8420929460453734,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.8908918267813407,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.4239501953125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.48125937031484256,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:google_gemini-3.1-pro-preview",
+      "b": "openrouter:deepseek_deepseek-r1",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.26209679920459084,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.5052305289929555,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.0,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.15142428785607195,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5",
+      "b": "openrouter:openai_gpt-5.2",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.9106160118126791,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.5629275404066632,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.328335832083958,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5",
+      "b": "openrouter:qwen_qwen3-32b",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.001471590595356827,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.0036094333493842143,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.30175781249999994,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.09495252373813093,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5",
+      "b": "openrouter:qwen_qwen3-235b-a22b-thinking-2507",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.06956614292382018,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.047787747921393224,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.8145294189453125,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.1054472763618191,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5",
+      "b": "openrouter:deepseek_deepseek-r1",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.7454253939207403,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.8774027283940786,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 1.0,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.057971014492753624,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5.2",
+      "b": "openrouter:qwen_qwen3-32b",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.008813020141677922,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.0039813362062233555,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.0308837890625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.1294352823588206,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5.2",
+      "b": "openrouter:qwen_qwen3-235b-a22b-thinking-2507",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.11720904412008662,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.009825767811056598,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.143463134765625,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.4777611194402799,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:openai_gpt-5.2",
+      "b": "openrouter:deepseek_deepseek-r1",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.7421235541555113,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.6583178153583993,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.480682373046875,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.408295852073963,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:qwen_qwen3-32b",
+      "b": "openrouter:qwen_qwen3-235b-a22b-thinking-2507",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.2949873109228295,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.21374475543238403,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.6636238098144531,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.33183408295852074,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:qwen_qwen3-32b",
+      "b": "openrouter:deepseek_deepseek-r1",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.011037916697747093,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.02682886777582616,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.237884521484375,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.12543728135932034,
+          "reject_at_alpha": false
+        }
+      }
+    },
+    {
+      "a": "openrouter:qwen_qwen3-235b-a22b-thinking-2507",
+      "b": "openrouter:deepseek_deepseek-r1",
+      "tests": {
+        "payoff_t": {
+          "p_raw": 0.1670704962149317,
+          "reject_at_alpha": false
+        },
+        "payoff_wilcoxon": {
+          "p_raw": 0.13131565813741713,
+          "reject_at_alpha": false
+        },
+        "accuracy_mcnemar": {
+          "p_raw": 0.6072387695312499,
+          "reject_at_alpha": false
+        },
+        "ece_permutation": {
+          "p_raw": 0.8085957021489255,
+          "reject_at_alpha": false
+        }
+      }
+    }
+  ]
+}

@@ -1,100 +1,70 @@
 \section{Introduction}\label{sec:intro}
 
-In May 2026, frontier language-model agents have saturated nearly every
-static benchmark we built for them.  MMLU-Pro and GPQA-Diamond cluster
-above 94\,\%; SWE-bench Verified is at $\approx 94\,\%$ (state-of-the-art
-2026 systems)~\cite{swebench}; Humanity's Last Exam rose from 8\,\% to
-$\approx 65\,\%$ in sixteen months~\cite{hle}; ARC-AGI-2 went from
-$53\,\%$ to $85\,\%$ in four months~\cite{arcagi2}.  The capabilities that did \emph{not} saturate are
-all about calibrated, persistent agency: ARC-AGI-3 sits at $<1\,\%$
-~\cite{arcagi3}; SWE-EVO at $\approx 25\,\%$; MemoryAgentBench's
-selective-forgetting axis at $<30\,\%$~\cite{memoryagentbench}.
+By May 2026, frontier language-model agents saturate nearly every
+static benchmark: MMLU-Pro and GPQA-Diamond cluster above $94\,\%$;
+SWE-bench Verified at $\approx 94\,\%$~\cite{swebench}; HLE rose from
+$8\,\%$ to $\approx 65\,\%$ in sixteen months~\cite{hle}; ARC-AGI-2 from
+$53\,\%$ to $85\,\%$ in four months~\cite{arcagi2}. The capabilities
+that did \emph{not} saturate are calibrated, persistent agency:
+ARC-AGI-3 $<1\,\%$~\cite{arcagi3}; SWE-EVO $\approx 25\,\%$;
+MemoryAgentBench selective-forgetting $<30\,\%$~\cite{memoryagentbench}.
 
-Production deployment has its own scoreboard. A widely-cited industry
-analysis (May 2026) found a 37\,\% gap between lab benchmark scores and
-production performance and a $50\times$ cost variation among systems
-with comparable headline accuracy~\cite{cognition_devin_2025}. The
-dominant production failure mode is not low accuracy but \emph{ambition
-mismatch} --- systems that commit to tasks they should have declined,
-that report high confidence under conditions in which their reliability
-is demonstrably lower, that ``can't tell you what they don't know.''
-Anthropic's faithfulness work~\cite{anthropic_faithfulness}
-identified the mechanism: unfaithful chains-of-thought are
-systematically \emph{longer} than faithful ones; models verbalise
-hints that demonstrably change their answer in only 25--39\,\% of
-cases. Verbose confidence is decoupled from competence.
+Production has its own scoreboard. A widely-cited industry analysis
+(May 2026) found a $37\,\%$ gap between lab and production performance
+and $50\times$ cost variation among systems with comparable
+accuracy~\cite{cognition_devin_2025}. The dominant production failure
+is not low accuracy but \emph{ambition mismatch} --- systems committing
+to tasks they should have declined, reporting high confidence under
+conditions in which their reliability is demonstrably
+lower~\cite{anthropic_faithfulness}. The missing measurement is not
+another accuracy benchmark; it is an evaluation that pays the agent
+only when its calibration matches its skill, where over-confidence
+costs the same currency as incompetence, abstention is a first-class
+action, and the leaderboard is a Pareto frontier rather than a scalar.
 
-The missing measurement, then, is not another accuracy benchmark.
-It is an evaluation that pays the agent only when its calibration
-matches its skill --- where over-confidence costs the same currency as
-incompetence, where abstention is a first-class action, and where the
-leaderboard is a Pareto frontier rather than a scalar.
+\paragraph{Contributions.} We introduce \textsc{PROPHET}, a
+calibration benchmark for LLM-based agents.
+(i) A \textbf{marketplace protocol} with three actions per task
+(\textsc{Take}, \textsc{Quote}, \textsc{Pass}) and a Brier-based proper
+scoring rule, conditional on \textsc{Quote}
+(Section~\ref{sec:method}).
+(ii) Twelve \textbf{procedurally generated task families} spanning the
+production-LLM surface, evaluated at two regimes per family: a Standard
+tier at near-ceiling difficulty (median $87\,\%$ frontier accuracy) and
+a \textbf{T\textsubscript{extreme}} tier ($\delta \ge 0.97$) where
+frontier accuracy is held to $\sim$10--45\,\% by construction
+(multi-modulus CRT, Pell, discrete log, $9\times 9$ Sudoku, depth-9
+temporal chains, modular knapsack); all verifiers are mechanical
+(Section~\ref{sec:families}).
+(iii) A \textbf{Pareto-frontier leaderboard} on
+$(\mathcal{P}, \ECE)$ with a secondary $(\text{cost}, \mathcal{P})$
+frontier and a pre-registered minimum-$N$ filter; no scalar headline.
+(iv) A \textbf{Model Overreach Point} ($\MOP$) metric: the difficulty
+bin where stated $\Phat$ exceeds empirical accuracy by $\ge 2\sigma$.
+(v) A \textbf{gaming-resistance audit} adopting the Berkeley RDI
+April~2026 attack taxonomy (Appendix~\ref{app:audit}).
+(vi) Open-source release of code (MIT), procgen seeds + reference panel
+(Hugging Face), and the full experimental matrix
+(Appendix~\ref{app:reproduce}).
 
-\paragraph{Contributions}
-We introduce \textsc{PROPHET}, a calibration benchmark for LLM-based
-agents. Concretely:
-\begin{enumerate}
-  \item A \textbf{marketplace evaluation protocol} with three actions
-  per task (\textsc{Take}, \textsc{Quote}, \textsc{Pass}) and a Brier-based
-  proper scoring rule. Conditional on \textsc{Quote}, properness implies
-  expected payoff is maximised iff the agent reports its true probability
-  of success; an action-selection analysis describes when \textsc{Quote}
-  is preferred over \textsc{Take} or \textsc{Pass}
-  (Section~\ref{sec:method}).
-  \item Twelve \textbf{procedurally generated task families} spanning
-  code, math, knowledge, reasoning, writing, browser, tools,
-  multimodal, data, scientific, multilingual, and safety, with
-  \emph{two difficulty regimes per family}: a Standard tier at
-  near-ceiling difficulty (73--97\,\% frontier accuracy, median 87\,\%)
-  and a T\textsubscript{extreme} tier ($\delta \ge 0.97$) where frontier
-  accuracy is held to $\sim$10--45\,\% by construction
-  (multi-modulus CRT, Pell, discrete logs, $9 \times 9$ Sudoku,
-  9-step $7 \times 7$ grid transforms, modular knapsack, depth-9
-  temporal chains, adversarial letter-count chains). All verifiers
-  are mechanical (Section~\ref{sec:families}).
-  \item A \textbf{Pareto-frontier leaderboard} on
-  $(\mathrm{net\_payoff}, \ECE)$ with secondary frontiers on
-  $(\mathrm{cost}, \mathrm{accuracy})$ and $(\Brier, \mathrm{abstention
-  precision})$, computed with a pre-registered minimum-$N$ filter so
-  small-$N$ runs cannot land on the frontier by chance. We never publish
-  a single scalar (Section~\ref{sec:method}).
-  \item A \textbf{Model Overreach Point} ($\MOP$) metric: the
-  difficulty bin where stated $\Phat$ exceeds empirical accuracy by
-  $\ge 2\sigma$ (Section~\ref{sec:results}).
-  \item A \textbf{gaming-resistance audit} adopting the Berkeley RDI
-  April~2026 attack family. We document each attempted exploit and the
-  mechanism that blocks it (Section~\ref{sec:gaming},
-  Appendix~\ref{app:audit}).
-  \item Open-source release of \textbf{code} (MIT), \textbf{procgen
-  seeds + reference panel} (Croissant-tagged Hugging Face dataset), and
-  \textbf{this paper's full experimental matrix} including all
-  per-task outcomes (Appendix~\ref{app:reproduce}).
-\end{enumerate}
-
-\paragraph{Empirical finding}
-We benchmark 17 frontier and open-weight models via OpenRouter:
-Anthropic Claude Haiku 4.5 / Sonnet 4.6 / Opus 4.7;
-Google Gemini 3 Flash Preview / 3.1 Flash Lite / 3.1 Pro Preview;
-OpenAI GPT-5 / 5-mini / 5-nano / 5.4-nano (Standard tier) plus GPT-5.2
-(T\textsubscript{extreme}-only, added mid-experiment);
-DeepSeek V3.2 and R1; Meta Llama-4-Scout and -Maverick;
-Qwen3-32B and Qwen3-235B-A22B-Thinking-2507; and Moonshot Kimi-K2-Thinking.
-The rank-order by \emph{accuracy} differs from the rank-order by
-\emph{expected net payoff} at the first-place level. On the Standard
-tier (matched $K = 15$ panel with $N \ge 100$):
-$\rho_{\text{acc, ECE}} = -0.93$,
-$\rho_{\text{acc, payoff}} = +0.76$,
-$\rho_{\text{ECE, payoff}} = -0.67$.
-Best-by-accuracy and best-by-ECE are the same model
-(\textsc{Google Gemini 3 Flash Preview}, $0.970$ / $0.027$), but
-best-by-payoff is a different Google model
-(\textsc{Gemini 3.1 Pro Preview}, $37{,}813$ PROPHET-cents vs.\ $23{,}800$
-for Flash and $24{,}824$ for \textsc{Claude Opus 4.7}). On the
-T\textsubscript{extreme} tier the picture shifts: the new
-$(\ECE, \mathcal{P})$ Pareto frontier among $N \ge 20$ agents contains
-\textsc{GPT-5} and \textsc{GPT-5.2}; the next-best open-weight system
-(\texttt{qwen3-235b-thinking}, ECE $0.091$, payoff $4{,}825$) is
-dominated on $(\ECE, \mathcal{P})$ but Pareto-optimal on the
-$(\mathrm{cost}, \mathcal{P})$ frontier at $\frac{1}{4}$ the operating
-cost. The first-place leader changes under at least one axis on both
-tiers. This is the empirical claim PROPHET is designed to make visible.
+\paragraph{Empirical finding.} We benchmark 17 frontier and
+open-weight models via OpenRouter (Anthropic Haiku 4.5 / Sonnet 4.6 /
+Opus 4.7; Google Gemini 3-Flash / 3.1-Flash-Lite / 3.1-Pro; OpenAI
+GPT-5 / 5-mini / 5-nano / 5.2 / 5.4-nano; DeepSeek V3.2 and R1; Meta
+Llama-4-Scout and Maverick; Qwen3-32B and 235B-Thinking; Moonshot
+Kimi-K2-Thinking). \textbf{The rank-order by accuracy differs from the
+rank-order by net payoff at the first-place level.} On the Standard
+tier (matched $K = 16$ panel, $N \ge 100$):
+$\rho_{\text{acc, ECE}} = -0.94$,
+$\rho_{\text{acc, payoff}} = +0.78$,
+$\rho_{\text{ECE, payoff}} = -0.71$. Best by accuracy and calibration:
+\texttt{openai/gpt-5.2} ($0.970$ acc, ECE $0.017$, the lowest on the
+panel). Best by net payoff: a \emph{different} agent ---
+\texttt{google/gemini-3.1-pro-preview} ($37{,}813$ vs.\ $31{,}328$ for
+GPT-5.2 and $24{,}824$ for Claude Opus 4.7). On
+T\textsubscript{extreme} the $(\ECE, \mathcal{P})$ frontier is GPT-5
+and GPT-5.2; the next-best open-weight (\texttt{qwen3-235b-thinking},
+ECE $0.091$) is dominated on $(\ECE, \mathcal{P})$ but Pareto-optimal
+on $(\text{cost}, \mathcal{P})$ at $\frac{1}{4}$ the operating cost.
+The first-place leader changes under at least one axis on both tiers
+--- the empirical claim PROPHET is designed to make visible.

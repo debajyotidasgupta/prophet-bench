@@ -1,0 +1,863 @@
+{
+  "cross_family_ece_correlation": {
+    "baseline:oracle": NaN,
+    "baseline:random": NaN,
+    "baseline:always-pass": NaN,
+    "openrouter:openai_gpt-5.4-nano": NaN,
+    "openrouter:google_gemini-3.1-flash-lite": NaN,
+    "openrouter:meta-llama_llama-4-scout": NaN,
+    "openrouter:openai_gpt-5-nano": NaN,
+    "openrouter:meta-llama_llama-4-maverick": NaN,
+    "openrouter:google_gemini-3-flash-preview": NaN,
+    "openrouter:anthropic_claude-haiku-4.5": NaN,
+    "openrouter:openai_gpt-5-mini": NaN,
+    "openrouter:deepseek_deepseek-v3.2": NaN,
+    "openrouter:anthropic_claude-opus-4.7": NaN,
+    "openrouter:google_gemini-3.1-pro-preview": NaN,
+    "openrouter:openai_gpt-5": NaN,
+    "openrouter:openai_gpt-5.2": NaN,
+    "openrouter:qwen_qwen3-32b": NaN,
+    "openrouter:qwen_qwen3-235b-a22b-thinking-2507": NaN,
+    "openrouter:deepseek_deepseek-r1": NaN
+  },
+  "cross_family_brier_correlation": {
+    "baseline:oracle": NaN,
+    "baseline:random": NaN,
+    "baseline:always-pass": NaN,
+    "openrouter:openai_gpt-5.4-nano": NaN,
+    "openrouter:google_gemini-3.1-flash-lite": NaN,
+    "openrouter:meta-llama_llama-4-scout": NaN,
+    "openrouter:openai_gpt-5-nano": NaN,
+    "openrouter:meta-llama_llama-4-maverick": NaN,
+    "openrouter:google_gemini-3-flash-preview": NaN,
+    "openrouter:anthropic_claude-haiku-4.5": NaN,
+    "openrouter:openai_gpt-5-mini": NaN,
+    "openrouter:deepseek_deepseek-v3.2": NaN,
+    "openrouter:anthropic_claude-opus-4.7": NaN,
+    "openrouter:google_gemini-3.1-pro-preview": NaN,
+    "openrouter:openai_gpt-5": NaN,
+    "openrouter:openai_gpt-5.2": NaN,
+    "openrouter:qwen_qwen3-32b": NaN,
+    "openrouter:qwen_qwen3-235b-a22b-thinking-2507": NaN,
+    "openrouter:deepseek_deepseek-r1": NaN
+  },
+  "per_agent_difficulty_curves": {
+    "baseline:oracle": {
+      "centers": [
+        0.0625,
+        0.1875,
+        0.3125,
+        0.4375,
+        0.5625,
+        0.6875,
+        0.8125,
+        0.9375
+      ],
+      "accuracy": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        1.0
+      ],
+      "claimed_confidence": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        1.0
+      ],
+      "n_per_bin": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        40
+      ],
+      "ece_overall": 0.0
+    },
+    "baseline:random": {
+      "centers": [
+        0.0625,
+        0.1875,
+        0.3125,
+        0.4375,
+        0.5625,
+        0.6875,
+        0.8125,
+        0.9375
+      ],
+      "accuracy": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.0
+      ],
+      "claimed_confidence": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.5556509664329723
+      ],
+      "n_per_bin": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        26
+      ],
+      "ece_overall": 0.5556509664329724
+    },
+    "baseline:always-pass": {
+      "centers": [
+        0.0625,
+        0.1875,
+        0.3125,
+        0.4375,
+        0.5625,
+        0.6875,
+        0.8125,
+        0.9375
+      ],
+      "accuracy": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN
+      ],
+      "claimed_confidence": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN
+      ],
+      "n_per_bin": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "ece_overall": null
+    },
+    "openrouter:openai_gpt-5.4-nano": {
+      "centers": [
+        0.0625,
+        0.1875,
+        0.3125,
+        0.4375,
+        0.5625,
+        0.6875,
+        0.8125,
+        0.9375
+      ],
+      "accuracy": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.3157894736842105
+      ],
+      "claimed_confidence": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.7371052631578947
+      ],
+      "n_per_bin": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        38
+      ],
+      "ece_overall": 0.4213157894736843
+    },
+    "openrouter:google_gemini-3.1-flash-lite": {
+      "centers": [
+        0.0625,
+        0.1875,
+        0.3125,
+        0.4375,
+        0.5625,
+        0.6875,
+        0.8125,
+        0.9375
+      ],
+      "accuracy": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.475
+      ],
+      "claimed_confidence": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.9400000000000001
+      ],
+      "n_per_bin": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        40
+      ],
+      "ece_overall": 0.4650000000000001
+    },
+    "openrouter:meta-llama_llama-4-scout": {
+      "centers": [
+        0.0625,
+        0.1875,
+        0.3125,
+        0.4375,
+        0.5625,
+        0.6875,
+        0.8125,
+        0.9375
+      ],
+      "accuracy": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.2564102564102564
+      ],
+      "claimed_confidence": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.9387179487179487
+      ],
+      "n_per_bin": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        39
+      ],
+      "ece_overall": 0.6823076923076924
+    },
+    "openrouter:openai_gpt-5-nano": {
+      "centers": [
+        0.0625,
+        0.1875,
+        0.3125,
+        0.4375,
+        0.5625,
+        0.6875,
+        0.8125,
+        0.9375
+      ],
+      "accuracy": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.8571428571428571
+      ],
+      "claimed_confidence": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.9395238095238095
+      ],
+      "n_per_bin": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        21
+      ],
+      "ece_overall": 0.08238095238095239
+    },
+    "openrouter:meta-llama_llama-4-maverick": {
+      "centers": [
+        0.0625,
+        0.1875,
+        0.3125,
+        0.4375,
+        0.5625,
+        0.6875,
+        0.8125,
+        0.9375
+      ],
+      "accuracy": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.34210526315789475
+      ],
+      "claimed_confidence": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.9492105263157893
+      ],
+      "n_per_bin": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        38
+      ],
+      "ece_overall": 0.6071052631578946
+    },
+    "openrouter:google_gemini-3-flash-preview": {
+      "centers": [
+        0.0625,
+        0.1875,
+        0.3125,
+        0.4375,
+        0.5625,
+        0.6875,
+        0.8125,
+        0.9375
+      ],
+      "accuracy": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.6486486486486487
+      ],
+      "claimed_confidence": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.9083783783783783
+      ],
+      "n_per_bin": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        37
+      ],
+      "ece_overall": 0.25972972972972963
+    },
+    "openrouter:anthropic_claude-haiku-4.5": {
+      "centers": [
+        0.0625,
+        0.1875,
+        0.3125,
+        0.4375,
+        0.5625,
+        0.6875,
+        0.8125,
+        0.9375
+      ],
+      "accuracy": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.5263157894736842
+      ],
+      "claimed_confidence": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.7007894736842104
+      ],
+      "n_per_bin": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        38
+      ],
+      "ece_overall": 0.17447368421052634
+    },
+    "openrouter:openai_gpt-5-mini": {
+      "centers": [
+        0.0625,
+        0.1875,
+        0.3125,
+        0.4375,
+        0.5625,
+        0.6875,
+        0.8125,
+        0.9375
+      ],
+      "accuracy": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.9629629629629629
+      ],
+      "claimed_confidence": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.9870370370370368
+      ],
+      "n_per_bin": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        27
+      ],
+      "ece_overall": 0.024074074074073915
+    },
+    "openrouter:deepseek_deepseek-v3.2": {
+      "centers": [
+        0.0625,
+        0.1875,
+        0.3125,
+        0.4375,
+        0.5625,
+        0.6875,
+        0.8125,
+        0.9375
+      ],
+      "accuracy": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.8108108108108109
+      ],
+      "claimed_confidence": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.9191891891891891
+      ],
+      "n_per_bin": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        37
+      ],
+      "ece_overall": 0.1245945945945944
+    },
+    "openrouter:anthropic_claude-opus-4.7": {
+      "centers": [
+        0.0625,
+        0.1875,
+        0.3125,
+        0.4375,
+        0.5625,
+        0.6875,
+        0.8125,
+        0.9375
+      ],
+      "accuracy": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.8888888888888888
+      ],
+      "claimed_confidence": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.8841666666666668
+      ],
+      "n_per_bin": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        36
+      ],
+      "ece_overall": 0.11583333333333343
+    },
+    "openrouter:google_gemini-3.1-pro-preview": {
+      "centers": [
+        0.0625,
+        0.1875,
+        0.3125,
+        0.4375,
+        0.5625,
+        0.6875,
+        0.8125,
+        0.9375
+      ],
+      "accuracy": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.696969696969697
+      ],
+      "claimed_confidence": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.8242424242424243
+      ],
+      "n_per_bin": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        33
+      ],
+      "ece_overall": 0.1333333333333334
+    },
+    "openrouter:openai_gpt-5": {
+      "centers": [
+        0.0625,
+        0.1875,
+        0.3125,
+        0.4375,
+        0.5625,
+        0.6875,
+        0.8125,
+        0.9375
+      ],
+      "accuracy": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        1.0
+      ],
+      "claimed_confidence": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.9883636363636362
+      ],
+      "n_per_bin": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        22
+      ],
+      "ece_overall": 0.011636363636363778
+    },
+    "openrouter:openai_gpt-5.2": {
+      "centers": [
+        0.0625,
+        0.1875,
+        0.3125,
+        0.4375,
+        0.5625,
+        0.6875,
+        0.8125,
+        0.9375
+      ],
+      "accuracy": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.9
+      ],
+      "claimed_confidence": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.953
+      ],
+      "n_per_bin": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        30
+      ],
+      "ece_overall": 0.08033333333333337
+    },
+    "openrouter:qwen_qwen3-32b": {
+      "centers": [
+        0.0625,
+        0.1875,
+        0.3125,
+        0.4375,
+        0.5625,
+        0.6875,
+        0.8125,
+        0.9375
+      ],
+      "accuracy": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.7083333333333334
+      ],
+      "claimed_confidence": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.9370833333333333
+      ],
+      "n_per_bin": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        24
+      ],
+      "ece_overall": 0.27041666666666647
+    },
+    "openrouter:qwen_qwen3-235b-a22b-thinking-2507": {
+      "centers": [
+        0.0625,
+        0.1875,
+        0.3125,
+        0.4375,
+        0.5625,
+        0.6875,
+        0.8125,
+        0.9375
+      ],
+      "accuracy": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.8695652173913043
+      ],
+      "claimed_confidence": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.9373913043478259
+      ],
+      "n_per_bin": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        23
+      ],
+      "ece_overall": 0.06782608695652156
+    },
+    "openrouter:deepseek_deepseek-r1": {
+      "centers": [
+        0.0625,
+        0.1875,
+        0.3125,
+        0.4375,
+        0.5625,
+        0.6875,
+        0.8125,
+        0.9375
+      ],
+      "accuracy": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.8846153846153846
+      ],
+      "claimed_confidence": [
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        NaN,
+        0.9569230769230769
+      ],
+      "n_per_bin": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        26
+      ],
+      "ece_overall": 0.07230769230769235
+    }
+  }
+}

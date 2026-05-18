@@ -1,0 +1,28 @@
+\begin{table}[t]
+\centering\small
+\caption{PROPHET headline results --- 12 task families $\times$ N tasks per family. CIs are bootstrap 95\%. Higher net payoff is better; lower ECE / Brier is better.}\label{tab:headline}
+\begin{tabular}{lrrrrr}
+\toprule
+Agent & N & Accuracy & ECE & Brier & Net payoff \\
+\midrule
+baseline:oracle & 40 & 1.000 & 0.000 & 0.000 & 6251 \\
+openrouter:anthropic-claude-opus-4.7 & 36 & 0.889 & 0.116 & 0.033 & 3226 \\
+openrouter:deepseek-deepseek-v3.2 & 37 & 0.811 & 0.125 & 0.108 & 3196 \\
+openrouter:openai-gpt-5.2 & 30 & 0.900 & 0.080 & 0.077 & 2538 \\
+openrouter:deepseek-deepseek-r1 & 26 & 0.885 & 0.072 & 0.097 & 2009 \\
+openrouter:openai-gpt-5 & 22 & 1.000 & 0.012 & 0.000 & 1821 \\
+openrouter:openai-gpt-5-mini & 27 & 0.963 & 0.024 & 0.037 & 1722 \\
+openrouter:google-gemini-3.1-pro-preview & 33 & 0.697 & 0.133 & 0.079 & 1703 \\
+openrouter:qwen-qwen3-235b-a22b-thinking-2507 & 23 & 0.870 & 0.068 & 0.091 & 1124 \\
+openrouter:openai-gpt-5-nano & 21 & 0.857 & 0.082 & 0.098 & 775 \\
+openrouter:qwen-qwen3-32b & 24 & 0.708 & 0.270 & 0.275 & 672 \\
+openrouter:google-gemini-3-flash-preview & 37 & 0.649 & 0.260 & 0.242 & 398 \\
+openrouter:anthropic-claude-haiku-4.5 & 38 & 0.526 & 0.174 & 0.235 & 250 \\
+openrouter:google-gemini-3.1-flash-lite & 40 & 0.475 & 0.465 & 0.427 & -296 \\
+openrouter:openai-gpt-5.4-nano & 38 & 0.316 & 0.421 & 0.331 & -1448 \\
+openrouter:meta-llama-llama-4-maverick & 38 & 0.342 & 0.607 & 0.573 & -1871 \\
+baseline:random & 26 & 0.000 & 0.556 & 0.398 & -1924 \\
+openrouter:meta-llama-llama-4-scout & 39 & 0.256 & 0.682 & 0.659 & -2182 \\
+\bottomrule
+\end{tabular}
+\end{table}

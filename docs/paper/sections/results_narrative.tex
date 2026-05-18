@@ -1,7 +1,7 @@
 \subsection*{Headline findings (autogen)}
-Across 15 non-baseline systems with $N \ge 100$ committed tasks on the standard tier, the rank-order under each headline axis is materially different. Best by accuracy: \texttt{openrouter:google-gemini-3-flash-preview} (0.970, $N$=231). Best by ECE (lowest): \texttt{openrouter:google-gemini-3-flash-preview} (0.027). Best by net payoff: \texttt{openrouter:google-gemini-3.1-pro-preview} (37813). 
+Across 16 non-baseline systems with $N \ge 100$ committed tasks on the standard tier, the rank-order under each headline axis is materially different. Best by accuracy: \texttt{openrouter:openai-gpt-5.2} (0.970, $N$=233). Best by ECE (lowest): \texttt{openrouter:openai-gpt-5.2} (0.017). Best by net payoff: \texttt{openrouter:google-gemini-3.1-pro-preview} (37813). 
 The first-place leader \emph{changes under at least one axis} --- the empirical claim PROPHET is designed to make visible.
 
-Spearman rank correlations: $\rho_{\mathrm{acc, ECE}} = -0.93$, $\rho_{\mathrm{acc, payoff}} = 0.76$, $\rho_{\mathrm{ECE, payoff}} = -0.67$. Pareto-optimal systems on $(\ECE, \mathcal{P})$: 3 (\texttt{google_gemini-3.1-pro-preview, openai_gpt-5, google_gemini-3-flash-preview}).
+Spearman rank correlations: $\rho_{\mathrm{acc, ECE}} = -0.94$, $\rho_{\mathrm{acc, payoff}} = 0.78$, $\rho_{\mathrm{ECE, payoff}} = -0.71$. Pareto-optimal systems on $(\ECE, \mathcal{P})$: 3 (\texttt{google_gemini-3.1-pro-preview, openai_gpt-5, openai_gpt-5.2}).
 
-\paragraph{Over-confidence is everywhere.} The top-accuracy system stated $\Phat$ that exceeded its empirical accuracy by $\approx 0.03$ in aggregate ECE; under the marketplace this is a $\approx 3$ percentage-point overreach charged at $\kappa$-units per task.
+\paragraph{Over-confidence is everywhere.} The top-accuracy system stated $\Phat$ that exceeded its empirical accuracy by $\approx 0.02$ in aggregate ECE; under the marketplace this is a $\approx 2$ percentage-point overreach charged at $\kappa$-units per task.

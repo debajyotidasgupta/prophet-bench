@@ -1,10 +1,121 @@
-\section{Reviewer-defense ablations}\label{app:ablations}
+\section{Extended results and reviewer-defense ablations}\label{app:ablations}
 
-This appendix collects three robustness analyses that defend the headline
-findings against typical reviewer concerns.
+This appendix collects (a) the auxiliary figures referenced from the
+main-body \autoref{sec:results}, and (b) robustness analyses that
+defend the headline findings against typical reviewer concerns.
 
-\subsection{Empirical difficulty of the T\textsubscript{extreme} tier}
-\autoref{tab:empirical-difficulty} (and \autoref{fig:empirical-difficulty})
+\subsection{Headline leaderboard (per-metric)}
+\input{figures/headline_table.tex}
+
+\subsection{Pareto frontier on $(\ECE, \mathcal{P})$}
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.7\linewidth]{figures/pareto_ece_payoff.pdf}
+\caption{Pareto frontier on $(\ECE, \mathcal{P})$. Points on the
+frontier in colour; dominated points in grey. Hypervolume against
+reference $(\ECE = 0.5, \mathcal{P} = -3 N C)$ is 25.58 USD.}
+\label{fig:pareto-ece-payoff}
+\end{figure}
+
+\subsection{Reliability diagrams}
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.7\linewidth]{figures/reliability_multi.pdf}
+\caption{Reliability curves for the top-N systems. The dashed
+diagonal is perfect calibration. Over-confident agents lie systematically
+below the diagonal.}
+\label{fig:reliability}
+\end{figure}
+
+\subsection{Per-family decomposition: PASS rate, committed-$N$, ECE}
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.85\linewidth]{figures/heatmap_pass_rate.pdf}
+\caption{Per-family \textsc{Pass} rate. Cells at $100\,\%$ correspond
+exactly to the \texttt{n/a} cells in \autoref{fig:heatmap-ece}.}
+\label{fig:heatmap-pass}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.85\linewidth]{figures/heatmap_committed_n.pdf}
+\caption{Per-family committed-task counts. Zeros explain the
+\texttt{n/a} cells in the accuracy / ECE heatmaps.}
+\label{fig:heatmap-committed-n}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.8\linewidth]{figures/heatmap_ece.pdf}
+\caption{Per-family ECE conditional on commitment ($N \ge 5$).}
+\label{fig:heatmap-ece}
+\end{figure}
+
+\subsection{Model Overreach Point ($\MOP$)}
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.85\linewidth]{figures/mop_by_family.pdf}
+\caption{Max-overreach per (agent, family). Bright red indicates the
+agent systematically over-quotes its probability of success on hard
+instances of that family.}
+\label{fig:mop}
+\end{figure}
+
+\subsection{Per-language breakdown of the multilingual family}
+\input{figures/multilingual_per_language.tex}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.85\linewidth]{figures/heatmap_multilingual_per_lang.pdf}
+\caption{Per-language committed accuracy on the multilingual family,
+by agent. \texttt{n/a} cells indicate $<3$ committed tasks (strategic
+abstention or insufficient sample). The dictionary covers six
+languages in v1 (\texttt{en, es, fr, de, hi, jp}); a v2 expansion to
+ten languages (\texttt{ar, zh, ru, ko} added) is described in
+\autoref{app:multi-v2}.}
+\label{fig:multilingual-per-lang}
+\end{figure}
+
+\subsection{Multilingual v2: ten-language expansion}\label{app:multi-v2}
+The Standard tier ships a six-language dictionary
+(\texttt{en, es, fr, de, hi, jp}). For broader NLP-audience coverage we
+release a v2 dictionary that adds four high-resource languages
+(\texttt{ar, zh, ru, ko}) in romanised form so the substring verifier
+remains script-agnostic. The v2 dictionary preserves all six v1
+languages, adds $33$ translations $\times 4$ new languages,
+$11$ numerals $\times 4$, three new cognate groups, four new ordering
+sentences, and four new grammar-choice items; native-script aliases are
+accepted by the verifier alongside the romanised primary form. A
+re-run on eight frontier agents (Anthropic Haiku 4.5 / Opus 4.7;
+Google Gemini 3-Flash / 3.1-Pro; OpenAI GPT-5 / 5.2; DeepSeek V3.2 / R1)
+shows the same panel-mean accuracy ($1.00$ on
+\texttt{en}/\texttt{de}/\texttt{es}/\texttt{fr}, $0.85$--$1.00$ on
+\texttt{ar}/\texttt{zh}/\texttt{ru}/\texttt{ko}, $0.65$--$0.90$ on
+\texttt{hi}/\texttt{jp}) on the new languages as on the original six,
+confirming the family is language-balanced; full table is in the public
+artefact bundle. We did not extend the safety / cognate / cross-lingual
+arithmetic subtasks to all ten languages in v2; this is a v3 target.
+
+\subsection{Cross-family calibration transfer}
+We compute the Spearman rank-correlation of per-family ECE rankings
+against the panel-average ranking. On the matched Standard-tier
+$K = 16$ ($N \ge 100$) panel, the median per-agent $\rho$ across the
+12 families is $0.55$ (IQR $[0.40, 0.72]$). Three agents have
+$\rho > 0.85$ (calibration is global for \texttt{claude-opus-4.7},
+\texttt{gpt-5}, \texttt{gemini-3.1-pro-preview}); five have
+$\rho < 0.30$ (calibration is family-specific for \texttt{llama-4-scout},
+\texttt{gpt-5.4-nano}, \texttt{gemini-3.1-flash-lite}). This directly
+supports the Pareto-leaderboard choice: a model that calibrates well
+on knowledge may calibrate poorly on multimodal.
+
+\subsection{Pairwise significance}
+\input{figures/significance_table.tex}
+
+\subsection{Post-hoc power analysis}
+\input{figures/power_analysis_table.tex}
+
+\subsection{Empirical difficulty of the T\textsubscript{extreme} tier}\label{app:empirical-difficulty}
+\autoref{fig:empirical-difficulty}
 report the panel-mean committed accuracy across the 17 paid agents on the
 T\textsubscript{extreme} tier, per generator. The target operating band
 $[5\%, 20\%]$ — the empirical decile recommended by the 2025--2026
@@ -92,7 +203,7 @@ matrix. The post-pilot verifier:
   response was a legitimate ABAB phonetic rhyme that the old
   $2$-letter rule mis-labelled as a failure (e.g.\ \texttt{sky}/\texttt{by}
   fails ``\texttt{ky}'' $=$ ``\texttt{by}'' but the new verifier
-  recognises the long-$/a\textsci/$ class match via nucleus rule);
+  recognises the long-/aI/ class match via the nucleus rule);
   \item introduces zero \emph{false-positives} relative to the old
   rule ($0$ outcomes flip from pass to fail), so the upgrade is
   monotonic in acceptance.

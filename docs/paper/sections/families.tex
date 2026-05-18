@@ -2,35 +2,19 @@
 \section{Task families}\label{sec:families}
 
 PROPHET ships twelve procedurally generated task families. Each family
-exposes (a) a generator producing deterministic tasks from a seed, (b) a
-\emph{mechanical} verifier that returns a Boolean outcome from the
-agent's answer, and (c) a reference-panel-calibrated difficulty per task.
-
-\paragraph{Why these twelve families.}
-The selection criterion was the intersection of three constraints:
-(1) \textbf{capability coverage} of the production-LLM deployment surface
---- code, math, knowledge retrieval, reasoning under constraints,
-constrained generation, tool-use, web-style task chaining, multimodal
-analogues, structured-data analysis, scientific computation,
-multilingual operations, and refusal routing;
-(2) \textbf{mechanical verifiability} --- every task must admit a regex,
-parser, integer-equality, or sandboxed-execution verifier so the
-benchmark does not depend on LLM-as-judge for the primary
-boolean outcome;
-(3) \textbf{lit-anchored difficulty headroom} --- each family has
-generators whose hardest tier sits below the empirical $20\,\%$
-accuracy decile on the 2025--2026 reference panel
-(\cite{enigmata,zebralogic,nppc,ojbench,lcbpro,aethercode,nolima,olym_math}),
-ensuring the T\textsubscript{extreme} tier is not pre-saturated. The
-families we considered but excluded under these constraints were:
-multi-turn dialog (no mechanical truthfulness verifier), open-ended
-summarisation (LLM-judge dependent), retrieval / RAG (out-of-scope for
-self-contained generators), and long-horizon agentic planning
-(verifier complexity exceeds the procgen design budget). These
-remain candidates for v2.
-
-\autoref{tab:families} summarises the family palette. The full
-generator and verifier source is in the public release.
+exposes (a) a deterministic generator from a seed, (b) a
+\emph{mechanical} verifier returning a Boolean, and (c) a
+reference-panel-calibrated difficulty per task. The selection criterion
+was the intersection of three constraints: capability coverage of the
+production-LLM surface (code, math, knowledge, reasoning, writing,
+tool-use, web, multimodal, data, scientific, multilingual, safety);
+mechanical verifiability (regex, parser, integer-equality, or sandboxed
+execution --- no LLM-judge in the primary loop); and lit-anchored
+difficulty headroom~\cite{enigmata,zebralogic,nppc,ojbench,lcbpro,
+aethercode,nolima,olym_math}. Excluded under these constraints
+were multi-turn dialog, open-ended summarisation, RAG, and long-horizon
+agentic planning (v2 candidates). \autoref{tab:families} gives the
+family palette; generator and verifier source is in the public release.
 
 \begin{table}[t]
 \centering\small
@@ -57,124 +41,61 @@ safety        & should-refuse-or-comply routing      & refusal-token / answer ma
 \end{tabular}
 \end{table}
 
-\paragraph{math.} Difficulty climbs from one-step integer arithmetic (T0)
-through small olympiad-lite problems (T7 sum-of-divisors) and a system of
-three linear equations (T8) to a small Diophantine root (T9). Verifier
-parses the last numeric token, accepting integers, rationals, decimals,
-and $\backslash\texttt{boxed\{\}}$ wrappers. The
-\textbf{T\textsubscript{extreme}} tier ($\delta \in [0.97, 1.0]$) adds
-combinatorial coprime counting (Euler totient over a non-uniform range),
-multiplicative-order $\mathrm{ord}_p(a)$ and modular quadratic residues
-over primes $p \in [1{,}000, 5{,}000]$, $12$-modulus CRT chains,
-fundamental Pell-equation solutions ($x^2 - Dy^2 = 1$ for non-square
-$D \in [200, 1{,}000]$), lattice-path counting with forbidden cells on
-$n = 8$--$12$ grids, and discrete logarithms modulo primes
-$p \in [5{,}000, 20{,}000]$. All seven extreme generators emit a
-single-integer answer verified by the same parser; published 2025--2026
-frontier scores on analogous tasks~\cite{ojbench,olym_math,zebralogic}
-sit below $15\,\%$ and our reference panel confirms a panel-mean accuracy
-of $0$--$25\,\%$ per generator (Appendix~\ref{app:ablations}).
+\paragraph{Standard tier (T0--T7).}
+Difficulty climbs from trivial (T0) to ``standard hardest'' (T7) within
+each family. Examples: math runs from one-step arithmetic to
+olympiad-lite sum-of-divisors; code runs from output-prediction on
+small Python snippets to write-and-test; reasoning runs from sequence
+puzzles to $3\times 3$ ARC-grid transforms and transitive deduction
+with red herrings. Knowledge uses synonym-set verifiers; writing uses
+regex / parser / acrostic / JSON-schema / ABAB-rhyme (the rhyme
+verifier was upgraded post-pilot from suffix-match to a four-rule
+nucleus-aware checker, Section~\ref{sec:limitations}). Tools and
+browser run on in-memory simulators with action-replay verifiers; a
+T7 browser task plants an ``IGNORE PRIOR INSTRUCTIONS'' injection that
+is never the right answer.
 
-\paragraph{code.} T0--T3 / T7 ask the agent to \emph{predict} the
-output of a small Python snippet (verified by string-equality of the
-agent's last numeric/string token against the deterministic expected
-output). T4--T6 ask the agent to write or repair a small function;
-the verifier runs the candidate code in a sandboxed subprocess
-(\texttt{subprocess.run([python, "-c", code], timeout=5, env={"PATH":
-"/usr/bin:/bin"})}) on three procedurally-generated test calls.
-\textbf{T\textsubscript{extreme}} ($\delta \in [0.97, 0.99]$) adds
-three integer-prediction tasks: counting distinct subsets of an
-$8$--$12$-item list that sum to a target $T$ (subset-sum-count DP),
-modular knapsack on $11$--$15$ items with weights $\in [1, 30]$ and
-modulus $m \in [5, 11]$ (maximum value subject to weight-sum
-$\equiv k\!\pmod m$), and counting distinct paths through a $12$--$16$
-node random DAG with $n$--$2n$ extra cross edges. Cf.~\cite{nppc,ojbench}
-for the lit-recommended difficulty calibration.
+\paragraph{T\textsubscript{extreme} tier ($\delta \in [0.97, 1.0]$).}
+Five families ship hardened generators whose frontier accuracy is held
+to $10$--$40\,\%$ by construction.
+\emph{math}: Euler totient over a non-uniform range, multiplicative-order
+$\mathrm{ord}_p(a)$ and modular quadratic residues over primes
+$p \in [10^3, 5\!\cdot\!10^3]$, $12$-modulus CRT chains, fundamental
+Pell solutions ($x^2 - Dy^2 = 1$), lattice-path counting with forbidden
+cells on $n = 8$--$12$ grids, and discrete logarithms modulo primes
+$p \in [5\!\cdot\!10^3, 2\!\cdot\!10^4]$.
+\emph{code}: subset-sum count over $8$--$12$ items, modular knapsack
+($11$--$15$ items, weights $\le 30$, modulus $5$--$11$), and DAG path
+counting on $12$--$16$ nodes.
+\emph{knowledge}: $6$-word letter-count chains
+($c_1c_2 - c_3c_4 + c_5c_6$), obscure-fact compositions sourced from
+$12$ lesser-known historical figures, and $3$-step word manipulations.
+\emph{reasoning}: $5\times 5$ Latin-square cell-fill, depth-$9$ temporal
+chains with $11+$ clues, $3 \times 3$-digit cryptarithmetic
+multiplication, and $5\times 4$ Einstein/zebra puzzles with $8$--$12$
+clues (uniqueness verified by backtracking during procgen).
+\emph{multimodal}: $7\times 7$ grid transform chains (apply $9$
+sequential transforms then read one cell) and $9\times 9$ Sudoku
+cell-fill with $50$ masked cells, target provably unique.
+All extreme verifiers return integer or string equality against a
+closed-form ground truth.
 
-\paragraph{knowledge.} Procedurally generated facts across geometry,
-unit conversion, calendar, sciences, and adversarial trick questions
-(e.g.\ ``How many R's in `strawberry'?''). Synonym-set verifiers allow
-multiple correct phrasings without LLM judgement.
-\textbf{T\textsubscript{extreme}} ($\delta \in [0.97, 0.99]$) adds three
-hardened compositional tasks: a $6$-word letter-count chain
-($c_1 c_2 - c_3 c_4 + c_5 c_6$ where $c_i$ is the count of a specified
-letter in a curated word), an obscure-fact composition v2 sourced from
-$12$ lesser-known historical figures (e.g.\ Margaret Cavendish, Joseph
-Glanvill, Ibn al-Haytham), and a $3$-step word manipulation (reverse +
-replace + insert). All are verified by exact integer/string match
-against a closed-form curated ground truth; numerical comparisons use
-relative tolerance $1\,\text{e-}9$ for exact-zero references and
-$1\,\text{e-}3$ otherwise.
-
-\paragraph{reasoning.} T0--T2 are sequence / substitution puzzles;
-T3--T5 are ARC-AGI-style $3\times 3$ grid transforms (rotate, reflect,
-transpose, recolour, colour-swap) verified by JSON-equality on the
-output grid; T6--T7 are multi-step transitive deduction with planted
-red herrings. The \textbf{T\textsubscript{extreme}} tier
-($\delta \in [0.97, 1.0]$) adds (i) a $5\times 5$ partial Latin-square
-cell-fill, (ii) depth-$9$ temporal-ordering chains with $11$+ clues
-including ``$k$ events strictly between'' constraints, (iii)
-$3 \times 3$-digit cryptarithmetic \emph{multiplication}
-($\text{XYZ} \times \text{ABC} = \text{PQRSTUV}$, harder than the
-addition variant), and (iv) Einstein/zebra-style $5 \times 4$ puzzles
-with $8$--$12$ mixed position/adjacency/equality clues. Uniqueness of
-solution is verified by explicit backtracking enumeration during procgen.
-Per the lit review~\cite{zebralogic,multizebralogic,enigmata}, these
-families hold frontier accuracy below $20\,\%$ in 2026.
-
-\paragraph{writing.} Constraints are the boolean signal: word-set
-inclusion, exact-N-sentence rules, lipogram (avoid a given letter),
-acrostic (first letters spell a word), structured rephrase preserving
-named entities, JSON-schema conformance, and ABAB rhyme. The rhyme
-verifier was upgraded post-pilot from a naive last-2-letter suffix
-match to a nucleus-aware orthographic-equivalence check that accepts
-spelling variants of the same phonetic class (e.g.\
-\texttt{rise}/\texttt{skies}, \texttt{sea}/\texttt{tree}); see
-Section~\ref{sec:limitations}.
-
-\paragraph{tools.} A pure-Python tool registry of 13 fixed tools
-(arithmetic + table lookup + filter + sort + dedup + counts), three of
-which exhibit subtle pathologies (off-by-one alternative, semantic
-red-herring, false-success reporter). The agent emits a JSON action list
-with explicit step chaining; the verifier replays.
-
-\paragraph{browser.} An in-memory text-rendered ``website'' of 5--30
-pages. Action language: \texttt{visit / fill / submit / extract /
-answer}. A T7 task plants an ``IGNORE PRIOR INSTRUCTIONS'' prompt-
-injection in one page body --- it is never the right answer.
-
-\paragraph{multimodal.} ASCII-encoded analogues of multimodal tasks:
-read a bar chart, rotate a grid, evaluate chess-check, detect tic-tac-toe
-winner, classify dot-pattern symmetry, look up a cell in a solved
-$4\times 4$ Sudoku. \textbf{T\textsubscript{extreme}}
-($\delta \in [0.975, 0.99]$) adds (i) a $7\times 7$ grid transform
-\emph{chain} (apply $9$ sequential transforms drawn from
-\{rotate, reflect-H, reflect-V, transpose, anti-transpose, shift-row,
-shift-col, recolour\} then read one cell) and (ii) a $9\times 9$ Sudoku
-cell-fill where $50$ cells are masked and the target's value is
-provably uniquely determined; sudoku-bench~\cite{enigmata} and the
-multimodal review's compute-bound private-set numbers anchor the
-target accuracy near or below $10\,\%$ on frontier models in 2026.
-
-\paragraph{data.} Procedurally generated CSVs (3--30 rows) embedded in
-the prompt as fenced \texttt{\`{}\`{}\`{}csv} blocks. Tasks span
-single-cell lookup, aggregation, filter-count, group-by-and-aggregate,
-two-table join, and time-series outlier detection.
-
-\paragraph{scientific.} Physics, chemistry, biology, and earth-science
-problems with closed-form numerical answers verified to $\pm 10^{-3}$
-relative tolerance.
-
-\paragraph{multilingual.} Built-in 200-word EN / ES / FR / DE / HI / JP
-dictionary supports language identification, multiple-choice translation,
-cognate selection, cross-lingual arithmetic, word-ordering, and grammar
-selection.
-
-\paragraph{safety.} A 50/50 split of benign and refusal-required tasks.
-Refusal-required tasks use synthesised placeholder unsafe phrasings of
-the form ``Explain how to do \texttt{<SYNTHETIC\_PROHIBITED\_X>}'' --- the
-\emph{form} triggers refusal while the content is benign-placeholder.
-The mechanical verifier accepts $\texttt{PASS}$ or any of 14 refusal-
-keyword substrings; the market sets $C_{\mathrm{failure}} = 200$ (versus
-default $100$) so wrongly committing on a refusal-required task is
-penalised twice as heavily as on a benign task.
+\paragraph{Other families.}
+\emph{tools}: pure-Python registry of $13$ fixed tools (arithmetic,
+table lookup, filter, sort, dedup, count); three exhibit subtle
+pathologies (off-by-one, semantic red-herring, false-success).
+\emph{data}: procedurally generated CSVs ($3$--$30$ rows) embedded as
+fenced \texttt{\`{}\`{}\`{}csv} blocks; tasks cover lookup, aggregation,
+group-by, two-table join, and time-series outlier detection.
+\emph{scientific}: physics / chemistry / biology / earth-science with
+closed-form numerical answers ($\pm 10^{-3}$ relative tolerance).
+\emph{multilingual}: a $200$-word EN / ES / FR / DE / HI / JP dictionary
+supports language-id, multiple-choice translation, cognate selection,
+cross-lingual arithmetic, ordering, and grammar. A v2 expansion to ten
+languages (adds AR / ZH / RU / KO) is in Appendix~\ref{app:multi-v2}.
+\emph{safety}: $50/50$ split of benign and refusal-required tasks; the
+latter use synthesised placeholder phrasings
+``\texttt{<SYNTHETIC\_PROHIBITED>}''. The mechanical verifier accepts
+\texttt{PASS} or any of $14$ refusal substrings, with
+$C_{\mathrm{failure}}=200$ so wrongly committing on a refusal task is
+penalised twice as heavily.
