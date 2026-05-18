@@ -121,29 +121,36 @@ payoff and reports Spearman rank correlations.
 
 \input{figures/mgsm_correlation.tex}
 
-The observed pattern is consistent with the H1 finding in
-Section~\ref{sec:results}: MGSM accuracy correlates moderately with
-PROPHET-multilingual ECE
-($\rho_S \approx -0.5$; better MGSM models also calibrate
-better, as one would expect), but is essentially uncorrelated with
-PROPHET-multilingual \emph{per-task net payoff}
-($\rho_S \approx 0$). MGSM cleanly orders agents by raw multilingual
-arithmetic capability; PROPHET-multilingual additionally orders agents
-by their willingness to commit calibrated probabilities and accept the
-asymmetric calibration penalty. The two orderings diverge --- a
-non-trivial empirical claim that PROPHET measures a different signal
-than MGSM, and one that survives even on a $30$-problem $\times$
-4-language subsample of MGSM.
+On a joined panel of $13$ agents (MGSM accuracy spanning
+$22.5\%$ to $96.7\%$), the observed pattern is consistent with the H1
+finding in Section~\ref{sec:results}:
+$\rho_S(\textrm{MGSM acc}, \textrm{PROPHET-multi acc}) = +0.32$
+(mild positive; PROPHET-multi accuracy is at ceiling for most agents,
+so the correlation is dominated by the few non-saturated cases);
+$\rho_S(\textrm{MGSM acc}, \textrm{PROPHET-multi ECE}) = -0.57$
+(moderate negative --- better MGSM models also calibrate better, as
+expected); but
+$\rho_S(\textrm{MGSM acc}, \textrm{PROPHET-multi payoff/task}) = +0.14$
+(essentially uncorrelated). MGSM cleanly orders agents by raw
+multilingual-arithmetic capability and is rank-correlated with
+calibration \emph{quality} on the same family, but is \emph{not}
+rank-correlated with calibrated-commitment payoff. The two orderings
+diverge sharply at the top --- \texttt{gemini-3.1-pro-preview} sits at
+$95.8\%$ MGSM yet earns only $4.8$ PROPHET-cents per task, while
+\texttt{deepseek-v3.2} at $54.2\%$ MGSM earns $132.1$ per task. This
+is the direct empirical claim that PROPHET measures a different
+signal than MGSM, and one that survives even on a $30$-problem
+$\times$ 4-language subsample of MGSM.
 
 \paragraph{Limitations of this cross-correlation.}
-$N$ ranges from $7$--$13$ agents depending on the runtime (some
-reasoning-tuned agents PASS the entire PROPHET-multilingual family and
-therefore have undefined committed-accuracy / ECE); MGSM is a math-
-specific subset of multilingual capability and does not exercise the
+$N = 13$ agents on the joined panel; \texttt{qwen3-235b-thinking}
+PASSes the entire PROPHET-multilingual family and is therefore excluded
+from committed-accuracy / ECE / payoff stats. MGSM is a math-specific
+subset of multilingual capability and does not exercise the
 language-identification, cognate, or grammar subtasks of PROPHET; the
 $30$-problem subsample is large enough for the rank ordering to be
-stable but small enough that the Spearman $95\,\%$ CI on a $n = 10$ panel
-is roughly $\pm 0.6$. The cross-correlation is reported as
+stable but small enough that the Spearman $95\,\%$ CI on a $N = 13$
+panel is roughly $\pm 0.5$. The cross-correlation is reported as
 directional evidence, not as a strict statistical test.
 
 \subsection{Cross-family calibration transfer}

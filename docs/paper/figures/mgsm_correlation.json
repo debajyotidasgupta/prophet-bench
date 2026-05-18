@@ -1,12 +1,12 @@
 {
   "correlations": {
-    "spearman_mgsm_vs_prophet_acc": 0.2606060606060606,
-    "pearson_mgsm_vs_prophet_acc": -0.08920663391958648,
-    "spearman_mgsm_vs_prophet_ece": -0.5393939393939393,
-    "pearson_mgsm_vs_prophet_ece": -0.43444722942407643,
-    "spearman_mgsm_vs_prophet_payoff": -0.04242424242424241,
-    "pearson_mgsm_vs_prophet_payoff": -0.3095862153228066,
-    "n_agents": 10
+    "spearman_mgsm_vs_prophet_acc": 0.32417582417582413,
+    "pearson_mgsm_vs_prophet_acc": 0.5493863249456702,
+    "spearman_mgsm_vs_prophet_ece": -0.5659340659340659,
+    "pearson_mgsm_vs_prophet_ece": -0.379467733715102,
+    "spearman_mgsm_vs_prophet_payoff": 0.13736263736263735,
+    "pearson_mgsm_vs_prophet_payoff": -0.06115642896418122,
+    "n_agents": 13
   },
   "joined": [
     {
@@ -46,6 +46,15 @@
       "n_prophet": 20
     },
     {
+      "agent": "google-gemini-3.1-flash-lite",
+      "mgsm_acc": 0.9416666666666667,
+      "prophet_acc": 1.0,
+      "prophet_ece": 0.0,
+      "prophet_payoff_per_task": 89.72221762617599,
+      "n_mgsm": 120,
+      "n_prophet": 20
+    },
+    {
       "agent": "google-gemini-3.1-pro-preview",
       "mgsm_acc": 0.9583333333333334,
       "prophet_acc": 1.0,
@@ -60,6 +69,15 @@
       "prophet_acc": 1.0,
       "prophet_ece": 0.008500000000000063,
       "prophet_payoff_per_task": 103.12905685206383,
+      "n_mgsm": 120,
+      "n_prophet": 20
+    },
+    {
+      "agent": "meta-llama-llama-4-scout",
+      "mgsm_acc": 0.9166666666666666,
+      "prophet_acc": 1.0,
+      "prophet_ece": 0.02800000000000018,
+      "prophet_payoff_per_task": 95.9319280405926,
       "n_mgsm": 120,
       "n_prophet": 20
     },
@@ -87,6 +105,15 @@
       "prophet_acc": 1.0,
       "prophet_ece": 0.00965000000000027,
       "prophet_payoff_per_task": 127.82892632463336,
+      "n_mgsm": 120,
+      "n_prophet": 20
+    },
+    {
+      "agent": "openai-gpt-5.4-nano",
+      "mgsm_acc": 0.225,
+      "prophet_acc": 0.95,
+      "prophet_ece": 0.022499999999999964,
+      "prophet_payoff_per_task": 81.65949464029403,
       "n_mgsm": 120,
       "n_prophet": 20
     },
