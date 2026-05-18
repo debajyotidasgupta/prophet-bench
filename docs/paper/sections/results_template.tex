@@ -29,7 +29,12 @@ better on calibration). The best-by-payoff model is a different agent:
 $31{,}328$ for GPT-5.2 and $23{,}800$ for Gemini-3-Flash). Best
 accuracy and best calibration do not imply best deployment payoff under
 calibrated-commitment pricing; the orderings induced by each axis are
-demonstrably different at the first-place level.
+demonstrably different at the first-place level. The same divergence
+shows up against an external multilingual benchmark: on a 13-agent
+joined panel, MGSM~\cite{mgsm} accuracy is rank-correlated with
+PROPHET-multilingual ECE ($\rho_S = -0.57$) but \emph{not} with
+PROPHET-multilingual per-task payoff ($\rho_S = +0.14$, essentially
+zero); details in Appendix~\ref{app:mgsm}.
 
 \paragraph{H2: reasoning mode raises conditional accuracy and net payoff
 but does not uniformly increase strategic abstention.}
