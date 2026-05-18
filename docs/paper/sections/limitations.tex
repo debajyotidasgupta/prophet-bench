@@ -46,6 +46,42 @@ on a code task that should compute it). We mitigate by N-test-case
 verification on the code family and by lifting the implicit-target
 range outside the agent's prior in the difficulty calibration step.
 
+\paragraph{Rhyme verifier was orthographic only.} The initial ABAB
+rhyme verifier in the writing family used a strict last-2-letter
+suffix match, which mis-labelled legitimate phonetic rhymes
+(\texttt{rise}/\texttt{skies}, \texttt{sea}/\texttt{tree},
+\texttt{sky}/\texttt{by}) as failures. Post-pilot we replaced it with
+a four-rule verifier that accepts (i) full canonical-form nucleus
+match (rise/skies, both canonicalize to nucleus \texttt{is}),
+(ii) orthographic-equivalence-group match on the word tail (covers
+long-i, long-e, long-a, long-o classes for vowel-final rhymes like
+sea/knee, day/weigh, go/toe),
+(iii) shared trailing-consonant cluster $+$ shared phonetic-vowel
+class with a silent-\texttt{e} long-vowel marker
+(covers moon/tune, bone/cone, feet/meat while correctly rejecting
+moon/sun, cat/cot, bone/bun), and
+(iv) literal last-$k$-letter match as a fallback for ``ight/ight''
+and ``ong/ong'' style direct matches.
+We unit-test the verifier on a fixed positive set ($16$ pairs of true
+phonetic rhymes) and a negative set ($8$ orthographically-similar
+non-rhymes); all positives pass and all negatives are rejected after
+the rule (iii) extension. Some cross-cluster phonetic rhymes
+(e.g.\ bike/sight, where the consonants differ) are still rejected;
+this remains an honest limitation. The Standard-tier writing
+results in this paper were computed with the upgraded verifier on
+the full dataset; the pre-pilot leaderboard slightly underrated
+rhyme-heavy commitments by 1--3 percentage points.
+
+\paragraph{Difficulty stratification was uneven in the standard
+tier.} The Standard tier's T7 ``hardest'' generators are still
+near-ceiling for the 2026 frontier panel (e.g.\ T9 Diophantine math
+solved at $\approx$100\,\% by every top-5 system). This is why we
+publish a separate \textbf{T\textsubscript{extreme}} tier. We
+recommend that future benchmark designers calibrate task difficulty
+\emph{empirically} (run a reference panel, bin by mean accuracy,
+position the difficulty knob at the 5--15\,\% empirical decile)
+rather than by hand-assignment.
+
 \paragraph{No tool execution beyond pure-Python simulators.} Real
 agentic deployments use external APIs that can succeed, fail, or
 return non-determinism. PROPHET's \emph{tools} and \emph{browser}
@@ -54,9 +90,16 @@ tool-call confidence under live API noise} is an explicit gap and a
 candidate for a v2 extension.
 
 \paragraph{Per-family base prices are an arbitrary choice.} Our default
-$(V_f, C_f, \kappa_f, \delta^{\mathrm{pass}}_f)$ are calibrated so that
-an oracle-rate agent on a balanced workload earns approximately zero
-net payoff; production deployments would set these from real-world
-cost-of-error. We provide a CLI flag to override per-family base
-prices; sensitivity analysis over price scales is in
-Appendix~\ref{app:price-sensitivity}.
+$(V_f, C_f, \kappa_f, \delta^{\mathrm{pass}}_f)$ are positive-asymmetric:
+an oracle-rate agent on the Standard-tier workload earns
+$\mathcal{P} = 38{,}685$ PROPHET-cents because every $V_f > C_f$ and the
+calibration term $\kappa_f$ adds a small positive bonus for correctly
+declaring $\hat P = 1$. The marketplace is therefore designed to reward
+calibrated commitment, not to enforce $\mathbb{E}[\mathcal{P}_{\text{oracle}}]
+= 0$. The relative \emph{ranking} of agents (and the Pareto frontier
+membership) is robust to a wide range of price scales, as shown in the
+price-sensitivity ablation
+(\autoref{app:ablations}, $\rho_{\text{Spearman}} \ge 0.95$ across
+seven perturbations). Production deployments should re-set per-family
+prices from real-world cost-of-error and re-rank; we provide a CLI
+flag to override.

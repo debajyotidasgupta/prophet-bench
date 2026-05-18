@@ -25,14 +25,13 @@ from __future__ import annotations
 
 import math
 import re
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Callable
 
 import numpy as np
 
 from prophet.engine.types import Task
 from prophet.utils.seed import child_rng, child_seed
-
 
 # ---------------------------------------------------------------------------
 # Verifier
@@ -276,7 +275,7 @@ class ScientificFamily:
             )
         return tasks
 
-    def reference_score(self, task, response):  # noqa: ANN001
+    def reference_score(self, task, response):
         return None
 
 

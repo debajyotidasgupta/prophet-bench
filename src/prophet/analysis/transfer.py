@@ -21,7 +21,7 @@ from pathlib import Path
 import numpy as np
 from scipy import stats as sps
 
-from prophet.engine.scoring import brier_score, ece, log_score, model_overreach_point
+from prophet.engine.scoring import brier_score, ece
 
 log = logging.getLogger("prophet.analysis.transfer")
 

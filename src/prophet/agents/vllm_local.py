@@ -93,15 +93,15 @@ class VLLMLocalAgent(AgentBase):
         # Prompt token count: prefer the engine's prompt_token_ids when present.
         prompt_token_ids = getattr(result, "prompt_token_ids", None)
         if prompt_token_ids is not None:
-            tok_in = int(len(prompt_token_ids))
+            tok_in = len(prompt_token_ids)
         else:  # pragma: no cover - fallback
-            tok_in = int(len(self._tokenizer.encode(formatted)))
+            tok_in = len(self._tokenizer.encode(formatted))
         completion = result.outputs[0] if result.outputs else None
         if completion is None:
             return "", tok_in, 0, 0.0
         text = completion.text or ""
         token_ids = getattr(completion, "token_ids", None)
-        tok_out = int(len(token_ids)) if token_ids is not None else int(
+        tok_out = len(token_ids) if token_ids is not None else int(
             len(self._tokenizer.encode(text)) if text else 0
         )
         cost = estimate_cost(self.name, tok_in, tok_out)

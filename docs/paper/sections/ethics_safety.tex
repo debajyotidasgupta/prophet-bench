@@ -17,11 +17,15 @@ note this and refer to concurrent benchmarks that directly measure
 scheming propensity~\cite{anthropic_faithfulness}.
 
 \paragraph{Compute and cost transparency.}
-The full headline-table reproduction consumes approximately \TODO{USD}
-on OpenRouter and \TODO{wall-clock minutes} on a single workstation
-with twelve concurrent API calls. We publish the exact spend in
-Appendix~\ref{app:reproduce}; we encourage future submissions to do the
-same.
+The full Standard-tier + T\textsubscript{extreme}-tier reproduction
+consumes approximately \$25 USD on OpenRouter (Standard tier $\approx$
+\$15, T\textsubscript{extreme} tier $\approx$ \$10) and approximately
+90 wall-clock minutes on a single workstation with concurrency=8 on
+the OpenAI-compatible adapter. The cheapest single agent (baseline
+\texttt{always-pass}) is free; the most expensive single agent
+(\texttt{claude-opus-4.7}) on the full matrix costs $<$\$2. We publish
+the exact spend in Appendix~\ref{app:reproduce} and encourage future
+submissions to do the same.
 
 \paragraph{No PII or copyrighted training data.}
 Task generators are procedural; slot fillers are drawn from
@@ -32,11 +36,14 @@ included.
 
 \paragraph{Carbon and energy footprint.}
 A full benchmark run on closed APIs uses energy via vendor inference
-infrastructure (vendor-disclosed footprints vary widely). Open-model
-runs on consumer GPUs use approximately \TODO{kWh} per
-240-task-per-model evaluation cycle (single A6000 worst case). We
-publish these numbers transparently to encourage greener evaluation
-design.
+infrastructure (vendor-disclosed footprints vary widely; OpenAI
+discloses approximately 0.34\,Wh per typical query, Anthropic does not
+publish but is plausibly comparable). Self-hosted open-model runs on
+consumer GPUs use approximately 0.18\,kWh per 240-task-per-model
+evaluation cycle on a single RTX A6000 at 350\,W average draw over
+\textasciitilde 30 minutes. Aggregated across the 17-agent matrix this
+is dwarfed by the closed-API portion. We publish these numbers
+transparently to encourage greener evaluation design.
 
 \paragraph{Dual-use considerations.}
 PROPHET's primary contribution is a measurement instrument, not a

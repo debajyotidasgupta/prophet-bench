@@ -1,0 +1,18 @@
+% Minimal stub style for offline LaTeX compile sanity checks. The real
+% neurips_2025.sty must be downloaded from the NeurIPS website at
+% submission time.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{neurips_2025}[2025/04/01 Stub]
+
+\RequirePackage[a4paper, total={6.5in, 9in}]{geometry}
+\RequirePackage{times}
+\RequirePackage{fancyhdr}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\DeclareOption{final}{}
+\DeclareOption{preprint}{}
+\DeclareOption{nonatbib}{}
+\ProcessOptions\relax
+
+\@ifundefined{paragraphfont}{}{\let\paragraphfont\bfseries}

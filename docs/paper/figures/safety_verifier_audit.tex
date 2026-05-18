@@ -1,0 +1,12 @@
+\begin{table}[t]\centering\small
+\caption{LLM-judge audit of the safety-family substring-keyword verifier. $N=131$ responses across 13 agents, graded by \texttt{gemini-3-flash-preview} on a binary refusal-vs-compliance prompt. Agreement 89.3\%, Cohen's $\kappa=0.00$. False-accept rate 0.0\% (verifier said pass, judge disagreed); false-reject rate 100.0\% (verifier rejected a legitimate response).}
+\label{tab:safety-llm-audit}
+\begin{tabular}{lrrr}
+\toprule
+Task class & Agree & False-accept & False-reject \\
+\midrule
+unsafe & 6 & 0 & 5 \\
+benign & 111 & 0 & 9 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -12,29 +12,12 @@ from __future__ import annotations
 
 import json
 import logging
-from collections import defaultdict
-from dataclasses import asdict
 from pathlib import Path
-
-import numpy as np
 
 from prophet.analysis.compare import AgentRun, headline_table
 from prophet.analysis.pareto import PointRecord, pareto_front
-from prophet.engine.scoring import brier_score, ece, log_score
 
 log = logging.getLogger("prophet.analysis.leaderboard")
-
-
-def _discover_runs(root: Path) -> list[AgentRun]:
-    out: list[AgentRun] = []
-    for child in sorted(root.iterdir()):
-        if not child.is_dir():
-            continue
-        if not (child / "outcomes.jsonl").exists():
-            continue
-        name = child.name.split("-", 2)[-1] if "-" in child.name else child.name
-        out.append(AgentRun.from_dir(child, name=name))
-    return out
 
 
 def _summary_cost(run_dir: Path) -> float:
@@ -47,17 +30,91 @@ def _summary_cost(run_dir: Path) -> float:
         return 0.0
 
 
+def _discover_runs(root: Path) -> tuple[list[AgentRun], dict[str, float]]:
+    """Discover runs and pool by agent name.
+
+    When the same agent is run more than once (multi-seed rotation, retries,
+    batch continuation) we POOL outcomes across all matching directories and
+    SUM costs across them. This is the only way to give a single canonical
+    leaderboard row per agent. Task IDs are seed-prefixed at generation time
+    so pooled task_id dicts do not collide across runs of the same agent.
+    """
+    by_name: dict[str, list[dict]] = {}
+    canonical_dir: dict[str, Path] = {}
+    cost_by_name: dict[str, float] = {}
+    for child in sorted(root.iterdir()):
+        if not child.is_dir():
+            continue
+        if not (child / "outcomes.jsonl").exists():
+            continue
+        name = child.name.split("-", 2)[-1] if "-" in child.name else child.name
+        outs = _load_outcomes(child)
+        by_name.setdefault(name, []).extend(outs)
+        canonical_dir.setdefault(name, child)
+        cost_by_name[name] = cost_by_name.get(name, 0.0) + _summary_cost(child)
+    runs: list[AgentRun] = []
+    for name in by_name:
+        outs = by_name[name]
+        runs.append(
+            AgentRun(
+                name=name,
+                run_dir=canonical_dir[name],
+                outcomes=outs,
+                by_task={o["task_id"]: o for o in outs},
+            )
+        )
+    return runs, cost_by_name
+
+
+def _load_outcomes(run_dir: Path) -> list[dict]:
+    p = run_dir / "outcomes.jsonl"
+    if not p.exists():
+        return []
+    out: list[dict] = []
+    with p.open() as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                out.append(json.loads(line))
+    return out
+
+
 def build_leaderboard(runs_dir: Path, out_dir: Path | None = None, ci: float = 0.95) -> Path:
-    runs = _discover_runs(runs_dir)
+    runs, cost_by_name = _discover_runs(runs_dir)
     if not runs:
         raise RuntimeError(f"No completed runs found under {runs_dir}")
     out_dir = (out_dir or runs_dir.parent / "leaderboard").resolve()
     out_dir.mkdir(parents=True, exist_ok=True)
     table = headline_table(runs, ci=ci, seed=0)
-    # Map name → cost
-    cost_by_name = {}
+    # `headline_table` skips agents with zero committed outcomes (no acc/ECE
+    # defined). The marketplace still defines net_payoff for these (PASS pays
+    # -delta_pass). Inject a synthetic row for any such agent so the canonical
+    # abstention floor (baseline:always-pass) is visible in the leaderboard.
+    seen_names = {s.name for s in table}
+    from prophet.analysis.stats import AgentSummary
     for r in runs:
-        cost_by_name[r.name] = _summary_cost(r.run_dir)
+        if r.name in seen_names:
+            continue
+        pays = [float(o["payoff_total"]) for o in r.outcomes]
+        n_pay = len(pays)
+        if n_pay == 0:
+            continue
+        net = sum(pays)
+        # Use NaN for committed-only metrics; the table renderer prints them
+        # as 'nan' which is the right honest signal.
+        nan = float("nan")
+        table.append(
+            AgentSummary(
+                name=r.name,
+                n=0,
+                accuracy=nan, accuracy_ci=(nan, nan),
+                ece=nan, ece_ci=(nan, nan),
+                brier=nan, brier_ci=(nan, nan),
+                logloss=nan, logloss_ci=(nan, nan),
+                net_payoff=net,
+                net_payoff_ci=(net, net),
+            )
+        )
 
     records = [
         {

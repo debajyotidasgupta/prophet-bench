@@ -33,7 +33,7 @@ from prophet.engine.types import (
 try:
     from prophet.utils.wandb_logger import WandbRun
 except Exception:
-    WandbRun = None  # noqa: N816 — optional dep
+    WandbRun = None
 
 log = logging.getLogger("prophet.orchestrator")
 

@@ -15,7 +15,6 @@ import json
 import logging
 from dataclasses import asdict
 from pathlib import Path
-from typing import Any
 
 import numpy as np
 
@@ -24,7 +23,6 @@ from prophet.analysis.plots import (
     calibration_curve_multi,
     pareto_scatter,
     per_family_heatmap,
-    reliability_diagram,
 )
 
 log = logging.getLogger("prophet.analysis.compare-report")

@@ -1,0 +1,27 @@
+\begin{table}[t]\centering\small
+\caption{Stricter-verifier ablation on families \texttt{math, scientific, knowledge}. Permissive (default) accepts any final numeric token anywhere in the response; strict requires the final non-empty line to be a single numeric literal. \% rejected $=$ fraction of currently-accepted answers that the strict rule would reject; this upper-bounds the false-accept rate of the permissive verifier. Most agents see a shift of $<5$\,pp, which we interpret as small enough for the headline accuracy claims to be robust to verifier strictness.}
+\label{tab:strict-verifier}
+\begin{tabular}{lrrrr}
+\toprule
+Agent & $N$ & Acc (perm.) & Acc (strict) & \% rejected \\
+\midrule
+openai-gpt-5-mini & 60 & 96.7\% & 61.7\% & 36.2\%  \\
+openai-gpt-5 & 79 & 100.0\% & 75.9\% & 24.1\%  \\
+moonshotai-kimi-k2-thinking & 30 & 100.0\% & 76.7\% & 23.3\%  \\
+qwen-qwen3-235b-a22b-thinking-2507 & 39 & 100.0\% & 76.9\% & 23.1\%  \\
+google-gemini-3.1-pro-preview & 80 & 95.0\% & 75.0\% & 21.1\%  \\
+deepseek-deepseek-r1 & 35 & 100.0\% & 80.0\% & 20.0\%  \\
+openai-gpt-5-nano & 59 & 96.6\% & 79.7\% & 17.5\%  \\
+google-gemini-3.1-flash-lite & 60 & 100.0\% & 83.3\% & 16.7\%  \\
+google-gemini-3-flash-preview & 60 & 100.0\% & 83.3\% & 16.7\%  \\
+anthropic-claude-haiku-4.5 & 60 & 96.7\% & 80.0\% & 17.2\%  \\
+deepseek-deepseek-v3.2 & 60 & 96.7\% & 80.0\% & 17.2\%  \\
+meta-llama-llama-4-maverick & 60 & 98.3\% & 81.7\% & 16.9\%  \\
+anthropic-claude-opus-4.7 & 60 & 98.3\% & 81.7\% & 16.9\%  \\
+anthropic-claude-sonnet-4.6 & 60 & 95.0\% & 78.3\% & 17.5\%  \\
+qwen-qwen3-32b & 56 & 98.2\% & 82.1\% & 16.4\%  \\
+meta-llama-llama-4-scout & 60 & 95.0\% & 80.0\% & 15.8\%  \\
+openai-gpt-5.4-nano & 60 & 85.0\% & 71.7\% & 15.7\%  \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -2,16 +2,16 @@
 
 \paragraph{Saturation of static LLM benchmarks.}
 By May 2026, the headline static-resettable benchmarks are at or past
-saturation. MMLU and MMLU-Pro sit above 88\,\%; GPQA-Diamond above
-94\,\%; AIME 2025/26 and MATH-500 above 91\,\%; SWE-bench Verified at
-93.9\,\% (Claude Mythos)~\cite{swebench}; OSWorld-Verified has been
-crossed by Simular Agent S2 and GPT-5.4~\cite{osworld}. HLE rose from
-8\,\% (Jan 2025, o1) to 65\,\% (Claude Mythos, May 2026)~\cite{hle};
-ARC-AGI-2 from 53\,\% (Dec 2025) to 85\,\% (GPT-5.5, May 2026)
-~\cite{arcagi2}. The capabilities that did \emph{not} saturate are all
-about calibrated, persistent agency: ARC-AGI-3 $<$1\,\%~\cite{arcagi3},
-SWE-EVO 25\,\%, MemoryAgentBench selective-forgetting
-$<$30\,\%~\cite{memoryagentbench}.
+saturation. MMLU and MMLU-Pro sit above $88\,\%$; GPQA-Diamond above
+$94\,\%$; AIME 2025/26 and MATH-500 above $91\,\%$; SWE-bench Verified
+at $\approx 94\,\%$ for state-of-the-art 2026 systems~\cite{swebench};
+OSWorld-Verified has been crossed by recent multimodal-agent
+systems~\cite{osworld}. HLE rose from $8\,\%$ (Jan 2025, o1) to
+$\approx 65\,\%$ (May 2026)~\cite{hle}; ARC-AGI-2 from $53\,\%$ (Dec
+2025) to $85\,\%$ (May 2026)~\cite{arcagi2}. The capabilities that did
+\emph{not} saturate are all about calibrated, persistent agency:
+ARC-AGI-3 $<$$1\,\%$~\cite{arcagi3}, SWE-EVO $\approx 25\,\%$,
+MemoryAgentBench selective-forgetting $<$$30\,\%$~\cite{memoryagentbench}.
 
 \paragraph{Verbal calibration of LLMs.} Kadavath
 et~al.~\cite{kadavath2022} showed LLMs have non-trivial verbal
@@ -57,3 +57,65 @@ PROPHET is complementary: it measures calibrated commitment under a
 proper scoring rule across a heterogeneous task suite. None of the
 existing benchmarks publishes a Pareto frontier on
 $(\text{net payoff}, \mathrm{ECE})$.
+
+\paragraph{Calibration markets and concurrent work.} A burst of
+calibration-with-skin-in-the-game benchmarks appeared in 2025--2026.
+\textbf{Prophet Arena}~\cite{prophet_arena} (UChicago, October 2025)
+evaluates frontier LLMs on live Kalshi prediction-market events with
+Brier, ECE, and a market-return metric; it shares our overall framing
+but operates on \emph{live external events} rather than procedural
+tasks with mechanical verifiers, has no abstention action, and admits
+no Pareto comparison. \textbf{KalshiBench}, \textbf{PolyBench}, and
+\textbf{ForecastBench}~\cite{forecastbench} cover similar territory and
+inherit the same external-event dependency. The theoretically closest
+sibling is \textbf{BAS}~\cite{bas_oxford} (Oxford, April 2026), which
+defines an asymmetric-overconfidence proper-scoring rule with an
+abstention option; PROPHET differs in (i) using a bounded
+\emph{Brier-based} payoff $[-3\kappa, +\kappa]$ rather than an
+unbounded log-style penalty, (ii) exposing an explicit
+TAKE/QUOTE/PASS action menu rather than a single probability emission,
+(iii) sourcing tasks from a \emph{procedurally generated} 12-family
+capability surface with mechanical verifiers, and (iv) reporting a
+two-dimensional Pareto frontier rather than a scalar leaderboard.
+\textbf{AbstentionBench}~\cite{abstentionbench} and
+\textbf{Going-All-In}~\cite{going_all_in} jointly motivate the bundle:
+the former shows that current systems do not abstain even when ECE
+indicates they should, the latter that prompted-confidence elicitation
+diverges sharply from behavioural commitment.
+\textbf{CRS}~\cite{crs_composite} explicitly proposes a single
+composite reliability score; we deliberately avoid this in favour of
+the Pareto view, on the grounds that distinct downstream users have
+different cost-of-error vs cost-of-pass trade-offs that cannot be
+captured by a single scalar.
+
+\paragraph{Hard procedural task families.} Several recent
+proc-generated benchmarks supply the kind of difficulty floor PROPHET's
+T\textsubscript{extreme} tier targets. \textbf{Enigmata}~\cite{enigmata}
+provides 36 puzzle generators with Python verifiers; the Sequential
+Hard tier holds o4-mini at 34\,\% and o3-mini-high at 29.6\,\%.
+\textbf{ZebraLogic}~\cite{zebralogic} documents a ``curse of
+complexity'' where Claude~3.5 drops to 12.4\,\% on the hard
+($\geq$6$\times$6 with red herrings) tier.
+\textbf{MultiZebraLogic}~\cite{multizebralogic} shows that 5
+inconsistent-source red herrings drop o3-mini by 15$\pm$7\,pp on
+4$\times$5 puzzles. \textbf{NPPC}~\cite{nppc} ships a \texttt{npgym}
+generator for 25 NP-complete problems; all frontier models score under
+20\,\% past instance-complexity 4--5.
+\textbf{OJBench}~\cite{ojbench}, \textbf{LiveCodeBench-Pro}~\cite{lcbpro},
+and \textbf{AetherCode}~\cite{aethercode} sit at 0--10\,\% pass@1 on
+their hard tiers as of May 2026. \textbf{NoLiMa}~\cite{nolima} shows
+GPT-4o dropping from 99.3\,\% to 69.7\,\% on minimally-lexical-overlap
+needle-in-haystack passages. PROPHET's T\textsubscript{extreme} tier
+draws on the same recipe (multi-modulus CRT, discrete log,
+6$\times$6 zebra, cryptarithmetic, Latin-square completion, temporal
+chains, lattice-path counting) so accuracy spread is preserved at
+$\sim$10--20\,\% even after the standard-difficulty tier saturates.
+
+\paragraph{Name disambiguation.} A 2025 benchmark named
+\emph{Prophet Arena}~\cite{prophet_arena} evaluates LLM forecasting on
+Kalshi prediction-market events. \emph{PROPHET} (this paper) is a
+distinct, procedurally-generated benchmark spanning 12 capability
+families with mechanical verifiers and an explicit
+TAKE/QUOTE/PASS action menu. The shared word reflects the shared
+proper-scoring-rule lineage; the design choices are
+non-overlapping (Section~\ref{sec:design}).

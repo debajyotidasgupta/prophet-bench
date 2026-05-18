@@ -25,9 +25,9 @@ from __future__ import annotations
 
 import math
 import re
+from collections.abc import Callable
 from dataclasses import dataclass
 from fractions import Fraction
-from typing import Callable
 
 import numpy as np
 
@@ -249,6 +249,265 @@ def _gen_t9_diophantine(rng: np.random.Generator) -> tuple[str, str]:
     return prompt, str(x)
 
 
+# --------------------------------------------------------------------------
+# T_extreme (d ≥ 0.97) — designed to be HARD for frontier models in 2026.
+# Targets: <15% accuracy on Gemini 3 Flash, Claude Opus 4.7, GPT-5.
+# Each generator yields a tightly-verifiable integer answer.
+# --------------------------------------------------------------------------
+
+_PRIMES_50_200 = [
+    p for p in range(50, 200)
+    if all(p % d != 0 for d in range(2, int(p**0.5) + 1))
+]
+
+
+def _is_prime(n: int) -> bool:
+    if n < 2:
+        return False
+    if n < 4:
+        return True
+    if n % 2 == 0:
+        return False
+    d = 3
+    while d * d <= n:
+        if n % d == 0:
+            return False
+        d += 2
+    return True
+
+
+# Larger prime banks for genuinely hard arithmetic in 2026
+_PRIMES_5K_20K = [p for p in range(5000, 20000) if _is_prime(p)]
+_PRIMES_1K_5K = [p for p in range(1000, 5000) if _is_prime(p)]
+
+
+def _gen_text_mult_order(rng: np.random.Generator) -> tuple[str, str]:
+    """Multiplicative order ord_p(a) for primes p in [1000, 5000].
+
+    Larger primes push the order range to 4-digit values, defeating
+    pattern-matching on small p, and require actual modular exponentiation
+    rather than mental arithmetic. Per AICrypto / modular-exp transformer
+    studies, frontier accuracy drops below 10% at p ≳ 10³ without tools.
+    """
+    p = _PRIMES_1K_5K[int(rng.integers(0, len(_PRIMES_1K_5K)))]
+    while True:
+        a = int(rng.integers(2, p))
+        if math.gcd(a, p) == 1:
+            break
+    order = 1
+    val = a % p
+    while val != 1:
+        val = (val * a) % p
+        order += 1
+        if order > p:
+            order = -1
+            break
+    prompt = (
+        f"Find the multiplicative order of {a} modulo {p}, i.e. the smallest "
+        f"positive integer k such that {a}^k ≡ 1 (mod {p}). "
+        f"Return the integer k only."
+    )
+    return prompt, str(order)
+
+
+def _gen_text_crt12(rng: np.random.Generator) -> tuple[str, str]:
+    """12-modulus Chinese Remainder Theorem.
+
+    Mixed prime-power and coprime composite moduli. The product of moduli
+    grows to ~10^15, so the answer is regularly 11-13 digits long, forcing
+    an iterative big-integer CRT lift that frontier LLMs cannot reliably
+    perform mentally (cf. arXiv 2511.00763 accuracy-cliff at long chains).
+    """
+    moduli_pool = [3, 4, 5, 7, 8, 9, 11, 13, 16, 17, 19, 23, 25, 27, 29, 31, 32, 37, 41, 43, 47]
+    chosen: list[int] = []
+    pool = list(moduli_pool)
+    rng.shuffle(pool)
+    for m in pool:
+        if all(math.gcd(m, c) == 1 for c in chosen):
+            chosen.append(m)
+        if len(chosen) == 12:
+            break
+    if len(chosen) < 12:
+        chosen = [3, 4, 5, 7, 11, 13, 17, 19, 23, 25, 29, 31]
+    remainders = [int(rng.integers(0, m)) for m in chosen]
+    x = remainders[0]
+    M = chosen[0]
+    for r, m in zip(remainders[1:], chosen[1:]):
+        for t in range(m):
+            if (x + t * M) % m == r:
+                x = x + t * M
+                M = M * m
+                break
+    constraints = "\n".join(
+        f"  x ≡ {r} (mod {m})" for r, m in zip(remainders, chosen)
+    )
+    prompt = (
+        "Find the smallest non-negative integer x satisfying all of the "
+        f"following 12 congruences:\n{constraints}\n"
+        "Return the integer x only."
+    )
+    return prompt, str(x)
+
+
+def _gen_text_pell(rng: np.random.Generator) -> tuple[str, str]:
+    """Smallest positive y in the Pell equation x² - Dy² = 1 for non-square D.
+
+    D ∈ [200, 1000]. The fundamental y can range from single digits into
+    the billions when D is close to a perfect square or has long continued-
+    fraction period. We bound the period at 200 to keep the answer
+    representable but still well past mental-arithmetic feasibility for
+    frontier models (cf. OlymMATH NT hard, arXiv 2503.21380).
+    """
+    while True:
+        D = int(rng.integers(200, 1000))
+        s = int(round(D ** 0.5))
+        if s * s != D:
+            break
+
+    # Solve via continued fractions: standard algorithm.
+    m0, d0, a0 = 0, 1, int(D ** 0.5)
+    a = a0
+    h_prev, h_cur = 1, a0
+    k_prev, k_cur = 0, 1
+    if h_cur * h_cur - D * k_cur * k_cur == 1:
+        y = k_cur
+    else:
+        m, d = m0, d0
+        for _ in range(200):
+            m = d * a - m
+            d = (D - m * m) // d
+            a = (a0 + m) // d
+            h_prev, h_cur = h_cur, a * h_cur + h_prev
+            k_prev, k_cur = k_cur, a * k_cur + k_prev
+            if h_cur * h_cur - D * k_cur * k_cur == 1:
+                y = k_cur
+                break
+        else:
+            y = k_cur  # fallback (should not hit)
+    prompt = (
+        f"Consider the Pell equation x^2 - {D}*y^2 = 1, with x and y positive integers. "
+        f"Find the smallest positive integer y satisfying this equation. "
+        f"Return the integer y only."
+    )
+    return prompt, str(y)
+
+
+def _gen_text_lattice_paths(rng: np.random.Generator) -> tuple[str, str]:
+    """Count monotone lattice paths from (0,0) to (n,n) avoiding k forbidden cells.
+
+    n ∈ [8, 12], k ∈ [6, 10] — both bumped from prior pilot (n=5-7, k=2-5).
+    The DP recurrence is mechanical but counting through interacting
+    forbidden regions requires consistent state-tracking; frontier LLMs
+    overcount past n≈8 (cf. BeyondBench Hard, arXiv 2509.24210).
+    """
+    n = int(rng.integers(8, 13))
+    k = int(rng.integers(6, 11))
+    cells = [(r, c) for r in range(n + 1) for c in range(n + 1)
+             if (r, c) not in {(0, 0), (n, n)}]
+    rng.shuffle(cells)
+    forbidden = sorted(cells[:k])
+    forbidden_set = set(forbidden)
+    # DP: dp[r][c] = number of monotone paths from (0,0) to (r,c)
+    dp = [[0] * (n + 1) for _ in range(n + 1)]
+    dp[0][0] = 1
+    for r in range(n + 1):
+        for c in range(n + 1):
+            if (r, c) in forbidden_set:
+                dp[r][c] = 0
+                continue
+            if r == 0 and c == 0:
+                continue
+            from_top = dp[r - 1][c] if r > 0 else 0
+            from_left = dp[r][c - 1] if c > 0 else 0
+            dp[r][c] = from_top + from_left
+    count = dp[n][n]
+    coords = ", ".join(f"({r},{c})" for r, c in forbidden)
+    prompt = (
+        f"Count the number of monotone lattice paths from (0, 0) to ({n}, {n}) "
+        f"that only step Right (r→r+1) or Up (c→c+1) by one unit, and that "
+        f"avoid all of the following forbidden grid cells: {coords}. "
+        f"Both (0, 0) and ({n}, {n}) are allowed. Return the integer count only."
+    )
+    return prompt, str(count)
+
+
+def _gen_text_discrete_log(rng: np.random.Generator) -> tuple[str, str]:
+    """Discrete log: find x in [1, p-1] with g**x ≡ h (mod p).
+
+    Per AICrypto (arXiv 2507.09580) and modular-exp transformer limits
+    (arXiv 2506.23679), p in [5×10³, 2×10⁴] keeps the search space
+    explicitly intractable for non-tool-using frontier models (<5% acc).
+    """
+    p = _PRIMES_5K_20K[int(rng.integers(0, len(_PRIMES_5K_20K)))]
+    # Find a primitive root g (need g^k != 1 for any k < p-1 dividing p-1)
+    phi = p - 1
+    # Factor phi (it's at most 198)
+    def _prime_factors(n: int) -> list[int]:
+        f: list[int] = []
+        d = 2
+        while d * d <= n:
+            if n % d == 0:
+                f.append(d)
+                while n % d == 0:
+                    n //= d
+            d += 1
+        if n > 1:
+            f.append(n)
+        return f
+    factors = _prime_factors(phi)
+    g = 2
+    while g < p:
+        if all(pow(g, phi // q, p) != 1 for q in factors):
+            break
+        g += 1
+    if g >= p:
+        g = 2  # fallback (shouldn't happen for primes in this range)
+    # Pick x in [1, p-1], compute h = g^x mod p, then ask the LLM for x.
+    x = int(rng.integers(1, p))
+    h = pow(g, x, p)
+    prompt = (
+        f"Solve the discrete logarithm: find the integer x with 1 ≤ x ≤ {p-1} "
+        f"such that {g}^x ≡ {h} (mod {p}). "
+        f"Return the integer x only."
+    )
+    return prompt, str(x)
+
+
+def _gen_text_quadratic_residue(rng: np.random.Generator) -> tuple[str, str]:
+    """Modular square root in p ∈ [1000, 5000]: find smaller root r with r²≡a (mod p)."""
+    p = _PRIMES_1K_5K[int(rng.integers(0, len(_PRIMES_1K_5K)))]
+    r = int(rng.integers(1, (p - 1) // 2 + 1))
+    a = (r * r) % p
+    prompt = (
+        f"Find the smaller integer r with 1 ≤ r ≤ {(p-1)//2} such that "
+        f"r^2 ≡ {a} (mod {p}). Return the integer r only."
+    )
+    return prompt, str(r)
+
+
+def _gen_text_combinatorial_count(rng: np.random.Generator) -> tuple[str, str]:
+    """Count integers in [1, N] coprime to BOTH m1 and m2 (a 2-modulus
+    inclusion-exclusion problem). Larger N (10⁴-10⁵) and 2-modulus
+    constraint defeat the naive single-Euler-totient pattern.
+    """
+    N = int(rng.integers(10_000, 100_000))
+    m_pool = [6, 10, 12, 14, 15, 18, 21, 22, 26, 33, 35, 39, 55, 77]
+    while True:
+        m1 = m_pool[int(rng.integers(0, len(m_pool)))]
+        m2 = m_pool[int(rng.integers(0, len(m_pool)))]
+        if m1 != m2 and math.gcd(m1, m2) == 1:
+            break
+    count = sum(
+        1 for n in range(1, N + 1)
+        if math.gcd(n, m1) == 1 and math.gcd(n, m2) == 1
+    )
+    prompt = (
+        f"How many integers n with 1 ≤ n ≤ {N} satisfy BOTH "
+        f"gcd(n, {m1}) = 1 AND gcd(n, {m2}) = 1? Return the integer count."
+    )
+    return prompt, str(count)
+
+
 GENERATORS: list[tuple[float, Callable[[np.random.Generator], tuple[str, str]]]] = [
     (0.05, _gen_t0_arithmetic),
     (0.15, _gen_t1_algebra),
@@ -260,6 +519,14 @@ GENERATORS: list[tuple[float, Callable[[np.random.Generator], tuple[str, str]]]]
     (0.92, _gen_t7_adversarial),
     (0.94, _gen_t8_linear_system3),
     (0.97, _gen_t9_diophantine),
+    # T_extreme — target <15% on frontier (calibrated against 2025-2026 lit)
+    (0.980, _gen_text_combinatorial_count),
+    (0.985, _gen_text_mult_order),
+    (0.988, _gen_text_quadratic_residue),
+    (0.992, _gen_text_lattice_paths),
+    (0.994, _gen_text_crt12),
+    (0.996, _gen_text_pell),
+    (0.998, _gen_text_discrete_log),
 ]
 
 
@@ -298,7 +565,7 @@ class MathFamily:
             )
         return tasks
 
-    def reference_score(self, task, response):  # noqa: ANN001
+    def reference_score(self, task, response):
         return None  # mechanical only
 
 

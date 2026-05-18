@@ -36,31 +36,57 @@
 \maketitle
 
 \begin{abstract}
-Frontier large-language-model agents now solve nearly every static-resettable
-benchmark we have, yet a 37\,\% gap between lab accuracy and production
-reliability persists. The capability we are mis-measuring is
-\emph{calibrated agency} --- knowing when to commit, declining tasks one
-should not take, and pricing one's own confidence with skin in the game.
-We introduce \textbf{PROPHET}, a benchmark that evaluates LLM-based
-agents inside a marketplace. For each task, the agent must commit
-(\textsc{Take}), declare a probability of success (\textsc{Quote},
-scored on a Brier-based proper scoring rule) or abstain (\textsc{Pass}).
-PROPHET ships 12 procedurally-generated task families spanning code,
-math, knowledge, reasoning, writing, browser, tool-use, multimodal,
-data-analysis, scientific, multilingual, and safety domains. All
-verifiers are mechanical. We benchmark 13 frontier and open-weight
-systems via OpenRouter (Anthropic, Google, OpenAI, DeepSeek, Meta,
-Qwen, Moonshot). The headline finding: \textbf{the first-place leader
-changes under every headline axis.} Best by accuracy: Google Gemini 3
-Flash Preview (97.0\,\%). Best by ECE: Gemini 3 Flash Preview (0.027).
-Best by net payoff: Anthropic Claude Opus 4.7 (23,686 PROPHET-cents
-vs.\ 22,908 for Gemini). Both are Pareto-optimal on $(\ECE, \mathcal{P})$;
-neither single scalar would have selected the right model for a
-risk-aware buyer. Spearman rank correlations between the three axes
-range $0.73$--$0.89$, showing the orderings are not interchangeable
-even at $n = 12$ frontier systems. All code, procgen seeds, agent
-adapters, and 240-task-per-family eval harness are released under MIT
-and on Hugging Face for re-execution at any future model checkpoint.
+Frontier large-language-model agents now solve nearly every
+static-resettable benchmark we have, yet a 37\,\% gap between lab
+accuracy and production reliability persists. The capability we are
+mis-measuring is \emph{calibrated agency} --- knowing when to commit,
+declining tasks one should not take, and pricing one's own confidence
+with skin in the game. We introduce \textbf{PROPHET},\footnote{Distinct from
+\emph{Prophet Arena}~\cite{prophet_arena} (UChicago, October 2025), which
+benchmarks LLM forecasting on live Kalshi markets with natural events.
+PROPHET is a procedurally-generated, mechanically-verified, two-tier
+calibration benchmark with a Brier-scaled marketplace; the two suites
+are complementary, not overlapping.} a benchmark that evaluates
+LLM-based agents inside a marketplace. For each task, the
+agent must commit (\textsc{Take}), declare a probability of success
+(\textsc{Quote}, scored on a Brier-based proper scoring rule conditional
+on the Quote action) or abstain (\textsc{Pass}). PROPHET ships 12
+procedurally-generated task families spanning code, math, knowledge,
+reasoning, writing, browser, tool-use, multimodal, data-analysis,
+scientific, multilingual, and safety domains, evaluated at \emph{two
+difficulty regimes}: a \textbf{Standard tier} where frontier accuracy is
+near-ceiling (90--97\,\%) yet ECE still varies $\sim$$7\times$ across
+systems, and a \textbf{T\textsubscript{extreme} tier} ($\delta \ge 0.97$)
+with multi-modulus CRT, Pell equations, discrete logarithms, depth-9
+temporal chains, $9\times 9$ Sudoku, modular knapsack, lattice-path
+counting, and Einstein/zebra puzzles, where frontier accuracy drops to
+$\sim$10--40\,\% by design. All verifiers are mechanical. We benchmark
+17 frontier and open-weight systems via OpenRouter (Anthropic
+\texttt{claude-haiku-4.5}/\texttt{sonnet-4.6}/\texttt{opus-4.7}; Google
+\texttt{gemini-3-flash-preview}/\texttt{3.1-flash-lite}/\texttt{3.1-pro-preview};
+OpenAI \texttt{gpt-5}/\texttt{5-mini}/\texttt{5-nano}/\texttt{5.2}/\texttt{5.4-nano};
+DeepSeek \texttt{v3.2}/\texttt{r1}; Meta \texttt{llama-4-scout}/\texttt{maverick};
+Qwen \texttt{qwen3-32b}/\texttt{235b-thinking}; Moonshot
+\texttt{kimi-k2-thinking}). \texttt{gpt-5.2} was added on
+T\textsubscript{extreme} only owing to its mid-experiment release.
+Headline metrics use a pre-registered minimum-$N$ filter ($N \ge 100$
+Standard, $N \ge 20$ T\textsubscript{extreme}) so small-$N$ outliers do
+not dominate the leaderboard. The headline finding from the
+Standard tier: \textbf{the first-place leader differs between accuracy
+and net payoff.} Best by accuracy and best by ECE: Google Gemini 3
+Flash Preview ($0.970$, ECE $0.027$). Best by net payoff: Google Gemini
+3.1 Pro Preview ($37{,}813$ PROPHET-cents, vs.\ $23{,}800$ for the Flash
+sibling and $24{,}824$ for Claude Opus 4.7) --- the same vendor at two
+different price-points, separated by commitment policy not by accuracy.
+On the matched $K = 15$ panel Spearman $\rho_{\text{acc, ECE}} = -0.93$,
+$\rho_{\text{acc, payoff}} = +0.76$, $\rho_{\text{ECE, payoff}} = -0.67$.
+On T\textsubscript{extreme} the picture shifts further: the new
+$(\ECE, \mathcal{P})$ Pareto frontier is \texttt{gpt-5} (ECE $0.019$,
+payoff $5{,}274$) and \texttt{gpt-5.2} (ECE $0.025$, payoff $10{,}500$);
+median accuracy collapses from $87\,\%$ to $60\,\%$ ($-27$\,pp) and
+median ECE worsens $2.12\times$. All code, procgen seeds, agent
+adapters, and per-family eval harness are released under MIT and on
+Hugging Face for re-execution at any future model checkpoint.
 \end{abstract}
 
 \input{sections/introduction}
@@ -76,5 +102,6 @@ and on Hugging Face for re-execution at any future model checkpoint.
 \bibliography{refs}
 
 \input{sections/reproducibility}
+\input{sections/appendix_ablations}
 
 \end{document}

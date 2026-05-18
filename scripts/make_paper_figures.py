@@ -123,7 +123,15 @@ def main() -> int:
             import pandas as pd
 
             df = pd.DataFrame(rows)
-            pivot = df.pivot(index="agent", columns="family", values="max_overreach").fillna(0.0)
+            # Duplicate (agent, family) entries appear when an agent was re-run
+            # under different caps; aggregate by max so the worst-case overreach
+            # surfaces in the figure.
+            pivot = df.pivot_table(
+                index="agent",
+                columns="family",
+                values="max_overreach",
+                aggfunc="max",
+            ).fillna(0.0)
             fig, ax = plt.subplots(figsize=(1.0 + 0.6 * len(families), 0.5 + 0.4 * len(pivot)))
             im = ax.imshow(pivot.values, cmap="OrRd", vmin=0.0, vmax=0.5)
             ax.set_xticks(range(len(families)))

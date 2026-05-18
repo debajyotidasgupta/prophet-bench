@@ -9,7 +9,10 @@ description = "PROPHET: Probabilistic Reliability via Outcome-Pricing for Honest
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
-    {name = "PROPHET Authors"},
+    {name = "Debajyoti Dasgupta", email = "debajyotidasgupta6@gmail.com"},
+]
+maintainers = [
+    {name = "Debajyoti Dasgupta", email = "debajyotidasgupta6@gmail.com"},
 ]
 requires-python = ">=3.10,<3.13"
 classifiers = [
@@ -89,9 +92,10 @@ all = ["prophet-bench[api,local,dev,paper]"]
 prophet = "prophet.cli:app"
 
 [project.urls]
-Homepage = "https://github.com/prophet-bench/prophet"
-Repository = "https://github.com/prophet-bench/prophet"
-Documentation = "https://github.com/prophet-bench/prophet#readme"
+Homepage = "https://github.com/debajyotidasgupta/prophet-bench"
+Repository = "https://github.com/debajyotidasgupta/prophet-bench"
+Documentation = "https://github.com/debajyotidasgupta/prophet-bench#readme"
+Issues = "https://github.com/debajyotidasgupta/prophet-bench/issues"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

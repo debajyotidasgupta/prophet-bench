@@ -1,41 +1,49 @@
 {
   "cross_family_ece_correlation": {
-    "baseline:random": -0.2447552447552448,
+    "baseline:random": -0.23076923076923078,
     "baseline:always-take": NaN,
     "baseline:always-pass": NaN,
     "baseline:oracle": NaN,
-    "openrouter:openai_gpt-5.4-nano": 0.16783216783216784,
-    "openrouter:google_gemini-3.1-flash-lite": 0.7197594934766531,
-    "openrouter:google_gemini-3-flash-preview": 0.3915614432585002,
-    "openrouter:anthropic_claude-haiku-4.5": 0.6503496503496504,
-    "openrouter:meta-llama_llama-4-scout": 0.5515151515151515,
+    "openrouter:openai_gpt-5.4-nano": 0.11188811188811189,
+    "openrouter:google_gemini-3.1-flash-lite": 0.7655245479751686,
+    "openrouter:google_gemini-3-flash-preview": 0.3553057540678983,
+    "openrouter:anthropic_claude-haiku-4.5": 0.6783216783216784,
+    "openrouter:meta-llama_llama-4-scout": 0.5757575757575757,
     "openrouter:openai_gpt-5-mini": 0.8951048951048951,
-    "openrouter:deepseek_deepseek-v3.2": 0.5734265734265735,
-    "openrouter:openai_gpt-5-nano": 0.8454545454545455,
-    "openrouter:qwen_qwen3-32b": 0.34965034965034975,
-    "openrouter:meta-llama_llama-4-maverick": 0.8741258741258742,
-    "openrouter:anthropic_claude-opus-4.7": 0.3916083916083916,
-    "openrouter:anthropic_claude-sonnet-4.6": 0.795097541564023,
-    "openrouter:google_gemini-3.1-pro-preview": 0.6982532518267538
+    "openrouter:deepseek_deepseek-v3.2": 0.5384615384615385,
+    "openrouter:openai_gpt-5-nano": 0.8545454545454546,
+    "openrouter:qwen_qwen3-32b": 0.3356643356643357,
+    "openrouter:meta-llama_llama-4-maverick": 0.8811188811188813,
+    "openrouter:anthropic_claude-opus-4.7": 0.3076923076923077,
+    "openrouter:anthropic_claude-sonnet-4.6": 0.8161133356141735,
+    "openrouter:google_gemini-3.1-pro-preview": 0.6005679130471575,
+    "openrouter:openai_gpt-5": 0.8285714285714287,
+    "openrouter:qwen_qwen3-235b-a22b-thinking-2507": 0.7857142857142859,
+    "openrouter:deepseek_deepseek-r1": -0.5,
+    "openrouter:moonshotai_kimi-k2-thinking": 0.19999999999999998
   },
   "cross_family_brier_correlation": {
-    "baseline:random": -0.14685314685314685,
+    "baseline:random": -0.17482517482517487,
     "baseline:always-take": NaN,
     "baseline:always-pass": NaN,
     "baseline:oracle": NaN,
-    "openrouter:openai_gpt-5.4-nano": 0.5454545454545455,
-    "openrouter:google_gemini-3.1-flash-lite": 0.7197594934766531,
-    "openrouter:google_gemini-3-flash-preview": 0.3915614432585002,
-    "openrouter:anthropic_claude-haiku-4.5": 0.6713286713286714,
-    "openrouter:meta-llama_llama-4-scout": 0.6727272727272726,
-    "openrouter:openai_gpt-5-mini": 0.8811188811188813,
-    "openrouter:deepseek_deepseek-v3.2": 0.5244755244755246,
-    "openrouter:openai_gpt-5-nano": 0.5545454545454546,
-    "openrouter:qwen_qwen3-32b": 0.8251748251748254,
-    "openrouter:meta-llama_llama-4-maverick": 0.9090909090909092,
-    "openrouter:anthropic_claude-opus-4.7": 0.2797202797202798,
-    "openrouter:anthropic_claude-sonnet-4.6": 0.7342657342657343,
-    "openrouter:google_gemini-3.1-pro-preview": 0.6375355777548621
+    "openrouter:openai_gpt-5.4-nano": 0.4545454545454546,
+    "openrouter:google_gemini-3.1-flash-lite": 0.7280804124763832,
+    "openrouter:google_gemini-3-flash-preview": 0.3263012027154168,
+    "openrouter:anthropic_claude-haiku-4.5": 0.6643356643356644,
+    "openrouter:meta-llama_llama-4-scout": 0.6,
+    "openrouter:openai_gpt-5-mini": 0.9020979020979022,
+    "openrouter:deepseek_deepseek-v3.2": 0.5734265734265735,
+    "openrouter:openai_gpt-5-nano": 0.6272727272727273,
+    "openrouter:qwen_qwen3-32b": 0.8391608391608393,
+    "openrouter:meta-llama_llama-4-maverick": 0.8671328671328673,
+    "openrouter:anthropic_claude-opus-4.7": 0.2657342657342658,
+    "openrouter:anthropic_claude-sonnet-4.6": 0.8041958041958043,
+    "openrouter:google_gemini-3.1-pro-preview": 0.6102571532587293,
+    "openrouter:openai_gpt-5": 0.7714285714285715,
+    "openrouter:qwen_qwen3-235b-a22b-thinking-2507": 0.8928571428571429,
+    "openrouter:deepseek_deepseek-r1": -0.5,
+    "openrouter:moonshotai_kimi-k2-thinking": 0.19999999999999998
   },
   "per_agent_difficulty_curves": {
     "baseline:random": {
@@ -738,36 +746,208 @@
         0.9375
       ],
       "accuracy": [
+        0.9230769230769231,
+        0.9090909090909091,
         1.0,
-        0.7272727272727273,
         1.0,
+        0.8285714285714286,
         1.0,
-        0.8518518518518519,
-        1.0,
-        0.8,
-        0.8947368421052632
+        0.875,
+        0.8888888888888888
       ],
       "claimed_confidence": [
+        0.9607692307692308,
+        0.9545454545454546,
         1.0,
-        0.8636363636363636,
+        0.9982142857142857,
+        0.9134285714285714,
+        0.9972222222222222,
+        0.9791666666666666,
+        0.9444444444444444
+      ],
+      "n_per_bin": [
+        13,
+        11,
+        18,
+        28,
+        35,
+        18,
+        24,
+        27
+      ],
+      "ece_overall": 0.04517241379310352
+    },
+    "openrouter:openai_gpt-5": {
+      "centers": [
+        0.0625,
+        0.1875,
+        0.3125,
+        0.4375,
+        0.5625,
+        0.6875,
+        0.8125,
+        0.9375
+      ],
+      "accuracy": [
         1.0,
         1.0,
-        0.9225925925925926,
         1.0,
         1.0,
-        0.9736842105263158
+        0.9285714285714286,
+        1.0,
+        0.8666666666666667,
+        0.95
+      ],
+      "claimed_confidence": [
+        0.9926666666666666,
+        0.9945999999999999,
+        0.996090909090909,
+        0.992995238095238,
+        0.97095,
+        0.9912727272727273,
+        0.9580000000000001,
+        0.9689999999999998
       ],
       "n_per_bin": [
         9,
-        11,
         10,
-        18,
-        27,
-        9,
+        11,
+        21,
+        28,
+        11,
         15,
+        20
+      ],
+      "ece_overall": 0.0202440000000001
+    },
+    "openrouter:qwen_qwen3-235b-a22b-thinking-2507": {
+      "centers": [
+        0.0625,
+        0.1875,
+        0.3125,
+        0.4375,
+        0.5625,
+        0.6875,
+        0.8125,
+        0.9375
+      ],
+      "accuracy": [
+        1.0,
+        1.0,
+        1.0,
+        0.9090909090909091,
+        0.92,
+        0.7272727272727273,
+        0.875,
+        0.8947368421052632
+      ],
+      "claimed_confidence": [
+        0.9777777777777776,
+        0.9744444444444444,
+        0.9899999999999999,
+        0.9761363636363634,
+        0.9743999999999999,
+        0.9943636363636364,
+        0.975,
+        0.9784210526315787
+      ],
+      "n_per_bin": [
+        9,
+        9,
+        12,
+        22,
+        25,
+        11,
+        16,
         19
       ],
-      "ece_overall": 0.06703389830508474
+      "ece_overall": 0.06839837398373982
+    },
+    "openrouter:deepseek_deepseek-r1": {
+      "centers": [
+        0.0625,
+        0.1875,
+        0.3125,
+        0.4375,
+        0.5625,
+        0.6875,
+        0.8125,
+        0.9375
+      ],
+      "accuracy": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "claimed_confidence": [
+        0.99,
+        0.9899999999999999,
+        0.99,
+        0.9900000000000001,
+        0.9881818181818182,
+        0.9918000000000001,
+        0.9975,
+        0.9981818181818182
+      ],
+      "n_per_bin": [
+        5,
+        3,
+        5,
+        11,
+        11,
+        5,
+        4,
+        11
+      ],
+      "ece_overall": 0.008018181818181591
+    },
+    "openrouter:moonshotai_kimi-k2-thinking": {
+      "centers": [
+        0.0625,
+        0.1875,
+        0.3125,
+        0.4375,
+        0.5625,
+        0.6875,
+        0.8125,
+        0.9375
+      ],
+      "accuracy": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "claimed_confidence": [
+        0.9927142857142857,
+        0.99975,
+        0.99756,
+        0.9962916666666667,
+        0.9937384615384617,
+        0.9969750000000001,
+        0.9969857142857144,
+        0.9960461538461538
+      ],
+      "n_per_bin": [
+        7,
+        8,
+        5,
+        12,
+        13,
+        4,
+        7,
+        13
+      ],
+      "ece_overall": 0.003995652173913289
     }
   }
 }

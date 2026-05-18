@@ -56,6 +56,7 @@ PRICES: dict[str, TokenPrice] = {
     "baseline:always-take": TokenPrice(in_per_m=0.0, out_per_m=0.0),
     "baseline:always-pass": TokenPrice(in_per_m=0.0, out_per_m=0.0),
     "baseline:oracle": TokenPrice(in_per_m=0.0, out_per_m=0.0),
+    "baseline:oracle-noisy": TokenPrice(in_per_m=0.0, out_per_m=0.0),
     # OpenRouter (live May 2026; queried from /models endpoint)
     "openrouter:openai/gpt-5-nano": TokenPrice(0.05, 0.40),
     "openrouter:openai/gpt-5-mini": TokenPrice(0.25, 2.00),
@@ -66,6 +67,8 @@ PRICES: dict[str, TokenPrice] = {
     "openrouter:openai/gpt-5.5": TokenPrice(5.00, 30.00),
     "openrouter:openai/gpt-5.3-chat": TokenPrice(1.75, 14.00),
     "openrouter:openai/gpt-5.1": TokenPrice(1.25, 10.00),
+    "openrouter:openai/gpt-5.2": TokenPrice(1.75, 14.00),
+    "openrouter:openai/gpt-5.2-pro": TokenPrice(21.00, 168.00),
     "openrouter:anthropic/claude-haiku-4.5": TokenPrice(1.00, 5.00),
     "openrouter:anthropic/claude-sonnet-4.6": TokenPrice(3.00, 15.00),
     "openrouter:anthropic/claude-sonnet-4.5": TokenPrice(3.00, 15.00),

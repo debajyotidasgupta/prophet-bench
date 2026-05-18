@@ -85,9 +85,12 @@ def bootstrap_ci(
         boots[b] = float(fn(arr[idx].tolist()))
     alpha = (1.0 - ci) / 2.0
     if method == "bca":
-        # Bias correction
-        z0 = sps.norm.ppf(np.mean(boots < point))
-        # Jackknife acceleration
+        # Bias correction. Clamp the bootstrap-fraction-below to (0, 1) so
+        # near-edge point estimates (e.g. ECE near zero with all boots
+        # equal) don't blow up sps.norm.ppf.
+        frac_below = float(np.mean(boots < point))
+        frac_below = min(max(frac_below, 1e-6), 1.0 - 1e-6)
+        z0 = sps.norm.ppf(frac_below)
         jacks = np.empty(n)
         for i in range(n):
             mask = np.ones(n, dtype=bool)
@@ -99,10 +102,17 @@ def bootstrap_ci(
         a = 0.0 if den < 1e-12 else num / den
         zlo = sps.norm.ppf(alpha)
         zhi = sps.norm.ppf(1 - alpha)
-        plo = sps.norm.cdf(z0 + (z0 + zlo) / (1 - a * (z0 + zlo)))
-        phi = sps.norm.cdf(z0 + (z0 + zhi) / (1 - a * (z0 + zhi)))
-        lo = float(np.quantile(boots, plo))
-        hi = float(np.quantile(boots, phi))
+        try:
+            plo = float(sps.norm.cdf(z0 + (z0 + zlo) / (1 - a * (z0 + zlo))))
+            phi = float(sps.norm.cdf(z0 + (z0 + zhi) / (1 - a * (z0 + zhi))))
+            plo = min(max(plo, 0.0), 1.0)
+            phi = min(max(phi, 0.0), 1.0)
+            lo = float(np.quantile(boots, plo))
+            hi = float(np.quantile(boots, phi))
+        except (ValueError, ZeroDivisionError):
+            # Degenerate BCa parameters -- fall back to percentile.
+            lo = float(np.quantile(boots, alpha))
+            hi = float(np.quantile(boots, 1 - alpha))
     else:
         lo = float(np.quantile(boots, alpha))
         hi = float(np.quantile(boots, 1 - alpha))
@@ -115,6 +125,11 @@ def bootstrap_ci_ece(
     n_bins: int = 10,
     **kw,
 ) -> tuple[float, float, float]:
+    # ECE is a non-differentiable functional of the empirical CDF (it
+    # piecewise-binned), so the percentile bootstrap is known to
+    # under-cover (Guo et al.\ 2017 / DiCiccio & Efron 1996). Use BCa
+    # unless the caller explicitly asks for percentile.
+    kw.setdefault("method", "bca")
     c = np.asarray(confidences, dtype=float)
     o = np.asarray(outcomes, dtype=int)
     pairs = list(zip(c.tolist(), o.tolist()))
@@ -431,6 +446,7 @@ def summarize_agent(
     o = np.asarray(outcomes, dtype=int)
     pay = np.asarray(payoffs, dtype=float)
     n = len(c)
+    n_pay = len(pay)
     if n == 0:
         nan = float("nan")
         return AgentSummary(name, 0, nan, (nan, nan), nan, (nan, nan), nan, (nan, nan), nan, (nan, nan), nan, (nan, nan))
@@ -439,6 +455,10 @@ def summarize_agent(
     brier_pt, brier_lo, brier_hi = bootstrap_ci_brier(c, o, n_boot=n_boot, ci=ci, seed=seed)
     log_pt, log_lo, log_hi = bootstrap_ci_logloss(c, o, n_boot=n_boot, ci=ci, seed=seed)
     pay_pt, pay_lo, pay_hi = bootstrap_ci_mean(pay.tolist(), n_boot=n_boot, ci=ci, seed=seed)
+    # net_payoff is the TOTAL across all outcomes (committed + PASS), so we
+    # scale the bootstrap mean by len(pay) -- not len(c). When confidences and
+    # payoffs come from the same set (no PASS), n_pay == n. When some tasks
+    # were PASSed, n_pay > n and using n would under-count the abstention cost.
     return AgentSummary(
         name=name,
         n=n,
@@ -450,6 +470,6 @@ def summarize_agent(
         brier_ci=(brier_lo, brier_hi),
         logloss=log_pt,
         logloss_ci=(log_lo, log_hi),
-        net_payoff=pay_pt * n,  # report total payoff
-        net_payoff_ci=(pay_lo * n, pay_hi * n),
+        net_payoff=pay_pt * n_pay,
+        net_payoff_ci=(pay_lo * n_pay, pay_hi * n_pay),
     )

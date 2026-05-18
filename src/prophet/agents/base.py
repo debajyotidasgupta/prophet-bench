@@ -20,7 +20,6 @@ confidence 0.5 — this conservatively penalises malformed agents.
 
 from __future__ import annotations
 
-import json
 import logging
 import re
 import time

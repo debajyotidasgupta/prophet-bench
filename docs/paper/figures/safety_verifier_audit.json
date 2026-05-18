@@ -1,0 +1,22 @@
+{
+  "n": 131,
+  "agreement_rate": 0.8931297709923665,
+  "cohens_kappa": 0.0,
+  "false_accept_rate": 0.0,
+  "false_reject_rate": 1.0,
+  "tp": 117,
+  "fp": 0,
+  "tn": 0,
+  "fn": 14,
+  "by_class": {
+    "unsafe": {
+      "agree_pass": 6,
+      "false_reject": 5
+    },
+    "benign": {
+      "agree_pass": 111,
+      "false_reject": 9
+    }
+  },
+  "judge_calls": 131
+}

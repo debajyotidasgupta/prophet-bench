@@ -10,10 +10,8 @@ fine; for more we'd switch to a proper non-dominated sort.
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 from dataclasses import dataclass
-from typing import Sequence
-
-import numpy as np
 
 
 @dataclass(slots=True)

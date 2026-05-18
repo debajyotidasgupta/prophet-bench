@@ -26,14 +26,13 @@ from __future__ import annotations
 
 import json
 import re
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Callable
 
 import numpy as np
 
 from prophet.engine.types import Task
 from prophet.utils.seed import child_rng, child_seed
-
 
 # -------------------------------------------------------------------------
 # Helpers
@@ -57,13 +56,146 @@ def _last_word(line: str) -> str:
     return toks[-1] if toks else ""
 
 
+_VOWELS = set("aeiouy")
+_CONSONANTS = set("bcdfghjklmnpqrstvwxyz") - _VOWELS  # treat 'y' as vowel only
+
+# Orthographic equivalence groups: words ending in any pattern within a group
+# are accepted as rhyming with each other. Conservative — only adds well-known
+# spelling variants of the same phonetic class.
+_RHYME_EQUIV_GROUPS: list[set[str]] = [
+    # long /aɪ/  — eye / fly / pie / lie / high / by / try / sky / tie
+    {"y", "ie", "igh", "ye", "uy"},
+    # /aɪz/  — rise / skies / cries / size / wise
+    {"ies", "ise", "ize", "yes", "ys"},
+    # long /iː/ — bee / see / tree / sea / key
+    {"ee", "ea", "ey"},
+    # long /eɪ/ — day / way / weigh / they
+    {"ay", "ai", "ey", "eigh"},
+    # long /oʊ/ — go / show / toe / though
+    {"ow", "oa", "oe", "o", "ough"},
+    # long /uː/ — moon / soon / blue / view / true
+    {"oo", "ew", "ue", "ou"},
+    # /ɔr/   — store / floor / four / for
+    {"or", "ore", "oor", "our", "oar"},
+    # /ɛr/   — care / fair / bear / where
+    {"air", "are", "ear", "ere"},
+]
+
+# Vowel-only equivalence classes for VOWEL+CONSONANT rhyme detection.
+# We only count single-letter vowels (u, i, o, e, a) here when the
+# pre-canonicalized form had a silent terminal 'e' (signalling a long
+# vowel) -- those rhyme with the longer diphthongs (oo, igh, oa, ee, ai).
+# This avoids false-accepts like moon/sun where bare 'u' is /ʌ/, not /uː/.
+_VOWEL_PHONEME_CLASSES: list[set[str]] = [
+    {"oo", "uE", "ew", "ue", "ou"},     # /uː/  moon / tune (uE) / blew / blue / soup
+    {"oa", "oE", "oe", "ow", "ough"},   # /oʊ/  boat / bone (oE) / toe / blown / dough
+    {"y", "iE", "ie", "igh", "ye"},     # /aɪ/  fly / bike (iE) / dye / sight
+    {"ee", "ea", "eE", "ey"},           # /iː/  feet / meat / scene (eE) / key
+    {"ay", "ai", "aE", "eigh", "ey"},   # /eɪ/  rain / way / weigh / they / made (aE)
+]
+
+
+def _silent_e_stripped(word: str) -> bool:
+    """True iff _canonicalize stripped a terminal silent 'e' from this word
+    (i.e., word ends in 'e' preceded by a consonant)."""
+    s = word.lower().rstrip("'.,!?;:")
+    if len(s) <= 2 or not s.endswith("e"):
+        return False
+    return s[-2] not in _VOWELS
+
+
+def _split_vowel_consonant_tail(word: str) -> tuple[str, str]:
+    """Return (last_vowel_cluster_marker, trailing_consonant_cluster) of the
+    canonicalized form. The vowel marker is suffixed with 'E' if the original
+    word ended in a silent 'e' (preserving the long-vowel signal that would
+    otherwise be lost when 'tune' canonicalizes to 'tun')."""
+    s = _canonicalize(word)
+    if not s:
+        return "", ""
+    end = len(s)
+    while end > 0 and s[end - 1] not in _VOWELS:
+        end -= 1
+    cons = s[end:]
+    start = end
+    while start > 0 and s[start - 1] in _VOWELS:
+        start -= 1
+    vowel = s[start:end]
+    # Mark long-vowel via silent-e: 'tune' -> ('uE', 'n'), 'tun' -> ('u', 'n')
+    if _silent_e_stripped(word) and len(vowel) == 1:
+        vowel = vowel + "E"
+    return vowel, cons
+
+
+def _canonicalize(word: str) -> str:
+    """Drop trailing silent 'e' and canonicalize "ies"/"ied" so the rhyme
+    nucleus matches across plural / 3rd-person-singular / past-tense forms.
+    """
+    s = word.lower().rstrip("'.,!?;:")
+    if not s:
+        return s
+    # "skies" / "flies" / "cries" — 'e' is silent; keep /aɪz/ ending as "is"
+    if s.endswith("ies") and len(s) > 3:
+        s = s[:-3] + "is"
+    elif s.endswith("ied") and len(s) > 3:
+        s = s[:-3] + "id"
+    # silent 'e' at end: "rise"/"hope" — strip iff preceded by a consonant
+    elif s.endswith("e") and len(s) > 2 and s[-2] not in _VOWELS:
+        s = s[:-1]
+    return s
+
+
+def _rhyme_nucleus(word: str) -> str:
+    """Last vowel + trailing consonants from the canonicalized form."""
+    s = _canonicalize(word)
+    last_vowel = -1
+    for i in range(len(s) - 1, -1, -1):
+        if s[i] in _VOWELS:
+            last_vowel = i
+            break
+    if last_vowel == -1:
+        return s
+    return s[last_vowel:]
+
+
+def _rhyme_tail(word: str) -> str:
+    """The last 1-3 letters of the canonicalized form, for equivalence lookup."""
+    s = _canonicalize(word)
+    return s[-3:] if len(s) >= 3 else s
+
+
 def _suffix_rhyme(a: str, b: str, k: int = 3) -> bool:
+    """Accept as rhyme if ANY of:
+      (i) full canonical nucleus match,
+      (ii) shared orthographic-equivalence group on the word tail (covers
+           rise/skies, sea/tree, day/weigh, store/floor, care/where),
+      (iii) shared trailing-consonant cluster + shared phonetic vowel
+           class (covers moon/tune, bone/cone, bike/sight, feet/meat),
+      (iv) legacy last-k-letter literal match (final fallback).
+    """
     a, b = a.lower(), b.lower()
     if not a or not b:
         return False
     if a == b:
         return True
-    # Take last k letters of each (vowel+consonant suffix as poor man's rhyme)
+    # (i) nucleus match (silent-e + ies-canonicalized)
+    if _rhyme_nucleus(a) == _rhyme_nucleus(b):
+        return True
+    # (ii) orthographic-equivalence group match
+    tail_a, tail_b = _rhyme_tail(a), _rhyme_tail(b)
+    for group in _RHYME_EQUIV_GROUPS:
+        if any(tail_a.endswith(g) for g in group) and any(tail_b.endswith(g) for g in group):
+            return True
+    # (iii) VOWEL+CONSONANT rhyme: same final consonant cluster and the
+    # preceding vowel cluster lies in the same phonetic class. This is
+    # what catches moon/tune, bone/cone, bike/sight that (ii) misses
+    # because (ii) checks tail-endswith on a fixed-k tail.
+    vowel_a, cons_a = _split_vowel_consonant_tail(a)
+    vowel_b, cons_b = _split_vowel_consonant_tail(b)
+    if cons_a and cons_a == cons_b:
+        for cls in _VOWEL_PHONEME_CLASSES:
+            if vowel_a in cls and vowel_b in cls:
+                return True
+    # (iv) literal last-k match (covers "ight"/"ight", "ong"/"ong", etc.)
     return a[-k:] == b[-k:]
 
 
@@ -488,7 +620,7 @@ class WritingFamily:
             )
         return tasks
 
-    def reference_score(self, task, response):  # noqa: ANN001
+    def reference_score(self, task, response):
         # Constraints are mechanical. We could wire an LLM judge here for prose
         # quality, but it does not affect benchmark pass/fail.
         return None

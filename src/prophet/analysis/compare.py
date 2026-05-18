@@ -8,24 +8,20 @@ from __future__ import annotations
 
 import json
 import logging
-from collections import OrderedDict, defaultdict
+from collections import defaultdict
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Sequence
 
 import numpy as np
 
 from prophet.analysis.stats import (
     AgentSummary,
-    bootstrap_ci_brier,
-    bootstrap_ci_ece,
-    bootstrap_ci_mean,
     compare_two_agents,
     holm_bonferroni,
     permutation_test,
     summarize_agent,
 )
-from prophet.engine.scoring import brier_score, ece
+from prophet.engine.scoring import ece
 
 log = logging.getLogger("prophet.analysis.compare")
 
@@ -51,7 +47,7 @@ class AgentRun:
     by_task: dict[str, dict] = field(default_factory=dict)
 
     @classmethod
-    def from_dir(cls, run_dir: Path, name: str | None = None) -> "AgentRun":
+    def from_dir(cls, run_dir: Path, name: str | None = None) -> AgentRun:
         outs = _load_outcomes(run_dir)
         name = name or (run_dir.name)
         return cls(

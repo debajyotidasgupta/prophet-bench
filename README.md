@@ -64,7 +64,7 @@ prophet/
 ```bibtex
 @inproceedings{prophet2026,
   title={PROPHET: Probabilistic Reliability via Outcome-Pricing for Honest Evaluation of Agent Calibration},
-  author={Anonymous},
+  author={Dasgupta, Debajyoti},
   booktitle={NeurIPS 2026 Datasets and Benchmarks Track},
   year={2026}
 }

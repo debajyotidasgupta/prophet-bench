@@ -21,13 +21,13 @@ URI scheme for the CLI:
 
 from __future__ import annotations
 
+from prophet.agents.base import AgentBase
 from prophet.agents.baselines import (
     AlwaysPassAgent,
     AlwaysTakeAgent,
     OracleAgent,
     RandomAgent,
 )
-from prophet.agents.base import AgentBase
 from prophet.agents.concurrent import ConcurrentRunner
 
 __all__ = [
@@ -41,7 +41,7 @@ __all__ = [
 ]
 
 
-def build_agent(uri: str, **kwargs):  # noqa: ANN201 — Agent protocol
+def build_agent(uri: str, **kwargs):
     """Construct an agent from a URI string.
 
     Lazy-imports backend modules so missing optional deps don't break basic

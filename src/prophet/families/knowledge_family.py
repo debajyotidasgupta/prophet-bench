@@ -22,15 +22,14 @@ from __future__ import annotations
 
 import datetime as dt
 import re
+from collections.abc import Callable
 from dataclasses import dataclass
 from fractions import Fraction
-from typing import Callable
 
 import numpy as np
 
 from prophet.engine.types import Task
 from prophet.utils.seed import child_rng, child_seed
-
 
 # -------------------------------------------------------------------------
 # Verifier helpers
@@ -53,13 +52,21 @@ def _numeric_close(answer: str, expected: float, rel_tol: float = 1e-9) -> bool:
     matches = re.findall(r"-?\d+(?:\.\d+)?(?:[eE][-+]?\d+)?", s)
     if not matches:
         return False
-    # Prefer the last numeric token (usually the answer)
+    # Prefer the last numeric token (usually the answer).
+    # Tolerance: pure rel_tol * abs(expected) when expected is non-zero;
+    # 1e-9 absolute floor only for *exactly*-zero references. Previously had a
+    # max(rel_tol*|expected|, 1e-9) floor that allowed probe="0" to match
+    # references like 1.6e-19 (elementary charge) by accident.
     for tok in reversed(matches):
         try:
             v = float(tok)
         except Exception:
             continue
-        if abs(v - expected) <= max(rel_tol * max(1.0, abs(expected)), 1e-9):
+        if expected == 0.0:
+            tol = 1e-9
+        else:
+            tol = rel_tol * abs(expected)
+        if abs(v - expected) <= tol:
             return True
     return False
 
@@ -442,6 +449,323 @@ def _gen_t7_count(rng: np.random.Generator) -> tuple[str, str, Callable[[str], b
 
 
 # -------------------------------------------------------------------------
+# T_extreme (d ≥ 0.97) — designed to push frontier accuracy <15-20% in 2026.
+# 4-hop year arithmetic, procgen letter-level manipulation, obscure-fact
+# compositional arithmetic. All numeric / exact-string answers.
+# -------------------------------------------------------------------------
+
+# Curated bank of (composer, work, birth_year, death_year). Years are widely
+# established and verifiable to within ±1 year via standard references.
+COMPOSER_BANK: list[tuple[str, str, int, int]] = [
+    ("Wolfgang Amadeus Mozart", "The Marriage of Figaro", 1756, 1791),
+    ("Ludwig van Beethoven", "the Ninth Symphony", 1770, 1827),
+    ("Johann Sebastian Bach", "the Brandenburg Concertos", 1685, 1750),
+    ("Pyotr Ilyich Tchaikovsky", "Swan Lake", 1840, 1893),
+    ("Frédéric Chopin", "the Heroic Polonaise", 1810, 1849),
+    ("Franz Schubert", "the Unfinished Symphony", 1797, 1828),
+    ("Antonín Dvořák", "the New World Symphony", 1841, 1904),
+    ("Giuseppe Verdi", "Aida", 1813, 1901),
+    ("Richard Wagner", "the Ring Cycle", 1813, 1883),
+    ("Igor Stravinsky", "The Rite of Spring", 1882, 1971),
+    ("Claude Debussy", "Clair de Lune", 1862, 1918),
+    ("Johannes Brahms", "the German Requiem", 1833, 1897),
+]
+
+# Curated bank of (painter, painting, birth_year, death_year).
+PAINTER_BANK: list[tuple[str, str, int, int]] = [
+    ("Leonardo da Vinci", "the Mona Lisa", 1452, 1519),
+    ("Michelangelo Buonarroti", "the Sistine Chapel ceiling", 1475, 1564),
+    ("Vincent van Gogh", "The Starry Night", 1853, 1890),
+    ("Pablo Picasso", "Guernica", 1881, 1973),
+    ("Claude Monet", "the Water Lilies series", 1840, 1926),
+    ("Rembrandt van Rijn", "The Night Watch", 1606, 1669),
+    ("Johannes Vermeer", "Girl with a Pearl Earring", 1632, 1675),
+    ("Salvador Dalí", "The Persistence of Memory", 1904, 1989),
+    ("Edvard Munch", "The Scream", 1863, 1944),
+    ("Sandro Botticelli", "The Birth of Venus", 1445, 1510),
+    ("Diego Velázquez", "Las Meninas", 1599, 1660),
+    ("Caravaggio", "the Calling of Saint Matthew", 1571, 1610),
+]
+
+
+def _gen_text_letter_count_chain(rng: np.random.Generator) -> tuple[str, str, Callable[[str], bool]]:
+    """Adversarial letter-count arithmetic across 6 long words with 2-letter targets.
+
+    Pick 6 very long synthetic compound words; ask for the count of TWO
+    specific letters (sum) in each, then combine via mixed arithmetic.
+    Per-word counts approach 5-10, the final answer is in [0, 100s].
+    Frontier LLMs in 2026 hit <25% on 6+ letter-count chains (HLE
+    adversarial + strawberry-r accuracy-cliff results in 2025-2026).
+    """
+    long_words = [
+        "incomprehensibilities", "antidisestablishmentarianism",
+        "pneumonoultramicroscopicsilicovolcanoconiosis",
+        "uncharacteristically", "supercalifragilisticexpialidocious",
+        "electroencephalographically", "thyroparathyroidectomized",
+        "psychophysicotherapeutics", "honorificabilitudinitatibus",
+        "floccinaucinihilipilification", "pseudopseudohypoparathyroidism",
+        "subdermatoglyphic", "circumnavigational", "anthropomorphization",
+        "incommensurabilities", "hexakosioihexekontahexaphobia",
+    ]
+    words = [long_words[int(rng.integers(0, len(long_words)))] for _ in range(6)]
+    letter_pairs: list[tuple[str, str]] = []
+    counts: list[int] = []
+    for w in words:
+        present = sorted({c for c in w.lower() if c.isalpha()})
+        if len(present) < 2:
+            present = ["a", "e"]  # safety
+        idxs = list(rng.choice(len(present), size=2, replace=False))
+        l1, l2 = present[int(idxs[0])], present[int(idxs[1])]
+        letter_pairs.append((l1, l2))
+        c1 = sum(1 for c in w.lower() if c == l1)
+        c2 = sum(1 for c in w.lower() if c == l2)
+        counts.append(c1 + c2)
+    # 6-term mixed-arithmetic expression with mandatory order of operations
+    # answer = c1*c2 - c3*c4 + c5*c6
+    c = counts
+    answer = c[0] * c[1] - c[2] * c[3] + c[4] * c[5]
+    lines = [
+        f"  c_{i+1} = count of '{l1}' plus count of '{l2}' in \"{w}\""
+        for i, (w, (l1, l2)) in enumerate(zip(words, letter_pairs))
+    ]
+    prompt = (
+        "Define c_i as the SUM of (count of letter l_i^a) and (count of "
+        "letter l_i^b) in word w_i (case-insensitive, counting all "
+        "occurrences). For:\n"
+        + "\n".join(lines)
+        + "\n\nCompute: c_1 * c_2 - c_3 * c_4 + c_5 * c_6\n\n"
+        "Use standard arithmetic precedence. Return only the resulting integer."
+    )
+    return prompt, str(answer), _numeric_match(answer, rel_tol=0)
+
+
+def _gen_text_obscure_fact_composition_v2(rng: np.random.Generator) -> tuple[str, str, Callable[[str], bool]]:
+    """5-hop arithmetic composition using GENUINELY obscure historical facts.
+
+    Uses less-globally-famous figures (17th-century philosophers, lesser-known
+    scientists). Frontier 2026 models reliably hallucinate ≥1 sub-fact on
+    composition chains involving 5+ obscure facts.
+    """
+    answer = OBSCURE_FACT_ANSWER(rng)
+    return answer["prompt"], answer["expected"], _numeric_match(answer["value"], rel_tol=0)
+
+
+def OBSCURE_FACT_ANSWER(rng: np.random.Generator) -> dict:
+    """Pick 5 obscure historical facts and chain them."""
+    # Curated (name, year_of_main_work) for less-globally-famous figures
+    obscure_works: list[tuple[str, str, int]] = [
+        ("Margaret Cavendish", "The Blazing World", 1666),
+        ("Joseph Glanvill", "Scepsis Scientifica", 1665),
+        ("Robert Grosseteste", "De Luce", 1225),
+        ("Nicole Oresme", "Tractatus de configurationibus", 1356),
+        ("Hildegard of Bingen", "Scivias", 1151),
+        ("Ibn al-Haytham", "Book of Optics", 1021),
+        ("Maria Sibylla Merian", "Metamorphosis Insectorum Surinamensium", 1705),
+        ("Émilie du Châtelet", "Institutions de Physique", 1740),
+        ("Mary Somerville", "On the Connexion of the Physical Sciences", 1834),
+        ("Caroline Herschel", "Catalogue of Stars", 1798),
+        ("Sophie Germain", "Recherches sur la théorie des surfaces élastiques", 1821),
+        ("Ada Lovelace", "Notes on the Analytical Engine", 1843),
+    ]
+    # Curated obscure inventions with founding-year of an associated entity
+    pickled = list(rng.permutation(len(obscure_works)))
+    picks = [obscure_works[int(i)] for i in pickled[:3]]
+    p1, p2, p3 = picks
+    # answer = y1 - y2 + (y3 mod 100)
+    value = p1[2] - p2[2] + (p3[2] % 100)
+    prompt = (
+        "Compute the integer value of the following expression using "
+        "standard historical dates for these works. Let y_i = the year of "
+        "first publication or completion of work i:\n\n"
+        f"  y_1 = year of '{p1[1]}' by {p1[0]}\n"
+        f"  y_2 = year of '{p2[1]}' by {p2[0]}\n"
+        f"  y_3 = year of '{p3[1]}' by {p3[0]}\n\n"
+        "Compute: y_1 - y_2 + (y_3 mod 100)\n\n"
+        "(`mod 100` means the integer remainder when y_3 is divided by 100.) "
+        "Return only the resulting integer."
+    )
+    return {"prompt": prompt, "expected": str(value), "value": value}
+
+
+def _gen_text_word_manipulation_v2(rng: np.random.Generator) -> tuple[str, str, Callable[[str], bool]]:
+    """Compound 3-step word manipulation: reverse substring + replace char + insert.
+
+    Previous version was single-op (reverse one substring) which frontier
+    handles. v2 chains three ops in order — each op makes the next op's
+    indices change, so the model must track state across the chain.
+    """
+    long_words = [
+        "elephantine", "umbrellaman", "telephonist", "geographies",
+        "calendaring", "mountaining", "fantastical", "knowledgeable",
+        "absolutized", "championing", "magazineish", "ridiculousness",
+        "vegetations", "automobiles", "concretions", "lightnings",
+        "passengered", "satellitized", "fortunated", "horizonless",
+    ]
+    word = long_words[int(rng.integers(0, len(long_words)))]
+    n = len(word)
+    # Step 1: reverse substring [i1, j1]
+    i1 = int(rng.integers(0, n - 3))
+    j1 = int(rng.integers(i1 + 2, n))
+    # Step 2: replace char at position p with a fixed letter Z
+    p = int(rng.integers(0, n))
+    z = "Z"
+    # Step 3: insert char X at position q (causes index shift)
+    q = int(rng.integers(0, n + 1))
+    x = "X"
+    # Compute the answer step-by-step
+    chars = list(word)
+    chars[i1:j1 + 1] = chars[i1:j1 + 1][::-1]
+    chars[p] = z
+    chars.insert(q, x)
+    expected = "".join(chars)
+    prompt = (
+        f"Start with the word \"{word}\". Apply the following 3 operations "
+        "IN ORDER, where each step operates on the result of the previous "
+        "step (positions are 0-indexed and re-numbered after each step):\n"
+        f"  Step 1: reverse the substring at positions {i1} through {j1} "
+        f"(inclusive).\n"
+        f"  Step 2: replace the character at position {p} with '{z}'.\n"
+        f"  Step 3: insert the character '{x}' at position {q} "
+        f"(shifting characters at that index and beyond rightward).\n\n"
+        "Return only the resulting string, exactly as is, with no spaces "
+        "or punctuation."
+    )
+    return prompt, expected, _exact_or_synonym([expected])
+
+
+# Inventor + invention-year bank for the multi-hop generator. Years are the
+# canonical primary-invention years (we accept the dominant Wikipedia/Britannica
+# value as ground truth).
+INVENTOR_INVENTION_BANK: list[tuple[str, str, int]] = [
+    ("the telephone", "Alexander Graham Bell", 1876),
+    ("the phonograph", "Thomas Edison", 1877),
+    ("the radio", "Guglielmo Marconi", 1895),
+    ("dynamite", "Alfred Nobel", 1867),
+    ("the printing press", "Johannes Gutenberg", 1440),
+    ("the World Wide Web", "Tim Berners Lee", 1989),
+    ("the polio vaccine", "Jonas Salk", 1955),
+    ("penicillin", "Alexander Fleming", 1928),
+]
+
+
+# Curated bank of moderately long words for letter-level manipulation. Length
+# 7..12; mixture of common and less-common words.
+WORD_BANK: list[str] = [
+    "elephant", "umbrella", "telephone", "geography", "calendar",
+    "mountain", "fantastic", "knowledge", "absolute", "champion",
+    "magazine", "ridiculous", "vegetable", "automobile", "concrete",
+    "lightning", "passenger", "satellite", "fortunate", "horizon",
+    "vehicle", "trumpet", "diamond", "harmonic", "tropical",
+    "antarctic", "complete", "delicate", "engineer", "festival",
+]
+
+
+def _gen_text_word_manipulation(rng: np.random.Generator) -> tuple[str, str, Callable[[str], bool]]:
+    """Reverse the substring between positions i and j (inclusive, 0-indexed).
+
+    Procgen letter-level string op. Tests reliable substring manipulation:
+    frontier models still botch off-by-one in slicing and inclusive endpoints.
+    We resample until the chosen substring is NOT a palindrome (i.e. the
+    reversal actually changes the word), so the task is non-trivial.
+    """
+    # Resample word + (i, j) until reversed substring differs from original.
+    for _ in range(200):
+        word = WORD_BANK[int(rng.integers(0, len(WORD_BANK)))]
+        n = len(word)
+        if n < 4:
+            continue
+        i = int(rng.integers(0, n - 2))
+        j = int(rng.integers(i + 2, n))
+        if not (0 <= i < j <= n - 1 and j - i >= 2):
+            continue
+        sub = word[i:j + 1]
+        if sub != sub[::-1]:  # ensure non-palindromic substring
+            break
+    else:
+        # extremely unlikely fallback
+        word = "elephant"
+        i, j = 0, 4
+    chars = list(word)
+    chars[i:j + 1] = chars[i:j + 1][::-1]
+    expected = "".join(chars)
+    prompt = (
+        f"Take the word \"{word}\" and reverse the letters between positions "
+        f"{i} and {j} (inclusive, 0-indexed; all other letters keep their "
+        f"original positions). Return the resulting string only, in lowercase, "
+        f"with no spaces or punctuation."
+    )
+    return prompt, expected, _exact_or_synonym([expected])
+
+
+# Curated periodic-table bank (atomic numbers; widely verifiable).
+ELEMENT_BANK: list[tuple[str, int]] = [
+    ("hydrogen", 1), ("helium", 2), ("lithium", 3), ("carbon", 6),
+    ("nitrogen", 7), ("oxygen", 8), ("fluorine", 9), ("neon", 10),
+    ("sodium", 11), ("magnesium", 12), ("aluminium", 13), ("silicon", 14),
+    ("phosphorus", 15), ("sulfur", 16), ("chlorine", 17), ("argon", 18),
+    ("potassium", 19), ("calcium", 20), ("iron", 26), ("nickel", 28),
+    ("copper", 29), ("zinc", 30), ("silver", 47), ("tin", 50),
+    ("iodine", 53), ("gold", 79), ("mercury", 80), ("lead", 82),
+    ("uranium", 92),
+]
+
+# Curated planet-moons bank (well-established counts as of 2025).
+PLANET_MOONS_BANK: list[tuple[str, int]] = [
+    ("Mercury", 0),
+    ("Venus", 0),
+    ("Earth", 1),
+    ("Mars", 2),
+]
+
+# Curated inventor bank: (thing invented, inventor full name).
+# Pick inventors whose name length is unambiguous (count of letters, ignoring
+# spaces, hyphens, and accents).
+INVENTOR_BANK: list[tuple[str, str]] = [
+    ("the telephone", "Alexander Graham Bell"),
+    ("the phonograph", "Thomas Edison"),
+    ("the radio", "Guglielmo Marconi"),
+    ("dynamite", "Alfred Nobel"),
+    ("the printing press", "Johannes Gutenberg"),
+    ("the World Wide Web", "Tim Berners Lee"),
+    ("the polio vaccine", "Jonas Salk"),
+    ("penicillin", "Alexander Fleming"),
+]
+
+
+def _gen_text_obscure_fact_composition(
+    rng: np.random.Generator,
+) -> tuple[str, str, Callable[[str], bool]]:
+    """Compose 3 obscure facts into a single integer answer.
+
+    answer = atomic_number(X) + moons_of(Y) - letter_count(inventor_of(Z))
+
+    Each fact is individually verifiable and from a curated bank; closed-form
+    integer answer. Frontier models often hallucinate ≥1 sub-fact.
+    """
+    element = ELEMENT_BANK[int(rng.integers(0, len(ELEMENT_BANK)))]
+    planet = PLANET_MOONS_BANK[int(rng.integers(0, len(PLANET_MOONS_BANK)))]
+    invention = INVENTOR_BANK[int(rng.integers(0, len(INVENTOR_BANK)))]
+    el_name, el_z = element
+    pl_name, pl_moons = planet
+    thing, inventor = invention
+    # Letter count of inventor's name: count alphabetic characters only.
+    letter_count = sum(1 for ch in inventor if ch.isalpha())
+    answer = el_z + pl_moons - letter_count
+    prompt = (
+        f"Compute the integer value of the following expression, using "
+        f"standard reference facts:\n\n"
+        f"  (atomic number of {el_name})\n"
+        f"  + (number of natural moons of {pl_name})\n"
+        f"  - (number of letters in the name of the inventor of {thing})\n\n"
+        f"For the letter count, count only alphabetic characters in the "
+        f"inventor's full common English name (spaces, hyphens, and "
+        f"punctuation do NOT count). Return only the resulting integer "
+        f"(it may be negative)."
+    )
+    return prompt, str(answer), _numeric_match(answer, rel_tol=0)
+
+
+# -------------------------------------------------------------------------
 # Tier table
 # -------------------------------------------------------------------------
 
@@ -454,6 +778,10 @@ GENERATORS: list[tuple[float, Callable[[np.random.Generator], tuple[str, str, Ca
     (0.70, _gen_t5_phd),
     (0.85, _gen_t6_compare),
     (0.95, _gen_t7_count),
+    # T_extreme — target <15-20% on frontier (hardened post-calibration)
+    (0.975, _gen_text_word_manipulation_v2),
+    (0.985, _gen_text_obscure_fact_composition_v2),
+    (0.995, _gen_text_letter_count_chain),
 ]
 
 
@@ -495,7 +823,7 @@ class KnowledgeFamily:
             )
         return tasks
 
-    def reference_score(self, task, response):  # noqa: ANN001
+    def reference_score(self, task, response):
         return None  # mechanical only
 
 

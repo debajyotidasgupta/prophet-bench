@@ -1,0 +1,16 @@
+\begin{table}[t]\centering\small
+\caption{Price-sensitivity ablation: Spearman $\rho$ and Kendall $\tau$ of the perturbed-price ranking against the canonical leaderboard ranking. Strong correlation (>0.9) across all perturbations indicates the calibration finding is robust to our arbitrary price-table choice.}\label{tab:price-sensitivity}
+\begin{tabular}{lrrr}
+\toprule
+Perturbation & Spearman $\rho$ & Kendall $\tau$ & $N$ agents \\
+\midrule
+V $\times$ 2 & 0.997 & 0.983 & 16 \\
+C $\times$ 2 (higher penalty) & 0.962 & 0.883 & 16 \\
+$\kappa$ $\times$ 2 (heavier calib weight) & 0.971 & 0.883 & 16 \\
+$\kappa$ $\times$ 0.5 (lighter calib) & 0.997 & 0.983 & 16 \\
+$\delta_{\text{pass}}$ $\times$ 2 & 1.000 & 1.000 & 16 \\
+$\delta_{\text{pass}}$ $\times$ 0.5 & 1.000 & 1.000 & 16 \\
+asymmetric: C $\times$ 3 & 0.950 & 0.867 & 16 \\
+\bottomrule
+\end{tabular}
+\end{table}

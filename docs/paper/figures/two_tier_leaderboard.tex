@@ -1,0 +1,37 @@
+\begin{table}[t]
+\centering\small
+\caption{Two-tier PROPHET leaderboard. \textbf{Std} = standard tier (12 families, near-ceiling difficulty). \textbf{Ext} = T\textsubscript{extreme} (5 families, $\delta \ge 0.97$). Net payoff in PROPHET-cents; ECE on $[0, 1]$. Multi-seed re-runs are pooled by agent name. $\star$ = Pareto-optimal on $(\ECE, \mathcal{P})$ among agents with $N \ge 100$ (Std) / $N \ge 20$ (Ext); small-$N$ rows are shown for transparency but do not receive the marker.}
+\label{tab:two-tier}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lrrrrr|rrrrr}
+\toprule
+ & \multicolumn{5}{c}{Standard tier} & \multicolumn{5}{c}{T\textsubscript{extreme}} \\
+\cmidrule(lr){2-6}\cmidrule(lr){7-11}
+Agent & Acc & ECE & $\mathcal{P}$ & Cost & \# & Acc & ECE & $\mathcal{P}$ & Cost & \# \\
+\midrule
+oracle & 1.000 & 0.000 & 38685 & 0.00 & 240 & 1.000 & 0.000 & 46774 & 0.00 & 300 \\
+google-gemini-3.1-pro-preview & 0.911$\star$ & 0.054 & 37813 & 5.26 & 292 & 0.528 & 0.216 & 815 & 2.00 & 36 \\
+openai-gpt-5 & 0.945$\star$ & 0.040 & 36601 & 3.82 & 271 & 1.000$\star$ & 0.019 & 5274 & 3.34 & 36 \\
+anthropic-claude-opus-4.7 & 0.900 & 0.078 & 24824 & 1.35 & 229 & 0.636 & 0.177 & 2363 & 5.13 & 77 \\
+google-gemini-3-flash-preview & 0.970$\star$ & 0.027 & 23800 & 0.21 & 231 & 0.564 & 0.329 & 204 & 0.40 & 94 \\
+anthropic-claude-haiku-4.5 & 0.935 & 0.043 & 22684 & 0.54 & 230 & 0.390 & 0.250 & -1624 & 0.58 & 95 \\
+deepseek-deepseek-v3.2 & 0.846 & 0.129 & 22566 & 0.06 & 233 & 0.510 & 0.257 & 550 & 0.10 & 96 \\
+openai-gpt-5-mini & 0.871 & 0.123 & 21768 & 0.50 & 232 & 0.797 & 0.127 & 4418 & 0.58 & 64 \\
+meta-llama-llama-4-maverick & 0.853 & 0.122 & 19253 & 0.08 & 232 & 0.230 & 0.661 & -9166 & 0.07 & 100 \\
+anthropic-claude-sonnet-4.6 & 0.870 & 0.093 & 17793 & 0.80 & 230 & --- & --- & --- & --- & --- \\
+qwen-qwen3-32b & 0.843 & 0.110 & 17001 & 0.09 & 217 & 0.673 & 0.285 & 1588 & 0.16 & 52 \\
+google-gemini-3.1-flash-lite & 0.835 & 0.165 & 15976 & 0.09 & 230 & 0.480 & 0.443 & -577 & 0.20 & 100 \\
+openai-gpt-5-nano & 0.819 & 0.154 & 14685 & 0.15 & 215 & 0.824 & 0.180 & 2210 & 0.15 & 34 \\
+meta-llama-llama-4-scout & 0.831 & 0.147 & 14194 & 0.03 & 207 & 0.170 & 0.757 & -7342 & 0.03 & 100 \\
+qwen-qwen3-235b-a22b-thinking-2507 & 0.911 & 0.068 & 13216 & 0.49 & 123 & 0.831 & 0.091 & 4825 & 1.00 & 65 \\
+openai-gpt-5.4-nano & 0.734 & 0.133 & 11912 & 0.04 & 229 & 0.204 & 0.407 & -5436 & 0.06 & 93 \\
+moonshotai-kimi-k2-thinking & 1.000 & 0.004 & 10026 & 1.25 & 69 & --- & --- & --- & --- & --- \\
+deepseek-deepseek-r1 & 1.000 & 0.008 & 7883 & 0.56 & 55 & 0.824 & 0.162 & 2755 & 1.47 & 34 \\
+always-pass & nan & nan & -640 & 0.00 & 0 & nan & nan & -720 & 0.00 & 0 \\
+random & 0.000 & 0.532 & -18203 & 0.00 & 153 & 0.000 & 0.560 & -23779 & 0.00 & 198 \\
+always-take & 0.000 & 0.990 & -24370 & 0.00 & 240 & --- & --- & --- & --- & --- \\
+openai-gpt-5.2 & --- & --- & --- & --- & --- & 0.986$\star$ & 0.025 & 10500 & 4.07 & 71 \\
+\bottomrule
+\end{tabular}
+}
+\end{table}

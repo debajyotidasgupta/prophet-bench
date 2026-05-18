@@ -25,17 +25,45 @@ difficulty. CRPS (continuous ranked probability score) is preferable
 for continuous outcomes; we adopt it in a forthcoming v2 for the
 writing family.
 
+\paragraph{Why two difficulty regimes.}
+The Standard tier of 12 families measures calibration at near-ceiling
+accuracy (90--97\,\% for the frontier panel). This is the realistic
+deployment regime for instruction-following workloads --- ECE
+discrepancies of $7\times$ across systems still surface and matter,
+because production cost is dominated by the rare-but-costly
+miscommit. The T\textsubscript{extreme} tier, where frontier accuracy
+drops to $\sim$15--45\,\% by construction, deliberately mimics the
+research / hard-problem regime: tasks at the saturation frontier where
+even the best 2026 systems must hedge or abstain. By publishing both
+regimes we (a) protect the benchmark from one-shot saturation as
+models improve, (b) document the calibration-accuracy correlation
+\emph{break} at the hard tail, and (c) supply a reference difficulty
+floor for future calibration work. The expected joint pattern is that
+Pareto ordering changes between regimes: a model that is well-calibrated
+on easy tasks may over-commit on extreme ones, and vice versa.
+
 \paragraph{What the data tells us about reasoning mode.}
-\TODO{Once the matrix lands: contrast same-base-model reasoning vs
-non-reasoning. We expect reasoning to lift accuracy but \emph{also}
-lift Brier (over-confidence on harder tasks), consistent with
-Anthropic 2025 / 2026 faithfulness findings.}
+The Standard tier shows that reasoning-tuned variants
+(\texttt{deepseek-r1}, \texttt{qwen3-thinking-2507},
+\texttt{kimi-k2-thinking}) tend toward \emph{quote} mode with
+high $\hat P$ rather than abstention; they buy accuracy at the cost
+of an inflated commit rate. Whether this translates to better net
+payoff is mediated by the calibration-payoff trade-off (see
+Section~\ref{sec:results}). On the T\textsubscript{extreme} tier we
+expect the lift to be smaller: when a problem is genuinely beyond
+the model's grasp, extended chain-of-thought makes the answer
+\emph{more confidently wrong} rather than right.
 
 \paragraph{What the data tells us about open vs closed.}
-\TODO{Once the matrix lands: report the open-frontier vs closed-frontier
-gap on each axis. We expect closed models to dominate on accuracy but
-to be either marginally better or \emph{worse} on ECE depending on
-post-training calibration.}
+On the Standard tier, the open-weight \texttt{deepseek-v3.2} ranks
+4th by net payoff despite lower accuracy ($84.6\,\%$ vs.\ Gemini's
+$97\,\%$) --- its ECE-corrected commits dominate the field at
+low cost per question. This is the cost-per-quality story
+production buyers want. We expect the gap to widen on
+T\textsubscript{extreme}: open-weight models lacking RLHF-grade
+calibration tend to maintain $\hat P \approx 0.9$ across the board,
+which is a strict loss on harder tiers where actual accuracy is
+$\sim$20\,\%.
 
 \paragraph{What this benchmark cannot answer.}
 PROPHET does not measure: (i) long-horizon coherence across many days

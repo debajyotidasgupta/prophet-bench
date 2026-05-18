@@ -23,7 +23,7 @@ def _safe_import_matplotlib():
         import matplotlib.pyplot as plt
 
         return plt
-    except Exception as e:  # noqa: BLE001
+    except Exception as e:
         log.warning("matplotlib unavailable: %s", e)
         return None
 

@@ -38,7 +38,7 @@ REGISTRY: dict[str, str] = {
 }
 
 
-def get_family(name: str) -> "TaskFamily":
+def get_family(name: str) -> TaskFamily:
     name = name.strip().lower()
     if name not in REGISTRY:
         raise KeyError(f"Unknown family {name!r}. Known: {list(REGISTRY)}")

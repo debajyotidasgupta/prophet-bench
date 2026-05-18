@@ -196,9 +196,15 @@ class TestMathHarderTiers:
         from prophet.families.math_family import MathFamily
 
         tasks = MathFamily().generate(n=30, seed=22, difficulty_range=(0.96, 0.99))
-        assert tasks, "expected some T9 tasks"
+        assert tasks, "expected some T_extreme-band tasks"
         for t in tasks:
-            assert t.difficulty == 0.97
+            # Post-hardening, the band [0.96, 0.99] contains multiple
+            # T_extreme generators (combinatorial_count, mult_order,
+            # quadratic_residue, lattice_paths, crt12, pell, discrete_log).
+            # All should verify their reference answer.
+            assert 0.96 <= t.difficulty <= 0.99
             assert t.verifier(t.reference_answer), (
-                f"T9 verifier rejected reference: ref={t.reference_answer!r}"
+                f"T_extreme verifier rejected reference: "
+                f"gen={t.metadata.get('generator')} d={t.difficulty} "
+                f"ref={t.reference_answer!r}"
             )

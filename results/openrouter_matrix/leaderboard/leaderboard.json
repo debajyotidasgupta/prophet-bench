@@ -32,6 +32,70 @@
     "pareto_optimal_among_real": false
   },
   {
+    "name": "openrouter:google_gemini-3.1-pro-preview",
+    "n": 292,
+    "accuracy": 0.911,
+    "accuracy_ci": [
+      0.8767,
+      0.9418
+    ],
+    "ece": 0.054,
+    "ece_ci": [
+      0.0349,
+      0.0804
+    ],
+    "brier": 0.0411,
+    "brier_ci": [
+      0.024,
+      0.0617
+    ],
+    "logloss": 0.5451,
+    "logloss_ci": [
+      0.214,
+      0.9517
+    ],
+    "net_payoff": 37813.19,
+    "net_payoff_ci": [
+      34423.39,
+      41039.28
+    ],
+    "cost_usd": 5.2557,
+    "pareto_optimal": true,
+    "pareto_optimal_among_real": true
+  },
+  {
+    "name": "openrouter:openai_gpt-5",
+    "n": 271,
+    "accuracy": 0.9446,
+    "accuracy_ci": [
+      0.9151,
+      0.9705
+    ],
+    "ece": 0.0404,
+    "ece_ci": [
+      0.0164,
+      0.0657
+    ],
+    "brier": 0.0499,
+    "brier_ci": [
+      0.0271,
+      0.076
+    ],
+    "logloss": 0.2242,
+    "logloss_ci": [
+      0.1216,
+      0.346
+    ],
+    "net_payoff": 36600.75,
+    "net_payoff_ci": [
+      32656.68,
+      40456.16
+    ],
+    "cost_usd": 3.8161,
+    "pareto_optimal": true,
+    "pareto_optimal_among_real": true
+  },
+  {
     "name": "openrouter:anthropic_claude-opus-4.7",
     "n": 229,
     "accuracy": 0.8996,
@@ -41,8 +105,8 @@
     ],
     "ece": 0.0782,
     "ece_ci": [
-      0.0417,
-      0.1193
+      0.0434,
+      0.1225
     ],
     "brier": 0.0962,
     "brier_ci": [
@@ -54,14 +118,14 @@
       0.2565,
       0.526
     ],
-    "net_payoff": 23686.21,
+    "net_payoff": 24823.97,
     "net_payoff_ci": [
-      21176.32,
-      26055.24
+      22193.52,
+      27306.8
     ],
     "cost_usd": 1.3514,
-    "pareto_optimal": true,
-    "pareto_optimal_among_real": true
+    "pareto_optimal": false,
+    "pareto_optimal_among_real": false
   },
   {
     "name": "openrouter:google_gemini-3-flash-preview",
@@ -73,8 +137,8 @@
     ],
     "ece": 0.0271,
     "ece_ci": [
-      0.008,
-      0.051
+      0.0113,
+      0.0557
     ],
     "brier": 0.0271,
     "brier_ci": [
@@ -86,46 +150,14 @@
       0.1807,
       0.9975
     ],
-    "net_payoff": 22907.66,
+    "net_payoff": 23800.17,
     "net_payoff_ci": [
-      21527.68,
-      24106.9
+      22366.42,
+      25046.13
     ],
     "cost_usd": 0.2125,
     "pareto_optimal": true,
     "pareto_optimal_among_real": true
-  },
-  {
-    "name": "openrouter:deepseek_deepseek-v3.2",
-    "n": 233,
-    "accuracy": 0.8455,
-    "accuracy_ci": [
-      0.7983,
-      0.8884
-    ],
-    "ece": 0.1294,
-    "ece_ci": [
-      0.0884,
-      0.1766
-    ],
-    "brier": 0.1362,
-    "brier_ci": [
-      0.0957,
-      0.1809
-    ],
-    "logloss": 1.3342,
-    "logloss_ci": [
-      0.8038,
-      1.9399
-    ],
-    "net_payoff": 21907.67,
-    "net_payoff_ci": [
-      18017.92,
-      25709.71
-    ],
-    "cost_usd": 0.0606,
-    "pareto_optimal": false,
-    "pareto_optimal_among_real": false
   },
   {
     "name": "openrouter:anthropic_claude-haiku-4.5",
@@ -137,8 +169,8 @@
     ],
     "ece": 0.0435,
     "ece_ci": [
-      0.018,
-      0.0796
+      0.0154,
+      0.0753
     ],
     "brier": 0.0605,
     "brier_ci": [
@@ -150,12 +182,44 @@
       0.1543,
       0.4009
     ],
-    "net_payoff": 21739.16,
+    "net_payoff": 22684.34,
     "net_payoff_ci": [
-      19913.9,
-      23421.82
+      20779.72,
+      24440.16
     ],
     "cost_usd": 0.5373,
+    "pareto_optimal": false,
+    "pareto_optimal_among_real": false
+  },
+  {
+    "name": "openrouter:deepseek_deepseek-v3.2",
+    "n": 233,
+    "accuracy": 0.8455,
+    "accuracy_ci": [
+      0.7983,
+      0.8884
+    ],
+    "ece": 0.1294,
+    "ece_ci": [
+      0.089,
+      0.1771
+    ],
+    "brier": 0.1362,
+    "brier_ci": [
+      0.0957,
+      0.1809
+    ],
+    "logloss": 1.3342,
+    "logloss_ci": [
+      0.8038,
+      1.9399
+    ],
+    "net_payoff": 22565.84,
+    "net_payoff_ci": [
+      18559.23,
+      26482.1
+    ],
+    "cost_usd": 0.0606,
     "pareto_optimal": false,
     "pareto_optimal_among_real": false
   },
@@ -169,8 +233,8 @@
     ],
     "ece": 0.1233,
     "ece_ci": [
-      0.0818,
-      0.1681
+      0.0827,
+      0.1684
     ],
     "brier": 0.1278,
     "brier_ci": [
@@ -182,44 +246,12 @@
       0.7025,
       1.7319
     ],
-    "net_payoff": 21042.43,
+    "net_payoff": 21768.04,
     "net_payoff_ci": [
-      18262.46,
-      23613.13
+      18892.2,
+      24427.38
     ],
     "cost_usd": 0.4998,
-    "pareto_optimal": false,
-    "pareto_optimal_among_real": false
-  },
-  {
-    "name": "openrouter:openai_gpt-5",
-    "n": 146,
-    "accuracy": 0.9315,
-    "accuracy_ci": [
-      0.8904,
-      0.9658
-    ],
-    "ece": 0.0645,
-    "ece_ci": [
-      0.0266,
-      0.1093
-    ],
-    "brier": 0.0685,
-    "brier_ci": [
-      0.0329,
-      0.1124
-    ],
-    "logloss": 0.3271,
-    "logloss_ci": [
-      0.1506,
-      0.5372
-    ],
-    "net_payoff": 18980.19,
-    "net_payoff_ci": [
-      16127.07,
-      21398.57
-    ],
-    "cost_usd": 2.0169,
     "pareto_optimal": false,
     "pareto_optimal_among_real": false
   },
@@ -233,8 +265,8 @@
     ],
     "ece": 0.122,
     "ece_ci": [
-      0.0822,
-      0.1688
+      0.0827,
+      0.169
     ],
     "brier": 0.1292,
     "brier_ci": [
@@ -246,10 +278,10 @@
       1.1001,
       2.5392
     ],
-    "net_payoff": 18611.12,
+    "net_payoff": 19252.89,
     "net_payoff_ci": [
-      15499.78,
-      21521.0
+      16034.26,
+      22263.1
     ],
     "cost_usd": 0.078,
     "pareto_optimal": false,
@@ -265,8 +297,8 @@
     ],
     "ece": 0.0927,
     "ece_ci": [
-      0.0577,
-      0.1386
+      0.0525,
+      0.133
     ],
     "brier": 0.1146,
     "brier_ci": [
@@ -278,10 +310,10 @@
       0.2928,
       0.5715
     ],
-    "net_payoff": 17051.46,
+    "net_payoff": 17792.83,
     "net_payoff_ci": [
-      14819.9,
-      19164.32
+      15464.24,
+      19997.56
     ],
     "cost_usd": 0.7962,
     "pareto_optimal": false,
@@ -310,10 +342,10 @@
       0.6083,
       1.5771
     ],
-    "net_payoff": 15371.73,
+    "net_payoff": 17000.99,
     "net_payoff_ci": [
-      12853.12,
-      17822.03
+      14215.43,
+      19711.0
     ],
     "cost_usd": 0.0911,
     "pareto_optimal": false,
@@ -330,7 +362,7 @@
     "ece": 0.1652,
     "ece_ci": [
       0.1174,
-      0.213
+      0.2087
     ],
     "brier": 0.1652,
     "brier_ci": [
@@ -342,44 +374,12 @@
       2.4327,
       4.415
     ],
-    "net_payoff": 15310.65,
+    "net_payoff": 15976.33,
     "net_payoff_ci": [
-      12909.99,
-      17588.54
+      13471.29,
+      18353.26
     ],
     "cost_usd": 0.0881,
-    "pareto_optimal": false,
-    "pareto_optimal_among_real": false
-  },
-  {
-    "name": "openrouter:google_gemini-3.1-pro-preview",
-    "n": 118,
-    "accuracy": 0.8983,
-    "accuracy_ci": [
-      0.839,
-      0.9492
-    ],
-    "ece": 0.067,
-    "ece_ci": [
-      0.0325,
-      0.1092
-    ],
-    "brier": 0.0509,
-    "brier_ci": [
-      0.0212,
-      0.089
-    ],
-    "logloss": 0.7503,
-    "logloss_ci": [
-      0.2052,
-      1.47
-    ],
-    "net_payoff": 14584.78,
-    "net_payoff_ci": [
-      12675.5,
-      16312.13
-    ],
-    "cost_usd": 2.0099,
     "pareto_optimal": false,
     "pareto_optimal_among_real": false
   },
@@ -393,8 +393,8 @@
     ],
     "ece": 0.1538,
     "ece_ci": [
-      0.1077,
-      0.2072
+      0.1039,
+      0.2033
     ],
     "brier": 0.1668,
     "brier_ci": [
@@ -406,10 +406,10 @@
       0.9863,
       2.253
     ],
-    "net_payoff": 13155.08,
+    "net_payoff": 14684.74,
     "net_payoff_ci": [
-      11000.74,
-      15363.04
+      12279.89,
+      17149.44
     ],
     "cost_usd": 0.1505,
     "pareto_optimal": false,
@@ -425,8 +425,8 @@
     ],
     "ece": 0.1471,
     "ece_ci": [
-      0.1045,
-      0.203
+      0.0993,
+      0.1977
     ],
     "brier": 0.1582,
     "brier_ci": [
@@ -438,12 +438,44 @@
       1.8227,
       3.6686
     ],
-    "net_payoff": 12242.5,
+    "net_payoff": 14194.21,
     "net_payoff_ci": [
-      9783.57,
-      14494.47
+      11343.27,
+      16805.19
     ],
     "cost_usd": 0.0268,
+    "pareto_optimal": false,
+    "pareto_optimal_among_real": false
+  },
+  {
+    "name": "openrouter:qwen_qwen3-235b-a22b-thinking-2507",
+    "n": 123,
+    "accuracy": 0.9106,
+    "accuracy_ci": [
+      0.8618,
+      0.9593
+    ],
+    "ece": 0.0684,
+    "ece_ci": [
+      0.0274,
+      0.1325
+    ],
+    "brier": 0.0854,
+    "brier_ci": [
+      0.0399,
+      0.1349
+    ],
+    "logloss": 0.8765,
+    "logloss_ci": [
+      0.299,
+      1.6184
+    ],
+    "net_payoff": 13215.97,
+    "net_payoff_ci": [
+      10241.68,
+      15984.76
+    ],
+    "cost_usd": 0.4892,
     "pareto_optimal": false,
     "pareto_optimal_among_real": false
   },
@@ -457,8 +489,8 @@
     ],
     "ece": 0.1325,
     "ece_ci": [
-      0.0972,
-      0.1933
+      0.0786,
+      0.1714
     ],
     "brier": 0.1912,
     "brier_ci": [
@@ -470,12 +502,108 @@
       0.516,
       0.8116
     ],
-    "net_payoff": 11366.16,
+    "net_payoff": 11912.14,
     "net_payoff_ci": [
-      8737.96,
-      13888.59
+      9157.69,
+      14555.72
     ],
     "cost_usd": 0.0415,
+    "pareto_optimal": false,
+    "pareto_optimal_among_real": false
+  },
+  {
+    "name": "openrouter:moonshotai_kimi-k2-thinking",
+    "n": 69,
+    "accuracy": 1.0,
+    "accuracy_ci": [
+      1.0,
+      1.0
+    ],
+    "ece": 0.004,
+    "ece_ci": [
+      0.0023,
+      0.007
+    ],
+    "brier": 0.0001,
+    "brier_ci": [
+      0.0,
+      0.0002
+    ],
+    "logloss": 0.004,
+    "logloss_ci": [
+      0.002,
+      0.0064
+    ],
+    "net_payoff": 10026.18,
+    "net_payoff_ci": [
+      7902.8,
+      12174.12
+    ],
+    "cost_usd": 1.2527,
+    "pareto_optimal": true,
+    "pareto_optimal_among_real": true
+  },
+  {
+    "name": "openrouter:deepseek_deepseek-r1",
+    "n": 55,
+    "accuracy": 1.0,
+    "accuracy_ci": [
+      1.0,
+      1.0
+    ],
+    "ece": 0.008,
+    "ece_ci": [
+      0.0055,
+      0.012
+    ],
+    "brier": 0.0002,
+    "brier_ci": [
+      0.0001,
+      0.0004
+    ],
+    "logloss": 0.0081,
+    "logloss_ci": [
+      0.0052,
+      0.0115
+    ],
+    "net_payoff": 7882.6,
+    "net_payoff_ci": [
+      6007.03,
+      9924.36
+    ],
+    "cost_usd": 0.5623,
+    "pareto_optimal": false,
+    "pareto_optimal_among_real": false
+  },
+  {
+    "name": "baseline:always-pass",
+    "n": 0,
+    "accuracy": NaN,
+    "accuracy_ci": [
+      NaN,
+      NaN
+    ],
+    "ece": NaN,
+    "ece_ci": [
+      NaN,
+      NaN
+    ],
+    "brier": NaN,
+    "brier_ci": [
+      NaN,
+      NaN
+    ],
+    "logloss": NaN,
+    "logloss_ci": [
+      NaN,
+      NaN
+    ],
+    "net_payoff": -640.0,
+    "net_payoff_ci": [
+      -640.0,
+      -640.0
+    ],
+    "cost_usd": 0.0,
     "pareto_optimal": false,
     "pareto_optimal_among_real": false
   },
@@ -489,8 +617,8 @@
     ],
     "ece": 0.5321,
     "ece_ci": [
-      0.4852,
-      0.5785
+      0.4855,
+      0.579
     ],
     "brier": 0.3673,
     "brier_ci": [
@@ -502,10 +630,10 @@
       0.9562,
       1.3296
     ],
-    "net_payoff": -11604.21,
+    "net_payoff": -18202.68,
     "net_payoff_ci": [
-      -13117.6,
-      -10189.54
+      -20576.63,
+      -15983.59
     ],
     "cost_usd": 0.0,
     "pareto_optimal": false,

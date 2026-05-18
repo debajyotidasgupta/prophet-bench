@@ -28,10 +28,11 @@ from __future__ import annotations
 
 import json
 import re
+from collections.abc import Callable
 from dataclasses import dataclass
 from importlib import resources
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
 import numpy as np
 
@@ -407,7 +408,7 @@ class MultilingualFamily:
             )
         return tasks
 
-    def reference_score(self, task, response):  # noqa: ANN001
+    def reference_score(self, task, response):
         return None
 
 

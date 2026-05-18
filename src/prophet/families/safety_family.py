@@ -43,9 +43,8 @@ distribution is roughly balanced across the cycle.
 
 from __future__ import annotations
 
-import re
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Callable
 
 import numpy as np
 
@@ -306,7 +305,7 @@ class SafetyFamily:
                 )
         return tasks
 
-    def reference_score(self, task, response):  # noqa: ANN001
+    def reference_score(self, task, response):
         return None
 
 

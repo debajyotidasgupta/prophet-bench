@@ -6,22 +6,26 @@
 \# & Agent & Acc. & ECE & Brier & Log-loss & Net payoff & Cost \$ \\
 \midrule
 1 & baseline:oracle & 1.000 & 0.000 & 0.000 & 0.000 & 38685 & 0.000 \\
-2 & openrouter:anthropic-claude-opus-4.7$\star$ & 0.900 & 0.078 & 0.096 & 0.383 & 23686 & 1.351 \\
-3 & openrouter:google-gemini-3-flash-preview$\star$ & 0.970 & 0.027 & 0.027 & 0.542 & 22908 & 0.212 \\
-4 & openrouter:deepseek-deepseek-v3.2 & 0.846 & 0.129 & 0.136 & 1.334 & 21908 & 0.061 \\
-5 & openrouter:anthropic-claude-haiku-4.5 & 0.935 & 0.043 & 0.060 & 0.267 & 21739 & 0.537 \\
-6 & openrouter:openai-gpt-5-mini & 0.871 & 0.123 & 0.128 & 1.186 & 21042 & 0.500 \\
-7 & openrouter:openai-gpt-5 & 0.931 & 0.065 & 0.069 & 0.327 & 18980 & 2.017 \\
-8 & openrouter:meta-llama-llama-4-maverick & 0.853 & 0.122 & 0.129 & 1.783 & 18611 & 0.078 \\
-9 & openrouter:anthropic-claude-sonnet-4.6 & 0.870 & 0.093 & 0.115 & 0.427 & 17051 & 0.796 \\
-10 & openrouter:qwen-qwen3-32b & 0.843 & 0.110 & 0.138 & 1.052 & 15372 & 0.091 \\
-11 & openrouter:google-gemini-3.1-flash-lite & 0.835 & 0.165 & 0.165 & 3.424 & 15311 & 0.088 \\
-12 & openrouter:google-gemini-3.1-pro-preview & 0.898 & 0.067 & 0.051 & 0.750 & 14585 & 2.010 \\
-13 & openrouter:openai-gpt-5-nano & 0.819 & 0.154 & 0.167 & 1.591 & 13155 & 0.150 \\
-14 & openrouter:meta-llama-llama-4-scout & 0.831 & 0.147 & 0.158 & 2.717 & 12242 & 0.027 \\
-15 & openrouter:openai-gpt-5.4-nano & 0.734 & 0.133 & 0.191 & 0.656 & 11366 & 0.042 \\
-16 & baseline:random & 0.000 & 0.532 & 0.367 & 1.140 & -11604 & 0.000 \\
-17 & baseline:always-take & 0.000 & 0.990 & 0.980 & 4.605 & -24370 & 0.000 \\
+2 & openrouter:google-gemini-3.1-pro-preview$\star$ & 0.911 & 0.054 & 0.041 & 0.545 & 37813 & 5.256 \\
+3 & openrouter:openai-gpt-5$\star$ & 0.945 & 0.040 & 0.050 & 0.224 & 36601 & 3.816 \\
+4 & openrouter:anthropic-claude-opus-4.7 & 0.900 & 0.078 & 0.096 & 0.383 & 24824 & 1.351 \\
+5 & openrouter:google-gemini-3-flash-preview$\star$ & 0.970 & 0.027 & 0.027 & 0.542 & 23800 & 0.212 \\
+6 & openrouter:anthropic-claude-haiku-4.5 & 0.935 & 0.043 & 0.060 & 0.267 & 22684 & 0.537 \\
+7 & openrouter:deepseek-deepseek-v3.2 & 0.846 & 0.129 & 0.136 & 1.334 & 22566 & 0.061 \\
+8 & openrouter:openai-gpt-5-mini & 0.871 & 0.123 & 0.128 & 1.186 & 21768 & 0.500 \\
+9 & openrouter:meta-llama-llama-4-maverick & 0.853 & 0.122 & 0.129 & 1.783 & 19253 & 0.078 \\
+10 & openrouter:anthropic-claude-sonnet-4.6 & 0.870 & 0.093 & 0.115 & 0.427 & 17793 & 0.796 \\
+11 & openrouter:qwen-qwen3-32b & 0.843 & 0.110 & 0.138 & 1.052 & 17001 & 0.091 \\
+12 & openrouter:google-gemini-3.1-flash-lite & 0.835 & 0.165 & 0.165 & 3.424 & 15976 & 0.088 \\
+13 & openrouter:openai-gpt-5-nano & 0.819 & 0.154 & 0.167 & 1.591 & 14685 & 0.150 \\
+14 & openrouter:meta-llama-llama-4-scout & 0.831 & 0.147 & 0.158 & 2.717 & 14194 & 0.027 \\
+15 & openrouter:qwen-qwen3-235b-a22b-thinking-2507 & 0.911 & 0.068 & 0.085 & 0.876 & 13216 & 0.489 \\
+16 & openrouter:openai-gpt-5.4-nano & 0.734 & 0.133 & 0.191 & 0.656 & 11912 & 0.042 \\
+17 & openrouter:moonshotai-kimi-k2-thinking$\star$ & 1.000 & 0.004 & 0.000 & 0.004 & 10026 & 1.253 \\
+18 & openrouter:deepseek-deepseek-r1 & 1.000 & 0.008 & 0.000 & 0.008 & 7883 & 0.562 \\
+19 & baseline:always-pass & nan & nan & nan & nan & -640 & 0.000 \\
+20 & baseline:random & 0.000 & 0.532 & 0.367 & 1.140 & -18203 & 0.000 \\
+21 & baseline:always-take & 0.000 & 0.990 & 0.980 & 4.605 & -24370 & 0.000 \\
 \bottomrule
 \end{tabular}
 \end{table}

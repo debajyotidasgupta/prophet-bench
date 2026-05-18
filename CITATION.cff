@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+title: "PROPHET: Probabilistic Reliability via Outcome-Pricing for Honest Evaluation of Agent Calibration"
+message: "If you use PROPHET, please cite the paper and this repository."
+type: software
+authors:
+  - given-names: Debajyoti
+    family-names: Dasgupta
+    email: debajyotidasgupta6@gmail.com
+license: MIT
+repository-code: "https://github.com/debajyotidasgupta/prophet-bench"
+url: "https://github.com/debajyotidasgupta/prophet-bench"
+preferred-citation:
+  type: conference-paper
+  title: "PROPHET: Probabilistic Reliability via Outcome-Pricing for Honest Evaluation of Agent Calibration"
+  authors:
+    - given-names: Debajyoti
+      family-names: Dasgupta
+  collection-title: "NeurIPS 2026 Datasets and Benchmarks Track"
+  year: 2026

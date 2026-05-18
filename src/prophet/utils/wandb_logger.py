@@ -37,7 +37,7 @@ class WandbRun(AbstractContextManager):
     def __enter__(self):
         try:
             import wandb
-        except Exception as e:  # noqa: BLE001
+        except Exception as e:
             log.warning("wandb unavailable, logging disabled: %s", e)
             return self
         try:
@@ -51,7 +51,7 @@ class WandbRun(AbstractContextManager):
                 mode=mode,
                 reinit=True,
             )
-        except Exception as e:  # noqa: BLE001
+        except Exception as e:
             log.warning("wandb init failed (continuing without): %s", e)
             self._run = None
         return self

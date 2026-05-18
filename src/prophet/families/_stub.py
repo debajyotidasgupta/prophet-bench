@@ -42,7 +42,7 @@ class StubFamily:
             for i in range(n)
         ]
 
-    def reference_score(self, task, response):  # noqa: ANN001
+    def reference_score(self, task, response):
         return None
 
 

@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import logging
-import os
 import sys
 from pathlib import Path
 
@@ -47,15 +46,14 @@ def smoke(
     from prophet.agents import AlwaysPassAgent, AlwaysTakeAgent, OracleAgent, RandomAgent
     from prophet.engine.market import MarketMaker
     from prophet.engine.orchestrator import Orchestrator, RunConfig
-    from prophet.families import get_family
     from prophet.engine.scoring import (
-        adaptive_ece,
         brier_score,
         ece,
         log_score,
         model_overreach_point,
         total_payoff,
     )
+    from prophet.families import get_family
     fam = get_family("math")
     tasks = fam.generate(n=n, seed=seed)
     market = MarketMaker(market_seed=seed)
@@ -122,6 +120,11 @@ def run(
     wandb: bool = typer.Option(False, help="Enable Weights & Biases logging."),
     wandb_project: str = typer.Option("prophet", help="W&B project name."),
     log_level: str = typer.Option("INFO"),
+    difficulty_range: str = typer.Option(
+        "0.0,1.0",
+        help="Restrict generated tasks to difficulty band 'lo,hi' (inclusive). "
+        "Use e.g. '0.97,1.0' to run only T_extreme tier.",
+    ),
 ) -> None:
     """Run an agent through one or more families."""
     _setup_logging(log_level)
@@ -129,13 +132,19 @@ def run(
     from prophet.agents import ConcurrentRunner, build_agent
     from prophet.engine.market import MarketMaker
     from prophet.engine.orchestrator import Orchestrator, RunConfig
-    from prophet.families import get_family, list_families as _ls
+    from prophet.families import get_family
+    from prophet.families import list_families as _ls
 
     families_list = _ls() if families == "all" else [s.strip() for s in families.split(",") if s.strip()]
+    try:
+        lo_str, hi_str = difficulty_range.split(",")
+        diff_band = (float(lo_str), float(hi_str))
+    except Exception as e:
+        raise typer.BadParameter(f"--difficulty-range must be 'lo,hi' (got {difficulty_range!r}): {e}")
     tasks = []
     for fname in families_list:
         fam = get_family(fname)
-        tasks.extend(fam.generate(n=n, seed=seed))
+        tasks.extend(fam.generate(n=n, seed=seed, difficulty_range=diff_band))
     market = MarketMaker(market_seed=seed)
     orch = Orchestrator(market=market)
     ag = build_agent(agent, max_tokens=max_tokens, temperature=temperature)
@@ -173,7 +182,7 @@ class _PrecomputedRespondAgent:
         triples = runner.run_batch(tasks, market)
         self._by_task_id = {t.task_id: resp for (t, _o, resp) in triples}
 
-    def respond(self, task, offer):  # noqa: ANN001 - matches Agent protocol
+    def respond(self, task, offer):
         resp = self._by_task_id.get(task.task_id)
         if resp is None:
             return self._inner.respond(task, offer)
