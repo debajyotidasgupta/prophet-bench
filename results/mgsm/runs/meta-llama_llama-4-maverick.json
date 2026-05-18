@@ -1,0 +1,992 @@
+{
+  "summary": {
+    "agent": "meta-llama/llama-4-maverick",
+    "cost_total": 0.017632470000000004,
+    "per_lang": {
+      "en": {
+        "correct": 30,
+        "total": 30,
+        "acc": 1.0
+      },
+      "es": {
+        "correct": 28,
+        "total": 30,
+        "acc": 0.9333333333333333
+      },
+      "fr": {
+        "correct": 27,
+        "total": 30,
+        "acc": 0.9
+      },
+      "de": {
+        "correct": 26,
+        "total": 30,
+        "acc": 0.8666666666666667
+      }
+    },
+    "overall_acc": 0.925,
+    "n_calls": 120
+  },
+  "samples": [
+    {
+      "lang": "en",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.00013185,
+      "response_excerpt": "## Step 1: Calculate the total number of eggs laid by Janet's ducks per day.\nJanet's ducks lay 16 eggs per day.\n\n## Step"
+    },
+    {
+      "lang": "en",
+      "pred": 3,
+      "gold": 3,
+      "correct": true,
+      "cost": 3.465e-05,
+      "response_excerpt": "2 bolts of blue fiber are used. Half that much white fiber is 2 / 2 = 1 bolt. \nTotal bolts = 2 + 1 = 3\nFinal answer:\n3"
+    },
+    {
+      "lang": "en",
+      "pred": 70000,
+      "gold": 70000,
+      "correct": true,
+      "cost": 0.0003291,
+      "response_excerpt": "## Step 1: Calculate the total amount Josh spent on the house.\nThe total amount spent is the sum of the cost of the hous"
+    },
+    {
+      "lang": "en",
+      "pred": 540,
+      "gold": 540,
+      "correct": true,
+      "cost": 0.00010587,
+      "response_excerpt": "## Step 1: Determine the number of sprints James runs in a week.\nJames runs 3 sprints 3 times a week, so he runs 3 * 3 ="
+    },
+    {
+      "lang": "en",
+      "pred": 20,
+      "gold": 20,
+      "correct": true,
+      "cost": 0.00014835,
+      "response_excerpt": "## Step 1: Determine the total daily feed needed for the chickens.\nTo find the total daily feed needed, we need to know "
+    },
+    {
+      "lang": "en",
+      "pred": 64,
+      "gold": 64,
+      "correct": true,
+      "cost": 0.00012495,
+      "response_excerpt": "## Step 1: Determine the cost of one glass and the discounted cost of the second glass.\nThe cost of one glass is $5, and"
+    },
+    {
+      "lang": "en",
+      "pred": 260,
+      "gold": 260,
+      "correct": true,
+      "cost": 0.0001014,
+      "response_excerpt": "## Step 1: Determine the number of sheep in Seattle.\nSeattle has 20 sheep.\n\n## Step 2: Calculate the number of sheep in "
+    },
+    {
+      "lang": "en",
+      "pred": 160,
+      "gold": 160,
+      "correct": true,
+      "cost": 0.00019815,
+      "response_excerpt": "## Step 1: Calculate the amount of data downloaded before the restart.\nFirst, we need to determine how much of the file "
+    },
+    {
+      "lang": "en",
+      "pred": 45,
+      "gold": 45,
+      "correct": true,
+      "cost": 0.00030161,
+      "response_excerpt": "## Step 1: Calculate the distance John initially travels away from home.\nTo find the distance John initially travels awa"
+    },
+    {
+      "lang": "en",
+      "pred": 460,
+      "gold": 460,
+      "correct": true,
+      "cost": 0.0001461,
+      "response_excerpt": "## Step 1: Calculate Eliza's earnings for the first 40 hours.\nEliza earns $10 per hour for the first 40 hours, so her ea"
+    },
+    {
+      "lang": "en",
+      "pred": 366,
+      "gold": 366,
+      "correct": true,
+      "cost": 0.00015585,
+      "response_excerpt": "## Step 1: Calculate the number of downloads in the first month.\nThe number of downloads in the first month is given as "
+    },
+    {
+      "lang": "en",
+      "pred": 694,
+      "gold": 694,
+      "correct": true,
+      "cost": 7.05e-05,
+      "response_excerpt": "To find the total cost, we need to calculate the cost of each item and add them together.\n\nThe cost of 3 dozen donuts is"
+    },
+    {
+      "lang": "en",
+      "pred": 13,
+      "gold": 13,
+      "correct": true,
+      "cost": 0.00024225,
+      "response_excerpt": "## Step 1: Calculate the initial cost of planting the tree.\nThe initial cost is $90.\n\n## Step 2: Determine the annual pr"
+    },
+    {
+      "lang": "en",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.0001377,
+      "response_excerpt": "Let's denote the initial number of vacuum cleaners as x.\n\nShe sold a third of her vacuum cleaners at the green house: x/"
+    },
+    {
+      "lang": "en",
+      "pred": 60,
+      "gold": 60,
+      "correct": true,
+      "cost": 0.00025102,
+      "response_excerpt": "## Step 1: Calculate the number of students enrolled in contemporary dance.\nFirst, we need to find out how many students"
+    },
+    {
+      "lang": "en",
+      "pred": 125,
+      "gold": 125,
+      "correct": true,
+      "cost": 0.00015165,
+      "response_excerpt": "## Step 1: Calculate the potential profit from the jewelry purchase.\nTo find the profit from the jewelry, we need to cal"
+    },
+    {
+      "lang": "en",
+      "pred": 230,
+      "gold": 230,
+      "correct": true,
+      "cost": 0.00012607,
+      "response_excerpt": "## Step 1: Calculate the total distance covered by each train on the first day.\nThe distance covered by each train on th"
+    },
+    {
+      "lang": "en",
+      "pred": 57500,
+      "gold": 57500,
+      "correct": true,
+      "cost": 0.0001902,
+      "response_excerpt": "## Step 1: Calculate the total hours Jill works as a teacher in a year.\nJill works 35 hours a week as a teacher and work"
+    },
+    {
+      "lang": "en",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 0.0001104,
+      "response_excerpt": "## Step 1: Calculate the number of days in 4 weeks.\nThere are 7 days in a week, so in 4 weeks, there are 7 * 4 = 28 days"
+    },
+    {
+      "lang": "en",
+      "pred": 6,
+      "gold": 6,
+      "correct": true,
+      "cost": 0.00021315,
+      "response_excerpt": "## Step 1: Calculate the total distance Marissa needs to cover.\nThe total distance Marissa needs to cover is 12 miles.\n\n"
+    },
+    {
+      "lang": "en",
+      "pred": 15,
+      "gold": 15,
+      "correct": true,
+      "cost": 0.00025455,
+      "response_excerpt": "## Step 1: Calculate the amount of water in the original 10 liters of orange drink.\nFirst, we need to find out how much "
+    },
+    {
+      "lang": "en",
+      "pred": 14,
+      "gold": 14,
+      "correct": true,
+      "cost": 0.0001763,
+      "response_excerpt": "## Step 1: Determine Samantha's current age and Raymond's age difference from Samantha.\nSamantha is currently 31 years o"
+    },
+    {
+      "lang": "en",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 6.165e-05,
+      "response_excerpt": "First, calculate the number of DVDs sold to the first 3 customers: 3 * 1 = 3.\nThen, calculate the number of DVDs sold to"
+    },
+    {
+      "lang": "en",
+      "pred": 8,
+      "gold": 8,
+      "correct": true,
+      "cost": 0.00012766,
+      "response_excerpt": "## Step 1: Determine the total hours the candle burns.\nThe candle burns from 1:00 PM to 5:00 PM. To find the total hours"
+    },
+    {
+      "lang": "en",
+      "pred": 26,
+      "gold": 26,
+      "correct": true,
+      "cost": 0.000105,
+      "response_excerpt": "## Step 1: Understand the problem and identify what needs to be found\nWe need to find the original price of the book bef"
+    },
+    {
+      "lang": "en",
+      "pred": 2,
+      "gold": 2,
+      "correct": true,
+      "cost": 0.000174,
+      "response_excerpt": "## Step 1: Calculate the total cost of the chicken meal, milk packs, and apples.\nFirst, we need to find the total cost o"
+    },
+    {
+      "lang": "en",
+      "pred": 243,
+      "gold": 243,
+      "correct": true,
+      "cost": 0.0001104,
+      "response_excerpt": "## Step 1: Calculate the total cost of the shorts.\n3 pairs of shorts at $16.50 each will be 3 * $16.50 = $49.50.\n\n## Ste"
+    },
+    {
+      "lang": "en",
+      "pred": 16,
+      "gold": 16,
+      "correct": true,
+      "cost": 0.0001329,
+      "response_excerpt": "## Step 1: Determine the number of servings Cynthia consumes in 60 days.\nCynthia eats one serving of ice cream every nig"
+    },
+    {
+      "lang": "en",
+      "pred": 25,
+      "gold": 25,
+      "correct": true,
+      "cost": 2.64e-05,
+      "response_excerpt": "60 - 20 = 40\n40 - 15 = 25\n25\n\nFinal answer:\n25"
+    },
+    {
+      "lang": "en",
+      "pred": 104,
+      "gold": 104,
+      "correct": true,
+      "cost": 0.00013125,
+      "response_excerpt": "## Step 1: Understand the given problem\nGloria is choosing between a pair of boots and two pairs of high heels. The tota"
+    },
+    {
+      "lang": "es",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.00021407,
+      "response_excerpt": "## Step 1: Calculate the total number of eggs laid by Janet's ducks per day.\nJanet's ducks lay 16 eggs per day.\n\n## Step"
+    },
+    {
+      "lang": "es",
+      "pred": 3,
+      "gold": 3,
+      "correct": true,
+      "cost": 0.00011205,
+      "response_excerpt": "## Step 1: Understand the problem\nThe problem states that a girl (bata) has 2 rolls of blue fabric and half that amount "
+    },
+    {
+      "lang": "es",
+      "pred": 70000,
+      "gold": 70000,
+      "correct": true,
+      "cost": 0.00013086,
+      "response_excerpt": "Primero, calculemos el valor total que Josh gast\u00f3 en la casa: $80 000 + $50 000 = $130 000.\n\nEl valor inicial de la casa"
+    },
+    {
+      "lang": "es",
+      "pred": 540,
+      "gold": 540,
+      "correct": true,
+      "cost": 4.965e-05,
+      "response_excerpt": "James corre 3 carreras de velocidad, 3 veces por semana. Entonces, corre 3 x 3 = 9 carreras de velocidad por semana.\nCad"
+    },
+    {
+      "lang": "es",
+      "pred": 20,
+      "gold": 20,
+      "correct": true,
+      "cost": 0.00016005,
+      "response_excerpt": "## Step 1: Determine the total amount of food needed for the chickens per day.\nFirst, we need to figure out how much foo"
+    },
+    {
+      "lang": "es",
+      "pred": 64,
+      "gold": 64,
+      "correct": true,
+      "cost": 0.00018105,
+      "response_excerpt": "## Step 1: Determine the cost of a single full-priced glass and a discounted glass.\nThe cost of a full-priced glass is $"
+    },
+    {
+      "lang": "es",
+      "pred": 260,
+      "gold": 260,
+      "correct": true,
+      "cost": 0.00011055,
+      "response_excerpt": "## Step 1: Determine the number of sheep in Charleston.\nSince there are 4 times as many sheep in Charleston as in Seattl"
+    },
+    {
+      "lang": "es",
+      "pred": 160,
+      "gold": 160,
+      "correct": true,
+      "cost": 0.0001026,
+      "response_excerpt": "200 / 2 = 100 minutos para descargar el archivo sin interrupciones.\n40 % de 100 minutos son 0,4 x 100 = 40 minutos.\nEnto"
+    },
+    {
+      "lang": "es",
+      "pred": 4,
+      "gold": 45,
+      "correct": false,
+      "cost": 0.0002616,
+      "response_excerpt": "## Step 1: Calculate the distance John traveled away from his house.\nTo find the distance John traveled away from his ho"
+    },
+    {
+      "lang": "es",
+      "pred": 460,
+      "gold": 460,
+      "correct": true,
+      "cost": 8.46e-05,
+      "response_excerpt": "Para calcular los ingresos de Eliza, primero calculamos sus ingresos por las primeras 40 horas de trabajo: 40 horas * $1"
+    },
+    {
+      "lang": "es",
+      "pred": 366,
+      "gold": 366,
+      "correct": true,
+      "cost": 4.155e-05,
+      "response_excerpt": "60 * 3 = 180\n180 + 60 = 240\n180 * 0.3 = 54\n180 - 54 = 126\n240 + 126 = 366\n\n366"
+    },
+    {
+      "lang": "es",
+      "pred": 694,
+      "gold": 694,
+      "correct": true,
+      "cost": 0.0001272,
+      "response_excerpt": "## Step 1: Calculate the cost of 3 dozen donuts\n3 dozen donuts at $68 per dozen will be 3 * $68 = $204.\n\n## Step 2: Calc"
+    },
+    {
+      "lang": "es",
+      "pred": 13,
+      "gold": 13,
+      "correct": true,
+      "cost": 0.0001569,
+      "response_excerpt": "## Step 1: Calculate the annual revenue from selling lemons\nThe tree gives 7 lemons per year, and each lemon is sold for"
+    },
+    {
+      "lang": "es",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.0001845,
+      "response_excerpt": "Let's denote the initial number of vacuum cleaners as \\(x\\).\n\n1. Melanie sold \\(\\frac{1}{3}\\) of her vacuum cleaners at "
+    },
+    {
+      "lang": "es",
+      "pred": 60,
+      "gold": 60,
+      "correct": true,
+      "cost": 0.00017505,
+      "response_excerpt": "## Step 1: Calculate the number of students who enrolled in contemporary dance.\nFirst, we need to find out how many stud"
+    },
+    {
+      "lang": "es",
+      "pred": 125,
+      "gold": 125,
+      "correct": true,
+      "cost": 0.00025679,
+      "response_excerpt": "## Step 1: Calculate the potential gain from investing in jewelry.\nTo find the gain from investing in jewelry, we need t"
+    },
+    {
+      "lang": "es",
+      "pred": 230,
+      "gold": 230,
+      "correct": true,
+      "cost": 5.025e-05,
+      "response_excerpt": "Para encontrar la distancia total recorrida por cada tren en los dos d\u00edas, debemos sumar las distancias recorridas cada "
+    },
+    {
+      "lang": "es",
+      "pred": 57500,
+      "gold": 57500,
+      "correct": true,
+      "cost": 7.935e-05,
+      "response_excerpt": "Primero, calculemos cu\u00e1nto gana Jill en una semana:\n- Como profesora: $20/hora * 35 horas/semana = $700/semana\n- Como en"
+    },
+    {
+      "lang": "es",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 5.85e-05,
+      "response_excerpt": "1 semana tiene 7 d\u00edas, por lo tanto 4 semanas tienen 4 x 7 = 28 d\u00edas.\nClaire come 3 huevos cada d\u00eda, por lo tanto en 28 "
+    },
+    {
+      "lang": "es",
+      "pred": 6,
+      "gold": 6,
+      "correct": true,
+      "cost": 0.00019905,
+      "response_excerpt": "## Step 1: Understand the problem and identify the given information.\nMarissa est\u00e1 caminando un sendero de 12 millas. Ca"
+    },
+    {
+      "lang": "es",
+      "pred": 1,
+      "gold": 15,
+      "correct": false,
+      "cost": 0.00025605,
+      "response_excerpt": "## Step 1: Calculate the amount of water in the original 10 liters of orange refreshment.\nFirst, we need to find out how"
+    },
+    {
+      "lang": "es",
+      "pred": 14,
+      "gold": 14,
+      "correct": true,
+      "cost": 0.00035172,
+      "response_excerpt": "## Step 1: Understand the given information\nRaymond naci\u00f3 6 a\u00f1os antes que Samantha. Samantha ahora tiene 31 a\u00f1os.\n\n## S"
+    },
+    {
+      "lang": "es",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 0.00018945,
+      "response_excerpt": "Los primeros 3 clientes compran 3 * 1 = 3 DVD. \nLos siguientes 2 clientes compran 2 * 2 = 4 DVD. \nLos \u00faltimos 3 clientes"
+    },
+    {
+      "lang": "es",
+      "pred": 8,
+      "gold": 8,
+      "correct": true,
+      "cost": 0.00015147,
+      "response_excerpt": "La vela arde durante 4 horas, desde la 1:00 p. m. hasta las 5:00 p. m.\nSe derrite 2 cent\u00edmetros por hora.\n4 horas x 2 ce"
+    },
+    {
+      "lang": "es",
+      "pred": 26,
+      "gold": 26,
+      "correct": true,
+      "cost": 7.55e-05,
+      "response_excerpt": "El precio de venta es $19,50.\nEl descuento fue del 25%.\nSea x el precio original.\nx - 0,25x = 19,50\n0,75x = 19,50\nx = 19"
+    },
+    {
+      "lang": "es",
+      "pred": 2,
+      "gold": 2,
+      "correct": true,
+      "cost": 0.00014847,
+      "response_excerpt": "Primero, calculemos el costo total de la comida con pollo, la leche y las manzanas:\nComida con pollo: $12\n5 cajas de lec"
+    },
+    {
+      "lang": "es",
+      "pred": 243,
+      "gold": 243,
+      "correct": true,
+      "cost": 0.0001119,
+      "response_excerpt": "## Step 1: Calculate the total cost of the shorts.\n3 pairs of shorts at $16.50 each will be 3 * $16.50 = $49.50.\n\n## Ste"
+    },
+    {
+      "lang": "es",
+      "pred": 16,
+      "gold": 16,
+      "correct": true,
+      "cost": 6.105e-05,
+      "response_excerpt": "Cynthia come 1 porci\u00f3n de helado por noche, por lo que en 60 d\u00edas comer\u00e1 60 porciones.\nCada caja tiene 15 porciones, por"
+    },
+    {
+      "lang": "es",
+      "pred": 25,
+      "gold": 25,
+      "correct": true,
+      "cost": 6.045e-05,
+      "response_excerpt": "Henry recorri\u00f3 60 millas en total. \nPar\u00f3 despu\u00e9s de 20 millas, por lo que quedan 60 - 20 = 40 millas.\nSu segunda parada "
+    },
+    {
+      "lang": "es",
+      "pred": 104,
+      "gold": 104,
+      "correct": true,
+      "cost": 6.84e-05,
+      "response_excerpt": "El par m\u00e1s barato de zapatos de tac\u00f3n alto cuesta $33, por lo que el par m\u00e1s caro cuesta 2 * 33 = $66.\nLos dos pares de "
+    },
+    {
+      "lang": "fr",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.00015705,
+      "response_excerpt": "## Step 1: Calculate the total number of eggs laid by Janet's ducks per day.\nJanet's ducks lay 16 eggs per day.\n\n## Step"
+    },
+    {
+      "lang": "fr",
+      "pred": 3,
+      "gold": 3,
+      "correct": true,
+      "cost": 0.0001718,
+      "response_excerpt": "## Step 1: Understand the problem\nThe problem states that a dress requires 2 rolls of blue fiber and half that amount of"
+    },
+    {
+      "lang": "fr",
+      "pred": 70000,
+      "gold": 70000,
+      "correct": true,
+      "cost": 0.0002317,
+      "response_excerpt": "## Step 1: Calculate the total amount Josh invested in the house.\nThe total amount Josh invested is the sum of the price"
+    },
+    {
+      "lang": "fr",
+      "pred": 540,
+      "gold": 540,
+      "correct": true,
+      "cost": 8.34e-05,
+      "response_excerpt": "## Step 1: Calculate the total number of sprints Jacques does in a week.\nJacques fait des s\u00e9ries de 3 sprints 3 fois par"
+    },
+    {
+      "lang": "fr",
+      "pred": 20,
+      "gold": 20,
+      "correct": true,
+      "cost": 0.0001521,
+      "response_excerpt": "## Step 1: Calculate the total number of bowls of food Wendi needs to give to her chickens per day.\nWendi needs to give "
+    },
+    {
+      "lang": "fr",
+      "pred": 64,
+      "gold": 64,
+      "correct": true,
+      "cost": 0.00012195,
+      "response_excerpt": "## Step 1: Determine the cost of one glass and the discounted price for every second glass.\nThe cost of one glass is $5,"
+    },
+    {
+      "lang": "fr",
+      "pred": 260,
+      "gold": 260,
+      "correct": true,
+      "cost": 6.225e-05,
+      "response_excerpt": "Si Seattle a 20 moutons, Charleston en a 4 fois plus, donc Charleston a 4 * 20 = 80 moutons.\nToulouse a deux fois plus d"
+    },
+    {
+      "lang": "fr",
+      "pred": 160,
+      "gold": 160,
+      "correct": true,
+      "cost": 0.00029455,
+      "response_excerpt": "## Step 1: Calculate the time taken to download 40% of the file.\nFirst, we need to find out how long it takes to downloa"
+    },
+    {
+      "lang": "fr",
+      "pred": 45,
+      "gold": 45,
+      "correct": true,
+      "cost": 0.0002882,
+      "response_excerpt": "## Step 1: Calculate the distance Jean traveled in the first 3 hours.\nDistance = speed * time = 60 mph * 3 hours = 180 m"
+    },
+    {
+      "lang": "fr",
+      "pred": 460,
+      "gold": 460,
+      "correct": true,
+      "cost": 0.0001443,
+      "response_excerpt": "## Step 1: Calculate the total earnings for the first 40 hours of work.\nFirst, we need to calculate \u00c9lisa's earnings for"
+    },
+    {
+      "lang": "fr",
+      "pred": 366,
+      "gold": 366,
+      "correct": true,
+      "cost": 9.573e-05,
+      "response_excerpt": "T\u00e9l\u00e9chargements au premier mois : 60  \nT\u00e9l\u00e9chargements au deuxi\u00e8me mois : 3 * 60 = 180  \nT\u00e9l\u00e9chargements au troisi\u00e8me mo"
+    },
+    {
+      "lang": "fr",
+      "pred": 694,
+      "gold": 694,
+      "correct": true,
+      "cost": 0.0001413,
+      "response_excerpt": "## Step 1: Calculate the cost of the beignets.\n3 douzaines de beignets \u00e0 68 $ la douzaine co\u00fbteront 3 * 68 = 204 $.\n\n## "
+    },
+    {
+      "lang": "fr",
+      "pred": 13,
+      "gold": 13,
+      "correct": true,
+      "cost": 0.00030947,
+      "response_excerpt": "## Step 1: Calculate the annual revenue from selling lemons\nThe tree produces 7 lemons per year, and each lemon is sold "
+    },
+    {
+      "lang": "fr",
+      "pred": 2,
+      "gold": 18,
+      "correct": false,
+      "cost": 0.0002571,
+      "response_excerpt": "## Step 1: Define the initial number of vacuum cleaners M\u00e9lanie had.\nLet's denote the initial number of vacuum cleaners "
+    },
+    {
+      "lang": "fr",
+      "pred": 55,
+      "gold": 60,
+      "correct": false,
+      "cost": 8.715e-05,
+      "response_excerpt": "20 % de 20 \u00e9l\u00e8ves font de la danse contemporaine, soit 0,2 x 20 = 4 \u00e9l\u00e8ves.\n25 % de 20 \u00e9l\u00e8ves font de la danse jazz, soi"
+    },
+    {
+      "lang": "fr",
+      "pred": 125,
+      "gold": 125,
+      "correct": true,
+      "cost": 0.0001647,
+      "response_excerpt": "## Step 1: Calculate the potential profit from investing in jewelry.\nTo find the profit from investing in jewelry, we ne"
+    },
+    {
+      "lang": "fr",
+      "pred": 230,
+      "gold": 230,
+      "correct": true,
+      "cost": 0.00016412,
+      "response_excerpt": "## Step 1: Understand the problem\nThe problem describes two trains starting from San Rafael, traveling west for 80 miles"
+    },
+    {
+      "lang": "fr",
+      "pred": 57500,
+      "gold": 57500,
+      "correct": true,
+      "cost": 0.00024512,
+      "response_excerpt": "## Step 1: Calculate Jill's weekly earnings as a teacher.\nJill earns $20/hour as a teacher and works 35 hours/week. So, "
+    },
+    {
+      "lang": "fr",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 0.00010665,
+      "response_excerpt": "## Step 1: Calculate the number of days in 4 weeks.\nThere are 7 days in a week, so in 4 weeks, there are 7 * 4 = 28 days"
+    },
+    {
+      "lang": "fr",
+      "pred": 6,
+      "gold": 6,
+      "correct": true,
+      "cost": 0.00022515,
+      "response_excerpt": "## Step 1: Calculate the total distance Marissa needs to cover.\nThe total distance of the trail is given as 12 miles.\n\n#"
+    },
+    {
+      "lang": "fr",
+      "pred": 3,
+      "gold": 15,
+      "correct": false,
+      "cost": 0.0002559,
+      "response_excerpt": "## Step 1: Calculate the amount of water in the initial 10 litres of orange juice.\nFirst, we need to find out how much w"
+    },
+    {
+      "lang": "fr",
+      "pred": 14,
+      "gold": 14,
+      "correct": true,
+      "cost": 6.263e-05,
+      "response_excerpt": "Raymond est n\u00e9 6 ans avant Samantha, donc si Samantha a 31 ans, Raymond a 31 + 6 = 37 ans.\nLe fils de Raymond a 37 - 23 "
+    },
+    {
+      "lang": "fr",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 5.82e-05,
+      "response_excerpt": "Les 3 premiers clients ach\u00e8tent 3 * 1 = 3 DVD.\nLes 2 clients suivants ach\u00e8tent 2 * 2 = 4 DVD.\nLes 3 derniers ach\u00e8tent 3 "
+    },
+    {
+      "lang": "fr",
+      "pred": 8,
+      "gold": 8,
+      "correct": true,
+      "cost": 4.95e-05,
+      "response_excerpt": "La bougie br\u00fble de 13 h \u00e0 17 h, ce qui fait 4 heures.\nLa bougie perd 2 centim\u00e8tres par heure.\nDonc, en 4 heures, elle pe"
+    },
+    {
+      "lang": "fr",
+      "pred": 26,
+      "gold": 26,
+      "correct": true,
+      "cost": 0.00017317,
+      "response_excerpt": "## Step 1: Understand the problem\nKyle bought a bestseller book at $19.50 with a 25% discount on the original price. We "
+    },
+    {
+      "lang": "fr",
+      "pred": 2,
+      "gold": 2,
+      "correct": true,
+      "cost": 0.00020901,
+      "response_excerpt": "## Step 1: Calculate the total cost of the chicken dish.\nThe cost of the chicken dish is $12.\n\n## Step 2: Calculate the "
+    },
+    {
+      "lang": "fr",
+      "pred": 243,
+      "gold": 243,
+      "correct": true,
+      "cost": 0.0001203,
+      "response_excerpt": "## Step 1: Calculate the total cost of the shorts.\n3 shorts at 16,50 $ each will be 3 * 16,50 = 49,50 $.\n\n## Step 2: Cal"
+    },
+    {
+      "lang": "fr",
+      "pred": 16,
+      "gold": 16,
+      "correct": true,
+      "cost": 0.00017989,
+      "response_excerpt": "## Step 1: Calculate the total number of ice cream servings Cynthia consumes over 60 days.\nCynthia eats one serving of i"
+    },
+    {
+      "lang": "fr",
+      "pred": 25,
+      "gold": 25,
+      "correct": true,
+      "cost": 5.55e-05,
+      "response_excerpt": "Il a voyag\u00e9 60 miles au total. \nIl a fait son premier arr\u00eat apr\u00e8s 20 miles, donc il restait 60 - 20 = 40 miles.\nIl s'est"
+    },
+    {
+      "lang": "fr",
+      "pred": 104,
+      "gold": 104,
+      "correct": true,
+      "cost": 6.405e-05,
+      "response_excerpt": "L'une des paires de talons hauts co\u00fbte 33 $, l'autre co\u00fbte 2 * 33 = 66 $, donc ensemble elles co\u00fbtent 33 + 66 = 99 $.\nLe"
+    },
+    {
+      "lang": "de",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.00026687,
+      "response_excerpt": "## Step 1: Calculate the total number of eggs laid by Janets ducks per day.\nJanets ducks lay 16 eggs per day.\n\n## Step 2"
+    },
+    {
+      "lang": "de",
+      "pred": 3,
+      "gold": 3,
+      "correct": true,
+      "cost": 3.3e-05,
+      "response_excerpt": "2 Kn\u00e4uel blaue Wolle und halb so viel wei\u00dfe Wolle bedeutet 2 + (2 / 2) = 2 + 1 = 3\n3"
+    },
+    {
+      "lang": "de",
+      "pred": 70000,
+      "gold": 70000,
+      "correct": true,
+      "cost": 0.0001641,
+      "response_excerpt": "## Step 1: Calculate the total amount Josh spent on the house.\nJosh kaufte das Haus f\u00fcr 80.000 US-Dollar und steckte ans"
+    },
+    {
+      "lang": "de",
+      "pred": 540,
+      "gold": 540,
+      "correct": true,
+      "cost": 8.415e-05,
+      "response_excerpt": "## Step 1: Determine the number of sprints James does per week.\nJames decides to do 3 sprints, 3 times a week. So, he do"
+    },
+    {
+      "lang": "de",
+      "pred": 20,
+      "gold": 20,
+      "correct": true,
+      "cost": 0.0001533,
+      "response_excerpt": "## Step 1: Determine the total daily feed needed for all chickens.\nFirst, we need to calculate the total amount of feed "
+    },
+    {
+      "lang": "de",
+      "pred": 50,
+      "gold": 64,
+      "correct": false,
+      "cost": 0.0001254,
+      "response_excerpt": "## Step 1: Understand the pricing structure for the glasses.\nThe first glass costs $5, and every subsequent glass costs "
+    },
+    {
+      "lang": "de",
+      "pred": 260,
+      "gold": 260,
+      "correct": true,
+      "cost": 0.00010277,
+      "response_excerpt": "Seattle hat 20 Schafe. \nCharleston hat 4-mal so viele Schafe wie Seattle, also 4 * 20 = 80 Schafe.\nToulouse hat zweimal "
+    },
+    {
+      "lang": "de",
+      "pred": 160,
+      "gold": 160,
+      "correct": true,
+      "cost": 0.00031758,
+      "response_excerpt": "## Step 1: Calculate the amount of data downloaded before the restart.\nFirst, we need to find out how much of the file C"
+    },
+    {
+      "lang": "de",
+      "pred": 135,
+      "gold": 45,
+      "correct": false,
+      "cost": 0.0002631,
+      "response_excerpt": "## Step 1: Calculate the distance John travels in the first 3 hours.\nJohn travels at 60 Meilen/Stunde for 3 hours, so th"
+    },
+    {
+      "lang": "de",
+      "pred": 460,
+      "gold": 460,
+      "correct": true,
+      "cost": 7.29e-05,
+      "response_excerpt": "Elizas regul\u00e4rer Lohn betr\u00e4gt 10 $ pro Stunde f\u00fcr 40 Stunden, also 10 * 40 = 400 $.\nF\u00fcr \u00dcberstunden erh\u00e4lt sie 1,2 * 10 "
+    },
+    {
+      "lang": "de",
+      "pred": 366,
+      "gold": 366,
+      "correct": true,
+      "cost": 8.49e-05,
+      "response_excerpt": "Im ersten Monat wurde das Programm 60 Mal heruntergeladen.\nIm zweiten Monat wurde es 3 mal so oft heruntergeladen wie im"
+    },
+    {
+      "lang": "de",
+      "pred": 694,
+      "gold": 694,
+      "correct": true,
+      "cost": 0.00013605,
+      "response_excerpt": "## Step 1: Calculate the cost of 3 dozen donuts.\n3 dozen donuts at $68 per dozen will be 3 * 68 = $204.\n\n## Step 2: Calc"
+    },
+    {
+      "lang": "de",
+      "pred": 12,
+      "gold": 13,
+      "correct": false,
+      "cost": 0.0001716,
+      "response_excerpt": "## Step 1: Understand the initial cost and annual costs and revenues.\nThe initial cost of planting the tree is $90. Each"
+    },
+    {
+      "lang": "de",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.00016185,
+      "response_excerpt": "Let's denote the initial number of vacuum cleaners as \\(x\\).\n\n1. Melanie sold \\(\\frac{1}{3}\\) of her vacuum cleaners in "
+    },
+    {
+      "lang": "de",
+      "pred": 12,
+      "gold": 60,
+      "correct": false,
+      "cost": 0.0001725,
+      "response_excerpt": "## Step 1: Calculate the number of students who signed up for Contemporary Dance.\n20% of 20 students signed up for Conte"
+    },
+    {
+      "lang": "de",
+      "pred": 125,
+      "gold": 125,
+      "correct": true,
+      "cost": 0.0001461,
+      "response_excerpt": "Zun\u00e4chst m\u00fcssen wir den erwarteten Gewinn f\u00fcr jede Kaufoption berechnen.\n\nF\u00fcr den Schmuck im Wert von 5.000 US-Dollar be"
+    },
+    {
+      "lang": "de",
+      "pred": 230,
+      "gold": 230,
+      "correct": true,
+      "cost": 6.315e-05,
+      "response_excerpt": "To find the total distance traveled by each train over the two days, we need to calculate the distance traveled each day"
+    },
+    {
+      "lang": "de",
+      "pred": 57500,
+      "gold": 57500,
+      "correct": true,
+      "cost": 0.00013924,
+      "response_excerpt": "Jill unterrichtet 35 Stunden pro Woche und erh\u00e4lt 20 $ pro Stunde, ihr w\u00f6chentliches Gehalt als Lehrerin betr\u00e4gt also 35"
+    },
+    {
+      "lang": "de",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 0.00010667,
+      "response_excerpt": "Claire isst jeden Morgen 3 Eier. Eine Woche hat 7 Tage, also isst sie in einer Woche 3 * 7 = 21 Eier. In 4 Wochen isst s"
+    },
+    {
+      "lang": "de",
+      "pred": 6,
+      "gold": 6,
+      "correct": true,
+      "cost": 0.0002301,
+      "response_excerpt": "## Step 1:  To solve this problem, we first need to understand the information given and what is being asked.\nMarissa is"
+    },
+    {
+      "lang": "de",
+      "pred": 15,
+      "gold": 15,
+      "correct": true,
+      "cost": 0.0002556,
+      "response_excerpt": "## Step 1: Calculate the amount of water in the initial 10 liters of orange drink.\nFirst, we need to find out how much w"
+    },
+    {
+      "lang": "de",
+      "pred": 14,
+      "gold": 14,
+      "correct": true,
+      "cost": 7.627e-05,
+      "response_excerpt": "Samantha ist jetzt 31 Jahre alt. Raymond ist 6 Jahre \u00e4lter als Samantha, also ist Raymond 31 + 6 = 37 Jahre alt.\nRaymond"
+    },
+    {
+      "lang": "de",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 7.391e-05,
+      "response_excerpt": "3 Kunden kaufen jeweils 1 DVD, also kaufen sie 3 * 1 = 3 DVDs.\n2 Kunden kaufen jeweils 2 DVDs, also kaufen sie 2 * 2 = 4"
+    },
+    {
+      "lang": "de",
+      "pred": 8,
+      "gold": 8,
+      "correct": true,
+      "cost": 6.267e-05,
+      "response_excerpt": "Die Kerze brennt von 13 Uhr bis 17 Uhr, also 4 Stunden.\nSie schmilzt jede Stunde um 2 Zentimeter.\n4 Stunden * 2 Zentimet"
+    },
+    {
+      "lang": "de",
+      "pred": 26,
+      "gold": 26,
+      "correct": true,
+      "cost": 7.542e-05,
+      "response_excerpt": "Wenn der Rabatt 25 % betr\u00e4gt, bedeutet das, dass Kyle 75 % des urspr\u00fcnglichen Preises bezahlt hat. \nDer urspr\u00fcngliche Pr"
+    },
+    {
+      "lang": "de",
+      "pred": 2,
+      "gold": 2,
+      "correct": true,
+      "cost": 0.00018525,
+      "response_excerpt": "## Step 1: Berechnen Sie die Gesamtkosten des H\u00fchnchengerichts.\nDie Kosten f\u00fcr das H\u00fchnchengericht betragen 12 $.\n\n## St"
+    },
+    {
+      "lang": "de",
+      "pred": 243,
+      "gold": 243,
+      "correct": true,
+      "cost": 6.15e-05,
+      "response_excerpt": "3 Paar Shorts kosten 3 x 16,50 = 49,50 Dollar.\n3 Hosen kosten 3 x 22,50 = 67,50 Dollar.\n3 Paar Schuhe kosten 3 x 42 = 12"
+    },
+    {
+      "lang": "de",
+      "pred": 16,
+      "gold": 16,
+      "correct": true,
+      "cost": 8.58e-05,
+      "response_excerpt": "Cynthia isst jeden Abend eine Portion Eiscreme, also isst sie 60 Portionen in 60 Tagen. \nEin Karton enth\u00e4lt 15 Portionen"
+    },
+    {
+      "lang": "de",
+      "pred": 25,
+      "gold": 25,
+      "correct": true,
+      "cost": 0.0001278,
+      "response_excerpt": "## Step 1: Understand the total distance of Henry's bike tour.\nThe total distance of Henry's bike tour is 60 miles.\n\n## "
+    },
+    {
+      "lang": "de",
+      "pred": 104,
+      "gold": 104,
+      "correct": true,
+      "cost": 0.00011937,
+      "response_excerpt": "Ein Paar High Heels kostet 33 $, das andere Paar das Doppelte, also 2 x 33 $ = 66 $.\nZusammen kosten die beiden Paar Hig"
+    }
+  ]
+}

@@ -1,0 +1,992 @@
+{
+  "summary": {
+    "agent": "openai/gpt-5.4-nano",
+    "cost_total": 0.0031110000000000005,
+    "per_lang": {
+      "en": {
+        "correct": 8,
+        "total": 30,
+        "acc": 0.26666666666666666
+      },
+      "es": {
+        "correct": 7,
+        "total": 30,
+        "acc": 0.23333333333333334
+      },
+      "fr": {
+        "correct": 6,
+        "total": 30,
+        "acc": 0.2
+      },
+      "de": {
+        "correct": 6,
+        "total": 30,
+        "acc": 0.2
+      }
+    },
+    "overall_acc": 0.225,
+    "n_calls": 120
+  },
+  "samples": [
+    {
+      "lang": "en",
+      "pred": 76,
+      "gold": 18,
+      "correct": false,
+      "cost": 2.65e-05,
+      "response_excerpt": "$76"
+    },
+    {
+      "lang": "en",
+      "pred": 3,
+      "gold": 3,
+      "correct": true,
+      "cost": 1.805e-05,
+      "response_excerpt": "3"
+    },
+    {
+      "lang": "en",
+      "pred": 53000,
+      "gold": 70000,
+      "correct": false,
+      "cost": 2.39e-05,
+      "response_excerpt": "53000"
+    },
+    {
+      "lang": "en",
+      "pred": 540,
+      "gold": 540,
+      "correct": true,
+      "cost": 1.965e-05,
+      "response_excerpt": "540"
+    },
+    {
+      "lang": "en",
+      "pred": 20,
+      "gold": 20,
+      "correct": true,
+      "cost": 3.425e-05,
+      "response_excerpt": "20"
+    },
+    {
+      "lang": "en",
+      "pred": 40,
+      "gold": 64,
+      "correct": false,
+      "cost": 2.325e-05,
+      "response_excerpt": "40"
+    },
+    {
+      "lang": "en",
+      "pred": 140,
+      "gold": 260,
+      "correct": false,
+      "cost": 2.065e-05,
+      "response_excerpt": "140"
+    },
+    {
+      "lang": "en",
+      "pred": 220,
+      "gold": 160,
+      "correct": false,
+      "cost": 2.585e-05,
+      "response_excerpt": "220"
+    },
+    {
+      "lang": "en",
+      "pred": 130,
+      "gold": 45,
+      "correct": false,
+      "cost": 3.305e-05,
+      "response_excerpt": "130"
+    },
+    {
+      "lang": "en",
+      "pred": 522,
+      "gold": 460,
+      "correct": false,
+      "cost": 2.425e-05,
+      "response_excerpt": "522"
+    },
+    {
+      "lang": "en",
+      "pred": 282,
+      "gold": 366,
+      "correct": false,
+      "cost": 2.445e-05,
+      "response_excerpt": "282"
+    },
+    {
+      "lang": "en",
+      "pred": 3350,
+      "gold": 694,
+      "correct": false,
+      "cost": 2.59e-05,
+      "response_excerpt": "3350"
+    },
+    {
+      "lang": "en",
+      "pred": 12,
+      "gold": 13,
+      "correct": false,
+      "cost": 2.585e-05,
+      "response_excerpt": "12"
+    },
+    {
+      "lang": "en",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 2.425e-05,
+      "response_excerpt": "18"
+    },
+    {
+      "lang": "en",
+      "pred": 50,
+      "gold": 60,
+      "correct": false,
+      "cost": 2.265e-05,
+      "response_excerpt": "50"
+    },
+    {
+      "lang": "en",
+      "pred": 10250,
+      "gold": 125,
+      "correct": false,
+      "cost": 3.21e-05,
+      "response_excerpt": "10250"
+    },
+    {
+      "lang": "en",
+      "pred": 200,
+      "gold": 230,
+      "correct": false,
+      "cost": 2.265e-05,
+      "response_excerpt": "200"
+    },
+    {
+      "lang": "en",
+      "pred": 90000,
+      "gold": 57500,
+      "correct": false,
+      "cost": 2.43e-05,
+      "response_excerpt": "90000"
+    },
+    {
+      "lang": "en",
+      "pred": 12,
+      "gold": 7,
+      "correct": false,
+      "cost": 1.825e-05,
+      "response_excerpt": "12"
+    },
+    {
+      "lang": "en",
+      "pred": 8,
+      "gold": 6,
+      "correct": false,
+      "cost": 2.565e-05,
+      "response_excerpt": "8"
+    },
+    {
+      "lang": "en",
+      "pred": 13,
+      "gold": 15,
+      "correct": false,
+      "cost": 2.485e-05,
+      "response_excerpt": "13"
+    },
+    {
+      "lang": "en",
+      "pred": 12,
+      "gold": 14,
+      "correct": false,
+      "cost": 2.145e-05,
+      "response_excerpt": "12"
+    },
+    {
+      "lang": "en",
+      "pred": 6,
+      "gold": 7,
+      "correct": false,
+      "cost": 2.365e-05,
+      "response_excerpt": "6"
+    },
+    {
+      "lang": "en",
+      "pred": 8,
+      "gold": 8,
+      "correct": true,
+      "cost": 2.005e-05,
+      "response_excerpt": "8"
+    },
+    {
+      "lang": "en",
+      "pred": 26,
+      "gold": 26,
+      "correct": true,
+      "cost": 1.985e-05,
+      "response_excerpt": "26"
+    },
+    {
+      "lang": "en",
+      "pred": 1,
+      "gold": 2,
+      "correct": false,
+      "cost": 2.545e-05,
+      "response_excerpt": "1"
+    },
+    {
+      "lang": "en",
+      "pred": 200,
+      "gold": 243,
+      "correct": false,
+      "cost": 2.545e-05,
+      "response_excerpt": "200"
+    },
+    {
+      "lang": "en",
+      "pred": 16,
+      "gold": 16,
+      "correct": true,
+      "cost": 2.325e-05,
+      "response_excerpt": "16"
+    },
+    {
+      "lang": "en",
+      "pred": 25,
+      "gold": 25,
+      "correct": true,
+      "cost": 2.225e-05,
+      "response_excerpt": "25"
+    },
+    {
+      "lang": "en",
+      "pred": 36,
+      "gold": 104,
+      "correct": false,
+      "cost": 2.605e-05,
+      "response_excerpt": "36"
+    },
+    {
+      "lang": "es",
+      "pred": 20,
+      "gold": 18,
+      "correct": false,
+      "cost": 2.745e-05,
+      "response_excerpt": "20"
+    },
+    {
+      "lang": "es",
+      "pred": 3,
+      "gold": 3,
+      "correct": true,
+      "cost": 1.905e-05,
+      "response_excerpt": "3"
+    },
+    {
+      "lang": "es",
+      "pred": 30000,
+      "gold": 70000,
+      "correct": false,
+      "cost": 2.41e-05,
+      "response_excerpt": "30000"
+    },
+    {
+      "lang": "es",
+      "pred": 540,
+      "gold": 540,
+      "correct": true,
+      "cost": 1.985e-05,
+      "response_excerpt": "540"
+    },
+    {
+      "lang": "es",
+      "pred": 10,
+      "gold": 20,
+      "correct": false,
+      "cost": 3.745e-05,
+      "response_excerpt": "10"
+    },
+    {
+      "lang": "es",
+      "pred": 56,
+      "gold": 64,
+      "correct": false,
+      "cost": 2.285e-05,
+      "response_excerpt": "56"
+    },
+    {
+      "lang": "es",
+      "pred": 140,
+      "gold": 260,
+      "correct": false,
+      "cost": 2.265e-05,
+      "response_excerpt": "140"
+    },
+    {
+      "lang": "es",
+      "pred": 200,
+      "gold": 160,
+      "correct": false,
+      "cost": 2.725e-05,
+      "response_excerpt": "200"
+    },
+    {
+      "lang": "es",
+      "pred": 520,
+      "gold": 45,
+      "correct": false,
+      "cost": 3.425e-05,
+      "response_excerpt": "520"
+    },
+    {
+      "lang": "es",
+      "pred": 56,
+      "gold": 460,
+      "correct": false,
+      "cost": 2.385e-05,
+      "response_excerpt": "56"
+    },
+    {
+      "lang": "es",
+      "pred": 288,
+      "gold": 366,
+      "correct": false,
+      "cost": 2.585e-05,
+      "response_excerpt": "288"
+    },
+    {
+      "lang": "es",
+      "pred": 1844,
+      "gold": 694,
+      "correct": false,
+      "cost": 2.89e-05,
+      "response_excerpt": "1844"
+    },
+    {
+      "lang": "es",
+      "pred": 5,
+      "gold": 13,
+      "correct": false,
+      "cost": 2.605e-05,
+      "response_excerpt": "5"
+    },
+    {
+      "lang": "es",
+      "pred": 30,
+      "gold": 18,
+      "correct": false,
+      "cost": 2.505e-05,
+      "response_excerpt": "30"
+    },
+    {
+      "lang": "es",
+      "pred": 45,
+      "gold": 60,
+      "correct": false,
+      "cost": 2.585e-05,
+      "response_excerpt": "45"
+    },
+    {
+      "lang": "es",
+      "pred": 5120,
+      "gold": 125,
+      "correct": false,
+      "cost": 3.51e-05,
+      "response_excerpt": "5120"
+    },
+    {
+      "lang": "es",
+      "pred": 230,
+      "gold": 230,
+      "correct": true,
+      "cost": 2.445e-05,
+      "response_excerpt": "230"
+    },
+    {
+      "lang": "es",
+      "pred": 153000,
+      "gold": 57500,
+      "correct": false,
+      "cost": 2.53e-05,
+      "response_excerpt": "153000"
+    },
+    {
+      "lang": "es",
+      "pred": 10,
+      "gold": 7,
+      "correct": false,
+      "cost": 1.945e-05,
+      "response_excerpt": "10"
+    },
+    {
+      "lang": "es",
+      "pred": 6,
+      "gold": 6,
+      "correct": true,
+      "cost": 2.725e-05,
+      "response_excerpt": "6"
+    },
+    {
+      "lang": "es",
+      "pred": 9,
+      "gold": 15,
+      "correct": false,
+      "cost": 2.625e-05,
+      "response_excerpt": "9"
+    },
+    {
+      "lang": "es",
+      "pred": 12,
+      "gold": 14,
+      "correct": false,
+      "cost": 2.225e-05,
+      "response_excerpt": "12"
+    },
+    {
+      "lang": "es",
+      "pred": 8,
+      "gold": 7,
+      "correct": false,
+      "cost": 2.445e-05,
+      "response_excerpt": "8"
+    },
+    {
+      "lang": "es",
+      "pred": 8,
+      "gold": 8,
+      "correct": true,
+      "cost": 2.285e-05,
+      "response_excerpt": "8"
+    },
+    {
+      "lang": "es",
+      "pred": 26,
+      "gold": 26,
+      "correct": true,
+      "cost": 2.045e-05,
+      "response_excerpt": "26"
+    },
+    {
+      "lang": "es",
+      "pred": 1,
+      "gold": 2,
+      "correct": false,
+      "cost": 2.685e-05,
+      "response_excerpt": "1"
+    },
+    {
+      "lang": "es",
+      "pred": 333,
+      "gold": 243,
+      "correct": false,
+      "cost": 2.765e-05,
+      "response_excerpt": "333"
+    },
+    {
+      "lang": "es",
+      "pred": 1440,
+      "gold": 16,
+      "correct": false,
+      "cost": 2.45e-05,
+      "response_excerpt": "1440"
+    },
+    {
+      "lang": "es",
+      "pred": 25,
+      "gold": 25,
+      "correct": true,
+      "cost": 2.405e-05,
+      "response_excerpt": "25"
+    },
+    {
+      "lang": "es",
+      "pred": 99,
+      "gold": 104,
+      "correct": false,
+      "cost": 2.785e-05,
+      "response_excerpt": "99"
+    },
+    {
+      "lang": "fr",
+      "pred": 20,
+      "gold": 18,
+      "correct": false,
+      "cost": 3.01e-05,
+      "response_excerpt": "$20"
+    },
+    {
+      "lang": "fr",
+      "pred": 3,
+      "gold": 3,
+      "correct": true,
+      "cost": 1.905e-05,
+      "response_excerpt": "3"
+    },
+    {
+      "lang": "fr",
+      "pred": 65000,
+      "gold": 70000,
+      "correct": false,
+      "cost": 2.49e-05,
+      "response_excerpt": "65000"
+    },
+    {
+      "lang": "fr",
+      "pred": 540,
+      "gold": 540,
+      "correct": true,
+      "cost": 1.985e-05,
+      "response_excerpt": "540"
+    },
+    {
+      "lang": "fr",
+      "pred": 20,
+      "gold": 20,
+      "correct": true,
+      "cost": 3.185e-05,
+      "response_excerpt": "20"
+    },
+    {
+      "lang": "fr",
+      "pred": 68,
+      "gold": 64,
+      "correct": false,
+      "cost": 2.405e-05,
+      "response_excerpt": "68"
+    },
+    {
+      "lang": "fr",
+      "pred": 100,
+      "gold": 260,
+      "correct": false,
+      "cost": 2.145e-05,
+      "response_excerpt": "100"
+    },
+    {
+      "lang": "fr",
+      "pred": 110,
+      "gold": 160,
+      "correct": false,
+      "cost": 2.785e-05,
+      "response_excerpt": "110"
+    },
+    {
+      "lang": "fr",
+      "pred": 280,
+      "gold": 45,
+      "correct": false,
+      "cost": 3.405e-05,
+      "response_excerpt": "280"
+    },
+    {
+      "lang": "fr",
+      "pred": 510,
+      "gold": 460,
+      "correct": false,
+      "cost": 2.705e-05,
+      "response_excerpt": "510"
+    },
+    {
+      "lang": "fr",
+      "pred": 186,
+      "gold": 366,
+      "correct": false,
+      "cost": 2.725e-05,
+      "response_excerpt": "186"
+    },
+    {
+      "lang": "fr",
+      "pred": 8328,
+      "gold": 694,
+      "correct": false,
+      "cost": 8.07e-05,
+      "response_excerpt": "(3\u00d712\u00d768) + (2\u00d712\u00d780) + (6\u00d712\u00d755) = 2448 + 1920 + 3960 = 8328\n8328"
+    },
+    {
+      "lang": "fr",
+      "pred": 3,
+      "gold": 13,
+      "correct": false,
+      "cost": 2.965e-05,
+      "response_excerpt": "3"
+    },
+    {
+      "lang": "fr",
+      "pred": 24,
+      "gold": 18,
+      "correct": false,
+      "cost": 2.785e-05,
+      "response_excerpt": "24"
+    },
+    {
+      "lang": "fr",
+      "pred": 55,
+      "gold": 60,
+      "correct": false,
+      "cost": 2.345e-05,
+      "response_excerpt": "55"
+    },
+    {
+      "lang": "fr",
+      "pred": 2550,
+      "gold": 125,
+      "correct": false,
+      "cost": 3.43e-05,
+      "response_excerpt": "2550"
+    },
+    {
+      "lang": "fr",
+      "pred": 150,
+      "gold": 230,
+      "correct": false,
+      "cost": 2.565e-05,
+      "response_excerpt": "150"
+    },
+    {
+      "lang": "fr",
+      "pred": 238500,
+      "gold": 57500,
+      "correct": false,
+      "cost": 2.69e-05,
+      "response_excerpt": "238500"
+    },
+    {
+      "lang": "fr",
+      "pred": 21,
+      "gold": 7,
+      "correct": false,
+      "cost": 2.065e-05,
+      "response_excerpt": "21"
+    },
+    {
+      "lang": "fr",
+      "pred": 4,
+      "gold": 6,
+      "correct": false,
+      "cost": 2.785e-05,
+      "response_excerpt": "4"
+    },
+    {
+      "lang": "fr",
+      "pred": 6,
+      "gold": 15,
+      "correct": false,
+      "cost": 2.665e-05,
+      "response_excerpt": "6"
+    },
+    {
+      "lang": "fr",
+      "pred": 17,
+      "gold": 14,
+      "correct": false,
+      "cost": 2.225e-05,
+      "response_excerpt": "17"
+    },
+    {
+      "lang": "fr",
+      "pred": 19,
+      "gold": 7,
+      "correct": false,
+      "cost": 2.465e-05,
+      "response_excerpt": "19"
+    },
+    {
+      "lang": "fr",
+      "pred": 8,
+      "gold": 8,
+      "correct": true,
+      "cost": 2.185e-05,
+      "response_excerpt": "8"
+    },
+    {
+      "lang": "fr",
+      "pred": 26,
+      "gold": 26,
+      "correct": true,
+      "cost": 2.105e-05,
+      "response_excerpt": "26"
+    },
+    {
+      "lang": "fr",
+      "pred": 6,
+      "gold": 2,
+      "correct": false,
+      "cost": 2.725e-05,
+      "response_excerpt": "6"
+    },
+    {
+      "lang": "fr",
+      "pred": 181,
+      "gold": 243,
+      "correct": false,
+      "cost": 2.565e-05,
+      "response_excerpt": "181"
+    },
+    {
+      "lang": "fr",
+      "pred": 1920,
+      "gold": 16,
+      "correct": false,
+      "cost": 2.39e-05,
+      "response_excerpt": "1920"
+    },
+    {
+      "lang": "fr",
+      "pred": 25,
+      "gold": 25,
+      "correct": true,
+      "cost": 2.425e-05,
+      "response_excerpt": "25"
+    },
+    {
+      "lang": "fr",
+      "pred": 39,
+      "gold": 104,
+      "correct": false,
+      "cost": 3.085e-05,
+      "response_excerpt": "39"
+    },
+    {
+      "lang": "de",
+      "pred": 14,
+      "gold": 18,
+      "correct": false,
+      "cost": 2.565e-05,
+      "response_excerpt": "14"
+    },
+    {
+      "lang": "de",
+      "pred": 3,
+      "gold": 3,
+      "correct": true,
+      "cost": 1.905e-05,
+      "response_excerpt": "3"
+    },
+    {
+      "lang": "de",
+      "pred": 350000,
+      "gold": 70000,
+      "correct": false,
+      "cost": 2.43e-05,
+      "response_excerpt": "350000"
+    },
+    {
+      "lang": "de",
+      "pred": 540,
+      "gold": 540,
+      "correct": true,
+      "cost": 2.085e-05,
+      "response_excerpt": "540"
+    },
+    {
+      "lang": "de",
+      "pred": 10,
+      "gold": 20,
+      "correct": false,
+      "cost": 3.965e-05,
+      "response_excerpt": "10"
+    },
+    {
+      "lang": "de",
+      "pred": 203,
+      "gold": 64,
+      "correct": false,
+      "cost": 2.405e-05,
+      "response_excerpt": "203"
+    },
+    {
+      "lang": "de",
+      "pred": 100,
+      "gold": 260,
+      "correct": false,
+      "cost": 2.125e-05,
+      "response_excerpt": "100"
+    },
+    {
+      "lang": "de",
+      "pred": 140000,
+      "gold": 160,
+      "correct": false,
+      "cost": 2.83e-05,
+      "response_excerpt": "140000"
+    },
+    {
+      "lang": "de",
+      "pred": 10,
+      "gold": 45,
+      "correct": false,
+      "cost": 3.685e-05,
+      "response_excerpt": "10"
+    },
+    {
+      "lang": "de",
+      "pred": 510,
+      "gold": 460,
+      "correct": false,
+      "cost": 2.525e-05,
+      "response_excerpt": "510"
+    },
+    {
+      "lang": "de",
+      "pred": 204,
+      "gold": 366,
+      "correct": false,
+      "cost": 2.485e-05,
+      "response_excerpt": "204"
+    },
+    {
+      "lang": "de",
+      "pred": 830,
+      "gold": 694,
+      "correct": false,
+      "cost": 3.065e-05,
+      "response_excerpt": "830"
+    },
+    {
+      "lang": "de",
+      "pred": 7,
+      "gold": 13,
+      "correct": false,
+      "cost": 2.925e-05,
+      "response_excerpt": "7"
+    },
+    {
+      "lang": "de",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 2.565e-05,
+      "response_excerpt": "18"
+    },
+    {
+      "lang": "de",
+      "pred": 10,
+      "gold": 60,
+      "correct": false,
+      "cost": 2.385e-05,
+      "response_excerpt": "10"
+    },
+    {
+      "lang": "de",
+      "pred": 1620,
+      "gold": 125,
+      "correct": false,
+      "cost": 3.43e-05,
+      "response_excerpt": "1620"
+    },
+    {
+      "lang": "de",
+      "pred": 30,
+      "gold": 230,
+      "correct": false,
+      "cost": 2.365e-05,
+      "response_excerpt": "30"
+    },
+    {
+      "lang": "de",
+      "pred": 113100,
+      "gold": 57500,
+      "correct": false,
+      "cost": 2.735e-05,
+      "response_excerpt": "$113100"
+    },
+    {
+      "lang": "de",
+      "pred": 84,
+      "gold": 7,
+      "correct": false,
+      "cost": 1.945e-05,
+      "response_excerpt": "84"
+    },
+    {
+      "lang": "de",
+      "pred": 4,
+      "gold": 6,
+      "correct": false,
+      "cost": 2.825e-05,
+      "response_excerpt": "4"
+    },
+    {
+      "lang": "de",
+      "pred": 7,
+      "gold": 15,
+      "correct": false,
+      "cost": 2.665e-05,
+      "response_excerpt": "7"
+    },
+    {
+      "lang": "de",
+      "pred": 17,
+      "gold": 14,
+      "correct": false,
+      "cost": 2.165e-05,
+      "response_excerpt": "17"
+    },
+    {
+      "lang": "de",
+      "pred": 14,
+      "gold": 7,
+      "correct": false,
+      "cost": 2.305e-05,
+      "response_excerpt": "14"
+    },
+    {
+      "lang": "de",
+      "pred": 8,
+      "gold": 8,
+      "correct": true,
+      "cost": 2.205e-05,
+      "response_excerpt": "8"
+    },
+    {
+      "lang": "de",
+      "pred": 0,
+      "gold": 26,
+      "correct": false,
+      "cost": 2.375e-05,
+      "response_excerpt": "26.00"
+    },
+    {
+      "lang": "de",
+      "pred": 2,
+      "gold": 2,
+      "correct": true,
+      "cost": 2.885e-05,
+      "response_excerpt": "2"
+    },
+    {
+      "lang": "de",
+      "pred": 285,
+      "gold": 243,
+      "correct": false,
+      "cost": 2.505e-05,
+      "response_excerpt": "285"
+    },
+    {
+      "lang": "de",
+      "pred": 1440,
+      "gold": 16,
+      "correct": false,
+      "cost": 2.49e-05,
+      "response_excerpt": "1440"
+    },
+    {
+      "lang": "de",
+      "pred": 25,
+      "gold": 25,
+      "correct": true,
+      "cost": 2.465e-05,
+      "response_excerpt": "25"
+    },
+    {
+      "lang": "de",
+      "pred": 99,
+      "gold": 104,
+      "correct": false,
+      "cost": 2.825e-05,
+      "response_excerpt": "99"
+    }
+  ]
+}

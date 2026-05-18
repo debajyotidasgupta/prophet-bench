@@ -1,0 +1,992 @@
+{
+  "summary": {
+    "agent": "deepseek/deepseek-v3.2",
+    "cost_total": 0.004497551000000001,
+    "per_lang": {
+      "en": {
+        "correct": 19,
+        "total": 30,
+        "acc": 0.6333333333333333
+      },
+      "es": {
+        "correct": 12,
+        "total": 30,
+        "acc": 0.4
+      },
+      "fr": {
+        "correct": 14,
+        "total": 30,
+        "acc": 0.4666666666666667
+      },
+      "de": {
+        "correct": 20,
+        "total": 30,
+        "acc": 0.6666666666666666
+      }
+    },
+    "overall_acc": 0.5416666666666666,
+    "n_calls": 120
+  },
+  "samples": [
+    {
+      "lang": "en",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 2.722e-05,
+      "response_excerpt": "18"
+    },
+    {
+      "lang": "en",
+      "pred": 3,
+      "gold": 3,
+      "correct": true,
+      "cost": 1.5183e-05,
+      "response_excerpt": "3"
+    },
+    {
+      "lang": "en",
+      "pred": 95000,
+      "gold": 70000,
+      "correct": false,
+      "cost": 2.156e-05,
+      "response_excerpt": "95000"
+    },
+    {
+      "lang": "en",
+      "pred": 540,
+      "gold": 540,
+      "correct": true,
+      "cost": 1.91e-05,
+      "response_excerpt": "540"
+    },
+    {
+      "lang": "en",
+      "pred": 10,
+      "gold": 20,
+      "correct": false,
+      "cost": 1.73124e-05,
+      "response_excerpt": "10"
+    },
+    {
+      "lang": "en",
+      "pred": 64,
+      "gold": 64,
+      "correct": true,
+      "cost": 2.2435e-05,
+      "response_excerpt": "64"
+    },
+    {
+      "lang": "en",
+      "pred": 260,
+      "gold": 260,
+      "correct": true,
+      "cost": 3.9244e-05,
+      "response_excerpt": "Seattle: 20  \nCharleston: 4 \u00d7 20 = 80  \nToulouse: 2 \u00d7 80 = 160  \nTotal: 20 + 80 + 160 = 260  \n\n260"
+    },
+    {
+      "lang": "en",
+      "pred": 140,
+      "gold": 160,
+      "correct": false,
+      "cost": 2.6355e-05,
+      "response_excerpt": "140"
+    },
+    {
+      "lang": "en",
+      "pred": 45,
+      "gold": 45,
+      "correct": true,
+      "cost": 0.0003405,
+      "response_excerpt": "Let\u2019s break it down step-by-step without commentary, as requested.\n\n**First leg (away from home):**  \n3 hours \u00d7 60 mph ="
+    },
+    {
+      "lang": "en",
+      "pred": 480,
+      "gold": 460,
+      "correct": false,
+      "cost": 2.2694e-05,
+      "response_excerpt": "480"
+    },
+    {
+      "lang": "en",
+      "pred": 366,
+      "gold": 366,
+      "correct": true,
+      "cost": 4.9511e-05,
+      "response_excerpt": "First month: 60 downloads.  \nSecond month: 3 \u00d7 60 = 180 downloads.  \nThird month: 180 \u2212 30% of 180 = 180 \u2212 54 = 126 down"
+    },
+    {
+      "lang": "en",
+      "pred": 694,
+      "gold": 694,
+      "correct": true,
+      "cost": 5.432e-05,
+      "response_excerpt": "First, calculate the cost for each type of pastry:\n\n- Donuts: 3 dozen \u00d7 $68/dozen = $204  \n- Mini cupcakes: 2 dozen \u00d7 $8"
+    },
+    {
+      "lang": "en",
+      "pred": 12,
+      "gold": 13,
+      "correct": false,
+      "cost": 5.15e-05,
+      "response_excerpt": "12"
+    },
+    {
+      "lang": "en",
+      "pred": 21,
+      "gold": 18,
+      "correct": false,
+      "cost": 2.4472e-05,
+      "response_excerpt": "21"
+    },
+    {
+      "lang": "en",
+      "pred": 60,
+      "gold": 60,
+      "correct": true,
+      "cost": 2.312e-05,
+      "response_excerpt": "60"
+    },
+    {
+      "lang": "en",
+      "pred": 200,
+      "gold": 125,
+      "correct": false,
+      "cost": 6.35e-05,
+      "response_excerpt": "200"
+    },
+    {
+      "lang": "en",
+      "pred": 230,
+      "gold": 230,
+      "correct": true,
+      "cost": 2.3934e-05,
+      "response_excerpt": "230"
+    },
+    {
+      "lang": "en",
+      "pred": 57500,
+      "gold": 57500,
+      "correct": true,
+      "cost": 7.5127e-05,
+      "response_excerpt": "Let\u2019s break it down step-by-step without commentary in the final answer.\n\n**Teaching pay:**  \n$20/hour \u00d7 35 hours/week \u00d7"
+    },
+    {
+      "lang": "en",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 2.26005e-05,
+      "response_excerpt": "7"
+    },
+    {
+      "lang": "en",
+      "pred": 6,
+      "gold": 6,
+      "correct": true,
+      "cost": 3.6309e-05,
+      "response_excerpt": "6"
+    },
+    {
+      "lang": "en",
+      "pred": 14,
+      "gold": 15,
+      "correct": false,
+      "cost": 2.3989e-05,
+      "response_excerpt": "14"
+    },
+    {
+      "lang": "en",
+      "pred": 8,
+      "gold": 14,
+      "correct": false,
+      "cost": 1.9586e-05,
+      "response_excerpt": "8"
+    },
+    {
+      "lang": "en",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 2.5548e-05,
+      "response_excerpt": "7"
+    },
+    {
+      "lang": "en",
+      "pred": 8,
+      "gold": 8,
+      "correct": true,
+      "cost": 1.8423e-05,
+      "response_excerpt": "8"
+    },
+    {
+      "lang": "en",
+      "pred": 26,
+      "gold": 26,
+      "correct": true,
+      "cost": 1.8423e-05,
+      "response_excerpt": "26"
+    },
+    {
+      "lang": "en",
+      "pred": 2,
+      "gold": 2,
+      "correct": true,
+      "cost": 2.77e-05,
+      "response_excerpt": "2"
+    },
+    {
+      "lang": "en",
+      "pred": 297,
+      "gold": 243,
+      "correct": false,
+      "cost": 3.59385e-05,
+      "response_excerpt": "297"
+    },
+    {
+      "lang": "en",
+      "pred": 16,
+      "gold": 16,
+      "correct": true,
+      "cost": 2.498e-05,
+      "response_excerpt": "16"
+    },
+    {
+      "lang": "en",
+      "pred": 25,
+      "gold": 25,
+      "correct": true,
+      "cost": 4.2e-05,
+      "response_excerpt": "25"
+    },
+    {
+      "lang": "en",
+      "pred": 85,
+      "gold": 104,
+      "correct": false,
+      "cost": 2.8507e-05,
+      "response_excerpt": "85"
+    },
+    {
+      "lang": "es",
+      "pred": 16,
+      "gold": 18,
+      "correct": false,
+      "cost": 3.132e-05,
+      "response_excerpt": "16"
+    },
+    {
+      "lang": "es",
+      "pred": 3,
+      "gold": 3,
+      "correct": true,
+      "cost": 1.806e-05,
+      "response_excerpt": "3"
+    },
+    {
+      "lang": "es",
+      "pred": 30000,
+      "gold": 70000,
+      "correct": false,
+      "cost": 2.3891e-05,
+      "response_excerpt": "30000"
+    },
+    {
+      "lang": "es",
+      "pred": 540,
+      "gold": 540,
+      "correct": true,
+      "cost": 3.75e-05,
+      "response_excerpt": "540"
+    },
+    {
+      "lang": "es",
+      "pred": 10,
+      "gold": 20,
+      "correct": false,
+      "cost": 4.7606e-05,
+      "response_excerpt": "10"
+    },
+    {
+      "lang": "es",
+      "pred": 68,
+      "gold": 64,
+      "correct": false,
+      "cost": 3.59385e-05,
+      "response_excerpt": "68"
+    },
+    {
+      "lang": "es",
+      "pred": 220,
+      "gold": 260,
+      "correct": false,
+      "cost": 2.47e-05,
+      "response_excerpt": "220"
+    },
+    {
+      "lang": "es",
+      "pred": 220,
+      "gold": 160,
+      "correct": false,
+      "cost": 3.106e-05,
+      "response_excerpt": "220"
+    },
+    {
+      "lang": "es",
+      "pred": -20,
+      "gold": 45,
+      "correct": false,
+      "cost": 3.9172e-05,
+      "response_excerpt": "-20"
+    },
+    {
+      "lang": "es",
+      "pred": 552,
+      "gold": 460,
+      "correct": false,
+      "cost": 2.598e-05,
+      "response_excerpt": "552"
+    },
+    {
+      "lang": "es",
+      "pred": 468,
+      "gold": 366,
+      "correct": false,
+      "cost": 3.076e-05,
+      "response_excerpt": "60  \n240  \n168  \n468"
+    },
+    {
+      "lang": "es",
+      "pred": 678,
+      "gold": 694,
+      "correct": false,
+      "cost": 4.26075e-05,
+      "response_excerpt": "678"
+    },
+    {
+      "lang": "es",
+      "pred": 9,
+      "gold": 13,
+      "correct": false,
+      "cost": 2.716e-05,
+      "response_excerpt": "9"
+    },
+    {
+      "lang": "es",
+      "pred": 24,
+      "gold": 18,
+      "correct": false,
+      "cost": 1.28016e-05,
+      "response_excerpt": "24"
+    },
+    {
+      "lang": "es",
+      "pred": 60,
+      "gold": 60,
+      "correct": true,
+      "cost": 2.7097e-05,
+      "response_excerpt": "60"
+    },
+    {
+      "lang": "es",
+      "pred": 200,
+      "gold": 125,
+      "correct": false,
+      "cost": 4.016e-05,
+      "response_excerpt": "200"
+    },
+    {
+      "lang": "es",
+      "pred": 230,
+      "gold": 230,
+      "correct": true,
+      "cost": 2.4507e-05,
+      "response_excerpt": "230"
+    },
+    {
+      "lang": "es",
+      "pred": 65350,
+      "gold": 57500,
+      "correct": false,
+      "cost": 3.59385e-05,
+      "response_excerpt": "65350"
+    },
+    {
+      "lang": "es",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 1.91e-05,
+      "response_excerpt": "7"
+    },
+    {
+      "lang": "es",
+      "pred": 6,
+      "gold": 6,
+      "correct": true,
+      "cost": 2.8651e-05,
+      "response_excerpt": "6"
+    },
+    {
+      "lang": "es",
+      "pred": 13,
+      "gold": 15,
+      "correct": false,
+      "cost": 3.144e-05,
+      "response_excerpt": "13"
+    },
+    {
+      "lang": "es",
+      "pred": 8,
+      "gold": 14,
+      "correct": false,
+      "cost": 2.118e-05,
+      "response_excerpt": "8"
+    },
+    {
+      "lang": "es",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 3.705e-05,
+      "response_excerpt": "7"
+    },
+    {
+      "lang": "es",
+      "pred": 8,
+      "gold": 8,
+      "correct": true,
+      "cost": 2.582e-05,
+      "response_excerpt": "8"
+    },
+    {
+      "lang": "es",
+      "pred": 26,
+      "gold": 26,
+      "correct": true,
+      "cost": 2.8158e-05,
+      "response_excerpt": "26"
+    },
+    {
+      "lang": "es",
+      "pred": 2,
+      "gold": 2,
+      "correct": true,
+      "cost": 3.282e-05,
+      "response_excerpt": "2"
+    },
+    {
+      "lang": "es",
+      "pred": 255,
+      "gold": 243,
+      "correct": false,
+      "cost": 3.2018e-05,
+      "response_excerpt": "255"
+    },
+    {
+      "lang": "es",
+      "pred": 16,
+      "gold": 16,
+      "correct": true,
+      "cost": 2.3212e-05,
+      "response_excerpt": "16"
+    },
+    {
+      "lang": "es",
+      "pred": 25,
+      "gold": 25,
+      "correct": true,
+      "cost": 2.8238e-05,
+      "response_excerpt": "25"
+    },
+    {
+      "lang": "es",
+      "pred": 70,
+      "gold": 104,
+      "correct": false,
+      "cost": 3.444e-05,
+      "response_excerpt": "70"
+    },
+    {
+      "lang": "fr",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 3.3218e-05,
+      "response_excerpt": "18"
+    },
+    {
+      "lang": "fr",
+      "pred": 3,
+      "gold": 3,
+      "correct": true,
+      "cost": 1.7773e-05,
+      "response_excerpt": "3"
+    },
+    {
+      "lang": "fr",
+      "pred": 205000,
+      "gold": 70000,
+      "correct": false,
+      "cost": 1.13148e-05,
+      "response_excerpt": "205000"
+    },
+    {
+      "lang": "fr",
+      "pred": 540,
+      "gold": 540,
+      "correct": true,
+      "cost": 2.1244e-05,
+      "response_excerpt": "540"
+    },
+    {
+      "lang": "fr",
+      "pred": 5,
+      "gold": 20,
+      "correct": false,
+      "cost": 3.7975e-05,
+      "response_excerpt": "5"
+    },
+    {
+      "lang": "fr",
+      "pred": 56,
+      "gold": 64,
+      "correct": false,
+      "cost": 2.8107e-05,
+      "response_excerpt": "56"
+    },
+    {
+      "lang": "fr",
+      "pred": 260,
+      "gold": 260,
+      "correct": true,
+      "cost": 2.092e-05,
+      "response_excerpt": "260"
+    },
+    {
+      "lang": "fr",
+      "pred": 140,
+      "gold": 160,
+      "correct": false,
+      "cost": 3.394e-05,
+      "response_excerpt": "140"
+    },
+    {
+      "lang": "fr",
+      "pred": -30,
+      "gold": 45,
+      "correct": false,
+      "cost": 4.223e-05,
+      "response_excerpt": "-30"
+    },
+    {
+      "lang": "fr",
+      "pred": 472,
+      "gold": 460,
+      "correct": false,
+      "cost": 2.872e-05,
+      "response_excerpt": "472"
+    },
+    {
+      "lang": "fr",
+      "pred": 366,
+      "gold": 366,
+      "correct": true,
+      "cost": 5.3753e-05,
+      "response_excerpt": "First month: 60 downloads.  \nSecond month: 3 \u00d7 60 = 180 downloads.  \nThird month: 180 \u2212 30% of 180 = 180 \u2212 54 = 126 down"
+    },
+    {
+      "lang": "fr",
+      "pred": 546,
+      "gold": 694,
+      "correct": false,
+      "cost": 6.6e-05,
+      "response_excerpt": "546"
+    },
+    {
+      "lang": "fr",
+      "pred": 12,
+      "gold": 13,
+      "correct": false,
+      "cost": 3.3054e-05,
+      "response_excerpt": "12"
+    },
+    {
+      "lang": "fr",
+      "pred": 24,
+      "gold": 18,
+      "correct": false,
+      "cost": 5.95e-05,
+      "response_excerpt": "24"
+    },
+    {
+      "lang": "fr",
+      "pred": 55,
+      "gold": 60,
+      "correct": false,
+      "cost": 2.572e-05,
+      "response_excerpt": "55"
+    },
+    {
+      "lang": "fr",
+      "pred": 5000,
+      "gold": 125,
+      "correct": false,
+      "cost": 1.90512e-05,
+      "response_excerpt": "5000"
+    },
+    {
+      "lang": "fr",
+      "pred": 230,
+      "gold": 230,
+      "correct": true,
+      "cost": 2.9314e-05,
+      "response_excerpt": "230"
+    },
+    {
+      "lang": "fr",
+      "pred": 55000,
+      "gold": 57500,
+      "correct": false,
+      "cost": 2.7517e-05,
+      "response_excerpt": "55000"
+    },
+    {
+      "lang": "fr",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 2.234e-05,
+      "response_excerpt": "7"
+    },
+    {
+      "lang": "fr",
+      "pred": 6,
+      "gold": 6,
+      "correct": true,
+      "cost": 2.9946e-05,
+      "response_excerpt": "6"
+    },
+    {
+      "lang": "fr",
+      "pred": 10,
+      "gold": 15,
+      "correct": false,
+      "cost": 2.9045e-05,
+      "response_excerpt": "10"
+    },
+    {
+      "lang": "fr",
+      "pred": 8,
+      "gold": 14,
+      "correct": false,
+      "cost": 2.358e-05,
+      "response_excerpt": "8"
+    },
+    {
+      "lang": "fr",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 2.834e-05,
+      "response_excerpt": "7"
+    },
+    {
+      "lang": "fr",
+      "pred": 8,
+      "gold": 8,
+      "correct": true,
+      "cost": 2.964e-05,
+      "response_excerpt": "8"
+    },
+    {
+      "lang": "fr",
+      "pred": 26,
+      "gold": 26,
+      "correct": true,
+      "cost": 2.1651e-05,
+      "response_excerpt": "26"
+    },
+    {
+      "lang": "fr",
+      "pred": 2,
+      "gold": 2,
+      "correct": true,
+      "cost": 3.0982e-05,
+      "response_excerpt": "2"
+    },
+    {
+      "lang": "fr",
+      "pred": 327,
+      "gold": 243,
+      "correct": false,
+      "cost": 3.2542e-05,
+      "response_excerpt": "327"
+    },
+    {
+      "lang": "fr",
+      "pred": 16,
+      "gold": 16,
+      "correct": true,
+      "cost": 2.3e-05,
+      "response_excerpt": "16"
+    },
+    {
+      "lang": "fr",
+      "pred": 25,
+      "gold": 25,
+      "correct": true,
+      "cost": 2.676e-05,
+      "response_excerpt": "25"
+    },
+    {
+      "lang": "fr",
+      "pred": 95,
+      "gold": 104,
+      "correct": false,
+      "cost": 3.7384e-05,
+      "response_excerpt": "95"
+    },
+    {
+      "lang": "de",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 2.924e-05,
+      "response_excerpt": "18"
+    },
+    {
+      "lang": "de",
+      "pred": 3,
+      "gold": 3,
+      "correct": true,
+      "cost": 2.5935e-05,
+      "response_excerpt": "3"
+    },
+    {
+      "lang": "de",
+      "pred": 70000,
+      "gold": 70000,
+      "correct": true,
+      "cost": 0.000223041,
+      "response_excerpt": "Let\u2019s go step by step without commentary.\n\n1. Initial cost: $80,000  \n2. Repair cost: $50,000  \n3. Total spent: $80,000 "
+    },
+    {
+      "lang": "de",
+      "pred": 540,
+      "gold": 540,
+      "correct": true,
+      "cost": 2.118e-05,
+      "response_excerpt": "540"
+    },
+    {
+      "lang": "de",
+      "pred": 10,
+      "gold": 20,
+      "correct": false,
+      "cost": 4.6522e-05,
+      "response_excerpt": "10"
+    },
+    {
+      "lang": "de",
+      "pred": 56,
+      "gold": 64,
+      "correct": false,
+      "cost": 2.6061e-05,
+      "response_excerpt": "56"
+    },
+    {
+      "lang": "de",
+      "pred": 260,
+      "gold": 260,
+      "correct": true,
+      "cost": 4.05e-05,
+      "response_excerpt": "260"
+    },
+    {
+      "lang": "de",
+      "pred": 200,
+      "gold": 160,
+      "correct": false,
+      "cost": 3.15e-05,
+      "response_excerpt": "200"
+    },
+    {
+      "lang": "de",
+      "pred": 45,
+      "gold": 45,
+      "correct": true,
+      "cost": 0.000131468,
+      "response_excerpt": "Let\u2019s break it down step-by-step without commentary.\n\n**First trip out:**  \n3 hours at 60 mph \u2192 distance = \\( 3 \\times 6"
+    },
+    {
+      "lang": "de",
+      "pred": 460,
+      "gold": 460,
+      "correct": true,
+      "cost": 3.1197e-05,
+      "response_excerpt": "460"
+    },
+    {
+      "lang": "de",
+      "pred": 366,
+      "gold": 366,
+      "correct": true,
+      "cost": 3.2521e-05,
+      "response_excerpt": "60  \n180  \n126  \n366"
+    },
+    {
+      "lang": "de",
+      "pred": 1716,
+      "gold": 694,
+      "correct": false,
+      "cost": 4.92765e-05,
+      "response_excerpt": "1716"
+    },
+    {
+      "lang": "de",
+      "pred": 15,
+      "gold": 13,
+      "correct": false,
+      "cost": 3.646e-05,
+      "response_excerpt": "15"
+    },
+    {
+      "lang": "de",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 2.898e-05,
+      "response_excerpt": "18"
+    },
+    {
+      "lang": "de",
+      "pred": 60,
+      "gold": 60,
+      "correct": true,
+      "cost": 2.77e-05,
+      "response_excerpt": "60"
+    },
+    {
+      "lang": "de",
+      "pred": 125,
+      "gold": 125,
+      "correct": true,
+      "cost": 8.278e-05,
+      "response_excerpt": "Let\u2019s compute the expected gain for each option.\n\n**Option 1: Jewelry worth $5,000**\nGrowth rate = 2.5% \u2192 Gain = \\( 5000"
+    },
+    {
+      "lang": "de",
+      "pred": 260,
+      "gold": 230,
+      "correct": false,
+      "cost": 2.6579e-05,
+      "response_excerpt": "260"
+    },
+    {
+      "lang": "de",
+      "pred": 57500,
+      "gold": 57500,
+      "correct": true,
+      "cost": 7.9569e-05,
+      "response_excerpt": "First, calculate weekly earnings:\n\n- Teacher: \\( 35 \\text{ hours/week} \\times 20 \\text{ USD/hour} = 700 \\text{ USD/week}"
+    },
+    {
+      "lang": "de",
+      "pred": 84,
+      "gold": 7,
+      "correct": false,
+      "cost": 1.858e-05,
+      "response_excerpt": "84"
+    },
+    {
+      "lang": "de",
+      "pred": 6,
+      "gold": 6,
+      "correct": true,
+      "cost": 3.236e-05,
+      "response_excerpt": "6"
+    },
+    {
+      "lang": "de",
+      "pred": 13,
+      "gold": 15,
+      "correct": false,
+      "cost": 2.8392e-05,
+      "response_excerpt": "13"
+    },
+    {
+      "lang": "de",
+      "pred": 14,
+      "gold": 14,
+      "correct": true,
+      "cost": 7.866e-05,
+      "response_excerpt": "Let\u2019s break it down step-by-step without commentary, just for clarity in my own reasoning, then give the final integer a"
+    },
+    {
+      "lang": "de",
+      "pred": 11,
+      "gold": 7,
+      "correct": false,
+      "cost": 2.5284e-05,
+      "response_excerpt": "11"
+    },
+    {
+      "lang": "de",
+      "pred": 8,
+      "gold": 8,
+      "correct": true,
+      "cost": 2.286e-05,
+      "response_excerpt": "8"
+    },
+    {
+      "lang": "de",
+      "pred": 26,
+      "gold": 26,
+      "correct": true,
+      "cost": 2.442e-05,
+      "response_excerpt": "26"
+    },
+    {
+      "lang": "de",
+      "pred": 2,
+      "gold": 2,
+      "correct": true,
+      "cost": 7.732e-05,
+      "response_excerpt": "Let\u2019s calculate step by step without commentary in the final answer.\n\nChicken dish: $12  \n5 milk packs: \\(5 \\times 3 = 1"
+    },
+    {
+      "lang": "de",
+      "pred": 372,
+      "gold": 243,
+      "correct": false,
+      "cost": 2.8392e-05,
+      "response_excerpt": "372"
+    },
+    {
+      "lang": "de",
+      "pred": 16,
+      "gold": 16,
+      "correct": true,
+      "cost": 2.5548e-05,
+      "response_excerpt": "16"
+    },
+    {
+      "lang": "de",
+      "pred": 25,
+      "gold": 25,
+      "correct": true,
+      "cost": 2.9045e-05,
+      "response_excerpt": "25"
+    },
+    {
+      "lang": "de",
+      "pred": 104,
+      "gold": 104,
+      "correct": true,
+      "cost": 7.2142e-05,
+      "response_excerpt": "Let\u2019s break it down step-by-step without commentary.\n\n1. One pair of heels costs $33.  \n2. The other pair costs twice as"
+    }
+  ]
+}

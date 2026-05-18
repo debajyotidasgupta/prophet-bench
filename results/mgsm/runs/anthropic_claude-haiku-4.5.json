@@ -1,0 +1,992 @@
+{
+  "summary": {
+    "agent": "anthropic/claude-haiku-4.5",
+    "cost_total": 0.07494900000000003,
+    "per_lang": {
+      "en": {
+        "correct": 28,
+        "total": 30,
+        "acc": 0.9333333333333333
+      },
+      "es": {
+        "correct": 28,
+        "total": 30,
+        "acc": 0.9333333333333333
+      },
+      "fr": {
+        "correct": 26,
+        "total": 30,
+        "acc": 0.8666666666666667
+      },
+      "de": {
+        "correct": 29,
+        "total": 30,
+        "acc": 0.9666666666666667
+      }
+    },
+    "overall_acc": 0.925,
+    "n_calls": 120
+  },
+  "samples": [
+    {
+      "lang": "en",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.000267,
+      "response_excerpt": "16 - 3 - 4 = 9 eggs remaining\n9 \u00d7 $2 = $18\n\n18"
+    },
+    {
+      "lang": "en",
+      "pred": 3,
+      "gold": 3,
+      "correct": true,
+      "cost": 9.4e-05,
+      "response_excerpt": "3"
+    },
+    {
+      "lang": "en",
+      "pred": 70000,
+      "gold": 70000,
+      "correct": true,
+      "cost": 0.000922,
+      "response_excerpt": "Let me work through this step-by-step.\n\nJosh's total investment:\n- Purchase price: $80,000\n- Repairs: $50,000\n- Total in"
+    },
+    {
+      "lang": "en",
+      "pred": 540,
+      "gold": 540,
+      "correct": true,
+      "cost": 0.000101,
+      "response_excerpt": "540"
+    },
+    {
+      "lang": "en",
+      "pred": 20,
+      "gold": 20,
+      "correct": true,
+      "cost": 0.000671,
+      "response_excerpt": "Looking at this problem:\n\n**Total daily feed needed:**\n- 20 chickens \u00d7 3 cups per chicken = 60 cups total per day\n\n**Fee"
+    },
+    {
+      "lang": "en",
+      "pred": 64,
+      "gold": 64,
+      "correct": true,
+      "cost": 0.000849,
+      "response_excerpt": "Let me work through this step-by-step.\n\nKylar is buying 16 glasses where:\n- Every odd-numbered glass (1st, 3rd, 5th, etc"
+    },
+    {
+      "lang": "en",
+      "pred": 260,
+      "gold": 260,
+      "correct": true,
+      "cost": 0.000572,
+      "response_excerpt": "Let me work through this step-by-step.\n\nSeattle has 20 sheep.\n\nCharleston has 4 times as many sheep as Seattle:\nCharlest"
+    },
+    {
+      "lang": "en",
+      "pred": 160,
+      "gold": 160,
+      "correct": true,
+      "cost": 0.001017,
+      "response_excerpt": "Let me work through this step-by-step.\n\nFirst, let me find how far Carla gets before the restart:\n- 40% of 200 GB = 0.40"
+    },
+    {
+      "lang": "en",
+      "pred": 45,
+      "gold": 45,
+      "correct": true,
+      "cost": 0.001266,
+      "response_excerpt": "Let me work through this step-by-step.\n\n**Initial drive away from home:**\n- 3 hours at 60 mph\n- Distance from home: 3 \u00d7 "
+    },
+    {
+      "lang": "en",
+      "pred": 490,
+      "gold": 460,
+      "correct": false,
+      "cost": 0.000127,
+      "response_excerpt": "490"
+    },
+    {
+      "lang": "en",
+      "pred": 366,
+      "gold": 366,
+      "correct": true,
+      "cost": 0.000483,
+      "response_excerpt": "First month: 60 downloads\n\nSecond month: 60 \u00d7 3 = 180 downloads\n\nThird month: 180 \u00d7 (1 - 0.30) = 180 \u00d7 0.70 = 126 downlo"
+    },
+    {
+      "lang": "en",
+      "pred": 694,
+      "gold": 694,
+      "correct": true,
+      "cost": 0.000356,
+      "response_excerpt": "3 \u00d7 68 = 204\n2 \u00d7 80 = 160\n6 \u00d7 55 = 330\n204 + 160 + 330 = 694\n\n694"
+    },
+    {
+      "lang": "en",
+      "pred": 12,
+      "gold": 13,
+      "correct": false,
+      "cost": 0.000887,
+      "response_excerpt": "Let me work through this step-by-step.\n\n**Annual profit calculation:**\n- Lemons per year: 7\n- Revenue per year: 7 \u00d7 $1.5"
+    },
+    {
+      "lang": "en",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.001391,
+      "response_excerpt": "Let me work backwards from the 5 vacuum cleaners left.\n\nLet x = number of vacuum cleaners Melanie started with\n\n- At gre"
+    },
+    {
+      "lang": "en",
+      "pred": 60,
+      "gold": 60,
+      "correct": true,
+      "cost": 0.000736,
+      "response_excerpt": "Let me work through this step-by-step.\n\nTotal students: 20\n\nContemporary dance: 20% of 20 = 0.20 \u00d7 20 = 4 students\n\nRema"
+    },
+    {
+      "lang": "en",
+      "pred": 125,
+      "gold": 125,
+      "correct": true,
+      "cost": 0.000833,
+      "response_excerpt": "Looking at this problem, I need to calculate the profit from each option and choose the one with maximum profit.\n\n**Jewe"
+    },
+    {
+      "lang": "en",
+      "pred": 230,
+      "gold": 230,
+      "correct": true,
+      "cost": 0.000116,
+      "response_excerpt": "230"
+    },
+    {
+      "lang": "en",
+      "pred": 57500,
+      "gold": 57500,
+      "correct": true,
+      "cost": 0.000369,
+      "response_excerpt": "50 \u00d7 (35 \u00d7 $20 + 15 \u00d7 $30)\n= 50 \u00d7 ($700 + $450)\n= 50 \u00d7 $1,150\n= $57,500\n\n57500"
+    },
+    {
+      "lang": "en",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 9.3e-05,
+      "response_excerpt": "7"
+    },
+    {
+      "lang": "en",
+      "pred": 6,
+      "gold": 6,
+      "correct": true,
+      "cost": 0.000928,
+      "response_excerpt": "Let me work through this step-by-step.\n\nTotal trail distance: 12 miles\nDistance covered so far: 4 + 2 = 6 miles\nRemainin"
+    },
+    {
+      "lang": "en",
+      "pred": 15,
+      "gold": 15,
+      "correct": true,
+      "cost": 0.000951,
+      "response_excerpt": "Let me work through this step-by-step.\n\nOrange drink: 10 liters, two-thirds water\n- Water in orange drink: 10 \u00d7 (2/3) = "
+    },
+    {
+      "lang": "en",
+      "pred": 14,
+      "gold": 14,
+      "correct": true,
+      "cost": 0.000835,
+      "response_excerpt": "Let me work through this step-by-step.\n\nGiven information:\n- Raymond was born 6 years before Samantha\n- Raymond had a so"
+    },
+    {
+      "lang": "en",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 0.000128,
+      "response_excerpt": "7"
+    },
+    {
+      "lang": "en",
+      "pred": 8,
+      "gold": 8,
+      "correct": true,
+      "cost": 0.00011,
+      "response_excerpt": "8"
+    },
+    {
+      "lang": "en",
+      "pred": 26,
+      "gold": 26,
+      "correct": true,
+      "cost": 0.000461,
+      "response_excerpt": "Let me work through this step-by-step.\n\nIf Kyle got a 25% discount, he paid 75% of the original price.\n\nSo: 0.75 \u00d7 origi"
+    },
+    {
+      "lang": "en",
+      "pred": 2,
+      "gold": 2,
+      "correct": true,
+      "cost": 0.000958,
+      "response_excerpt": "Let me work through this step-by-step.\n\nCost of chicken meal: $12\nCost of 5 packs of milk: 5 \u00d7 $3 = $15\nCost of 4 apples"
+    },
+    {
+      "lang": "en",
+      "pred": 243,
+      "gold": 243,
+      "correct": true,
+      "cost": 0.000458,
+      "response_excerpt": "3 \u00d7 $16.50 = $49.50\n3 \u00d7 $22.50 = $67.50\n3 \u00d7 $42.00 = $126.00\n\n$49.50 + $67.50 + $126.00 = $243.00\n\n243"
+    },
+    {
+      "lang": "en",
+      "pred": 16,
+      "gold": 16,
+      "correct": true,
+      "cost": 0.000128,
+      "response_excerpt": "16"
+    },
+    {
+      "lang": "en",
+      "pred": 25,
+      "gold": 25,
+      "correct": true,
+      "cost": 0.000114,
+      "response_excerpt": "25"
+    },
+    {
+      "lang": "en",
+      "pred": 104,
+      "gold": 104,
+      "correct": true,
+      "cost": 0.000808,
+      "response_excerpt": "Let me work through this step-by-step.\n\nFirst, I need to find the cost of the two pairs of high heels:\n- One pair costs "
+    },
+    {
+      "lang": "es",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.0003,
+      "response_excerpt": "16 - 3 - 4 = 9 eggs remaining\n9 \u00d7 $2 = $18\n\n18"
+    },
+    {
+      "lang": "es",
+      "pred": 3,
+      "gold": 3,
+      "correct": true,
+      "cost": 0.000108,
+      "response_excerpt": "3"
+    },
+    {
+      "lang": "es",
+      "pred": 70000,
+      "gold": 70000,
+      "correct": true,
+      "cost": 0.000903,
+      "response_excerpt": "Let me work through this step by step.\n\nInitial cost of house: $80,000\nRepairs added: $50,000\nTotal investment: $80,000 "
+    },
+    {
+      "lang": "es",
+      "pred": 540,
+      "gold": 540,
+      "correct": true,
+      "cost": 0.000116,
+      "response_excerpt": "540"
+    },
+    {
+      "lang": "es",
+      "pred": 20,
+      "gold": 20,
+      "correct": true,
+      "cost": 0.000923,
+      "response_excerpt": "Let me work through this step-by-step.\n\nGiven information:\n- Wendi has 20 chickens\n- Each chicken needs 3 cups of food p"
+    },
+    {
+      "lang": "es",
+      "pred": 64,
+      "gold": 64,
+      "correct": true,
+      "cost": 0.001136,
+      "response_excerpt": "Let me work through this step by step.\n\n- Regular price per glass: $5\n- Every second glass costs 60% of the regular pric"
+    },
+    {
+      "lang": "es",
+      "pred": 260,
+      "gold": 260,
+      "correct": true,
+      "cost": 0.000426,
+      "response_excerpt": "Seattle: 20 ovejas\nCharleston: 20 \u00d7 4 = 80 ovejas\nToulouse: 80 \u00d7 2 = 160 ovejas\n\nTotal: 20 + 80 + 160 = 260\n\n260"
+    },
+    {
+      "lang": "es",
+      "pred": 160,
+      "gold": 160,
+      "correct": true,
+      "cost": 0.001185,
+      "response_excerpt": "Let me work through this step-by-step.\n\n1) Carla needs to download 200 GB total\n2) She downloads at 2 GB per minute\n3) A"
+    },
+    {
+      "lang": "es",
+      "pred": 45,
+      "gold": 45,
+      "correct": true,
+      "cost": 0.001334,
+      "response_excerpt": "Let me work through this step-by-step.\n\n**First part - driving away from home:**\n- 3 hours at 60 mph\n- Distance from hom"
+    },
+    {
+      "lang": "es",
+      "pred": 460,
+      "gold": 460,
+      "correct": true,
+      "cost": 0.000581,
+      "response_excerpt": "Eliza's regular pay for 40 hours: 40 \u00d7 $10 = $400\n\nOvertime hours: 45 - 40 = 5 hours\n\nOvertime rate: $10 \u00d7 1.2 = $12 per"
+    },
+    {
+      "lang": "es",
+      "pred": 366,
+      "gold": 366,
+      "correct": true,
+      "cost": 0.000504,
+      "response_excerpt": "First month: 60 downloads\n\nSecond month: 60 \u00d7 3 = 180 downloads\n\nThird month: 180 \u00d7 (1 - 0.30) = 180 \u00d7 0.70 = 126 downlo"
+    },
+    {
+      "lang": "es",
+      "pred": 694,
+      "gold": 694,
+      "correct": true,
+      "cost": 0.000375,
+      "response_excerpt": "3 \u00d7 68 = 204\n2 \u00d7 80 = 160\n6 \u00d7 55 = 330\n\n204 + 160 + 330 = 694\n\n694"
+    },
+    {
+      "lang": "es",
+      "pred": 12,
+      "gold": 13,
+      "correct": false,
+      "cost": 0.000734,
+      "response_excerpt": "Let me work through this step by step.\n\nInitial cost: $90\n\nAnnual revenue from lemons: 7 lemons \u00d7 $1.50 = $10.50\n\nAnnual"
+    },
+    {
+      "lang": "es",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.00123,
+      "response_excerpt": "Let me work through this step-by-step.\n\nLet x = number of vacuums Melanie had at the beginning\n\n- Green house: x/3 vacuu"
+    },
+    {
+      "lang": "es",
+      "pred": 60,
+      "gold": 60,
+      "correct": true,
+      "cost": 0.000913,
+      "response_excerpt": "Let me work through this step by step.\n\nTotal students: 20\n\nStep 1: Students in contemporary dance\n20% of 20 = 0.20 \u00d7 20"
+    },
+    {
+      "lang": "es",
+      "pred": 125,
+      "gold": 125,
+      "correct": true,
+      "cost": 0.000724,
+      "response_excerpt": "Let me calculate the profit for each option:\n\n**Jewelry option:**\n- Initial value: $5000\n- Increase: 2.5%\n- Profit: $500"
+    },
+    {
+      "lang": "es",
+      "pred": 230,
+      "gold": 230,
+      "correct": true,
+      "cost": 0.00014,
+      "response_excerpt": "230"
+    },
+    {
+      "lang": "es",
+      "pred": 57500,
+      "gold": 57500,
+      "correct": true,
+      "cost": 0.00078,
+      "response_excerpt": "Let me break down this problem:\n\n**Teaching income:**\n- $20 per hour\n- 35 hours per week\n- 50 weeks per year\n- 20 \u00d7 35 \u00d7"
+    },
+    {
+      "lang": "es",
+      "pred": 6,
+      "gold": 7,
+      "correct": false,
+      "cost": 0.000114,
+      "response_excerpt": "6"
+    },
+    {
+      "lang": "es",
+      "pred": 6,
+      "gold": 6,
+      "correct": true,
+      "cost": 0.001032,
+      "response_excerpt": "Let me work through this step-by-step.\n\nTotal distance: 12 miles\nDesired average speed: 4 mph\n\nFirst, I'll find the tota"
+    },
+    {
+      "lang": "es",
+      "pred": 15,
+      "gold": 15,
+      "correct": true,
+      "cost": 0.001109,
+      "response_excerpt": "Let me work through this step by step.\n\n**Orange soda (naranja):**\n- Initial: 10 liters\n- Water content: 2/3 of 10 = 20/"
+    },
+    {
+      "lang": "es",
+      "pred": 14,
+      "gold": 14,
+      "correct": true,
+      "cost": 0.000836,
+      "response_excerpt": "Let me work through this step by step.\n\nGiven information:\n- Raymond was born 6 years before Samantha\n- Raymond had a so"
+    },
+    {
+      "lang": "es",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 0.000527,
+      "response_excerpt": "3 \u00d7 1 = 3 DVDs (first 3 customers)\n2 \u00d7 2 = 4 DVDs (next 2 customers)\n3 \u00d7 0 = 0 DVDs (last 3 customers)\n\nTotal: 3 + 4 + 0"
+    },
+    {
+      "lang": "es",
+      "pred": 8,
+      "gold": 8,
+      "correct": true,
+      "cost": 0.00013,
+      "response_excerpt": "8"
+    },
+    {
+      "lang": "es",
+      "pred": 26,
+      "gold": 26,
+      "correct": true,
+      "cost": 0.000517,
+      "response_excerpt": "Let me work through this step by step.\n\nKyle paid $19.50 for the book, which represents 75% of the original price (since"
+    },
+    {
+      "lang": "es",
+      "pred": 2,
+      "gold": 2,
+      "correct": true,
+      "cost": 0.000924,
+      "response_excerpt": "Let me work through this step by step.\n\nMarie's purchases:\n- 1 chicken meal: $12\n- 5 boxes of milk at $3 each: 5 \u00d7 $3 = "
+    },
+    {
+      "lang": "es",
+      "pred": 243,
+      "gold": 243,
+      "correct": true,
+      "cost": 0.000489,
+      "response_excerpt": "3 \u00d7 $16.50 = $49.50\n3 \u00d7 $22.50 = $67.50\n3 \u00d7 $42.00 = $126.00\n\n$49.50 + $67.50 + $126.00 = $243.00\n\n243"
+    },
+    {
+      "lang": "es",
+      "pred": 16,
+      "gold": 16,
+      "correct": true,
+      "cost": 0.000133,
+      "response_excerpt": "16"
+    },
+    {
+      "lang": "es",
+      "pred": 25,
+      "gold": 25,
+      "correct": true,
+      "cost": 0.000543,
+      "response_excerpt": "Let me work through this step by step.\n\nTotal distance: 60 miles\n\nFirst stop: after 20 miles\n\nSecond stop: 15 miles befo"
+    },
+    {
+      "lang": "es",
+      "pred": 104,
+      "gold": 104,
+      "correct": true,
+      "cost": 0.000724,
+      "response_excerpt": "Let me work through this step-by-step.\n\nLet B = cost of the boots\n\nOne pair of high-heeled shoes costs $33\nThe other pai"
+    },
+    {
+      "lang": "fr",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.000723,
+      "response_excerpt": "Let me work through this step-by-step.\n\n1. Janet's ducks lay 16 eggs per day\n2. She eats 3 eggs for breakfast\n3. She use"
+    },
+    {
+      "lang": "fr",
+      "pred": 3,
+      "gold": 3,
+      "correct": true,
+      "cost": 0.00011,
+      "response_excerpt": "3"
+    },
+    {
+      "lang": "fr",
+      "pred": 70000,
+      "gold": 70000,
+      "correct": true,
+      "cost": 0.000589,
+      "response_excerpt": "Josh's initial investment: $80,000 + $50,000 = $130,000\n\nThe house value increases by 150%, meaning the new value is:\n$8"
+    },
+    {
+      "lang": "fr",
+      "pred": 540,
+      "gold": 540,
+      "correct": true,
+      "cost": 0.000112,
+      "response_excerpt": "540"
+    },
+    {
+      "lang": "fr",
+      "pred": 20,
+      "gold": 20,
+      "correct": true,
+      "cost": 0.000936,
+      "response_excerpt": "Let me work through this step-by-step.\n\nGiven information:\n- Each chicken needs 3 bowls of food per day\n- There are 20 c"
+    },
+    {
+      "lang": "fr",
+      "pred": 64,
+      "gold": 64,
+      "correct": true,
+      "cost": 0.001255,
+      "response_excerpt": "Let me work through this step-by-step.\n\nKylar wants to buy 16 glasses.\n- Regular price per glass: $5\n- Every second glas"
+    },
+    {
+      "lang": "fr",
+      "pred": 260,
+      "gold": 260,
+      "correct": true,
+      "cost": 0.000398,
+      "response_excerpt": "Seattle: 20 moutons\nCharleston: 20 \u00d7 4 = 80 moutons\nToulouse: 80 \u00d7 2 = 160 moutons\n\nTotal: 20 + 80 + 160 = 260\n\n260"
+    },
+    {
+      "lang": "fr",
+      "pred": 160,
+      "gold": 160,
+      "correct": true,
+      "cost": 0.001062,
+      "response_excerpt": "Let me work through this step-by-step.\n\n**First attempt:**\n- File size: 200 Go\n- Download speed: 2 Go/minute\n- At 40% do"
+    },
+    {
+      "lang": "fr",
+      "pred": 45,
+      "gold": 45,
+      "correct": true,
+      "cost": 0.001263,
+      "response_excerpt": "Let me work through this step-by-step.\n\n**First leg (going away from home):**\n- Time: 3 hours\n- Speed: 60 mph\n- Distance"
+    },
+    {
+      "lang": "fr",
+      "pred": 460,
+      "gold": 460,
+      "correct": true,
+      "cost": 0.000822,
+      "response_excerpt": "Calcul du salaire d'\u00c9lisa:\n\n- 40 premi\u00e8res heures: 40 \u00d7 10 = 400 $\n- Heures suppl\u00e9mentaires: 45 - 40 = 5 heures\n- Taux p"
+    },
+    {
+      "lang": "fr",
+      "pred": 366,
+      "gold": 366,
+      "correct": true,
+      "cost": 0.000502,
+      "response_excerpt": "First month: 60 downloads\n\nSecond month: 3 \u00d7 60 = 180 downloads\n\nThird month: 180 - (30% of 180) = 180 - 54 = 126 downlo"
+    },
+    {
+      "lang": "fr",
+      "pred": 694,
+      "gold": 694,
+      "correct": true,
+      "cost": 0.000392,
+      "response_excerpt": "3 \u00d7 68 = 204\n2 \u00d7 80 = 160\n6 \u00d7 55 = 330\n\n204 + 160 + 330 = 694\n\n694"
+    },
+    {
+      "lang": "fr",
+      "pred": 13,
+      "gold": 13,
+      "correct": true,
+      "cost": 0.001462,
+      "response_excerpt": "Let me work through this step-by-step.\n\n**Initial cost:** $90\n\n**Annual revenue:** 7 lemons \u00d7 $1.50 = $10.50\n\n**Annual c"
+    },
+    {
+      "lang": "fr",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.001296,
+      "response_excerpt": "Let me work through this step-by-step.\n\nLet x = initial number of aspirators\n\nAt the green house: she sold 1/3 of x\nRema"
+    },
+    {
+      "lang": "fr",
+      "pred": 55,
+      "gold": 60,
+      "correct": false,
+      "cost": 0.000138,
+      "response_excerpt": "55"
+    },
+    {
+      "lang": "fr",
+      "pred": 125,
+      "gold": 125,
+      "correct": true,
+      "cost": 0.00074,
+      "response_excerpt": "Let me calculate the profit for each option:\n\n**Jewelry option:**\n- Initial value: $5,000\n- Market increase: 2.5%\n- Prof"
+    },
+    {
+      "lang": "fr",
+      "pred": 230,
+      "gold": 230,
+      "correct": true,
+      "cost": 0.000143,
+      "response_excerpt": "230"
+    },
+    {
+      "lang": "fr",
+      "pred": 52500,
+      "gold": 57500,
+      "correct": false,
+      "cost": 0.000155,
+      "response_excerpt": "52500"
+    },
+    {
+      "lang": "fr",
+      "pred": 6,
+      "gold": 7,
+      "correct": false,
+      "cost": 0.000118,
+      "response_excerpt": "6"
+    },
+    {
+      "lang": "fr",
+      "pred": 6,
+      "gold": 6,
+      "correct": true,
+      "cost": 0.001096,
+      "response_excerpt": "Let me work through this step-by-step.\n\nTotal trail length: 12 miles\nTarget average speed: 4 miles per hour\n\nDistance co"
+    },
+    {
+      "lang": "fr",
+      "pred": 17,
+      "gold": 15,
+      "correct": false,
+      "cost": 0.001961,
+      "response_excerpt": "Let me work through this step by step.\n\nInitial orange juice: 10 liters\n- Water content: 2/3 \u00d7 10 = 20/3 liters\n- Actual"
+    },
+    {
+      "lang": "fr",
+      "pred": 14,
+      "gold": 14,
+      "correct": true,
+      "cost": 0.000943,
+      "response_excerpt": "Let me work through this step-by-step.\n\nGiven information:\n- Raymond is 6 years older than Samantha\n- Raymond had a son "
+    },
+    {
+      "lang": "fr",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 0.000145,
+      "response_excerpt": "7"
+    },
+    {
+      "lang": "fr",
+      "pred": 8,
+      "gold": 8,
+      "correct": true,
+      "cost": 0.000123,
+      "response_excerpt": "8"
+    },
+    {
+      "lang": "fr",
+      "pred": 26,
+      "gold": 26,
+      "correct": true,
+      "cost": 0.000121,
+      "response_excerpt": "26"
+    },
+    {
+      "lang": "fr",
+      "pred": 2,
+      "gold": 2,
+      "correct": true,
+      "cost": 0.000923,
+      "response_excerpt": "Let me work through this step by step.\n\nChicken dish: $12\nMilk cartons: 5 \u00d7 $3 = $15\nApples: 4 \u00d7 $1.50 = $6\nPizza boxes:"
+    },
+    {
+      "lang": "fr",
+      "pred": 243,
+      "gold": 243,
+      "correct": true,
+      "cost": 0.000441,
+      "response_excerpt": "3 \u00d7 16,50 = 49,50\n3 \u00d7 22,50 = 67,50\n3 \u00d7 42 = 126\n\n49,50 + 67,50 + 126 = 243\n\n243"
+    },
+    {
+      "lang": "fr",
+      "pred": 16,
+      "gold": 16,
+      "correct": true,
+      "cost": 0.000133,
+      "response_excerpt": "16"
+    },
+    {
+      "lang": "fr",
+      "pred": 25,
+      "gold": 25,
+      "correct": true,
+      "cost": 0.000137,
+      "response_excerpt": "25"
+    },
+    {
+      "lang": "fr",
+      "pred": 104,
+      "gold": 104,
+      "correct": true,
+      "cost": 0.00078,
+      "response_excerpt": "Let me work through this step-by-step.\n\nLet's denote:\n- Price of one pair of high heels: $33\n- Price of the other pair o"
+    },
+    {
+      "lang": "de",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.000752,
+      "response_excerpt": "Let me work through this step-by-step.\n\nJanet's ducks lay 16 eggs per day.\n\nShe eats 3 eggs every morning for breakfast."
+    },
+    {
+      "lang": "de",
+      "pred": 3,
+      "gold": 3,
+      "correct": true,
+      "cost": 0.000113,
+      "response_excerpt": "3"
+    },
+    {
+      "lang": "de",
+      "pred": 70000,
+      "gold": 70000,
+      "correct": true,
+      "cost": 0.000808,
+      "response_excerpt": "Let me work through this step-by-step.\n\nInitial cost of house: $80,000\nRepairs: $50,000\nTotal investment: $80,000 + $50,"
+    },
+    {
+      "lang": "de",
+      "pred": 540,
+      "gold": 540,
+      "correct": true,
+      "cost": 0.00013,
+      "response_excerpt": "540"
+    },
+    {
+      "lang": "de",
+      "pred": 20,
+      "gold": 20,
+      "correct": true,
+      "cost": 0.001015,
+      "response_excerpt": "Let me work through this step-by-step.\n\nGiven information:\n- Wendi has 20 chickens\n- Each chicken gets 3 cups of feed da"
+    },
+    {
+      "lang": "de",
+      "pred": 50,
+      "gold": 64,
+      "correct": false,
+      "cost": 0.00062,
+      "response_excerpt": "Let me solve this step by step.\n\nFirst glass: $5\nEach additional glass costs 60% of the original price: 0.60 \u00d7 $5 = $3\n\n"
+    },
+    {
+      "lang": "de",
+      "pred": 260,
+      "gold": 260,
+      "correct": true,
+      "cost": 0.00043,
+      "response_excerpt": "Seattle: 20 Schafe\nCharleston: 4 \u00d7 20 = 80 Schafe\nToulouse: 2 \u00d7 80 = 160 Schafe\n\nZusammen: 20 + 80 + 160 = 260\n\n260"
+    },
+    {
+      "lang": "de",
+      "pred": 160,
+      "gold": 160,
+      "correct": true,
+      "cost": 0.001031,
+      "response_excerpt": "Let me break down this problem step by step.\n\n**Initial download (40% completed):**\n- 40% of 200 GB = 0.4 \u00d7 200 = 80 GB\n"
+    },
+    {
+      "lang": "de",
+      "pred": 45,
+      "gold": 45,
+      "correct": true,
+      "cost": 0.001351,
+      "response_excerpt": "Let me work through this step-by-step.\n\n**Initial trip away from home:**\n- 3 hours at 60 mph\n- Distance from home: 3 \u00d7 6"
+    },
+    {
+      "lang": "de",
+      "pred": 460,
+      "gold": 460,
+      "correct": true,
+      "cost": 0.000597,
+      "response_excerpt": "Eliza's regular pay for 40 hours: 40 \u00d7 $10 = $400\n\nOvertime hours: 45 - 40 = 5 hours\n\nOvertime rate: $10 \u00d7 1.2 = $12 per"
+    },
+    {
+      "lang": "de",
+      "pred": 366,
+      "gold": 366,
+      "correct": true,
+      "cost": 0.000517,
+      "response_excerpt": "First month: 60 downloads\n\nSecond month: 60 \u00d7 3 = 180 downloads\n\nThird month: 180 \u00d7 (1 - 0.30) = 180 \u00d7 0.70 = 126 downlo"
+    },
+    {
+      "lang": "de",
+      "pred": 694,
+      "gold": 694,
+      "correct": true,
+      "cost": 0.000406,
+      "response_excerpt": "3 \u00d7 68 = 204\n2 \u00d7 80 = 160\n6 \u00d7 55 = 330\n204 + 160 + 330 = 694\n\n694"
+    },
+    {
+      "lang": "de",
+      "pred": 13,
+      "gold": 13,
+      "correct": true,
+      "cost": 0.000893,
+      "response_excerpt": "Let me work through this step-by-step.\n\n**Initial cost:** $90\n\n**Annual revenue:** 7 lemons \u00d7 $1.50 = $10.50\n\n**Annual c"
+    },
+    {
+      "lang": "de",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.0015,
+      "response_excerpt": "Let me work through this step-by-step.\n\nLet x = the number of vacuum cleaners Melanie started with.\n\n1. She sold 1/3 of "
+    },
+    {
+      "lang": "de",
+      "pred": 60,
+      "gold": 60,
+      "correct": true,
+      "cost": 0.000777,
+      "response_excerpt": "Let me work through this step by step.\n\nTotal students: 20\n\nContemporary Dance: 20% of 20 = 0.20 \u00d7 20 = 4 students\n\nRema"
+    },
+    {
+      "lang": "de",
+      "pred": 125,
+      "gold": 125,
+      "correct": true,
+      "cost": 0.000483,
+      "response_excerpt": "Jewelry profit: 5,000 \u00d7 0.025 = 125 USD\nElectronics profit: 8,000 \u00d7 0.012 = 96 USD\n\nMaximum profit from jewelry purchase"
+    },
+    {
+      "lang": "de",
+      "pred": 230,
+      "gold": 230,
+      "correct": true,
+      "cost": 0.00015,
+      "response_excerpt": "230"
+    },
+    {
+      "lang": "de",
+      "pred": 57500,
+      "gold": 57500,
+      "correct": true,
+      "cost": 0.00078,
+      "response_excerpt": "Let me break down this problem:\n\n**Teaching income:**\n- $20 per hour\n- 35 hours per week\n- 50 weeks per year\n- 20 \u00d7 35 \u00d7"
+    },
+    {
+      "lang": "de",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 0.000327,
+      "response_excerpt": "3 eggs per day \u00d7 7 days per week \u00d7 4 weeks = 84 eggs\n84 eggs \u00f7 12 eggs per dozen = 7 dozen\n\n7"
+    },
+    {
+      "lang": "de",
+      "pred": 6,
+      "gold": 6,
+      "correct": true,
+      "cost": 0.00117,
+      "response_excerpt": "Let me work through this step-by-step.\n\n**Given information:**\n- Total distance: 12 miles\n- Hour 1: 4 miles\n- Hour 2: 2 "
+    },
+    {
+      "lang": "de",
+      "pred": 15,
+      "gold": 15,
+      "correct": true,
+      "cost": 0.001099,
+      "response_excerpt": "Let me work through this step-by-step.\n\n**Orange drink (Orangengetr\u00e4nk):**\n- Initial volume: 10 liters\n- Water content: "
+    },
+    {
+      "lang": "de",
+      "pred": 14,
+      "gold": 14,
+      "correct": true,
+      "cost": 0.000977,
+      "response_excerpt": "Let me work through this step by step.\n\nGiven information:\n- Raymond was born 6 years before Samantha\n- Raymond had a so"
+    },
+    {
+      "lang": "de",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 0.000344,
+      "response_excerpt": "3 \u00d7 1 + 2 \u00d7 2 + 3 \u00d7 0 = 3 + 4 + 0 = 7\n\n7"
+    },
+    {
+      "lang": "de",
+      "pred": 8,
+      "gold": 8,
+      "correct": true,
+      "cost": 0.000125,
+      "response_excerpt": "8"
+    },
+    {
+      "lang": "de",
+      "pred": 26,
+      "gold": 26,
+      "correct": true,
+      "cost": 0.00056,
+      "response_excerpt": "Let me work through this step by step.\n\nKyle paid $19.50 for the book after a 25% discount.\n\nIf there's a 25% discount, "
+    },
+    {
+      "lang": "de",
+      "pred": 2,
+      "gold": 2,
+      "correct": true,
+      "cost": 0.000935,
+      "response_excerpt": "Let me work through this step by step.\n\nMarie's purchases:\n- Chicken dish: $12\n- 5 milk packages at $3 each: 5 \u00d7 $3 = $1"
+    },
+    {
+      "lang": "de",
+      "pred": 243,
+      "gold": 243,
+      "correct": true,
+      "cost": 0.000477,
+      "response_excerpt": "3 \u00d7 16.50 = 49.50\n3 \u00d7 22.50 = 67.50\n3 \u00d7 42 = 126.00\n\n49.50 + 67.50 + 126.00 = 243.00\n\n243"
+    },
+    {
+      "lang": "de",
+      "pred": 16,
+      "gold": 16,
+      "correct": true,
+      "cost": 0.000141,
+      "response_excerpt": "16"
+    },
+    {
+      "lang": "de",
+      "pred": 25,
+      "gold": 25,
+      "correct": true,
+      "cost": 0.000146,
+      "response_excerpt": "25"
+    },
+    {
+      "lang": "de",
+      "pred": 104,
+      "gold": 104,
+      "correct": true,
+      "cost": 0.000757,
+      "response_excerpt": "Let me work through this step-by-step.\n\nLet B = cost of the boots\n\nOne pair of high heels costs $33\nThe other pair of hi"
+    }
+  ]
+}

@@ -1,0 +1,992 @@
+{
+  "summary": {
+    "agent": "google/gemini-3-flash-preview",
+    "cost_total": 0.04531100000000002,
+    "per_lang": {
+      "en": {
+        "correct": 29,
+        "total": 30,
+        "acc": 0.9666666666666667
+      },
+      "es": {
+        "correct": 29,
+        "total": 30,
+        "acc": 0.9666666666666667
+      },
+      "fr": {
+        "correct": 28,
+        "total": 30,
+        "acc": 0.9333333333333333
+      },
+      "de": {
+        "correct": 29,
+        "total": 30,
+        "acc": 0.9666666666666667
+      }
+    },
+    "overall_acc": 0.9583333333333334,
+    "n_calls": 120
+  },
+  "samples": [
+    {
+      "lang": "en",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.000239,
+      "response_excerpt": "Total eggs per day: 16\nEggs eaten: 3\nEggs for muffins: 4\nRemaining eggs: 16 - 3 - 4 = 9\nPrice per egg: $2\nDaily earnings"
+    },
+    {
+      "lang": "en",
+      "pred": 3,
+      "gold": 3,
+      "correct": true,
+      "cost": 0.000136,
+      "response_excerpt": "Blue fiber: 2 bolts\nWhite fiber: 2 / 2 = 1 bolt\nTotal: 2 + 1 = 3\n\nFinal answer:\n3"
+    },
+    {
+      "lang": "en",
+      "pred": 70000,
+      "gold": 70000,
+      "correct": true,
+      "cost": 0.0005925,
+      "response_excerpt": "Cost of house: $80,000\nCost of repairs: $50,000\nTotal investment: $80,000 + $50,000 = $130,000\n\nInitial value of the hou"
+    },
+    {
+      "lang": "en",
+      "pred": 540,
+      "gold": 540,
+      "correct": true,
+      "cost": 0.000212,
+      "response_excerpt": "Sprints per session: 3\nSessions per week: 3\nTotal sprints per week: 3 * 3 = 9\nDistance per sprint: 60 meters\nTotal dista"
+    },
+    {
+      "lang": "en",
+      "pred": 20,
+      "gold": 20,
+      "correct": true,
+      "cost": 0.0003615,
+      "response_excerpt": "Total number of chickens = 20\nCups per chicken per day = 3\nTotal cups needed per day = 20 * 3 = 60\n\nMorning feed = 15 cu"
+    },
+    {
+      "lang": "en",
+      "pred": 64,
+      "gold": 64,
+      "correct": true,
+      "cost": 0.000561,
+      "response_excerpt": "To find the total cost for 16 glasses:\n\n1.  **Identify the pricing structure:**\n    *   The first glass in a pair costs "
+    },
+    {
+      "lang": "en",
+      "pred": 260,
+      "gold": 260,
+      "correct": true,
+      "cost": 0.000224,
+      "response_excerpt": "Seattle = 20\nCharleston = 4 * 20 = 80\nToulouse = 2 * 80 = 160\n\nTotal = 20 + 80 + 160 = 260\n\nFinal answer:\n260"
+    },
+    {
+      "lang": "en",
+      "pred": 160,
+      "gold": 160,
+      "correct": true,
+      "cost": 0.0003495,
+      "response_excerpt": "120 minutes of downloading (40% of 200 GB = 80 GB; 80 GB / 2 GB/min = 40 minutes).\n20 minutes for the restart.\n100 minut"
+    },
+    {
+      "lang": "en",
+      "pred": 45,
+      "gold": 45,
+      "correct": true,
+      "cost": 0.00085,
+      "response_excerpt": "To find the distance John is from home after 4 hours, we first calculate the total distance he traveled away from home:\n"
+    },
+    {
+      "lang": "en",
+      "pred": 460,
+      "gold": 460,
+      "correct": true,
+      "cost": 0.0003325,
+      "response_excerpt": "Regular pay: 40 hours \u00d7 $10/hour = $400\nOvertime rate: $10 \u00d7 1.2 = $12/hour\nOvertime hours: 45 - 40 = 5 hours\nOvertime p"
+    },
+    {
+      "lang": "en",
+      "pred": 366,
+      "gold": 366,
+      "correct": true,
+      "cost": 0.000303,
+      "response_excerpt": "Month 1: 60\nMonth 2: 60 * 3 = 180\nMonth 3: 180 - (30% of 180) = 180 - 54 = 126\nTotal: 60 + 180 + 126 = 366\n\nFinal answer"
+    },
+    {
+      "lang": "en",
+      "pred": 694,
+      "gold": 694,
+      "correct": true,
+      "cost": 0.000304,
+      "response_excerpt": "Donuts: 3 dozen * $68/dozen = $204\nMini cupcakes: 2 dozen * $80/dozen = $160\nMini cheesecakes: 6 dozen * $55/dozen = $33"
+    },
+    {
+      "lang": "en",
+      "pred": 12,
+      "gold": 13,
+      "correct": false,
+      "cost": 0.000705,
+      "response_excerpt": "To find out how many years it will take for Carlos to start earning money, we first calculate the annual profit from the"
+    },
+    {
+      "lang": "en",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.0006985,
+      "response_excerpt": "Let $x$ be the initial number of vacuum cleaners.\n\n1. Melanie sold a third at the green house:\n   Remaining: $x - \\frac{"
+    },
+    {
+      "lang": "en",
+      "pred": 60,
+      "gold": 60,
+      "correct": true,
+      "cost": 0.000351,
+      "response_excerpt": "Total students = 20\nContemporary dance = 20% of 20 = 4 students\nRemaining students = 20 - 4 = 16 students\nJazz dance = 2"
+    },
+    {
+      "lang": "en",
+      "pred": 125,
+      "gold": 125,
+      "correct": true,
+      "cost": 0.000539,
+      "response_excerpt": "To find the potential profit for each purchase plan, we calculate the expected increase in value for both options:\n\n1.  "
+    },
+    {
+      "lang": "en",
+      "pred": 230,
+      "gold": 230,
+      "correct": true,
+      "cost": 0.0002845,
+      "response_excerpt": "To find the distance covered by each train, we add the distance traveled on the first day to the distance traveled on th"
+    },
+    {
+      "lang": "en",
+      "pred": 57500,
+      "gold": 57500,
+      "correct": true,
+      "cost": 0.000335,
+      "response_excerpt": "Teaching income per week: 35 hours * $20/hour = $700\nCoaching income per week: 15 hours * $30/hour = $450\nTotal income p"
+    },
+    {
+      "lang": "en",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 0.0002325,
+      "response_excerpt": "Eggs per day = 3\nDays in 4 weeks = 4 \u00d7 7 = 28\nTotal eggs = 3 \u00d7 28 = 84\nEggs in a dozen = 12\nDozens of eggs = 84 / 12 = 7"
+    },
+    {
+      "lang": "en",
+      "pred": 6,
+      "gold": 6,
+      "correct": true,
+      "cost": 0.0004585,
+      "response_excerpt": "Total distance = 12 miles\nDesired average speed = 4 miles per hour\nTotal time allowed = Total distance / Average speed ="
+    },
+    {
+      "lang": "en",
+      "pred": 15,
+      "gold": 15,
+      "correct": true,
+      "cost": 0.0011535,
+      "response_excerpt": "To find the amount of water in the final 24 liters, we calculate the water content of each component:\n\n1.  **Orange Drin"
+    },
+    {
+      "lang": "en",
+      "pred": 14,
+      "gold": 14,
+      "correct": true,
+      "cost": 0.000233,
+      "response_excerpt": "Samantha's current age = 31\nRaymond's age = 31 + 6 = 37\nRaymond's age when his son was born = 23\nYears since the son was"
+    },
+    {
+      "lang": "en",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 0.000235,
+      "response_excerpt": "First 3 customers: 3 * 1 = 3 DVDs\nNext 2 customers: 2 * 2 = 4 DVDs\nLast 3 customers: 3 * 0 = 0 DVDs\n\nTotal: 3 + 4 + 0 = "
+    },
+    {
+      "lang": "en",
+      "pred": 8,
+      "gold": 8,
+      "correct": true,
+      "cost": 0.000196,
+      "response_excerpt": "The time elapsed from 1:00 PM to 5:00 PM is 4 hours.\nSince the candle melts by 2 centimeters every hour:\n4 hours \u00d7 2 cen"
+    },
+    {
+      "lang": "en",
+      "pred": 26,
+      "gold": 26,
+      "correct": true,
+      "cost": 0.0004165,
+      "response_excerpt": "To find the original price, we represent the original price as $x$.\nThe book was sold at a 25% discount, meaning Kyle pa"
+    },
+    {
+      "lang": "en",
+      "pred": 2,
+      "gold": 2,
+      "correct": true,
+      "cost": 0.0003845,
+      "response_excerpt": "Chicken meal: $12\nMilk: 5 \u00d7 $3 = $15\nApples: 4 \u00d7 $1.50 = $6\nSubtotal (excluding pizza): $12 + $15 + $6 = $33\n\nTotal paid"
+    },
+    {
+      "lang": "en",
+      "pred": 243,
+      "gold": 243,
+      "correct": true,
+      "cost": 0.000397,
+      "response_excerpt": "Cost of 3 pairs of shorts: 3 \u00d7 $16.50 = $49.50\nCost of 3 pairs of pants: 3 \u00d7 $22.50 = $67.50\nCost of 3 pairs of shoes: 3"
+    },
+    {
+      "lang": "en",
+      "pred": 16,
+      "gold": 16,
+      "correct": true,
+      "cost": 0.0002435,
+      "response_excerpt": "Total days: 60\nServings per carton: 15\nNumber of cartons needed: 60 / 15 = 4\nCost per carton: $4.00\nTotal cost: 4 * $4.0"
+    },
+    {
+      "lang": "en",
+      "pred": 25,
+      "gold": 25,
+      "correct": true,
+      "cost": 0.0002025,
+      "response_excerpt": "Total distance = 60 miles\nFirst stop = 20 miles\nSecond stop = 60 - 15 = 45 miles\nDistance between stops = 45 - 20 = 25\n\n"
+    },
+    {
+      "lang": "en",
+      "pred": 104,
+      "gold": 104,
+      "correct": true,
+      "cost": 0.0002885,
+      "response_excerpt": "First pair of heels: $33\nSecond pair of heels: $33 * 2 = $66\nTotal cost of both pairs of heels: $33 + $66 = $99\nThe heel"
+    },
+    {
+      "lang": "es",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.0002775,
+      "response_excerpt": "Janet recolecta 16 huevos al d\u00eda.\nResta los que consume: 16 - 3 (desayuno) - 4 (magdalenas) = 9 huevos sobrantes.\nMultip"
+    },
+    {
+      "lang": "es",
+      "pred": 3,
+      "gold": 3,
+      "correct": true,
+      "cost": 0.000174,
+      "response_excerpt": "Para hacer una bata se necesitan:\n- Tela azul: 2 rollos\n- Tela blanca: la mitad de 2 = 1 rollo\n\nTotal: 2 + 1 = 3\n\nFinal "
+    },
+    {
+      "lang": "es",
+      "pred": 70000,
+      "gold": 70000,
+      "correct": true,
+      "cost": 0.000578,
+      "response_excerpt": "Costo total = Precio de compra + Reparaciones\nCosto total = $80 000 + $50 000 = $130 000\n\nAumento de valor = 150 % de $8"
+    },
+    {
+      "lang": "es",
+      "pred": 540,
+      "gold": 540,
+      "correct": true,
+      "cost": 0.0001735,
+      "response_excerpt": "3 carreras/d\u00eda \u00d7 60 metros/carrera = 180 metros/d\u00eda\n180 metros/d\u00eda \u00d7 3 d\u00edas/semana = 540 metros/semana\n\n540"
+    },
+    {
+      "lang": "es",
+      "pred": 20,
+      "gold": 20,
+      "correct": true,
+      "cost": 0.0004035,
+      "response_excerpt": "Total de pollos: 20\nTazas por pollo al d\u00eda: 3\nTotal de tazas necesarias al d\u00eda: 20 * 3 = 60\n\nTazas dadas por la ma\u00f1ana: "
+    },
+    {
+      "lang": "es",
+      "pred": 64,
+      "gold": 64,
+      "correct": true,
+      "cost": 0.0004845,
+      "response_excerpt": "Para resolver este problema, primero identificamos el costo de los vasos:\n\n1.  **Precio del primer vaso:** $5.\n2.  **Pre"
+    },
+    {
+      "lang": "es",
+      "pred": 260,
+      "gold": 260,
+      "correct": true,
+      "cost": 0.0002165,
+      "response_excerpt": "Seattle = 20\nCharleston = 20 * 4 = 80\nToulouse = 80 * 2 = 160\n\nTotal = 20 + 80 + 160 = 260\n\n260"
+    },
+    {
+      "lang": "es",
+      "pred": 160,
+      "gold": 160,
+      "correct": true,
+      "cost": 0.0007775,
+      "response_excerpt": "1. Primero, calculamos el tiempo que tarda en llegar al 40% de la descarga:\n   - El 40% de 200 GB es: $200 \\times 0.40 ="
+    },
+    {
+      "lang": "es",
+      "pred": 45,
+      "gold": 45,
+      "correct": true,
+      "cost": 0.000745,
+      "response_excerpt": "1. John conduce 3 horas a 60 mph, por lo que se aleja a una distancia de:\n3 horas * 60 mph = 180 millas.\n\n2. Intenta reg"
+    },
+    {
+      "lang": "es",
+      "pred": 460,
+      "gold": 460,
+      "correct": true,
+      "cost": 0.000342,
+      "response_excerpt": "Para las primeras 40 horas:\n40 horas * $10/hora = $400\n\nPara las horas extras (45 - 40 = 5 horas):\nTarifa de horas extra"
+    },
+    {
+      "lang": "es",
+      "pred": 366,
+      "gold": 366,
+      "correct": true,
+      "cost": 0.000294,
+      "response_excerpt": "Mes 1: 60\nMes 2: 60 * 3 = 180\nMes 3: 180 - (30% de 180) = 180 - 54 = 126\nTotal: 60 + 180 + 126 = 366\n\n366"
+    },
+    {
+      "lang": "es",
+      "pred": 694,
+      "gold": 694,
+      "correct": true,
+      "cost": 0.0002845,
+      "response_excerpt": "Donas: 3 x 68 = 204\nMini pastelillos: 2 x 80 = 160\nTortitas de queso: 6 x 55 = 330\n\nTotal: 204 + 160 + 330 = 694\n\nFinal "
+    },
+    {
+      "lang": "es",
+      "pred": 12,
+      "gold": 13,
+      "correct": false,
+      "cost": 0.000296,
+      "response_excerpt": "Costo inicial: $90\nIngresos anuales: 7 limones \u00d7 $1,5 = $10,5\nGastos anuales: $3\nGanancia neta anual: $10,5 - $3 = $7,5\n"
+    },
+    {
+      "lang": "es",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.0007655,
+      "response_excerpt": "Sea $x$ el n\u00famero inicial de aspiradoras.\n\n1. En la casa verde vendi\u00f3 $\\frac{1}{3}x$.\n   Le quedan: $x - \\frac{1}{3}x = "
+    },
+    {
+      "lang": "es",
+      "pred": 60,
+      "gold": 60,
+      "correct": true,
+      "cost": 0.000396,
+      "response_excerpt": "Total students: 20\n1. Contemporary dance: 20% of 20 = 4 students.\n2. Remaining students: 20 - 4 = 16 students.\n3. Jazz d"
+    },
+    {
+      "lang": "es",
+      "pred": 125,
+      "gold": 125,
+      "correct": true,
+      "cost": 0.0005065,
+      "response_excerpt": "Para calcular la ganancia potencial de cada opci\u00f3n:\n\n1.  **Joyas:**\n    *   Valor: $5000\n    *   Aumento: 2,5%\n    *   G"
+    },
+    {
+      "lang": "es",
+      "pred": 230,
+      "gold": 230,
+      "correct": true,
+      "cost": 0.000231,
+      "response_excerpt": "Para calcular la distancia total recorrida por cada tren, sumamos las distancias de ambos d\u00edas:\n\nD\u00eda 1: 80 millas\nD\u00eda 2:"
+    },
+    {
+      "lang": "es",
+      "pred": 57500,
+      "gold": 57500,
+      "correct": true,
+      "cost": 0.000399,
+      "response_excerpt": "Salario por ense\u00f1ar: 35 horas/semana * $20/hora = $700/semana\nSalario por entrenar: 15 horas/semana * $30/hora = $450/se"
+    },
+    {
+      "lang": "es",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 0.0002085,
+      "response_excerpt": "Huevos por d\u00eda: 3\nD\u00edas en 4 semanas: 4 \u00d7 7 = 28\nTotal de huevos: 3 \u00d7 28 = 84\nDocenas: 84 / 12 = 7\n\nFinal answer:\n7"
+    },
+    {
+      "lang": "es",
+      "pred": 6,
+      "gold": 6,
+      "correct": true,
+      "cost": 0.0003935,
+      "response_excerpt": "Distancia total: 12 millas\nVelocidad promedio deseada: 4 millas por hora\nTiempo total necesario: 12 / 4 = 3 horas\n\nDista"
+    },
+    {
+      "lang": "es",
+      "pred": 15,
+      "gold": 15,
+      "correct": true,
+      "cost": 0.000842,
+      "response_excerpt": "1. Refresco de naranja inicial: 10 litros.\n   - Proporci\u00f3n de agua: 2/3.\n   - Cantidad de agua: $10 \\times \\frac{2}{3} ="
+    },
+    {
+      "lang": "es",
+      "pred": 14,
+      "gold": 14,
+      "correct": true,
+      "cost": 0.000336,
+      "response_excerpt": "1. Samantha tiene 31 a\u00f1os.\n2. Raymond naci\u00f3 6 a\u00f1os antes que Samantha, por lo que Raymond tiene 31 + 6 = 37 a\u00f1os.\n3. Ray"
+    },
+    {
+      "lang": "es",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 0.0002505,
+      "response_excerpt": "Primeros 3 clientes: 3 * 1 = 3 DVD\nSiguientes 2 clientes: 2 * 2 = 4 DVD\n\u00daltimos 3 clientes: 3 * 0 = 0 DVD\n\nTotal: 3 + 4 "
+    },
+    {
+      "lang": "es",
+      "pred": 8,
+      "gold": 8,
+      "correct": true,
+      "cost": 0.0002205,
+      "response_excerpt": "De la 1:00 p. m. a las 5:00 p. m. hay 4 horas.\nSi la vela se derrite 2 cent\u00edmetros por hora:\n4 horas \u00d7 2 cm/hora = 8 cm."
+    },
+    {
+      "lang": "es",
+      "pred": 26,
+      "gold": 26,
+      "correct": true,
+      "cost": 0.0003535,
+      "response_excerpt": "Para resolver este problema, representamos el precio original como $x$.\nDado que el libro tiene un 25 % de descuento, Ky"
+    },
+    {
+      "lang": "es",
+      "pred": 2,
+      "gold": 2,
+      "correct": true,
+      "cost": 0.0004595,
+      "response_excerpt": "Costo de la comida con pollo: $12\nCosto de las 5 cajas de leche: 5 * $3 = $15\nCosto de las 4 manzanas: 4 * $1,50 = $6\nSu"
+    },
+    {
+      "lang": "es",
+      "pred": 243,
+      "gold": 243,
+      "correct": true,
+      "cost": 0.000336,
+      "response_excerpt": "3 pares de pantalones cortos: 3 * 16,50 = 49,50\n3 pares de pantalones: 3 * 22,50 = 67,50\n3 pares de zapatos: 3 * 42 = 12"
+    },
+    {
+      "lang": "es",
+      "pred": 16,
+      "gold": 16,
+      "correct": true,
+      "cost": 0.0002525,
+      "response_excerpt": "Para calcular el gasto total:\n\n1.  Determinar cu\u00e1ntas cajas necesita: 60 d\u00edas / 15 porciones por caja = 4 cajas.\n2.  Cal"
+    },
+    {
+      "lang": "es",
+      "pred": 25,
+      "gold": 25,
+      "correct": true,
+      "cost": 0.000231,
+      "response_excerpt": "Total distance: 60 miles\nFirst stop: 20 miles\nSecond stop: 15 miles before the end (60 - 15 = 45 miles)\nDistance between"
+    },
+    {
+      "lang": "es",
+      "pred": 104,
+      "gold": 104,
+      "correct": true,
+      "cost": 0.000311,
+      "response_excerpt": "Un par de zapatos de taco alto cuesta $33.\nEl otro par cuesta el doble: $33 * 2 = $66.\nLa suma de los dos pares de zapat"
+    },
+    {
+      "lang": "fr",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.0002655,
+      "response_excerpt": "Nombre total d'\u0153ufs pondus : 16\n\u0152ufs consomm\u00e9s (petit d\u00e9jeuner + muffins) : 3 + 4 = 7\n\u0152ufs restants \u00e0 vendre : 16 - 7 = "
+    },
+    {
+      "lang": "fr",
+      "pred": 3,
+      "gold": 3,
+      "correct": true,
+      "cost": 0.000145,
+      "response_excerpt": "2 rouleaux de fibre bleue.\nLa moiti\u00e9 de 2 est 1 rouleau de fibre blanche.\n2 + 1 = 3.\n\nFinal answer:\n3"
+    },
+    {
+      "lang": "fr",
+      "pred": 70000,
+      "gold": 70000,
+      "correct": true,
+      "cost": 0.000609,
+      "response_excerpt": "Co\u00fbt total = 80 000 $ (achat) + 50 000 $ (restauration) = 130 000 $\nValeur initiale de la maison = 80 000 $\nAugmentation"
+    },
+    {
+      "lang": "fr",
+      "pred": 540,
+      "gold": 540,
+      "correct": true,
+      "cost": 4.2e-05,
+      "response_excerpt": "540"
+    },
+    {
+      "lang": "fr",
+      "pred": 20,
+      "gold": 20,
+      "correct": true,
+      "cost": 0.000286,
+      "response_excerpt": "Total daily bowls needed = 20 chickens * 3 bowls/chicken = 60 bowls\nBowls already given = 15 (morning) + 25 (afternoon) "
+    },
+    {
+      "lang": "fr",
+      "pred": 64,
+      "gold": 64,
+      "correct": true,
+      "cost": 0.0005575,
+      "response_excerpt": "Kylar ach\u00e8te 16 verres au total.\nLe prix d'un verre est de 5 $.\nLe prix d'un deuxi\u00e8me verre (verre \u00e0 prix r\u00e9duit) est de"
+    },
+    {
+      "lang": "fr",
+      "pred": 260,
+      "gold": 260,
+      "correct": true,
+      "cost": 0.0002265,
+      "response_excerpt": "Seattle = 20\nCharleston = 20 * 4 = 80\nToulouse = 80 * 2 = 160\n\nTotal = 20 + 80 + 160 = 260\n\nFinal answer:\n260"
+    },
+    {
+      "lang": "fr",
+      "pred": 160,
+      "gold": 160,
+      "correct": true,
+      "cost": 0.0004185,
+      "response_excerpt": "1. Temps pour atteindre 40 % :\n200 Go \u00d7 0,40 = 80 Go\n80 Go / 2 Go par minute = 40 minutes\n\n2. Temps de red\u00e9marrage :\n20 "
+    },
+    {
+      "lang": "fr",
+      "pred": 45,
+      "gold": 45,
+      "correct": true,
+      "cost": 0.000646,
+      "response_excerpt": "Distance parcourue \u00e0 l'aller : 3 heures \u00d7 60 mph = 180 miles.\n\nTrajet de retour (dur\u00e9e totale de 4 heures) :\n- 2 premi\u00e8r"
+    },
+    {
+      "lang": "fr",
+      "pred": 460,
+      "gold": 460,
+      "correct": true,
+      "cost": 0.0003765,
+      "response_excerpt": "Salaire pour les 40 premi\u00e8res heures : 40 \u00d7 10 = 400 $\nNombre d'heures suppl\u00e9mentaires : 45 - 40 = 5 heures\nTaux horaire"
+    },
+    {
+      "lang": "fr",
+      "pred": 366,
+      "gold": 366,
+      "correct": true,
+      "cost": 0.0003225,
+      "response_excerpt": "Mois 1 : 60\nMois 2 : 60 \u00d7 3 = 180\nMois 3 : 180 - (180 \u00d7 0,30) = 180 - 54 = 126\nTotal : 60 + 180 + 126 = 366\n\nFinal answe"
+    },
+    {
+      "lang": "fr",
+      "pred": 694,
+      "gold": 694,
+      "correct": true,
+      "cost": 0.000286,
+      "response_excerpt": "3 beignets * 68 $ = 204 $\n2 petits g\u00e2teaux * 80 $ = 160 $\n6 petits g\u00e2teaux au fromage * 55 $ = 330 $\n\n204 + 160 + 330 = "
+    },
+    {
+      "lang": "fr",
+      "pred": 13,
+      "gold": 13,
+      "correct": true,
+      "cost": 0.000431,
+      "response_excerpt": "Co\u00fbt initial : 90 $\nRevenu annuel : 7 citrons \u00d7 1,5 $ = 10,5 $\nD\u00e9penses annuelles : 3 $\nProfit annuel net : 10,5 $ - 3 $"
+    },
+    {
+      "lang": "fr",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.000737,
+      "response_excerpt": "To find the initial number of vacuum cleaners, we can work backward from the final amount.\n\n1.  **At the orange house:**"
+    },
+    {
+      "lang": "fr",
+      "pred": 55,
+      "gold": 60,
+      "correct": false,
+      "cost": 0.000248,
+      "response_excerpt": "Pour trouver le pourcentage des \u00e9l\u00e8ves inscrits en danse hip-hop, on soustrait les pourcentages des autres disciplines d"
+    },
+    {
+      "lang": "fr",
+      "pred": 125,
+      "gold": 125,
+      "correct": true,
+      "cost": 0.000268,
+      "response_excerpt": "Profit for jewelry: $5,000 \\times 0.025 = 125$\nProfit for gadgets: $8,000 \\times 0.012 = 96$\n\nThe maximum profit is 125."
+    },
+    {
+      "lang": "fr",
+      "pred": 230,
+      "gold": 230,
+      "correct": true,
+      "cost": 0.0001095,
+      "response_excerpt": "80 + 150 = 230\n\nFinal answer: 230"
+    },
+    {
+      "lang": "fr",
+      "pred": 57500,
+      "gold": 57500,
+      "correct": true,
+      "cost": 0.0004025,
+      "response_excerpt": "Salaire hebdomadaire en tant qu'enseignante : 20 $ \u00d7 35 = 700 $\nSalaire hebdomadaire en tant qu'entraineuse : 30 $ \u00d7 15 "
+    },
+    {
+      "lang": "fr",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 0.0002425,
+      "response_excerpt": "Nombre d'\u0153ufs par jour : 3\nNombre de jours en 4 semaines : 4 \u00d7 7 = 28\nNombre total d'\u0153ufs : 3 \u00d7 28 = 84\nNombre de douzai"
+    },
+    {
+      "lang": "fr",
+      "pred": 6,
+      "gold": 6,
+      "correct": true,
+      "cost": 0.000408,
+      "response_excerpt": "Distance totale = 12 miles\nVitesse moyenne souhait\u00e9e = 4 miles par heure\nTemps total n\u00e9cessaire = 12 / 4 = 3 heures\n\nDis"
+    },
+    {
+      "lang": "fr",
+      "pred": 25,
+      "gold": 15,
+      "correct": false,
+      "cost": 0.0005775,
+      "response_excerpt": "Initial orange juice: 10 liters.\nWater in orange juice: $10 \\times \\frac{2}{3} = \\frac{20}{3}$ liters.\nAfter spilling 1 "
+    },
+    {
+      "lang": "fr",
+      "pred": 14,
+      "gold": 14,
+      "correct": true,
+      "cost": 0.0002535,
+      "response_excerpt": "\u00c2ge de Samantha : 31 ans.\n\u00c2ge de Raymond : 31 + 6 = 37 ans.\n\u00c2ge de Raymond \u00e0 la naissance de son fils : 23 ans.\n\u00c2ge du f"
+    },
+    {
+      "lang": "fr",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 0.0002495,
+      "response_excerpt": "Les 3 premiers clients : 3 \u00d7 1 = 3 DVD\nLes 2 clients suivants : 2 \u00d7 2 = 4 DVD\nLes 3 derniers clients : 3 \u00d7 0 = 0 DVD\nTot"
+    },
+    {
+      "lang": "fr",
+      "pred": 8,
+      "gold": 8,
+      "correct": true,
+      "cost": 0.000251,
+      "response_excerpt": "To find the total height lost by the candle, first calculate the duration of time it burned:\n17 h - 13 h = 4 hours.\n\nSin"
+    },
+    {
+      "lang": "fr",
+      "pred": 26,
+      "gold": 26,
+      "correct": true,
+      "cost": 0.0002545,
+      "response_excerpt": "Le prix pay\u00e9 (19,50 $) repr\u00e9sente 75 % du prix initial (100 % - 25 %).\nPour trouver le prix initial, on divise le prix p"
+    },
+    {
+      "lang": "fr",
+      "pred": 2,
+      "gold": 2,
+      "correct": true,
+      "cost": 0.0004025,
+      "response_excerpt": "Co\u00fbt du poulet : 12 $\nCo\u00fbt du lait : 5 \u00d7 3 $ = 15 $\nCo\u00fbt des pommes : 4 \u00d7 1,50 $ = 6 $\nSous-total (sans pizza) : 12 + 15"
+    },
+    {
+      "lang": "fr",
+      "pred": 243,
+      "gold": 243,
+      "correct": true,
+      "cost": 0.000411,
+      "response_excerpt": "Mishka a achet\u00e9 3 articles de chaque type. On peut calculer le co\u00fbt total en additionnant le prix d'un ensemble complet "
+    },
+    {
+      "lang": "fr",
+      "pred": 16,
+      "gold": 16,
+      "correct": true,
+      "cost": 0.0002065,
+      "response_excerpt": "Nombre de portions n\u00e9cessaires : 60\nNombre de cartons \u00e0 acheter : 60 / 15 = 4\nCo\u00fbt total : 4 cartons \u00d7 4,00 $ = 16,00 $\n"
+    },
+    {
+      "lang": "fr",
+      "pred": 25,
+      "gold": 25,
+      "correct": true,
+      "cost": 0.000295,
+      "response_excerpt": "Le voyage total est de 60 miles.\nLe premier arr\u00eat a eu lieu \u00e0 20 miles.\nLe deuxi\u00e8me arr\u00eat a eu lieu 15 miles avant la fi"
+    },
+    {
+      "lang": "fr",
+      "pred": 104,
+      "gold": 104,
+      "correct": true,
+      "cost": 0.000312,
+      "response_excerpt": "Prix de la premi\u00e8re paire de talons : 33 $\nPrix de la deuxi\u00e8me paire de talons : 33 * 2 = 66 $\nPrix total des deux paire"
+    },
+    {
+      "lang": "de",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.0002765,
+      "response_excerpt": "Eier insgesamt pro Tag: 16\nEier f\u00fcr das Fr\u00fchst\u00fcck: 3\nEier f\u00fcr Muffins: 4\nVerbleibende Eier zum Verkauf: 16 - 3 - 4 = 9\nP"
+    },
+    {
+      "lang": "de",
+      "pred": 3,
+      "gold": 3,
+      "correct": true,
+      "cost": 0.0002405,
+      "response_excerpt": "Ein Kleid erfordert 2 Kn\u00e4uel blaue Wolle.\nDie Menge an wei\u00dfer Wolle ist halb so gro\u00df wie die der blauen Wolle: 2 / 2 = 1"
+    },
+    {
+      "lang": "de",
+      "pred": 70000,
+      "gold": 70000,
+      "correct": true,
+      "cost": 0.0006165,
+      "response_excerpt": "Kaufpreis: 80.000 $\nReparaturen: 50.000 $\nGesamtinvestition: 80.000 $ + 50.000 $ = 130.000 $\n\nWertsteigerung: 150 % von "
+    },
+    {
+      "lang": "de",
+      "pred": 540,
+      "gold": 540,
+      "correct": true,
+      "cost": 0.000195,
+      "response_excerpt": "3 L\u00e4ufe pro Trainingseinheit \u00d7 60 Meter pro Lauf = 180 Meter pro Trainingseinheit.\n180 Meter \u00d7 3 Trainingseinheiten pro "
+    },
+    {
+      "lang": "de",
+      "pred": 20,
+      "gold": 20,
+      "correct": true,
+      "cost": 0.000385,
+      "response_excerpt": "Total number of chickens: 20\nTotal cups per chicken per day: 3\nTotal cups needed for the day: 20 * 3 = 60\n\nCups fed in t"
+    },
+    {
+      "lang": "de",
+      "pred": 50,
+      "gold": 64,
+      "correct": false,
+      "cost": 0.000363,
+      "response_excerpt": "Der Preis f\u00fcr das erste Glas betr\u00e4gt 5 $.\nJedes weitere Glas kostet 60 % von 5 $, also:\n0,60 * 5 $ = 3 $.\n\nKylar kauft i"
+    },
+    {
+      "lang": "de",
+      "pred": 260,
+      "gold": 260,
+      "correct": true,
+      "cost": 0.0002295,
+      "response_excerpt": "Seattle = 20\nCharleston = 4 * 20 = 80\nToulouse = 2 * 80 = 160\n\nGesamt = 20 + 80 + 160 = 260\n\nFinal answer:\n260"
+    },
+    {
+      "lang": "de",
+      "pred": 160,
+      "gold": 160,
+      "correct": true,
+      "cost": 0.0005905,
+      "response_excerpt": "Zuerst berechnen wir die Zeit f\u00fcr den ersten Download-Versuch. 40 % von 200 GB sind:\n200 GB * 0,40 = 80 GB.\nBei einer Ge"
+    },
+    {
+      "lang": "de",
+      "pred": 45,
+      "gold": 45,
+      "correct": true,
+      "cost": 0.000863,
+      "response_excerpt": "Zuerst berechnen wir die Entfernung, die John von zu Hause weggefahren ist:\n3 Stunden * 60 Meilen/Stunde = 180 Meilen.\n\n"
+    },
+    {
+      "lang": "de",
+      "pred": 460,
+      "gold": 460,
+      "correct": true,
+      "cost": 5.75e-05,
+      "response_excerpt": "460"
+    },
+    {
+      "lang": "de",
+      "pred": 366,
+      "gold": 366,
+      "correct": true,
+      "cost": 0.000308,
+      "response_excerpt": "Month 1: 60\nMonth 2: 60 * 3 = 180\nMonth 3: 180 - (180 * 0.30) = 180 - 54 = 126\n\nTotal: 60 + 180 + 126 = 366\n\nFinal answe"
+    },
+    {
+      "lang": "de",
+      "pred": 694,
+      "gold": 694,
+      "correct": true,
+      "cost": 0.000303,
+      "response_excerpt": "Donuts: 3 * 68 = 204\nMini-Cupcakes: 2 * 80 = 160\nMini-Cheesecakes: 6 * 55 = 330\n\nTotal: 204 + 160 + 330 = 694\n\nFinal ans"
+    },
+    {
+      "lang": "de",
+      "pred": 13,
+      "gold": 13,
+      "correct": true,
+      "cost": 0.0005535,
+      "response_excerpt": "Die Kosten f\u00fcr das Pflanzen betragen 90 $.\nDer j\u00e4hrliche Erl\u00f6s aus den Zitronen betr\u00e4gt: 7 * 1,50 $ = 10,50 $.\nDie j\u00e4hrl"
+    },
+    {
+      "lang": "de",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.000855,
+      "response_excerpt": "Sei $x$ die Anzahl der Staubsauger zu Beginn.\n\n1. Im gr\u00fcnen Haus verkauft sie $\\frac{1}{3}x$.\n   Verbleibend: $x - \\frac"
+    },
+    {
+      "lang": "de",
+      "pred": 60,
+      "gold": 60,
+      "correct": true,
+      "cost": 0.0004065,
+      "response_excerpt": "Anzahl der Sch\u00fcler f\u00fcr Contemporary Dance: 20 % von 20 = 4 Sch\u00fcler.\nVerbleibende Sch\u00fcler: 20 - 4 = 16 Sch\u00fcler.\nAnzahl de"
+    },
+    {
+      "lang": "de",
+      "pred": 125,
+      "gold": 125,
+      "correct": true,
+      "cost": 0.0002715,
+      "response_excerpt": "Option 1 (Schmuck):\n5.000 * 0,025 = 125\n\nOption 2 (Elektronik):\n8.000 * 0,012 = 96\n\nDer maximale Gewinn betr\u00e4gt 125.\n\n12"
+    },
+    {
+      "lang": "de",
+      "pred": 230,
+      "gold": 230,
+      "correct": true,
+      "cost": 0.0002655,
+      "response_excerpt": "Die zur\u00fcckgelegte Strecke berechnet sich aus der Summe der an den beiden Tagen gefahrenen Meilen:\n\nTag 1: 80 Meilen\nTag "
+    },
+    {
+      "lang": "de",
+      "pred": 57500,
+      "gold": 57500,
+      "correct": true,
+      "cost": 0.0006005,
+      "response_excerpt": "Um das Jahresgehalt zu berechnen, gehen wir wie folgt vor:\n\n1.  **Verdienst als Lehrerin pro Woche:**\n    35 Stunden/Woc"
+    },
+    {
+      "lang": "de",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 0.0002575,
+      "response_excerpt": "Eier pro Tag: 3\nTage pro Woche: 7\nWochen: 4\nGesamtzahl der Eier: 3 * 7 * 4 = 84\nEin Dutzend: 12\nAnzahl der Dutzend: 84 /"
+    },
+    {
+      "lang": "de",
+      "pred": 6,
+      "gold": 6,
+      "correct": true,
+      "cost": 0.000539,
+      "response_excerpt": "Gesamtstrecke: 12 Meilen\nGew\u00fcnschte Durchschnittsgeschwindigkeit: 4 Meilen pro Stunde\nGesamtzeit (Ziel): 12 Meilen / 4 M"
+    },
+    {
+      "lang": "de",
+      "pred": 15,
+      "gold": 15,
+      "correct": true,
+      "cost": 0.0006275,
+      "response_excerpt": "1. Orangengetr\u00e4nk:\n- Gesamtvolumen: 10 Liter\n- Wasseranteil: 2/3\n- Versch\u00fcttet: 1 Liter (dieser Liter enth\u00e4lt ebenfalls "
+    },
+    {
+      "lang": "de",
+      "pred": 14,
+      "gold": 14,
+      "correct": true,
+      "cost": 0.0004035,
+      "response_excerpt": "Samantha ist 31 Jahre alt.\nDa Raymond 6 Jahre vor Samantha geboren wurde, ist er 6 Jahre \u00e4lter als sie.\nRaymonds aktuell"
+    },
+    {
+      "lang": "de",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 0.0003015,
+      "response_excerpt": "Die ersten 3 Kunden kaufen jeweils 1 DVD: 3 * 1 = 3 DVDs.\nDie n\u00e4chsten 2 Kunden kaufen jeweils 2 DVDs: 2 * 2 = 4 DVDs.\nD"
+    },
+    {
+      "lang": "de",
+      "pred": 8,
+      "gold": 8,
+      "correct": true,
+      "cost": 0.000194,
+      "response_excerpt": "Dauer: 17:00 - 13:00 = 4 Stunden\nSchmelzrate: 2 cm pro Stunde\nGesamtverk\u00fcrzung: 4 * 2 = 8\n\nFinal answer: 8"
+    },
+    {
+      "lang": "de",
+      "pred": 26,
+      "gold": 26,
+      "correct": true,
+      "cost": 0.0003695,
+      "response_excerpt": "Der urspr\u00fcngliche Preis entspricht 100 %. Da Kyle einen Rabatt von 25 % erhalten hat, entsprechen die 19,50 US-Dollar 75"
+    },
+    {
+      "lang": "de",
+      "pred": 2,
+      "gold": 2,
+      "correct": true,
+      "cost": 0.000454,
+      "response_excerpt": "H\u00fchnchengericht: 12 $\nMilch: 5 * 3 $ = 15 $\n\u00c4pfel: 4 * 1,50 $ = 6 $\nZwischensumme: 12 + 15 + 6 = 33 $\n\nGesamtbetrag: 50 "
+    },
+    {
+      "lang": "de",
+      "pred": 243,
+      "gold": 243,
+      "correct": true,
+      "cost": 0.000306,
+      "response_excerpt": "3 * 16.50 = 49.50\n3 * 22.50 = 67.50\n3 * 42.00 = 126.00\n\n49.50 + 67.50 + 126.00 = 243.00\n\nFinal answer:\n243"
+    },
+    {
+      "lang": "de",
+      "pred": 16,
+      "gold": 16,
+      "correct": true,
+      "cost": 0.00026,
+      "response_excerpt": "Anzahl der Portionen insgesamt: 60\nPortionen pro Karton: 15\nAnzahl der Kartons: 60 / 15 = 4\nPreis pro Karton: 4,00 $\nGes"
+    },
+    {
+      "lang": "de",
+      "pred": 25,
+      "gold": 25,
+      "correct": true,
+      "cost": 0.0002805,
+      "response_excerpt": "Gesamtl\u00e4nge der Tour: 60 Meilen\nErster Halt: nach 20 Meilen\nZweiter Halt: 15 Meilen vor dem Ende (60 - 15 = 45 Meilen)\n\n"
+    },
+    {
+      "lang": "de",
+      "pred": 104,
+      "gold": 104,
+      "correct": true,
+      "cost": 0.000339,
+      "response_excerpt": "Preis des ersten Paars High Heels: 33 $\nPreis des zweiten Paars High Heels: 33 $ * 2 = 66 $\nGesamtpreis der High Heels: "
+    }
+  ]
+}

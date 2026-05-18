@@ -1,0 +1,343 @@
+{
+  "languages": [
+    "ar",
+    "de",
+    "en",
+    "es",
+    "fr",
+    "hi",
+    "jp"
+  ],
+  "agents": [
+    "openrouter:anthropic_claude-haiku-4.5",
+    "openrouter:anthropic_claude-opus-4.7",
+    "openrouter:deepseek_deepseek-r1",
+    "openrouter:deepseek_deepseek-v3.2",
+    "openrouter:google_gemini-3-flash-preview",
+    "openrouter:google_gemini-3.1-pro-preview",
+    "openrouter:openai_gpt-5",
+    "openrouter:openai_gpt-5.2"
+  ],
+  "cells": [
+    {
+      "agent": "openrouter:anthropic_claude-haiku-4.5",
+      "language": "de",
+      "n_dispatched": 8,
+      "n_committed": 8,
+      "accuracy": 1.0,
+      "ece": 0.0112
+    },
+    {
+      "agent": "openrouter:anthropic_claude-opus-4.7",
+      "language": "de",
+      "n_dispatched": 8,
+      "n_committed": 8,
+      "accuracy": 1.0,
+      "ece": 0.0125
+    },
+    {
+      "agent": "openrouter:deepseek_deepseek-r1",
+      "language": "de",
+      "n_dispatched": 8,
+      "n_committed": 8,
+      "accuracy": 1.0,
+      "ece": 0.01
+    },
+    {
+      "agent": "openrouter:deepseek_deepseek-v3.2",
+      "language": "de",
+      "n_dispatched": 8,
+      "n_committed": 8,
+      "accuracy": 1.0,
+      "ece": 0.0063
+    },
+    {
+      "agent": "openrouter:google_gemini-3-flash-preview",
+      "language": "de",
+      "n_dispatched": 8,
+      "n_committed": 8,
+      "accuracy": 1.0,
+      "ece": 0.0
+    },
+    {
+      "agent": "openrouter:google_gemini-3.1-pro-preview",
+      "language": "de",
+      "n_dispatched": 8,
+      "n_committed": 8,
+      "accuracy": 1.0,
+      "ece": 0.0
+    },
+    {
+      "agent": "openrouter:openai_gpt-5",
+      "language": "de",
+      "n_dispatched": 8,
+      "n_committed": 8,
+      "accuracy": 1.0,
+      "ece": 0.0009
+    },
+    {
+      "agent": "openrouter:openai_gpt-5.2",
+      "language": "de",
+      "n_dispatched": 8,
+      "n_committed": 8,
+      "accuracy": 1.0,
+      "ece": 0.0059
+    },
+    {
+      "agent": "openrouter:anthropic_claude-haiku-4.5",
+      "language": "en",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.012
+    },
+    {
+      "agent": "openrouter:anthropic_claude-opus-4.7",
+      "language": "en",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.03
+    },
+    {
+      "agent": "openrouter:deepseek_deepseek-r1",
+      "language": "en",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.014
+    },
+    {
+      "agent": "openrouter:deepseek_deepseek-v3.2",
+      "language": "en",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.006
+    },
+    {
+      "agent": "openrouter:google_gemini-3-flash-preview",
+      "language": "en",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.0
+    },
+    {
+      "agent": "openrouter:google_gemini-3.1-pro-preview",
+      "language": "en",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.0
+    },
+    {
+      "agent": "openrouter:openai_gpt-5",
+      "language": "en",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.0018
+    },
+    {
+      "agent": "openrouter:openai_gpt-5.2",
+      "language": "en",
+      "n_dispatched": 5,
+      "n_committed": 5,
+      "accuracy": 1.0,
+      "ece": 0.01
+    },
+    {
+      "agent": "openrouter:anthropic_claude-haiku-4.5",
+      "language": "es",
+      "n_dispatched": 10,
+      "n_committed": 10,
+      "accuracy": 1.0,
+      "ece": 0.0171
+    },
+    {
+      "agent": "openrouter:anthropic_claude-opus-4.7",
+      "language": "es",
+      "n_dispatched": 10,
+      "n_committed": 10,
+      "accuracy": 1.0,
+      "ece": 0.014
+    },
+    {
+      "agent": "openrouter:deepseek_deepseek-r1",
+      "language": "es",
+      "n_dispatched": 10,
+      "n_committed": 10,
+      "accuracy": 1.0,
+      "ece": 0.014
+    },
+    {
+      "agent": "openrouter:deepseek_deepseek-v3.2",
+      "language": "es",
+      "n_dispatched": 10,
+      "n_committed": 10,
+      "accuracy": 1.0,
+      "ece": 0.012
+    },
+    {
+      "agent": "openrouter:google_gemini-3-flash-preview",
+      "language": "es",
+      "n_dispatched": 10,
+      "n_committed": 10,
+      "accuracy": 1.0,
+      "ece": 0.0
+    },
+    {
+      "agent": "openrouter:google_gemini-3.1-pro-preview",
+      "language": "es",
+      "n_dispatched": 10,
+      "n_committed": 10,
+      "accuracy": 1.0,
+      "ece": 0.0
+    },
+    {
+      "agent": "openrouter:openai_gpt-5",
+      "language": "es",
+      "n_dispatched": 10,
+      "n_committed": 10,
+      "accuracy": 1.0,
+      "ece": 0.0045
+    },
+    {
+      "agent": "openrouter:openai_gpt-5.2",
+      "language": "es",
+      "n_dispatched": 10,
+      "n_committed": 10,
+      "accuracy": 1.0,
+      "ece": 0.0045
+    },
+    {
+      "agent": "openrouter:anthropic_claude-haiku-4.5",
+      "language": "hi",
+      "n_dispatched": 3,
+      "n_committed": 3,
+      "accuracy": 1.0,
+      "ece": 0.04
+    },
+    {
+      "agent": "openrouter:anthropic_claude-opus-4.7",
+      "language": "hi",
+      "n_dispatched": 3,
+      "n_committed": 3,
+      "accuracy": 1.0,
+      "ece": 0.0133
+    },
+    {
+      "agent": "openrouter:deepseek_deepseek-r1",
+      "language": "hi",
+      "n_dispatched": 3,
+      "n_committed": 3,
+      "accuracy": 1.0,
+      "ece": 0.0833
+    },
+    {
+      "agent": "openrouter:deepseek_deepseek-v3.2",
+      "language": "hi",
+      "n_dispatched": 3,
+      "n_committed": 3,
+      "accuracy": 1.0,
+      "ece": 0.03
+    },
+    {
+      "agent": "openrouter:google_gemini-3-flash-preview",
+      "language": "hi",
+      "n_dispatched": 3,
+      "n_committed": 3,
+      "accuracy": 1.0,
+      "ece": 0.0
+    },
+    {
+      "agent": "openrouter:google_gemini-3.1-pro-preview",
+      "language": "hi",
+      "n_dispatched": 3,
+      "n_committed": 3,
+      "accuracy": 1.0,
+      "ece": 0.0
+    },
+    {
+      "agent": "openrouter:openai_gpt-5",
+      "language": "hi",
+      "n_dispatched": 3,
+      "n_committed": 3,
+      "accuracy": 1.0,
+      "ece": 0.005
+    },
+    {
+      "agent": "openrouter:openai_gpt-5.2",
+      "language": "hi",
+      "n_dispatched": 3,
+      "n_committed": 3,
+      "accuracy": 1.0,
+      "ece": 0.01
+    },
+    {
+      "agent": "openrouter:anthropic_claude-haiku-4.5",
+      "language": "jp",
+      "n_dispatched": 4,
+      "n_committed": 4,
+      "accuracy": 1.0,
+      "ece": 0.0175
+    },
+    {
+      "agent": "openrouter:anthropic_claude-opus-4.7",
+      "language": "jp",
+      "n_dispatched": 4,
+      "n_committed": 4,
+      "accuracy": 1.0,
+      "ece": 0.0375
+    },
+    {
+      "agent": "openrouter:deepseek_deepseek-r1",
+      "language": "jp",
+      "n_dispatched": 4,
+      "n_committed": 4,
+      "accuracy": 1.0,
+      "ece": 0.065
+    },
+    {
+      "agent": "openrouter:deepseek_deepseek-v3.2",
+      "language": "jp",
+      "n_dispatched": 4,
+      "n_committed": 4,
+      "accuracy": 1.0,
+      "ece": 0.02
+    },
+    {
+      "agent": "openrouter:google_gemini-3-flash-preview",
+      "language": "jp",
+      "n_dispatched": 4,
+      "n_committed": 4,
+      "accuracy": 1.0,
+      "ece": 0.0
+    },
+    {
+      "agent": "openrouter:google_gemini-3.1-pro-preview",
+      "language": "jp",
+      "n_dispatched": 4,
+      "n_committed": 4,
+      "accuracy": 1.0,
+      "ece": 0.0
+    },
+    {
+      "agent": "openrouter:openai_gpt-5",
+      "language": "jp",
+      "n_dispatched": 4,
+      "n_committed": 4,
+      "accuracy": 1.0,
+      "ece": 0.009
+    },
+    {
+      "agent": "openrouter:openai_gpt-5.2",
+      "language": "jp",
+      "n_dispatched": 4,
+      "n_committed": 4,
+      "accuracy": 1.0,
+      "ece": 0.015
+    }
+  ]
+}

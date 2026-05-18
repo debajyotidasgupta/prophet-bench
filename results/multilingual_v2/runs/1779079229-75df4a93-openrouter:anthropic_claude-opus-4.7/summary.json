@@ -1,0 +1,14 @@
+{
+  "run_id": "1779079229-75df4a93-openrouter:anthropic_claude-opus-4.7",
+  "agent": "openrouter:anthropic/claude-opus-4.7",
+  "cycle_seed": 42,
+  "market_seed": 42,
+  "wall_time_s": 0.0033600330352783203,
+  "total_cost_usd": 0.15482,
+  "n_tasks": 40,
+  "n_take": 5,
+  "n_quote": 35,
+  "n_pass": 0,
+  "net_payoff": 5121.270670518629,
+  "notes": ""
+}

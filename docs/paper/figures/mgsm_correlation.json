@@ -1,0 +1,103 @@
+{
+  "correlations": {
+    "spearman_mgsm_vs_prophet_acc": 0.2606060606060606,
+    "pearson_mgsm_vs_prophet_acc": -0.08920663391958648,
+    "spearman_mgsm_vs_prophet_ece": -0.5393939393939393,
+    "pearson_mgsm_vs_prophet_ece": -0.43444722942407643,
+    "spearman_mgsm_vs_prophet_payoff": -0.04242424242424241,
+    "pearson_mgsm_vs_prophet_payoff": -0.3095862153228066,
+    "n_agents": 10
+  },
+  "joined": [
+    {
+      "agent": "anthropic-claude-haiku-4.5",
+      "mgsm_acc": 0.925,
+      "prophet_acc": 1.0,
+      "prophet_ece": 0.017549999999999955,
+      "prophet_payoff_per_task": 89.72221762617599,
+      "n_mgsm": 120,
+      "n_prophet": 20
+    },
+    {
+      "agent": "anthropic-claude-opus-4.7",
+      "mgsm_acc": 0.9583333333333334,
+      "prophet_acc": 1.0,
+      "prophet_ece": 0.024000000000000243,
+      "prophet_payoff_per_task": 123.16102328397524,
+      "n_mgsm": 120,
+      "n_prophet": 20
+    },
+    {
+      "agent": "deepseek-deepseek-v3.2",
+      "mgsm_acc": 0.5416666666666666,
+      "prophet_acc": 1.0,
+      "prophet_ece": 0.02050000000000006,
+      "prophet_payoff_per_task": 132.05206037145652,
+      "n_mgsm": 120,
+      "n_prophet": 20
+    },
+    {
+      "agent": "google-gemini-3-flash-preview",
+      "mgsm_acc": 0.9583333333333334,
+      "prophet_acc": 1.0,
+      "prophet_ece": 0.0,
+      "prophet_payoff_per_task": 89.72221762617599,
+      "n_mgsm": 120,
+      "n_prophet": 20
+    },
+    {
+      "agent": "google-gemini-3.1-pro-preview",
+      "mgsm_acc": 0.9583333333333334,
+      "prophet_acc": 1.0,
+      "prophet_ece": 0.0,
+      "prophet_payoff_per_task": 4.7799525645637,
+      "n_mgsm": 120,
+      "n_prophet": 1
+    },
+    {
+      "agent": "meta-llama-llama-4-maverick",
+      "mgsm_acc": 0.925,
+      "prophet_acc": 1.0,
+      "prophet_ece": 0.008500000000000063,
+      "prophet_payoff_per_task": 103.12905685206383,
+      "n_mgsm": 120,
+      "n_prophet": 20
+    },
+    {
+      "agent": "openai-gpt-5-mini",
+      "mgsm_acc": 0.95,
+      "prophet_acc": 1.0,
+      "prophet_ece": 0.005500000000000171,
+      "prophet_payoff_per_task": 118.77211556221285,
+      "n_mgsm": 120,
+      "n_prophet": 20
+    },
+    {
+      "agent": "openai-gpt-5-nano",
+      "mgsm_acc": 0.8083333333333333,
+      "prophet_acc": 1.0,
+      "prophet_ece": 0.031578947368421144,
+      "prophet_payoff_per_task": 89.56802894511978,
+      "n_mgsm": 120,
+      "n_prophet": 19
+    },
+    {
+      "agent": "openai-gpt-5.2",
+      "mgsm_acc": 0.9666666666666667,
+      "prophet_acc": 1.0,
+      "prophet_ece": 0.00965000000000027,
+      "prophet_payoff_per_task": 127.82892632463336,
+      "n_mgsm": 120,
+      "n_prophet": 20
+    },
+    {
+      "agent": "openai-gpt-5",
+      "mgsm_acc": 0.925,
+      "prophet_acc": 0.95,
+      "prophet_ece": 0.022499999999999964,
+      "prophet_payoff_per_task": 81.65949464029403,
+      "n_mgsm": 120,
+      "n_prophet": 20
+    }
+  ]
+}

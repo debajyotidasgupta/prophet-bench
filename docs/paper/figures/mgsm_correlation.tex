@@ -1,0 +1,21 @@
+\begin{table}[t]\centering\small
+\caption{MGSM external-benchmark cross-correlation. MGSM accuracy is the overall correct rate across 4 languages (en, es, fr, de), 30 problems per language, with answer extracted as the last integer in the response. Joined to PROPHET-multilingual on the same 10 agents. Spearman rank correlations:}
+\label{tab:mgsm-correlation}
+\begin{tabular}{lrrrr}
+\toprule
+Agent & MGSM acc & PROPHET acc & PROPHET ECE & PROPHET P/task \\
+\midrule
+\texttt{openai-gpt-5.2} & 0.967 & 1.000 & 0.010 & 127.8 \\
+\texttt{anthropic-claude-opus-4.7} & 0.958 & 1.000 & 0.024 & 123.2 \\
+\texttt{google-gemini-3-flash-preview} & 0.958 & 1.000 & 0.000 & 89.7 \\
+\texttt{google-gemini-3.1-pro-preview} & 0.958 & 1.000 & 0.000 & 4.8 \\
+\texttt{openai-gpt-5-mini} & 0.950 & 1.000 & 0.006 & 118.8 \\
+\texttt{anthropic-claude-haiku-4.5} & 0.925 & 1.000 & 0.018 & 89.7 \\
+\texttt{meta-llama-llama-4-maverick} & 0.925 & 1.000 & 0.009 & 103.1 \\
+\texttt{openai-gpt-5} & 0.925 & 0.950 & 0.022 & 81.7 \\
+\texttt{openai-gpt-5-nano} & 0.808 & 1.000 & 0.032 & 89.6 \\
+\texttt{deepseek-deepseek-v3.2} & 0.542 & 1.000 & 0.021 & 132.1 \\
+\midrule
+\multicolumn{2}{l}{Spearman $\rho$ (MGSM acc, $\cdot$)} & 0.261 & -0.539 & -0.042 \\
+\bottomrule
+\end{tabular}\end{table}

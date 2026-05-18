@@ -1,0 +1,992 @@
+{
+  "summary": {
+    "agent": "anthropic/claude-opus-4.7",
+    "cost_total": 0.16922499999999996,
+    "per_lang": {
+      "en": {
+        "correct": 30,
+        "total": 30,
+        "acc": 1.0
+      },
+      "es": {
+        "correct": 29,
+        "total": 30,
+        "acc": 0.9666666666666667
+      },
+      "fr": {
+        "correct": 27,
+        "total": 30,
+        "acc": 0.9
+      },
+      "de": {
+        "correct": 29,
+        "total": 30,
+        "acc": 0.9666666666666667
+      }
+    },
+    "overall_acc": 0.9583333333333334,
+    "n_calls": 120
+  },
+  "samples": [
+    {
+      "lang": "en",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.0009,
+      "response_excerpt": "18"
+    },
+    {
+      "lang": "en",
+      "pred": 3,
+      "gold": 3,
+      "correct": true,
+      "cost": 0.000615,
+      "response_excerpt": "3"
+    },
+    {
+      "lang": "en",
+      "pred": 70000,
+      "gold": 70000,
+      "correct": true,
+      "cost": 0.00164,
+      "response_excerpt": "Value = 80000 * 2.5 = 200000\nProfit = 200000 - 130000 = 70000\n\n70000"
+    },
+    {
+      "lang": "en",
+      "pred": 540,
+      "gold": 540,
+      "correct": true,
+      "cost": 0.000645,
+      "response_excerpt": "540"
+    },
+    {
+      "lang": "en",
+      "pred": 20,
+      "gold": 20,
+      "correct": true,
+      "cost": 0.00125,
+      "response_excerpt": "20"
+    },
+    {
+      "lang": "en",
+      "pred": 64,
+      "gold": 64,
+      "correct": true,
+      "cost": 0.00078,
+      "response_excerpt": "64"
+    },
+    {
+      "lang": "en",
+      "pred": 260,
+      "gold": 260,
+      "correct": true,
+      "cost": 0.000805,
+      "response_excerpt": "260"
+    },
+    {
+      "lang": "en",
+      "pred": 160,
+      "gold": 160,
+      "correct": true,
+      "cost": 0.00238,
+      "response_excerpt": "200/2 = 100 minutes total download if uninterrupted. She gets 40% through: 40 minutes, then restart 20 minutes, then ful"
+    },
+    {
+      "lang": "en",
+      "pred": 45,
+      "gold": 45,
+      "correct": true,
+      "cost": 0.002905,
+      "response_excerpt": "Distance from home after driving out: 3\u00d760=180 miles.\n\nReturn trip: 2 hours standstill =0, 0.5\u00d730=15, remaining 1.5 hour"
+    },
+    {
+      "lang": "en",
+      "pred": 460,
+      "gold": 460,
+      "correct": true,
+      "cost": 0.00082,
+      "response_excerpt": "460"
+    },
+    {
+      "lang": "en",
+      "pred": 366,
+      "gold": 366,
+      "correct": true,
+      "cost": 0.00172,
+      "response_excerpt": "Month1: 60\nMonth2: 180\nMonth3: 180*0.7=126\nTotal: 60+180+126=366\n\n366"
+    },
+    {
+      "lang": "en",
+      "pred": 694,
+      "gold": 694,
+      "correct": true,
+      "cost": 0.000915,
+      "response_excerpt": "694"
+    },
+    {
+      "lang": "en",
+      "pred": 13,
+      "gold": 13,
+      "correct": true,
+      "cost": 0.002135,
+      "response_excerpt": "Net per year: 7*1.5 - 3 = 10.5 - 3 = 7.5\nYears to recover 90: 90/7.5 = 12\n\n13"
+    },
+    {
+      "lang": "en",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.00257,
+      "response_excerpt": "Let x = start. After green: (2/3)x. After red: (2/3)x - 2. After orange: half left = 5, so (2/3)x - 2 = 10, (2/3)x = 12,"
+    },
+    {
+      "lang": "en",
+      "pred": 60,
+      "gold": 60,
+      "correct": true,
+      "cost": 0.000845,
+      "response_excerpt": "60"
+    },
+    {
+      "lang": "en",
+      "pred": 125,
+      "gold": 125,
+      "correct": true,
+      "cost": 0.002035,
+      "response_excerpt": "Jewelry: 5000 \u00d7 0.025 = 125\nElectronics: 8000 \u00d7 0.012 = 96\n\n125"
+    },
+    {
+      "lang": "en",
+      "pred": 230,
+      "gold": 230,
+      "correct": true,
+      "cost": 0.000775,
+      "response_excerpt": "230"
+    },
+    {
+      "lang": "en",
+      "pred": 57500,
+      "gold": 57500,
+      "correct": true,
+      "cost": 0.00083,
+      "response_excerpt": "57500"
+    },
+    {
+      "lang": "en",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 0.00065,
+      "response_excerpt": "7"
+    },
+    {
+      "lang": "en",
+      "pred": 6,
+      "gold": 6,
+      "correct": true,
+      "cost": 0.00088,
+      "response_excerpt": "6"
+    },
+    {
+      "lang": "en",
+      "pred": 15,
+      "gold": 15,
+      "correct": true,
+      "cost": 0.00217,
+      "response_excerpt": "Orange remaining: 9 L, 2/3 water = 6 L\nPineapple: 15 L, 3/5 water = 9 L\nTotal water = 15\n\n15"
+    },
+    {
+      "lang": "en",
+      "pred": 14,
+      "gold": 14,
+      "correct": true,
+      "cost": 0.000765,
+      "response_excerpt": "14"
+    },
+    {
+      "lang": "en",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 0.0009,
+      "response_excerpt": "7"
+    },
+    {
+      "lang": "en",
+      "pred": 8,
+      "gold": 8,
+      "correct": true,
+      "cost": 0.0007,
+      "response_excerpt": "8"
+    },
+    {
+      "lang": "en",
+      "pred": 26,
+      "gold": 26,
+      "correct": true,
+      "cost": 0.00064,
+      "response_excerpt": "26"
+    },
+    {
+      "lang": "en",
+      "pred": 2,
+      "gold": 2,
+      "correct": true,
+      "cost": 0.001495,
+      "response_excerpt": "12+15+6=33; 50-33=17; 17/8.5=2\n\n2"
+    },
+    {
+      "lang": "en",
+      "pred": 243,
+      "gold": 243,
+      "correct": true,
+      "cost": 0.00092,
+      "response_excerpt": "243"
+    },
+    {
+      "lang": "en",
+      "pred": 16,
+      "gold": 16,
+      "correct": true,
+      "cost": 0.00081,
+      "response_excerpt": "16"
+    },
+    {
+      "lang": "en",
+      "pred": 25,
+      "gold": 25,
+      "correct": true,
+      "cost": 0.00075,
+      "response_excerpt": "25"
+    },
+    {
+      "lang": "en",
+      "pred": 104,
+      "gold": 104,
+      "correct": true,
+      "cost": 0.000915,
+      "response_excerpt": "104"
+    },
+    {
+      "lang": "es",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.00107,
+      "response_excerpt": "18"
+    },
+    {
+      "lang": "es",
+      "pred": 3,
+      "gold": 3,
+      "correct": true,
+      "cost": 0.000705,
+      "response_excerpt": "3"
+    },
+    {
+      "lang": "es",
+      "pred": 70000,
+      "gold": 70000,
+      "correct": true,
+      "cost": 0.000895,
+      "response_excerpt": "70000"
+    },
+    {
+      "lang": "es",
+      "pred": 540,
+      "gold": 540,
+      "correct": true,
+      "cost": 0.00074,
+      "response_excerpt": "540"
+    },
+    {
+      "lang": "es",
+      "pred": 20,
+      "gold": 20,
+      "correct": true,
+      "cost": 0.001815,
+      "response_excerpt": "20*3=60; 60-15-25=20\n\n20"
+    },
+    {
+      "lang": "es",
+      "pred": 64,
+      "gold": 64,
+      "correct": true,
+      "cost": 0.00094,
+      "response_excerpt": "64"
+    },
+    {
+      "lang": "es",
+      "pred": 260,
+      "gold": 260,
+      "correct": true,
+      "cost": 0.00165,
+      "response_excerpt": "Seattle: 20\nCharleston: 80\nToulouse: 160\nTotal: 260\n\n260"
+    },
+    {
+      "lang": "es",
+      "pred": 160,
+      "gold": 160,
+      "correct": true,
+      "cost": 0.001115,
+      "response_excerpt": "160"
+    },
+    {
+      "lang": "es",
+      "pred": 45,
+      "gold": 45,
+      "correct": true,
+      "cost": 0.004345,
+      "response_excerpt": "Distance from home after first trip: 3*60=180 miles away.\n\nThen 4 hours trying to return:\n- 2 hours jam: 0 miles\n- 0.5 h"
+    },
+    {
+      "lang": "es",
+      "pred": 460,
+      "gold": 460,
+      "correct": true,
+      "cost": 0.00091,
+      "response_excerpt": "460"
+    },
+    {
+      "lang": "es",
+      "pred": 366,
+      "gold": 366,
+      "correct": true,
+      "cost": 0.001695,
+      "response_excerpt": "Month 1: 60\nMonth 2: 180\nMonth 3: 126\nTotal: 366\n\n366"
+    },
+    {
+      "lang": "es",
+      "pred": 694,
+      "gold": 694,
+      "correct": true,
+      "cost": 0.000975,
+      "response_excerpt": "694"
+    },
+    {
+      "lang": "es",
+      "pred": 12,
+      "gold": 13,
+      "correct": false,
+      "cost": 0.002225,
+      "response_excerpt": "Net per year = 7*1.5 - 3 = 10.5 - 3 = 7.5\nYears to exceed 90: 90/7.5 = 12\n\n12"
+    },
+    {
+      "lang": "es",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.00284,
+      "response_excerpt": "Let x = initial. After green: 2x/3. After red: 2x/3 - 2. After orange: half remains = (2x/3-2)/2 = 5, so 2x/3-2=10, 2x/3"
+    },
+    {
+      "lang": "es",
+      "pred": 60,
+      "gold": 60,
+      "correct": true,
+      "cost": 0.00096,
+      "response_excerpt": "60"
+    },
+    {
+      "lang": "es",
+      "pred": 125,
+      "gold": 125,
+      "correct": true,
+      "cost": 0.00178,
+      "response_excerpt": "5000*0.025=125\n8000*0.012=96\n\n125"
+    },
+    {
+      "lang": "es",
+      "pred": 230,
+      "gold": 230,
+      "correct": true,
+      "cost": 0.000925,
+      "response_excerpt": "230"
+    },
+    {
+      "lang": "es",
+      "pred": 57500,
+      "gold": 57500,
+      "correct": true,
+      "cost": 0.000915,
+      "response_excerpt": "57500"
+    },
+    {
+      "lang": "es",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 0.000735,
+      "response_excerpt": "7"
+    },
+    {
+      "lang": "es",
+      "pred": 6,
+      "gold": 6,
+      "correct": true,
+      "cost": 0.00103,
+      "response_excerpt": "6"
+    },
+    {
+      "lang": "es",
+      "pred": 15,
+      "gold": 15,
+      "correct": true,
+      "cost": 0.002305,
+      "response_excerpt": "Orange: 9 L remaining, 2/3 water = 6 L\nPineapple: 15 L, 3/5 water = 9 L\nTotal water = 15\n\n15"
+    },
+    {
+      "lang": "es",
+      "pred": 14,
+      "gold": 14,
+      "correct": true,
+      "cost": 0.001775,
+      "response_excerpt": "Raymond is 31+6=37. Son born when Raymond was 23, so 37-23=14 years ago.\n\n14"
+    },
+    {
+      "lang": "es",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 0.000985,
+      "response_excerpt": "7"
+    },
+    {
+      "lang": "es",
+      "pred": 8,
+      "gold": 8,
+      "correct": true,
+      "cost": 0.00078,
+      "response_excerpt": "8"
+    },
+    {
+      "lang": "es",
+      "pred": 26,
+      "gold": 26,
+      "correct": true,
+      "cost": 0.00072,
+      "response_excerpt": "26"
+    },
+    {
+      "lang": "es",
+      "pred": 2,
+      "gold": 2,
+      "correct": true,
+      "cost": 0.001925,
+      "response_excerpt": "12 + 15 + 6 = 33\n50 - 33 = 17\n17 / 8.5 = 2\n\n2"
+    },
+    {
+      "lang": "es",
+      "pred": 243,
+      "gold": 243,
+      "correct": true,
+      "cost": 0.001045,
+      "response_excerpt": "243"
+    },
+    {
+      "lang": "es",
+      "pred": 16,
+      "gold": 16,
+      "correct": true,
+      "cost": 0.0008,
+      "response_excerpt": "16"
+    },
+    {
+      "lang": "es",
+      "pred": 25,
+      "gold": 25,
+      "correct": true,
+      "cost": 0.0009,
+      "response_excerpt": "25"
+    },
+    {
+      "lang": "es",
+      "pred": 104,
+      "gold": 104,
+      "correct": true,
+      "cost": 0.001135,
+      "response_excerpt": "104"
+    },
+    {
+      "lang": "fr",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.00115,
+      "response_excerpt": "18"
+    },
+    {
+      "lang": "fr",
+      "pred": 3,
+      "gold": 3,
+      "correct": true,
+      "cost": 0.00072,
+      "response_excerpt": "3"
+    },
+    {
+      "lang": "fr",
+      "pred": 70000,
+      "gold": 70000,
+      "correct": true,
+      "cost": 0.00191,
+      "response_excerpt": "New value = 80000 * 2.5 = 200000\nProfit = 200000 - 80000 - 50000 = 70000\n\n70000"
+    },
+    {
+      "lang": "fr",
+      "pred": 540,
+      "gold": 540,
+      "correct": true,
+      "cost": 0.000735,
+      "response_excerpt": "540"
+    },
+    {
+      "lang": "fr",
+      "pred": 20,
+      "gold": 20,
+      "correct": true,
+      "cost": 0.001645,
+      "response_excerpt": "20*3=60; 60-15-25=20\n\n20"
+    },
+    {
+      "lang": "fr",
+      "pred": 64,
+      "gold": 64,
+      "correct": true,
+      "cost": 0.00094,
+      "response_excerpt": "64"
+    },
+    {
+      "lang": "fr",
+      "pred": 260,
+      "gold": 260,
+      "correct": true,
+      "cost": 0.00085,
+      "response_excerpt": "260"
+    },
+    {
+      "lang": "fr",
+      "pred": 160,
+      "gold": 160,
+      "correct": true,
+      "cost": 0.001115,
+      "response_excerpt": "160"
+    },
+    {
+      "lang": "fr",
+      "pred": 45,
+      "gold": 45,
+      "correct": true,
+      "cost": 0.004125,
+      "response_excerpt": "Distance from home after first leg: 3*60 = 180 miles.\n\nThen heading back 4 hours: 2 hours traffic (0 miles), 0.5 hr at 3"
+    },
+    {
+      "lang": "fr",
+      "pred": 460,
+      "gold": 460,
+      "correct": true,
+      "cost": 0.00155,
+      "response_excerpt": "40*10 + 5*12 = 400+60 = 460\n\n460"
+    },
+    {
+      "lang": "fr",
+      "pred": 366,
+      "gold": 366,
+      "correct": true,
+      "cost": 0.001785,
+      "response_excerpt": "Month 1: 60\nMonth 2: 180\nMonth 3: 126\nTotal: 366\n\n366"
+    },
+    {
+      "lang": "fr",
+      "pred": 694,
+      "gold": 694,
+      "correct": true,
+      "cost": 0.001075,
+      "response_excerpt": "694"
+    },
+    {
+      "lang": "fr",
+      "pred": 12,
+      "gold": 13,
+      "correct": false,
+      "cost": 0.00216,
+      "response_excerpt": "Net per year: 7*1.5 - 3 = 10.5 - 3 = 7.5\n90/7.5 = 12\n\n12"
+    },
+    {
+      "lang": "fr",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.0032,
+      "response_excerpt": "Let x = initial.\nAfter green: (2/3)x\nAfter red: (2/3)x - 2\nAfter orange: half remains = ((2/3)x - 2)/2 = 5\n(2/3)x - 2 = "
+    },
+    {
+      "lang": "fr",
+      "pred": 55,
+      "gold": 60,
+      "correct": false,
+      "cost": 0.0009,
+      "response_excerpt": "55"
+    },
+    {
+      "lang": "fr",
+      "pred": 125,
+      "gold": 125,
+      "correct": true,
+      "cost": 0.00174,
+      "response_excerpt": "5000*0.025=125\n8000*0.012=96\n\n125"
+    },
+    {
+      "lang": "fr",
+      "pred": 230,
+      "gold": 230,
+      "correct": true,
+      "cost": 0.000985,
+      "response_excerpt": "230"
+    },
+    {
+      "lang": "fr",
+      "pred": 57500,
+      "gold": 57500,
+      "correct": true,
+      "cost": 0.001,
+      "response_excerpt": "57500"
+    },
+    {
+      "lang": "fr",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 0.000755,
+      "response_excerpt": "7"
+    },
+    {
+      "lang": "fr",
+      "pred": 6,
+      "gold": 6,
+      "correct": true,
+      "cost": 0.00113,
+      "response_excerpt": "6"
+    },
+    {
+      "lang": "fr",
+      "pred": 17,
+      "gold": 15,
+      "correct": false,
+      "cost": 0.00528,
+      "response_excerpt": "Orange juice: 10 L, 2/3 water = 20/3 L water. After spilling 1 L, 9 L remain with (2/3)(9) = 6 L water.\n\nPineapple: 15 L"
+    },
+    {
+      "lang": "fr",
+      "pred": 14,
+      "gold": 14,
+      "correct": true,
+      "cost": 0.00142,
+      "response_excerpt": "Raymond is 31+6=37. Son is 37-23=14.\n\n14"
+    },
+    {
+      "lang": "fr",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 0.00096,
+      "response_excerpt": "7"
+    },
+    {
+      "lang": "fr",
+      "pred": 8,
+      "gold": 8,
+      "correct": true,
+      "cost": 0.00077,
+      "response_excerpt": "8"
+    },
+    {
+      "lang": "fr",
+      "pred": 26,
+      "gold": 26,
+      "correct": true,
+      "cost": 0.00078,
+      "response_excerpt": "26"
+    },
+    {
+      "lang": "fr",
+      "pred": 2,
+      "gold": 2,
+      "correct": true,
+      "cost": 0.001825,
+      "response_excerpt": "12 + 15 + 6 = 33; 50-33=17; 17/8.5=2\n\n2"
+    },
+    {
+      "lang": "fr",
+      "pred": 243,
+      "gold": 243,
+      "correct": true,
+      "cost": 0.000985,
+      "response_excerpt": "243"
+    },
+    {
+      "lang": "fr",
+      "pred": 16,
+      "gold": 16,
+      "correct": true,
+      "cost": 0.00084,
+      "response_excerpt": "16"
+    },
+    {
+      "lang": "fr",
+      "pred": 25,
+      "gold": 25,
+      "correct": true,
+      "cost": 0.00095,
+      "response_excerpt": "25"
+    },
+    {
+      "lang": "fr",
+      "pred": 104,
+      "gold": 104,
+      "correct": true,
+      "cost": 0.00173,
+      "response_excerpt": "33 + 66 = 99; 99 + 5 = 104\n\n104"
+    },
+    {
+      "lang": "de",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.001155,
+      "response_excerpt": "18"
+    },
+    {
+      "lang": "de",
+      "pred": 3,
+      "gold": 3,
+      "correct": true,
+      "cost": 0.000725,
+      "response_excerpt": "3"
+    },
+    {
+      "lang": "de",
+      "pred": 70000,
+      "gold": 70000,
+      "correct": true,
+      "cost": 0.001,
+      "response_excerpt": "70000"
+    },
+    {
+      "lang": "de",
+      "pred": 540,
+      "gold": 540,
+      "correct": true,
+      "cost": 0.000855,
+      "response_excerpt": "540"
+    },
+    {
+      "lang": "de",
+      "pred": 20,
+      "gold": 20,
+      "correct": true,
+      "cost": 0.00164,
+      "response_excerpt": "20"
+    },
+    {
+      "lang": "de",
+      "pred": 64,
+      "gold": 64,
+      "correct": true,
+      "cost": 0.001715,
+      "response_excerpt": "8 full price: 5*8=40\n8 at 3: 24\nTotal: 64\n\n64"
+    },
+    {
+      "lang": "de",
+      "pred": 260,
+      "gold": 260,
+      "correct": true,
+      "cost": 0.000915,
+      "response_excerpt": "260"
+    },
+    {
+      "lang": "de",
+      "pred": 160,
+      "gold": 160,
+      "correct": true,
+      "cost": 0.00119,
+      "response_excerpt": "160"
+    },
+    {
+      "lang": "de",
+      "pred": 45,
+      "gold": 45,
+      "correct": true,
+      "cost": 0.00501,
+      "response_excerpt": "Distance from home after first leg: 3*60 = 180 miles away.\n\nThen heading back:\n- 2 hours stuck: 0 miles\n- 0.5 hours at 3"
+    },
+    {
+      "lang": "de",
+      "pred": 460,
+      "gold": 460,
+      "correct": true,
+      "cost": 0.00107,
+      "response_excerpt": "460"
+    },
+    {
+      "lang": "de",
+      "pred": 366,
+      "gold": 366,
+      "correct": true,
+      "cost": 0.00166,
+      "response_excerpt": "First: 60\nSecond: 180\nThird: 126\nTotal: 366\n\n366"
+    },
+    {
+      "lang": "de",
+      "pred": 694,
+      "gold": 694,
+      "correct": true,
+      "cost": 0.00147,
+      "response_excerpt": "204+160+330=694\n\n694"
+    },
+    {
+      "lang": "de",
+      "pred": 12,
+      "gold": 13,
+      "correct": false,
+      "cost": 0.002365,
+      "response_excerpt": "Per year: 7 \u00d7 1.50 - 3 = 10.50 - 3 = 7.50\n90 / 7.50 = 12\n\n12"
+    },
+    {
+      "lang": "de",
+      "pred": 18,
+      "gold": 18,
+      "correct": true,
+      "cost": 0.003085,
+      "response_excerpt": "Let x = start. After green: 2x/3. After red: 2x/3 - 2. After orange: half remains = (2x/3-2)/2 = 5, so 2x/3 - 2 = 10, 2x"
+    },
+    {
+      "lang": "de",
+      "pred": 60,
+      "gold": 60,
+      "correct": true,
+      "cost": 0.001005,
+      "response_excerpt": "60"
+    },
+    {
+      "lang": "de",
+      "pred": 125,
+      "gold": 125,
+      "correct": true,
+      "cost": 0.00248,
+      "response_excerpt": "Jewelry: 5000 * 0.025 = 125\nElectronics: 8000 * 0.012 = 96\n\n125"
+    },
+    {
+      "lang": "de",
+      "pred": 230,
+      "gold": 230,
+      "correct": true,
+      "cost": 0.00103,
+      "response_excerpt": "230"
+    },
+    {
+      "lang": "de",
+      "pred": 57500,
+      "gold": 57500,
+      "correct": true,
+      "cost": 0.00188,
+      "response_excerpt": "20*35*50 + 30*15*50 = 35000 + 22500 = 57500\n\n57500"
+    },
+    {
+      "lang": "de",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 0.000785,
+      "response_excerpt": "7"
+    },
+    {
+      "lang": "de",
+      "pred": 6,
+      "gold": 6,
+      "correct": true,
+      "cost": 0.002655,
+      "response_excerpt": "12 miles / 4 mph = 3 hours total. Used 2 hours for 6 miles. Remaining 6 miles in 1 hour = 6 mph.\n\n6"
+    },
+    {
+      "lang": "de",
+      "pred": 15,
+      "gold": 15,
+      "correct": true,
+      "cost": 0.00241,
+      "response_excerpt": "Orange remaining: 9 L, 2/3 water = 6 L\nPineapple: 15 L, 3/5 water = 9 L\nTotal water = 15\n\n15"
+    },
+    {
+      "lang": "de",
+      "pred": 14,
+      "gold": 14,
+      "correct": true,
+      "cost": 0.00189,
+      "response_excerpt": "Raymond is 31+6=37. Son born when Raymond was 23, so 37-23=14 years ago.\n\n14"
+    },
+    {
+      "lang": "de",
+      "pred": 7,
+      "gold": 7,
+      "correct": true,
+      "cost": 0.0011,
+      "response_excerpt": "7"
+    },
+    {
+      "lang": "de",
+      "pred": 8,
+      "gold": 8,
+      "correct": true,
+      "cost": 0.000845,
+      "response_excerpt": "8"
+    },
+    {
+      "lang": "de",
+      "pred": 26,
+      "gold": 26,
+      "correct": true,
+      "cost": 0.000895,
+      "response_excerpt": "26"
+    },
+    {
+      "lang": "de",
+      "pred": 2,
+      "gold": 2,
+      "correct": true,
+      "cost": 0.002015,
+      "response_excerpt": "12 + 15 + 6 = 33; 50-33=17; 17/8.5=2\n\n2"
+    },
+    {
+      "lang": "de",
+      "pred": 243,
+      "gold": 243,
+      "correct": true,
+      "cost": 0.00113,
+      "response_excerpt": "243"
+    },
+    {
+      "lang": "de",
+      "pred": 16,
+      "gold": 16,
+      "correct": true,
+      "cost": 0.000955,
+      "response_excerpt": "16"
+    },
+    {
+      "lang": "de",
+      "pred": 25,
+      "gold": 25,
+      "correct": true,
+      "cost": 0.001055,
+      "response_excerpt": "25"
+    },
+    {
+      "lang": "de",
+      "pred": 104,
+      "gold": 104,
+      "correct": true,
+      "cost": 0.001435,
+      "response_excerpt": "33+66+5=104\n\n104"
+    }
+  ]
+}

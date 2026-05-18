@@ -1,0 +1,14 @@
+{
+  "run_id": "1779084568-3f5e601b-openrouter:anthropic_claude-haiku-4.5",
+  "agent": "openrouter:anthropic/claude-haiku-4.5",
+  "cycle_seed": 42,
+  "market_seed": 42,
+  "wall_time_s": 0.001332998275756836,
+  "total_cost_usd": 0.06872800000000001,
+  "n_tasks": 40,
+  "n_take": 36,
+  "n_quote": 4,
+  "n_pass": 0,
+  "net_payoff": 3758.6610438394514,
+  "notes": ""
+}

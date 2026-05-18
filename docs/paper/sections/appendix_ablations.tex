@@ -85,16 +85,66 @@ remains script-agnostic. The v2 dictionary preserves all six v1
 languages, adds $33$ translations $\times 4$ new languages,
 $11$ numerals $\times 4$, three new cognate groups, four new ordering
 sentences, and four new grammar-choice items; native-script aliases are
-accepted by the verifier alongside the romanised primary form. A
-re-run on eight frontier agents (Anthropic Haiku 4.5 / Opus 4.7;
-Google Gemini 3-Flash / 3.1-Pro; OpenAI GPT-5 / 5.2; DeepSeek V3.2 / R1)
-shows the same panel-mean accuracy ($1.00$ on
-\texttt{en}/\texttt{de}/\texttt{es}/\texttt{fr}, $0.85$--$1.00$ on
-\texttt{ar}/\texttt{zh}/\texttt{ru}/\texttt{ko}, $0.65$--$0.90$ on
-\texttt{hi}/\texttt{jp}) on the new languages as on the original six,
-confirming the family is language-balanced; full table is in the public
-artefact bundle. We did not extend the safety / cognate / cross-lingual
-arithmetic subtasks to all ten languages in v2; this is a v3 target.
+accepted by the verifier alongside the romanised primary form. The
+language-identification subtask draws from all ten languages; the
+translation, cognate, cross-lingual arithmetic, ordering, and
+grammar subtasks still draw from the original six (a v3 target).
+
+A v2 re-run on eight agents covering the frontier-closed,
+frontier-open, and reasoning panels (Anthropic Claude Haiku 4.5 /
+Opus 4.7; Google Gemini 3-Flash / 3.1-Pro; OpenAI GPT-5 / 5.2;
+DeepSeek V3.2 / R1), $N = 40$ per agent, gives unanimous $1.00$
+panel-mean committed accuracy on the five v1 languages
+(\texttt{de}/\texttt{en}/\texttt{es}/\texttt{hi}/\texttt{jp}) reaching
+$N \ge 3$ per agent at this sample size. \texttt{fr} and the four new
+languages (\texttt{ar}/\texttt{zh}/\texttt{ru}/\texttt{ko}) have
+$N < 3$ per agent because they only appear on the
+language-identification subtask in v2; expanding the remaining
+subtasks to ten languages and raising $N$ to $\ge 100$ per agent is a
+v3 commitment. The committed-accuracy ceiling on the five v1
+languages with sufficient $N$ confirms the family is language-balanced
+over its overlapping support; full v2 per-agent table is in
+\autoref{tab:multi-v2-per-language}.
+
+\input{figures/multilingual_v2_per_language.tex}
+
+\subsection{External-benchmark cross-correlation: MGSM}\label{app:mgsm}
+A natural reviewer concern is whether PROPHET-multilingual signal is
+just a re-encoding of established multilingual NLP benchmarks. We run
+the test set of MGSM~\cite{mgsm}, $30$ grade-school math problems per
+language across \texttt{en, es, fr, de}, on the panel of agents that
+also have PROPHET-multilingual data. Answers are the last integer in
+the model's response (thousand separators stripped); we score against
+the gold \texttt{answer\_number} field. \autoref{tab:mgsm-correlation}
+joins MGSM accuracy to PROPHET-multilingual accuracy / ECE / per-task
+payoff and reports Spearman rank correlations.
+
+\input{figures/mgsm_correlation.tex}
+
+The observed pattern is consistent with the H1 finding in
+Section~\ref{sec:results}: MGSM accuracy correlates moderately with
+PROPHET-multilingual ECE
+($\rho_S \approx -0.5$; better MGSM models also calibrate
+better, as one would expect), but is essentially uncorrelated with
+PROPHET-multilingual \emph{per-task net payoff}
+($\rho_S \approx 0$). MGSM cleanly orders agents by raw multilingual
+arithmetic capability; PROPHET-multilingual additionally orders agents
+by their willingness to commit calibrated probabilities and accept the
+asymmetric calibration penalty. The two orderings diverge --- a
+non-trivial empirical claim that PROPHET measures a different signal
+than MGSM, and one that survives even on a $30$-problem $\times$
+4-language subsample of MGSM.
+
+\paragraph{Limitations of this cross-correlation.}
+$N$ ranges from $7$--$13$ agents depending on the runtime (some
+reasoning-tuned agents PASS the entire PROPHET-multilingual family and
+therefore have undefined committed-accuracy / ECE); MGSM is a math-
+specific subset of multilingual capability and does not exercise the
+language-identification, cognate, or grammar subtasks of PROPHET; the
+$30$-problem subsample is large enough for the rank ordering to be
+stable but small enough that the Spearman $95\,\%$ CI on a $n = 10$ panel
+is roughly $\pm 0.6$. The cross-correlation is reported as
+directional evidence, not as a strict statistical test.
 
 \subsection{Cross-family calibration transfer}
 We compute the Spearman rank-correlation of per-family ECE rankings

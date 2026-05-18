@@ -1,0 +1,14 @@
+{
+  "run_id": "1779079370-462b54a7-openrouter:google_gemini-3.1-pro-preview",
+  "agent": "openrouter:google/gemini-3.1-pro-preview",
+  "cycle_seed": 42,
+  "market_seed": 42,
+  "wall_time_s": 0.0010991096496582031,
+  "total_cost_usd": 0.47017000000000003,
+  "n_tasks": 40,
+  "n_take": 0,
+  "n_quote": 40,
+  "n_pass": 0,
+  "net_payoff": 5083.315592481502,
+  "notes": ""
+}
