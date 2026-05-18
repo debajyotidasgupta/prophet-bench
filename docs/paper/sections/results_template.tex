@@ -107,22 +107,76 @@ is perfect calibration.}
 \end{figure}
 
 \subsection{Per-family decomposition}
-\autoref{fig:heatmap-ece} reports per-(agent, family) ECE.
+The per-family heatmaps decompose into three views.
+\autoref{fig:heatmap-pass} shows the per-(agent, family) \textsc{Pass}
+rate (fraction of dispatched tasks where the agent declined to commit);
+\autoref{fig:heatmap-committed-n} shows the corresponding committed-task
+count $N$; \autoref{fig:heatmap-ece} reports per-(agent, family) ECE
+conditional on commitment ($N \ge 5$).
+
+\paragraph{Strategic family-level abstention.} The accuracy and ECE
+heatmaps render \texttt{n/a} for any cell where the agent committed to
+zero tasks --- accuracy is undefined at $N = 0$. These cells are not
+data-collection gaps; every agent was \emph{dispatched} 20 tasks per
+family. A cell goes \texttt{n/a} exactly when the agent chose
+\textsc{Pass} on every one of those 20 tasks --- family-level strategic
+abstention. \autoref{fig:heatmap-pass} surfaces this pattern directly.
+The agents that abstain on entire families form a clean \emph{strategic-
+abstention cluster}:
+\texttt{deepseek-r1} ($9$ of $12$ families with $100\,\%$ \textsc{Pass}),
+\texttt{moonshotai/kimi-k2-thinking} ($7$ / $12$),
+\texttt{qwen3-235b-a22b-thinking-2507} ($4$ / $12$),
+\texttt{openai/gpt-5} ($3$ / $12$), and
+\texttt{google/gemini-3.1-pro-preview} ($2$ / $12$).
+The non-reasoning agents (\texttt{claude-haiku-4.5},
+\texttt{gemini-3-flash-preview}, \texttt{deepseek-v3.2}, the Llama family)
+have zero $100\,\%$-PASS families: they commit to everything and absorb
+the calibration penalty. This is the same H2 signal at a different
+granularity --- reasoning-tuned systems recognise families beyond their
+competence and decline at the family level, while non-reasoning systems
+commit indiscriminately.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.85\linewidth]{figures/heatmap_pass_rate.pdf}
+\caption{Per-family \textsc{Pass} rate (fraction of dispatched tasks
+where the agent chose to abstain). Cells at $100\,\%$ (deep red)
+correspond exactly to the \texttt{n/a} cells in \autoref{fig:heatmap-ece}
+and the accuracy heatmap: the agent declined to commit on any task of
+that family. \texttt{deepseek-r1, kimi-k2-thinking,
+qwen3-235b-thinking, gpt-5, gemini-3.1-pro-preview} form a clean
+strategic-abstention cluster. The \texttt{baseline:always-pass} row is
+$100\,\%$ everywhere by construction.}
+\label{fig:heatmap-pass}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.85\linewidth]{figures/heatmap_committed_n.pdf}
+\caption{Per-family committed-task counts. Zeros explain the
+\texttt{n/a} cells in the accuracy / ECE heatmaps. Low-$N$ cells (below
+$5$) should be read with wide CIs in mind; we report ECE only when
+$N \ge 5$.}
+\label{fig:heatmap-committed-n}
+\end{figure}
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.8\linewidth]{figures/heatmap_ece.pdf}
-\caption{Per-family ECE. Lower is better. The two families with the worst
-panel-mean ECE on the T\textsubscript{extreme} tier are
-\textbf{writing} (rhyme + lipogram, ECE $\approx 0.30$ on the bottom tier
-agents) and \textbf{multimodal} (9$\times$9 Sudoku + 7$\times$7 transform
-chain, ECE $\approx 0.27$). Reasoning and code calibration is much
+\caption{Per-family ECE conditional on commitment. Lower is better.
+\texttt{n/a} cells correspond to $N = 0$ committed --- the agent
+strategically PASSed on every task of that family (see
+\autoref{fig:heatmap-pass}). The two families with the worst panel-mean
+ECE on the T\textsubscript{extreme} tier are \textbf{writing} (rhyme +
+lipogram, ECE $\approx 0.30$ on the bottom-tier agents) and
+\textbf{multimodal} (9$\times$9 Sudoku + 7$\times$7 transform chain,
+ECE $\approx 0.27$). Reasoning and code calibration is much
 better-behaved across the panel, with ECE concentrated below
-$0.15$ even for the over-committed Llama and Gemini-Lite agents. Knowledge
-sits between the two clusters --- frontier models retain high committed
-accuracy on the 6-word letter-count chain and 5-hop year-arithmetic, while
-cheaper variants lose calibration in the same way they lose calibration on
-the standard-tier scientific-constants tier.}
+$0.15$ even for the over-committed Llama and Gemini-Lite agents.
+Knowledge sits between the two clusters --- frontier models retain high
+committed accuracy on the 6-word letter-count chain and 5-hop
+year-arithmetic, while cheaper variants lose calibration in the same way
+they lose calibration on the standard-tier scientific-constants tier.}
 \label{fig:heatmap-ece}
 \end{figure}
 

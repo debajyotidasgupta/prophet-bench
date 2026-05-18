@@ -51,5 +51,8 @@ finalize-paper:
 	$(PY) scripts/plug_paper_todos.py
 	$(PY) scripts/price_sensitivity_ablation.py
 	$(PY) scripts/empirical_difficulty_figure.py
+	$(PY) scripts/family_pass_rate_heatmap.py
+	$(PY) scripts/payoff_per_dollar.py
+	$(PY) scripts/stricter_verifier_ablation.py
 	@if [ -d results/openrouter_hard_v2/runs ]; then PYTHONPATH=src $(PY) scripts/multi_seed_variance.py; fi
 	$(MAKE) paper
